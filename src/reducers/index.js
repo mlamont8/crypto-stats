@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
-import initial from './initial'
+import allCoins from './allCoins'
+import apiFetch from './apiFetch'
 
 
 const cryptoApp = combineReducers({
 
-initial
+allCoins,
+apiFetch
 
 })
 
