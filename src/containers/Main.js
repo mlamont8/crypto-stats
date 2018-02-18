@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchCoinList} from '../actions'
+import Header from '../components/header/header.js'
 
 class Main extends React.Component {
 
@@ -9,8 +10,12 @@ class Main extends React.Component {
   }
 
   render() {
-    return (<p>Main Component</p>)
-  }
+    return (
+      <div>
+        <Header />
+        <p>Main Component</p>
+    </div>
+    )}
 }
 
 const mapDispatchToProps = dispatch => {
