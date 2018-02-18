@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-
+//json.results does not work correctly
   export function fetchCoinList(){
     return (dispatch) => {
         dispatch(ApiFetching(true));
