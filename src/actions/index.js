@@ -18,7 +18,7 @@ export function fetchCoinList() {
 
 // SUCCESSFUL async call
 
-function coinFetchSuccess(items) {
+export function coinFetchSuccess(items) {
   return {
     type: 'FRONT_FETCH_DATA_SUCCESS',
     items
