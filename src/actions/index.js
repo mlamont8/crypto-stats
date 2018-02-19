@@ -21,7 +21,7 @@ export function fetchCoinList() {
 export function coinFetchSuccess(items) {
   return {
     type: 'FRONT_FETCH_DATA_SUCCESS',
-    items
+    items: [items]
   };
 }
 
@@ -34,7 +34,7 @@ export function ApiFetching(bool) {
   };
 }
 
-// Error fetching api
+// Error fetching from api
 
 export function ApiFetchError(bool, data) {
   console.log('front has errored', data)

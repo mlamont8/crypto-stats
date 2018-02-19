@@ -27,7 +27,6 @@ const mockStore = configureMockStore(middlewares)
       return store.dispatch(actions.fetchCoinList()).then(() => {
         const actions = store.getActions()
       // return of async actions
-      console.log('actions', actions[0])
       expect(actions[1].type).toEqual('FRONT_FETCH_DATA_SUCCESS')
     })
   })

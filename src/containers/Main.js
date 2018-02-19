@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchCoinList} from '../actions'
-import Header from '../components/header/header.js'
+import Header from '../components/header/header'
+import Summary from '../components/summary/summary'
 
 class Main extends React.Component {
 
@@ -13,6 +14,7 @@ class Main extends React.Component {
     return (
       <div>
         <Header />
+        <Summary />
         <p>Main Component</p>
     </div>
     )}
