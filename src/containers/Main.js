@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {fetchCoinList} from '../actions'
 import Header from '../components/header/header'
 import Summary from '../components/summary/summary'
+import Search from './search/search'
 
 class Main extends React.Component {
 
@@ -15,6 +16,7 @@ class Main extends React.Component {
       <div>
         <Header />
         <Summary />
+        <Search />
         <p>Main Component</p>
     </div>
     )}

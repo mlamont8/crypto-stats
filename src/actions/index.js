@@ -43,3 +43,10 @@ export function ApiFetchError(bool, data) {
     hasErrored: bool
   };
 }
+
+export function SearchTerm(result) {
+  return {
+    type: 'SEARCH_TERM_ENTERED',
+    SearchTerm: result
+  }
+}
