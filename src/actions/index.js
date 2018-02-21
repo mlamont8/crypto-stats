@@ -50,3 +50,25 @@ export function SearchTerm(result) {
     SearchTerm: result
   }
 }
+
+// Fetch the Coin by day
+export function CoinByDay(coin) {
+  return (dispatch) => {
+    dispatch(SearchTerm(coin));
+    dispatch(ApiFetching(true));
+    return axios.get('https://min-api.cryptocompare.com/data/histoday?fsym=' + coin + '&tsym=USD&limit=60&aggregate=3&e=CCCAGG')
+      .then (
+        response => dispatch(coinByDaySuccess(response.data.Data)),
+        error => dispatch(ApiFetchError(true, error))
+      ).then(() =>
+        dispatch(ApiFetching(false)))
+  }
+}
+
+export function coinByDaySuccess(data){
+  console.log('coinbyday', data)
+  return {
+    type: 'COIN_BY_DAY_SUCCESS',
+    items: data
+  };
+}

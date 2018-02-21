@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { FormControl, ControlLabel, FormGroup,  } from 'react-bootstrap'
-import {SearchTerm} from '../../actions'
+import {CoinByDay} from '../../actions'
 
 class Search extends React.Component {
 
@@ -56,7 +56,7 @@ class Search extends React.Component {
 const mapDispatchToProps = dispatch => {
   return {
     search: (term) => {
-      dispatch(SearchTerm(term))
+      dispatch(CoinByDay(term))
     }
   }
 }
