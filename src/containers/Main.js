@@ -30,4 +30,10 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Main)
+const mapStateToProps = state => {
+  return {
+    daily: state.coinByDay.data
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main)
