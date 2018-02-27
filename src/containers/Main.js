@@ -4,6 +4,7 @@ import {fetchCoinList} from '../actions'
 import Header from '../components/header/header'
 import Summary from '../components/summary/summary'
 import Search from './search/search'
+import DailyBarChart from '../components/dailyBarChart/DailyBarChart'
 
 class Main extends React.Component {
 
@@ -18,6 +19,8 @@ class Main extends React.Component {
         <Summary />
         <Search />
         <p>Main Component</p>
+        <DailyBarChart
+        data={this.props.daily} />
     </div>
     )}
 }
