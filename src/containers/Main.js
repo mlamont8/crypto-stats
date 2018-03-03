@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchCoinList} from '../actions'
+import {CoinByDay} from '../actions'
 import Header from '../components/header/header'
 import Summary from '../components/summary/summary'
 import Search from './search/search'
@@ -9,33 +9,40 @@ import DailyBarChart from '../components/dailyBarChart/DailyBarChart'
 class Main extends React.Component {
 
   componentDidMount() {
-    this.props.data()
+    this.props.search('BTC')
   }
 
   render() {
-    return (
+    const {isLoading, sevenDay, thirtyDay} = this.props
+    return isLoading
+      ? <div>Loading</div>
+      :
+
       <div>
         <Header />
         <Summary />
         <Search />
         <p>Main Component</p>
         <DailyBarChart
-        data={this.props.daily} />
+        data={sevenDay} />
     </div>
-    )}
+      }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    data: () => {
-      dispatch(fetchCoinList())
+    search: (term) => {
+      dispatch(CoinByDay(term))
     }
   }
 }
 
 const mapStateToProps = state => {
+  // const { apiFetch, coinByDay } = state
   return {
-    daily: state.coinByDay.data
+    sevenDay: state.coinByDay.sevenDay,
+    thirtyDay: state.coinByDay.thirtyDay,
+    isLoading: state.apiFetch.isLoading
   }
 }
 

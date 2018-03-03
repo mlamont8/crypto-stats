@@ -8,10 +8,14 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      value: 'BTC',
       };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  ComponentDidMount() {
+    this.props.search(this.state.value)
   }
 
   getValidationState() {
