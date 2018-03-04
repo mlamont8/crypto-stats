@@ -17,14 +17,16 @@ class Main extends React.Component {
     return isLoading
       ? <div>Loading</div>
       :
-
       <div>
         <Header />
         <Summary />
         <Search />
-        <p>Main Component</p>
-        <DailyBarChart
+        <div className="container">
+          <div className="col-md-6">
+          <DailyBarChart
         data={sevenDay} />
+        </div>
+    </div>
     </div>
       }
 }
@@ -38,7 +40,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-  // const { apiFetch, coinByDay } = state
   return {
     sevenDay: state.coinByDay.sevenDay,
     thirtyDay: state.coinByDay.thirtyDay,
