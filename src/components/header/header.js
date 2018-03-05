@@ -5,7 +5,7 @@ import { Nav, Navbar, NavItem } from 'react-bootstrap'
 const Header = () => {
 
     return (
-        <Navbar inverse collapseOnSelect>
+<Navbar collapseOnSelect>
   <Navbar.Header>
     <Navbar.Brand>
       <a href="#brand">CryptoStats</a>

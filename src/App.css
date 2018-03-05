@@ -1,3 +1,7 @@
+.summary {
+  height: 150px;
+  background-color: #03153D; }
+
 .summary-left {
   background-color: red; }
 
@@ -6,3 +10,9 @@
 
 .summary-center {
   background-color: green; }
+
+.navbar-default {
+  background: #010028;
+  border-color: #010028;
+  border-radius: 0;
+  margin-bottom: 0; }
