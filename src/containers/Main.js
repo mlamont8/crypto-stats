@@ -5,6 +5,7 @@ import Header from '../components/header/header'
 import Summary from '../components/summary/summary'
 import Search from './search/search'
 import DailyBarChart from '../components/dailyBarChart/DailyBarChart'
+import DailyLineChart from '../components/dailyLineChart/DailyLineChart'
 
 class Main extends React.Component {
 
@@ -22,11 +23,18 @@ class Main extends React.Component {
         <Summary />
         <Search />
         <div className="container">
-          <div className="col-md-6">
-          <DailyBarChart
-        data={sevenDay} />
+          <div className="row">
+            <div className="col-md-6">
+              <DailyBarChart
+              data={sevenDay} />
+            </div>
+
+            <div className="col-md-6">
+                <DailyLineChart
+                  data={thirtyDay} />
+            </div>
+          </div>
         </div>
-    </div>
     </div>
       }
 }

@@ -9,7 +9,7 @@ import { BarChart,
          ResponsiveContainer } from 'recharts'
 import PropTypes from 'prop-types';
 
-// class DailyBarChart extends React.Component {
+
   const DailyBarChart = (props)  => {
 
       	return (
