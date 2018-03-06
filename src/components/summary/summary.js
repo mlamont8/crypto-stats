@@ -5,14 +5,14 @@ const Summary = () => {
 return (
     <div className='container-fluid summary'>
         <div className ='row'>
-            <div className='col-sm-3 summary-left'>
+            <div className='col-sm-2 summary-left'>
             </div>
-            <div className='col-sm-6 summary-center'>
+            <div className='col-sm-8 summary-center'>
             </div>
-            <div className='col-sm-3 summary-right'>
+            <div className='col-sm-2 summary-right'>
             </div>
          </div>
-    
+
     </div>
 )
 

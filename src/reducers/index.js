@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import allCoins from './allCoins'
+import exchanges from './exchanges'
 import apiFetch from './apiFetch'
 import searchTerm from './searchTerm'
 import coinByDay from './coinByDay'
@@ -7,7 +7,7 @@ import coinByDay from './coinByDay'
 
 const cryptoApp = combineReducers({
 
-allCoins,
+exchanges,
 apiFetch,
 searchTerm,
 coinByDay

@@ -3,12 +3,12 @@ import moment from 'moment'
 
 
 // Fetch the Full Coinlist
-export function fetchCoinList() {
+export function fetchExchanges() {
   return (dispatch) => {
     dispatch(ApiFetching(true));
-    return axios.get('https://min-api.cryptocompare.com/data/all/coinlist')
+    return axios.get('https://min-api.cryptocompare.com/data/all/exchanges')
       .then (
-        response => dispatch(coinFetchSuccess(response.data.Data)),
+        response => dispatch(exchangeFetchSuccess(response.data)),
         error => dispatch(ApiFetchError(true, error))
       ).then(() =>
         dispatch(ApiFetching(false)))
@@ -19,10 +19,12 @@ export function fetchCoinList() {
 
 // SUCCESSFUL async call
 
-export function coinFetchSuccess(items) {
+export function exchangeFetchSuccess(exchanges) {
+  console.log(exchanges, 'exchangefetch')
+
   return {
-    type: 'FRONT_FETCH_DATA_SUCCESS',
-    items: [items]
+    type: 'EXCHANGE_FETCH_SUCCESS',
+    exchanges
   };
 }
 
