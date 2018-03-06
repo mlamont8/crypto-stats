@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {CoinByDay, fetchExchanges} from '../actions'
+import {fetchExchanges} from '../actions'
 import Header from '../components/header/header'
 import Summary from '../components/summary/summary'
 import Search from './search/search'
@@ -10,7 +10,7 @@ import DailyLineChart from '../components/dailyLineChart/DailyLineChart'
 class Main extends React.Component {
 
   componentDidMount() {
-    // this.props.search('BTC')
+
     this.props.fetch();
   }
 
@@ -42,9 +42,7 @@ class Main extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // search: (term) => {
-    //   dispatch(CoinByDay(term))
-    // }
+
     fetch: () => {
       dispatch(fetchExchanges())
     }

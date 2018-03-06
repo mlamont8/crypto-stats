@@ -2,13 +2,18 @@ import axios from 'axios'
 import moment from 'moment'
 
 
-// Fetch the Full Coinlist
+// Fetch the Full Exchange List with Coins
+// BTC fetch as initial coin (remove in final version)
 export function fetchExchanges() {
   return (dispatch) => {
     dispatch(ApiFetching(true));
     return axios.get('https://min-api.cryptocompare.com/data/all/exchanges')
       .then (
-        response => dispatch(exchangeFetchSuccess(response.data)),
+        response =>
+        Promise.all([
+            dispatch(exchangeFetchSuccess(response.data)),
+            dispatch(CoinByDay('BTC'))
+          ]),
         error => dispatch(ApiFetchError(true, error))
       ).then(() =>
         dispatch(ApiFetching(false)))
@@ -68,13 +73,6 @@ export function CoinByDay(coin) {
   }
 }
 
-// export function coinByDaySuccess(data){
-//   console.log('coinbyday', data)
-//   return {
-//     type: 'COIN_BY_DAY_SUCCESS',
-//     items: formatTime(data)
-//   };
-// }
 
 // Successful Daily Data Retrieval
   export function coinByDaySuccess(data){
