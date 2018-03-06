@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux'
 import exchanges from './exchanges'
-import apiFetch from './apiFetch'
+import isLoading from './isLoading'
 import searchTerm from './searchTerm'
 import coinByDay from './coinByDay'
 
 
 const cryptoApp = combineReducers({
 
-exchanges,
-apiFetch,
-searchTerm,
-coinByDay
+    isLoading,
+    exchanges,
+    searchTerm,
+    coinByDay
 
 })
 

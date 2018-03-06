@@ -11,7 +11,7 @@ export function fetchExchanges() {
       .then (
         response =>
         Promise.all([
-            dispatch(exchangeFetchSuccess(response.data)),
+            dispatch(exchangeFetchSuccess(response.data, true)),
             dispatch(CoinByDay('BTC'))
           ]),
         error => dispatch(ApiFetchError(true, error))
@@ -22,14 +22,15 @@ export function fetchExchanges() {
 
 
 
-// SUCCESSFUL async call
 
-export function exchangeFetchSuccess(exchanges) {
-  console.log(exchanges, 'exchangefetch')
+// SUCCESSFUL Exchange Fetch from API
 
+export function exchangeFetchSuccess(exchanges, bool) {
   return {
     type: 'EXCHANGE_FETCH_SUCCESS',
-    exchanges
+    exchanges,
+    fetched: bool
+
   };
 }
 
@@ -41,6 +42,7 @@ export function ApiFetching(bool) {
     isLoading: bool
   };
 }
+
 
 // Error fetching from api
 
@@ -63,13 +65,14 @@ export function SearchTerm(result) {
 export function CoinByDay(coin) {
   return (dispatch) => {
     dispatch(SearchTerm(coin));
-    dispatch(ApiFetching(true));
+    // dispatch(ApiFetching(true));
     return axios.get('https://min-api.cryptocompare.com/data/histoday?fsym=' + coin + '&tsym=USD&limit=29&aggregate=1&e=CCCAGG')
       .then (
         response => dispatch(coinByDaySuccess(response.data.Data)),
         error => dispatch(ApiFetchError(true, error))
-      ).then(() =>
-        dispatch(ApiFetching(false)))
+      )
+      // .then(() =>
+      //   dispatch(ApiFetching(false)))
   }
 }
 

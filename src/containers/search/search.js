@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { FormControl, ControlLabel, FormGroup,  } from 'react-bootstrap'
+import { FormControl, ControlLabel, FormGroup } from 'react-bootstrap'
 import {CoinByDay} from '../../actions'
 
 class Search extends React.Component {
@@ -9,14 +9,13 @@ class Search extends React.Component {
     super(props);
     this.state = {
       value: 'BTC',
+      market: ''
       };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  ComponentDidMount() {
-    this.props.search(this.state.value)
-  }
+
 
   getValidationState() {
     const length = this.state.value.length;
@@ -38,23 +37,30 @@ class Search extends React.Component {
   render(){
     return (
     <form onSubmit={this.handleSubmit}>
-  <FormGroup
-    controlId="coin-search"
-    validationState={this.getValidationState()}
-  >
-    <ControlLabel>CryptoCoin Name</ControlLabel>
-    <FormControl
-      type="text"
-      value={this.state.value}
-      placeholder="Enter text"
-      onChange={this.handleChange}
-    />
-    <FormControl.Feedback />
+      <FormGroup
+        controlId="coin-search"
+        validationState={this.getValidationState()}
+      >
+        <ControlLabel>CryptoCoin Name</ControlLabel>
+        <FormControl
+          type="text"
+          value={this.state.value}
+          placeholder="Enter text"
+          onChange={this.handleChange}
+        />
+        <FormControl.Feedback />
 
-  </FormGroup>
-</form>
-)}
-}
+      </FormGroup>
+      <FormGroup controlId="marketSelect">
+      <ControlLabel>Market</ControlLabel>
+      <FormControl componentClass="select" placeholder="select">
+        <option value="select">select</option>
+        <option value="other">...</option>
+      </FormControl>
+    </FormGroup>
+    </form>
+    )}
+    }
 
 
 const mapDispatchToProps = dispatch => {
@@ -65,4 +71,11 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Search)
+const mapStateToProps = state => {
+  return {
+    exchanges: state.exchanges.exchanges,
+    isLoading: state.isLoading.isLoading
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search)

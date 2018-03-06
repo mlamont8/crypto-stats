@@ -15,10 +15,11 @@ class Main extends React.Component {
   }
 
   render() {
-    const {isLoading, sevenDay, thirtyDay} = this.props
-    return isLoading
+    const {hasLoaded, sevenDay, thirtyDay} = this.props
+    return hasLoaded
       ? <div>Loading</div>
       :
+
       <div>
         <Header />
         <Summary />
@@ -37,7 +38,7 @@ class Main extends React.Component {
           </div>
         </div>
     </div>
-      }
+  }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -53,7 +54,7 @@ const mapStateToProps = state => {
   return {
     sevenDay: state.coinByDay.sevenDay,
     thirtyDay: state.coinByDay.thirtyDay,
-    isLoading: state.apiFetch.isLoading
+    hasLoaded: state.isLoading.isLoading
   }
 }
 

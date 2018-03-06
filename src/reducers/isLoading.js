@@ -1,5 +1,5 @@
 
-const apiFetch = (state={}, action) => {
+const isLoading = (state={}, action) => {
     switch (action.type) {
         case 'API_IS_FETCHING':
             return {...state,
@@ -11,4 +11,4 @@ const apiFetch = (state={}, action) => {
 
 }
 
-export default apiFetch
+export default isLoading
