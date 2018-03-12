@@ -12,10 +12,13 @@ constructor(props) {
   super(props);
   this.state = {
     value: 'BTC',
-    market: ''
+    market: '',
+    coinFrom: '',
+    coinTo: ''
     };
   this.handleChange = this.handleChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
+  this.handleSelectChange = this.handleSelectChange.bind(this);
 }
 
 
@@ -32,14 +35,22 @@ handleChange(e) {
    this.setState({ value: e.target.value });
  }
 
+ handleSelectChange(e) {
+    this.setState({ market: e.target.value });
+  }
+
  handleSubmit(e) {
    e.preventDefault()
    this.props.search(this.state.value)
  }
 
 
-// text input only temporary, selections should be handled with select
+// text input only temporary, selections should be handled with select.
+// After each select, update store with new variables adding current Market,
+// current Coin to and from values from new reducers.
 render() {
+  var {market, coinTo, coinFrom} = this.state;
+  console.log(this.props.exchanges.market)
   const exchanges = Object.keys(this.props.exchanges).sort()
   return (
     <form onSubmit={this.handleSubmit}>
@@ -57,15 +68,41 @@ render() {
         <FormControl.Feedback />
 
       </FormGroup>
+      <div className="col-md-4">
       <FormGroup controlId="market">
       <ControlLabel>Market</ControlLabel>
-      <FormControl componentClass="select" placeholder="select">
+      <FormControl
+        componentClass="select"
+        placeholder="select"
+        onChange={this.handleSelectChange}>
          {exchanges.map((market, index) =>
            <option key={index} value={market}>{market}</option>
          )}
       </FormControl>
     </FormGroup>
-    
+    </div>
+
+    <div className="col-md-4">
+    <FormGroup controlId="coinFrom">
+    <ControlLabel>Convert From</ControlLabel>
+    <FormControl componentClass="select" placeholder="select">
+       {exchanges.map((coinFrom, index) =>
+         <option key={index.market} value={coinFrom.market}>{coinFrom.market}</option>
+       )}
+    </FormControl>
+  </FormGroup>
+  </div>
+
+  <div className="col-md-4">
+  <FormGroup controlId="coinTo">
+  <ControlLabel>Convert To</ControlLabel>
+  <FormControl componentClass="select" placeholder="select">
+     {exchanges.map((market, index) =>
+       <option key={index} value={market}>{market}</option>
+     )}
+  </FormControl>
+</FormGroup>
+</div>
     </form>
   )
 
