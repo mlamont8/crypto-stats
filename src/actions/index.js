@@ -6,17 +6,26 @@ import moment from 'moment'
 // BTC fetch as initial coin (remove in final version)
 export function fetchExchanges() {
   return (dispatch) => {
-    dispatch(ApiFetching(true));
+    dispatch(apiHasLoaded(false));
     return axios.get('https://min-api.cryptocompare.com/data/all/exchanges')
       .then (
         response =>
         Promise.all([
             dispatch(exchangeFetchSuccess(response.data, true)),
-            dispatch(CoinByDay('BTC'))
+            // dispatch(CoinByDay('BTC')),
+            dispatch(marketArrayFetch(response.data))
           ]),
         error => dispatch(ApiFetchError(true, error))
       ).then(() =>
-        dispatch(ApiFetching(false)))
+        dispatch(apiHasLoaded(true)))
+  }
+}
+
+// Adds an array of the list of markets for search purposes
+function marketArrayFetch(data){
+  return{
+    type: 'MARKET_ARRAY_FETCHED',
+    data
   }
 }
 
@@ -36,10 +45,10 @@ export function exchangeFetchSuccess(exchanges, bool) {
 
 // When fetching from API
 
-export function ApiFetching(bool) {
+export function apiHasLoaded(bool) {
   return {
-    type: 'API_IS_FETCHING',
-    isLoading: bool
+    type: 'API_HAS_LOADED',
+    apiHasLoaded: bool
   };
 }
 

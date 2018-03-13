@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormControl, ControlLabel, FormGroup } from 'react-bootstrap'
+import SelectControl from '../selectControl/SelectControl'
 import {connect} from 'react-redux'
 import {CoinByDay} from '../../actions'
 import PropTypes from 'prop-types'
@@ -36,6 +37,7 @@ handleChange(e) {
  }
 
  handleSelectChange(e) {
+   console.log(e.target.id, e.target.value)
     this.setState({ market: e.target.value });
   }
 
@@ -49,9 +51,7 @@ handleChange(e) {
 // After each select, update store with new variables adding current Market,
 // current Coin to and from values from new reducers.
 render() {
-  var {market, coinTo, coinFrom} = this.state;
-  console.log(this.props.exchanges.market)
-  const exchanges = Object.keys(this.props.exchanges).sort()
+
   return (
     <form onSubmit={this.handleSubmit}>
       <FormGroup
@@ -68,45 +68,27 @@ render() {
         <FormControl.Feedback />
 
       </FormGroup>
-      <div className="col-md-4">
-      <FormGroup controlId="market">
-      <ControlLabel>Market</ControlLabel>
-      <FormControl
-        componentClass="select"
-        placeholder="select"
-        onChange={this.handleSelectChange}>
-         {exchanges.map((market, index) =>
-           <option key={index} value={market}>{market}</option>
-         )}
-      </FormControl>
-    </FormGroup>
-    </div>
 
-    <div className="col-md-4">
-    <FormGroup controlId="coinFrom">
-    <ControlLabel>Convert From</ControlLabel>
-    <FormControl componentClass="select" placeholder="select">
-       {exchanges.map((coinFrom, index) =>
-         <option key={index.market} value={coinFrom.market}>{coinFrom.market}</option>
-       )}
-    </FormControl>
-  </FormGroup>
-  </div>
+    <SelectControl
+      data={this.props.marketArray}
+      handleSelectChange={this.handleSelectChange}
+      type="market"/>
+
 
   <div className="col-md-4">
   <FormGroup controlId="coinTo">
   <ControlLabel>Convert To</ControlLabel>
   <FormControl componentClass="select" placeholder="select">
-     {exchanges.map((market, index) =>
+     {this.props.marketArray.map((market, index) =>
        <option key={index} value={market}>{market}</option>
      )}
   </FormControl>
 </FormGroup>
 </div>
     </form>
-  )
 
-}
+
+)}
 }
 
 const mapDispatchToProps = dispatch => {
@@ -120,7 +102,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     exchanges: state.exchanges.exchanges,
-    isLoading: state.isLoading.isLoading
+    isLoading: state.isLoading.isLoading,
+    marketArray: state.searchArray.exchangeArray
   }
 }
 

@@ -1,9 +1,9 @@
 
 const isLoading = (state={}, action) => {
     switch (action.type) {
-        case 'API_IS_FETCHING':
+        case 'API_HAS_LOADED':
             return {...state,
-              isLoading: action.isLoading}
+              apiHasLoaded: action.apiHasLoaded}
 
         default:
             return state

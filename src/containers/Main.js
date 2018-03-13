@@ -16,7 +16,7 @@ class Main extends React.Component {
 
   render() {
     const {hasLoaded, sevenDay, thirtyDay} = this.props
-    return hasLoaded
+    return !hasLoaded
       ? <div>Loading</div>
       :
 
@@ -54,7 +54,7 @@ const mapStateToProps = state => {
   return {
     sevenDay: state.coinByDay.sevenDay,
     thirtyDay: state.coinByDay.thirtyDay,
-    hasLoaded: state.isLoading.isLoading
+    hasLoaded: state.isLoading.apiHasLoaded
   }
 }
 
