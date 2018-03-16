@@ -70,6 +70,15 @@ export function SearchTerm(result) {
   }
 }
 
+export function SelectChoices(id, item){
+  console.log(id, item, 'select choices')
+  return{
+    type: 'SELECTION_ENTERED',
+    id,
+    item
+  }
+}
+
 // Fetch the Coin by day
 export function CoinByDay(coin) {
   return (dispatch) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { FormControl, ControlLabel, FormGroup } from 'react-bootstrap'
 import SelectControl from '../selectControl/SelectControl'
 import {connect} from 'react-redux'
-import {CoinByDay} from '../../actions'
+import {CoinByDay, SelectChoices} from '../../actions'
 import PropTypes from 'prop-types'
 
 
@@ -38,7 +38,8 @@ handleChange(e) {
 
  handleSelectChange(e) {
    console.log(e.target.id, e.target.value)
-    this.setState({ market: e.target.value });
+    // this.setState({ market: e.target.value });
+    this.props.select(e.target.id, e.target.value)
   }
 
  handleSubmit(e) {
@@ -75,6 +76,8 @@ render() {
       type="market"/>
 
 
+
+
   <div className="col-md-4">
   <FormGroup controlId="coinTo">
   <ControlLabel>Convert To</ControlLabel>
@@ -95,6 +98,9 @@ const mapDispatchToProps = dispatch => {
   return {
     search: (term) => {
       dispatch(CoinByDay(term))
+    },
+    select: (id, item) => {
+      dispatch(SelectChoices(id, item))
     }
   }
 }
