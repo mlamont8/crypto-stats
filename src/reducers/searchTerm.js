@@ -6,6 +6,7 @@ const searchTerm = (state={}, action) => {
               SearchTerm: action.SearchTerm}
 
         case 'SELECTION_ENTERED':
+        
             return {...state,
               [action.id]: action.item }
 

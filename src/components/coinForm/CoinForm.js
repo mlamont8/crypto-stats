@@ -2,12 +2,11 @@ import React from 'react';
 import { FormControl, ControlLabel, FormGroup } from 'react-bootstrap'
 import SelectControl from '../selectControl/SelectControl'
 import {connect} from 'react-redux'
-import {CoinByDay, SelectChoices} from '../../actions'
+import {CoinByDay, SelectData} from '../../actions'
 import PropTypes from 'prop-types'
 
 
 class CoinForm extends React.Component {
-// const CoinForm = (props) => {
 
 constructor(props) {
   super(props);
@@ -37,9 +36,11 @@ handleChange(e) {
  }
 
  handleSelectChange(e) {
-   console.log(e.target.id, e.target.value)
+   let selectValue = e.target.id
+   console.log(selectValue)
+   
     // this.setState({ market: e.target.value });
-    this.props.select(e.target.id, e.target.value)
+    this.props.market(e.target.id, e.target.value)
   }
 
  handleSubmit(e) {
@@ -75,6 +76,11 @@ render() {
       handleSelectChange={this.handleSelectChange}
       type="market"/>
 
+        <SelectControl
+      data={this.props.marketArray}
+      handleSelectChange={this.handleSelectChange}
+      type="coinTo"/>
+
 
 
 
@@ -99,8 +105,8 @@ const mapDispatchToProps = dispatch => {
     search: (term) => {
       dispatch(CoinByDay(term))
     },
-    select: (id, item) => {
-      dispatch(SelectChoices(id, item))
+    market: (id, item) => {
+      dispatch(SelectData(id, item))
     }
   }
 }

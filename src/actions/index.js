@@ -8,9 +8,9 @@ export function fetchExchanges() {
   return (dispatch) => {
     dispatch(apiHasLoaded(false));
     return axios.get('https://min-api.cryptocompare.com/data/all/exchanges')
-      .then (
+      .then(
         response =>
-        Promise.all([
+          Promise.all([
             dispatch(exchangeFetchSuccess(response.data, true)),
             // dispatch(CoinByDay('BTC')),
             dispatch(marketArrayFetch(response.data))
@@ -22,8 +22,8 @@ export function fetchExchanges() {
 }
 
 // Adds an array of the list of markets for search purposes
-function marketArrayFetch(data){
-  return{
+function marketArrayFetch(data) {
+  return {
     type: 'MARKET_ARRAY_FETCHED',
     data
   }
@@ -70,14 +70,48 @@ export function SearchTerm(result) {
   }
 }
 
-export function SelectChoices(id, item){
-  console.log(id, item, 'select choices')
-  return{
+
+
+function SelectionEntered(id, item) {
+  return {
     type: 'SELECTION_ENTERED',
     id,
     item
   }
 }
+
+
+// Forms the search terms and the
+//  arrays for the upcoming selectors
+export function SelectData(id, item) {
+  return (dispatch, getState) => {
+    const exchangeArray = getState().exchanges.exchanges
+    dispatch(SelectionEntered(id, item))
+    dispatch(UpcomingArray(id, exchangeArray))
+  }
+
+}
+
+// To create the new Arrays after market or coinTo
+// selections
+function UpcomingArray(id, exchangeArray) {
+  const actionType
+  console.log(id, exchangeArray, 'upcoming array')
+  if (id === "market"){
+    actionType = 'COIN_TO_ARRAY_CREATED'
+  }else if (id === "coinTo"){
+    actionType = 'COIN_FROM_ARRAY_CREATED' 
+  }
+  else {
+    actionType =
+  }
+  return {
+    type: 'COINTO_ARRAY_CREATED',
+    id,
+    exchangeArray
+  }
+}
+
 
 // Fetch the Coin by day
 export function CoinByDay(coin) {
@@ -85,50 +119,50 @@ export function CoinByDay(coin) {
     dispatch(SearchTerm(coin));
     // dispatch(ApiFetching(true));
     return axios.get('https://min-api.cryptocompare.com/data/histoday?fsym=' + coin + '&tsym=USD&limit=29&aggregate=1&e=CCCAGG')
-      .then (
+      .then(
         response => dispatch(coinByDaySuccess(response.data.Data)),
         error => dispatch(ApiFetchError(true, error))
       )
-      // .then(() =>
-      //   dispatch(ApiFetching(false)))
+    // .then(() =>
+    //   dispatch(ApiFetching(false)))
   }
 }
 
 
 // Successful Daily Data Retrieval
-  export function coinByDaySuccess(data){
-    let formattedData = formatTime(data)
-    return (dispatch) => {
-      dispatch(SevenDayData(formattedData))
-      dispatch(ThirtyDayData(formattedData))
-    }
+export function coinByDaySuccess(data) {
+  let formattedData = formatTime(data)
+  return (dispatch) => {
+    dispatch(SevenDayData(formattedData))
+    dispatch(ThirtyDayData(formattedData))
   }
+}
 
 // Last 7 days
-  export function SevenDayData(data){
-    let newData = data.slice(23)
-    return {
-      type: 'SEVEN_DAY_UPDATE',
-      newData
-    }
+export function SevenDayData(data) {
+  let newData = data.slice(23)
+  return {
+    type: 'SEVEN_DAY_UPDATE',
+    newData
   }
+}
 // Last 30 days
-  export function ThirtyDayData(data){
-    return{
-      type: 'THIRTY_DAY_UPDATE',
-      data
-    }
-
+export function ThirtyDayData(data) {
+  return {
+    type: 'THIRTY_DAY_UPDATE',
+    data
   }
+
+}
 
 // Format the time in the json to m/dd/yyyy format
-function formatTime(jsondata){
+function formatTime(jsondata) {
   const formatTime = jsondata.map(
     obj => {
       var rObj = {};
       rObj = obj;
       rObj.time = moment(rObj.time * 1000).format('MM/D');
-        return rObj;
+      return rObj;
     }
   )
   return formatTime
