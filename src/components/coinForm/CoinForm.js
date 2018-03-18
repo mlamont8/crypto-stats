@@ -38,7 +38,7 @@ handleChange(e) {
  handleSelectChange(e) {
    let selectValue = e.target.id
    console.log(selectValue)
-   
+
     // this.setState({ market: e.target.value });
     this.props.market(e.target.id, e.target.value)
   }
@@ -53,6 +53,17 @@ handleChange(e) {
 // After each select, update store with new variables adding current Market,
 // current Coin to and from values from new reducers.
 render() {
+  let market = this.props.marketTerm
+//  let coinTo = this.props.coinToTerm
+  let coinTo = "this.props.exchanges." + this.props.marketTerm
+  console.log(coinTo, 'Coin To')
+  if (!market){
+    console.log('Its empty')
+    // Only render market form
+  }else{
+    console.log('Not empty')
+  }
+
 
   return (
     <form onSubmit={this.handleSubmit}>
@@ -76,10 +87,16 @@ render() {
       handleSelectChange={this.handleSelectChange}
       type="market"/>
 
+      {market ? (
         <SelectControl
-      data={this.props.marketArray}
+      data={`${this.props.exchanges}.${this.props.marketTerm}`}
       handleSelectChange={this.handleSelectChange}
       type="coinTo"/>
+    ) : (
+      null
+    )}
+
+
 
 
 
@@ -115,7 +132,9 @@ const mapStateToProps = state => {
   return {
     exchanges: state.exchanges.exchanges,
     isLoading: state.isLoading.isLoading,
-    marketArray: state.searchArray.exchangeArray
+    marketArray: state.searchArray.exchangeArray,
+    marketTerm: state.searchTerm.market,
+//    coinToTerm: state.searchTerm.coinTo
   }
 }
 

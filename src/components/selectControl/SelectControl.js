@@ -4,7 +4,7 @@ import { FormControl, ControlLabel, FormGroup } from 'react-bootstrap'
 
 
   const SelectControl = (props) => {
-
+    console.log(props.data, 'selectcontrol data')
     const { data, type } = props
     return (
       <div className="col-md-4">
