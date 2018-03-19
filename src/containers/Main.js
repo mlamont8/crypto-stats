@@ -10,7 +10,6 @@ import DailyLineChart from '../components/dailyLineChart/DailyLineChart'
 class Main extends React.Component {
 
   componentDidMount() {
-
     this.props.fetch();
   }
 
@@ -43,7 +42,6 @@ class Main extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-
     fetch: () => {
       dispatch(fetchExchanges())
     }

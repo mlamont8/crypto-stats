@@ -89,7 +89,7 @@ render() {
 
       {market ? (
         <SelectControl
-      data={`${this.props.exchanges}.${this.props.marketTerm}`}
+      data={this.props.marketArray}
       handleSelectChange={this.handleSelectChange}
       type="coinTo"/>
     ) : (

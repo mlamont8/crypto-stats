@@ -4,7 +4,7 @@ import moment from 'moment'
 
 // Fetch the Full Exchange List with Coins
 // BTC fetch as initial coin (remove in final version)
-export function fetchExchanges() {
+export const fetchExchanges = () => {
   return (dispatch) => {
     dispatch(apiHasLoaded(false));
     return axios.get('https://min-api.cryptocompare.com/data/all/exchanges')
@@ -22,74 +22,60 @@ export function fetchExchanges() {
 }
 
 // Adds an array of the list of markets for search purposes
-function marketArrayFetch(data) {
-  return {
+const marketArrayFetch = (data)=> ({
     type: 'MARKET_ARRAY_FETCHED',
     data
-  }
-}
+  })
+
 
 
 
 
 // SUCCESSFUL Exchange Fetch from API
 
-export function exchangeFetchSuccess(exchanges, bool) {
-  return {
+export const exchangeFetchSuccess = (exchanges, bool) => ({
     type: 'EXCHANGE_FETCH_SUCCESS',
     exchanges,
     fetched: bool
-
-  };
-}
+})
 
 // When fetching from API
 
-export function apiHasLoaded(bool) {
-  return {
+export const apiHasLoaded = (bool) => ({
     type: 'API_HAS_LOADED',
     apiHasLoaded: bool
-  };
-}
+})
 
 
 // Error fetching from api
 
-export function ApiFetchError(bool, data) {
-  console.log('front has errored', data)
-  return {
+export const ApiFetchError = (bool, data) => ({
     type: 'API_FETCH_HAS_ERRORED',
     hasErrored: bool
-  };
-}
+})
 
-export function SearchTerm(result) {
-  return {
+export const SearchTerm = (result) => ({
     type: 'SEARCH_TERM_ENTERED',
     SearchTerm: result
-  }
-}
+})
 
 
 
-function SelectionEntered(id, item) {
-  return {
+const SelectionEntered = (id, item)  => ({
     type: 'SELECTION_ENTERED',
     id,
     item
-  }
-}
+  })
 
 
 // Forms the search terms and the
 //  arrays for the upcoming selectors
-export function SelectData(id, item) {
+export const SelectData = (id, item) => {
   return (dispatch, getState) => {
     const exchangeArray = getState().exchanges.exchanges
     dispatch(SelectionEntered(id, item))
     // dispatch(UpcomingArray(id, exchangeArray))
   }
-
 }
 
 // To create the new Arrays after market or coinTo
@@ -114,7 +100,7 @@ export function SelectData(id, item) {
 
 
 // Fetch the Coin by day
-export function CoinByDay(coin) {
+export const CoinByDay = (coin)  => {
   return (dispatch) => {
     dispatch(SearchTerm(coin));
     // dispatch(ApiFetching(true));
@@ -130,7 +116,7 @@ export function CoinByDay(coin) {
 
 
 // Successful Daily Data Retrieval
-export function coinByDaySuccess(data) {
+export const coinByDaySuccess = (data)  => {
   let formattedData = formatTime(data)
   return (dispatch) => {
     dispatch(SevenDayData(formattedData))
@@ -139,7 +125,7 @@ export function coinByDaySuccess(data) {
 }
 
 // Last 7 days
-export function SevenDayData(data) {
+export const SevenDayData = (data) => {
   let newData = data.slice(23)
   return {
     type: 'SEVEN_DAY_UPDATE',
@@ -147,16 +133,13 @@ export function SevenDayData(data) {
   }
 }
 // Last 30 days
-export function ThirtyDayData(data) {
-  return {
+export const ThirtyDayData = (data)  => ({
     type: 'THIRTY_DAY_UPDATE',
     data
-  }
-
-}
+  })
 
 // Format the time in the json to m/dd/yyyy format
-function formatTime(jsondata) {
+const formatTime = (jsondata) => {
   const formatTime = jsondata.map(
     obj => {
       var rObj = {};
