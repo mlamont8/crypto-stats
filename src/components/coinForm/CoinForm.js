@@ -1,5 +1,4 @@
 import React from 'react';
-import { FormControl, ControlLabel, FormGroup } from 'react-bootstrap'
 import SelectControl from '../selectControl/SelectControl'
 import {connect} from 'react-redux'
 import {CoinByDay, SelectData} from '../../actions'
@@ -36,11 +35,7 @@ handleChange(e) {
  }
 
  handleSelectChange(e) {
-   let selectValue = e.target.id
-   console.log(selectValue)
-
-    // this.setState({ market: e.target.value });
-    this.props.market(e.target.id, e.target.value)
+    this.props.selectChange(e.target.id, e.target.value)
   }
 
  handleSubmit(e) {
@@ -49,49 +44,26 @@ handleChange(e) {
  }
 
 
-// text input only temporary, selections should be handled with select.
+
 // After each select, update store with new variables adding current Market,
-// current Coin to and from values from new reducers.
+// coin converting from and to.
 render() {
   let market = this.props.marketTerm
-//  let coinTo = this.props.coinToTerm
-  let coinTo = "this.props.exchanges." + this.props.marketTerm
-  console.log(coinTo, 'Coin To')
-  if (!market){
-    console.log('Its empty')
-    // Only render market form
-  }else{
-    console.log('Not empty')
-  }
-
+  let sortedMarket =  Object.keys(this.props.marketArray).sort()
 
   return (
     <form onSubmit={this.handleSubmit}>
-      <FormGroup
-        controlId="coin-search"
-        validationState={this.getValidationState()}
-      >
-        <ControlLabel>CryptoCoin Name</ControlLabel>
-        <FormControl
-          type="text"
-          value={this.state.value}
-          placeholder="Enter text"
-          onChange={this.handleChange}
-        />
-        <FormControl.Feedback />
-
-      </FormGroup>
 
     <SelectControl
-      data={this.props.marketArray}
+      data={sortedMarket}
       handleSelectChange={this.handleSelectChange}
       type="market"/>
 
       {market ? (
         <SelectControl
-      data={this.props.marketArray}
+      data={Object.keys(this.props.convertTo).sort()}
       handleSelectChange={this.handleSelectChange}
-      type="coinTo"/>
+      type="convertFrom"/>
     ) : (
       null
     )}
@@ -100,17 +72,6 @@ render() {
 
 
 
-
-  <div className="col-md-4">
-  <FormGroup controlId="coinTo">
-  <ControlLabel>Convert To</ControlLabel>
-  <FormControl componentClass="select" placeholder="select">
-     {this.props.marketArray.map((market, index) =>
-       <option key={index} value={market}>{market}</option>
-     )}
-  </FormControl>
-</FormGroup>
-</div>
     </form>
 
 
@@ -122,7 +83,7 @@ const mapDispatchToProps = dispatch => {
     search: (term) => {
       dispatch(CoinByDay(term))
     },
-    market: (id, item) => {
+    selectChange: (id, item) => {
       dispatch(SelectData(id, item))
     }
   }
@@ -130,11 +91,11 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    exchanges: state.exchanges.exchanges,
+    exchanges: state.allExchangeData.exchanges,
     isLoading: state.isLoading.isLoading,
-    marketArray: state.searchArray.exchangeArray,
+    marketArray: state.searchArrays.marketArray,
     marketTerm: state.searchTerm.market,
-//    coinToTerm: state.searchTerm.coinTo
+   convertTo: state.searchArrays.convertTo
   }
 }
 

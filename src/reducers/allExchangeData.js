@@ -4,7 +4,7 @@ const initialState = {
     fetched: false
 }
 
-const exchanges = (state=initialState, action) => {
+const allExchangeData = (state=initialState, action) => {
     switch (action.type) {
         case 'EXCHANGE_FETCH_SUCCESS':
             return {...state,
@@ -17,4 +17,4 @@ const exchanges = (state=initialState, action) => {
 
 }
 
-export default exchanges
+export default allExchangeData

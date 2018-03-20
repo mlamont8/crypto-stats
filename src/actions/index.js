@@ -13,7 +13,7 @@ export const fetchExchanges = () => {
           Promise.all([
             dispatch(exchangeFetchSuccess(response.data, true)),
             // dispatch(CoinByDay('BTC')),
-            dispatch(marketArrayFetch(response.data))
+            dispatch(marketArrayCreate(response.data))
           ]),
         error => dispatch(ApiFetchError(true, error))
       ).then(() =>
@@ -22,8 +22,8 @@ export const fetchExchanges = () => {
 }
 
 // Adds an array of the list of markets for search purposes
-const marketArrayFetch = (data)=> ({
-    type: 'MARKET_ARRAY_FETCHED',
+const marketArrayCreate = (data)=> ({
+    type: 'MARKET_ARRAY_CREATED',
     data
   })
 
@@ -61,22 +61,52 @@ export const SearchTerm = (result) => ({
 
 
 
-const SelectionEntered = (id, item)  => ({
-    type: 'SELECTION_ENTERED',
-    id,
-    item
-  })
-
 
 // Forms the search terms and the
 //  arrays for the upcoming selectors
-export const SelectData = (id, item) => {
+ export const SelectData = (id, item) => {
+   console.log(item)
   return (dispatch, getState) => {
-    const exchangeArray = getState().exchanges.exchanges
-    dispatch(SelectionEntered(id, item))
-    // dispatch(UpcomingArray(id, exchangeArray))
+    const exchangeArray = getState().allExchangeData.exchanges
+    if (id === 'market'){
+      dispatch(MarketSelectionEntered(id, item))
+      dispatch(CreateConvertTo(item, exchangeArray))
+    } else if ( id === 'convertFrom'){
+      dispatch(ConvertFromEntered(id, item))
+    }else{
+      dispatch(ConvertToEntered(id, item))
+
+    }
   }
 }
+
+export const MarketSelectionEntered = (id, item)  => ({
+    type: 'MARKET_SELECTION_ENTERED',
+    id,
+    item
+
+})
+
+
+  export const ConvertFromEntered = (id, item)  => ({
+      type: 'CONVERT_FROM_ENTERED',
+      id,
+      item
+    })
+
+
+
+  export const CreateConvertTo = (item, exchangeResults)  => ({
+        type: 'CONVERT_TO_ARRAY_CREATED',
+        item,
+        exchangeResults
+      })
+
+      export const ConvertToEntered = (id, item)  => ({
+          type: 'CONVERT_TO_ENTERED',
+          id,
+          item
+        })
 
 // To create the new Arrays after market or coinTo
 // selections

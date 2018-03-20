@@ -25,7 +25,7 @@ class Search extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    exchanges: state.exchanges.exchanges,
+    exchanges: state.allExchangeData.exchanges,
   }
 }
 
