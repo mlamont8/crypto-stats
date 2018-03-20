@@ -116,27 +116,6 @@ export const MarketSelectionEntered = (id, item)  => ({
               convertFrom
             })
 
-// To create the new Arrays after market or coinTo
-// selections
-// function UpcomingArray(id, exchangeArray) {
-//   const actionType
-//   console.log(id, exchangeArray, 'upcoming array')
-//   if (id === "market"){
-//     actionType = 'COIN_TO_ARRAY_CREATED'
-//   }else if (id === "coinTo"){
-//     actionType = 'COIN_FROM_ARRAY_CREATED'
-//   }
-//   else {
-//     actionType =
-//   }
-//   return {
-//     type: 'COINTO_ARRAY_CREATED',
-//     id,
-//     exchangeArray
-//   }
-// }
-
-
 // Fetch the Coin by day
 export const CoinByDay = (coin)  => {
   return (dispatch) => {
