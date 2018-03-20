@@ -49,6 +49,7 @@ handleChange(e) {
 // coin converting from and to.
 render() {
   let market = this.props.marketTerm
+  let fromTerm = this.props.fromTerm
   let sortedMarket =  Object.keys(this.props.marketArray).sort()
 
   return (
@@ -61,13 +62,22 @@ render() {
 
       {market ? (
         <SelectControl
-      data={Object.keys(this.props.convertTo).sort()}
+      data={Object.keys(this.props.convertFrom).sort()}
       handleSelectChange={this.handleSelectChange}
       type="convertFrom"/>
     ) : (
       null
     )}
 
+
+    {fromTerm ? (
+      <SelectControl
+    data={this.props.toArray}
+    handleSelectChange={this.handleSelectChange}
+    type="convertTo"/>
+  ) : (
+    null
+  )}
 
 
 
@@ -95,7 +105,9 @@ const mapStateToProps = state => {
     isLoading: state.isLoading.isLoading,
     marketArray: state.searchArrays.marketArray,
     marketTerm: state.searchTerm.market,
-   convertTo: state.searchArrays.convertTo
+    fromTerm: state.searchTerm.convertFrom,
+   convertFrom: state.searchArrays.convertFrom,
+   toArray: state.searchArrays.convertTo
   }
 }
 

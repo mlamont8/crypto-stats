@@ -13,6 +13,11 @@ const searchTerm = (state={}, action) => {
             return {...state,
               [action.id]: action.item }
 
+          case 'CONVERT_TO_ENTERED':
+              return {...state,
+              [action.id]: action.item }
+
+
         default:
             return state
     }

@@ -7,10 +7,16 @@ const searchArrays = (state={}, action) => {
               marketArray: action.data
               }
 
-        case 'CONVERT_TO_ARRAY_CREATED':
+        case 'CONVERT_FROM_ARRAY_CREATED':
            return {...state,
-              convertTo: action.exchangeResults[action.item]
+              convertFrom: action.exchangeResults[action.item]
             }
+
+        case 'CONVERT_TO_ARRAY_CREATED':
+        console.log(action.convertFrom)
+               return {...state,
+                  convertTo: action.convertFrom[action.item]
+                }
 
         default:
             return state

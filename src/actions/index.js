@@ -65,15 +65,19 @@ export const SearchTerm = (result) => ({
 // Forms the search terms and the
 //  arrays for the upcoming selectors
  export const SelectData = (id, item) => {
-   console.log(item)
   return (dispatch, getState) => {
-    const exchangeArray = getState().allExchangeData.exchanges
+
     if (id === 'market'){
+      const exchangeArray = getState().searchArrays.marketArray
       dispatch(MarketSelectionEntered(id, item))
-      dispatch(CreateConvertTo(item, exchangeArray))
+      dispatch(CreateConvertFrom(item, exchangeArray))
+
     } else if ( id === 'convertFrom'){
+    const convertFrom = getState().searchArrays.convertFrom
       dispatch(ConvertFromEntered(id, item))
+      dispatch(CreateConvertTo(item, convertFrom))
     }else{
+
       dispatch(ConvertToEntered(id, item))
 
     }
@@ -94,19 +98,23 @@ export const MarketSelectionEntered = (id, item)  => ({
       item
     })
 
-
-
-  export const CreateConvertTo = (item, exchangeResults)  => ({
-        type: 'CONVERT_TO_ARRAY_CREATED',
+  export const CreateConvertFrom = (item, exchangeResults)  => ({
+        type: 'CONVERT_FROM_ARRAY_CREATED',
         item,
         exchangeResults
       })
 
-      export const ConvertToEntered = (id, item)  => ({
+  export const ConvertToEntered = (id, item)  => ({
           type: 'CONVERT_TO_ENTERED',
           id,
           item
         })
+
+  export const CreateConvertTo = (item, convertFrom)  => ({
+              type: 'CONVERT_TO_ARRAY_CREATED',
+              item,
+              convertFrom
+            })
 
 // To create the new Arrays after market or coinTo
 // selections
