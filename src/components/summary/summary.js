@@ -1,11 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
+// Make Container...get summary data from store
 
-const Summary = () => {
+// Top Summary information
+
+class Summary extends React.Component {
+
+render() {
 return (
     <div className='container-fluid summary'>
         <div className ='row'>
             <div className='col-sm-2 summary-left'>
+                <h1>{this.props.coinFrom}</h1>
+                <p>/{this.props.coinTo}</p>
+                <p>Exchange: {this.props.exchange}</p>
             </div>
             <div className='col-sm-8 summary-center'>
             </div>
@@ -13,8 +22,16 @@ return (
             </div>
          </div>
     </div>
-)
+)}
 
 }
 
-export default Summary;
+const mapStateToProps = state => {
+  return {
+    exchange: state.searchTerm.market,
+    coinFrom: state.searchTerm.convertFrom,
+    coinTo: state.searchTerm.convertTo
+  }
+}
+
+export default connect(mapStateToProps)(Summary);

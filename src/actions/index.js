@@ -3,7 +3,6 @@ import moment from 'moment'
 
 
 // Fetch the Full Exchange List with Coins
-// BTC fetch as initial coin (remove in final version)
 export const fetchExchanges = () => {
   return (dispatch) => {
     dispatch(apiHasLoaded(false));
@@ -12,7 +11,6 @@ export const fetchExchanges = () => {
         response =>
           Promise.all([
             dispatch(exchangeFetchSuccess(response.data, true)),
-            // dispatch(CoinByDay('BTC')),
             dispatch(marketArrayCreate(response.data))
           ]),
         error => dispatch(ApiFetchError(true, error))
@@ -20,13 +18,6 @@ export const fetchExchanges = () => {
         dispatch(apiHasLoaded(true)))
   }
 }
-
-// Adds an array of the list of markets for search purposes
-const marketArrayCreate = (data)=> ({
-    type: 'MARKET_ARRAY_CREATED',
-    data
-  })
-
 
 
 
@@ -54,10 +45,7 @@ export const ApiFetchError = (bool, data) => ({
     hasErrored: bool
 })
 
-export const SearchTerm = (result) => ({
-    type: 'SEARCH_TERM_ENTERED',
-    SearchTerm: result
-})
+
 
 
 
@@ -72,7 +60,7 @@ export const SearchTerm = (result) => ({
       dispatch(MarketSelectionEntered(id, item))
       dispatch(CreateConvertFrom(item, exchangeArray))
 
-    } else if ( id === 'convertFrom'){
+    } else if (id === 'convertFrom'){
     const convertFrom = getState().searchArrays.convertFrom
       dispatch(ConvertFromEntered(id, item))
       dispatch(CreateConvertTo(item, convertFrom))
@@ -98,8 +86,17 @@ export const MarketSelectionEntered = (id, item)  => ({
       item
     })
 
+    // Adds an array of the list of markets for search purposes
+    const marketArrayCreate = (data)=> ({
+        type: 'MARKET_LIST_CREATED',
+        data
+      })
+
+
+
+
   export const CreateConvertFrom = (item, exchangeResults)  => ({
-        type: 'CONVERT_FROM_ARRAY_CREATED',
+        type: 'CONVERT_FROM_LIST_CREATED',
         item,
         exchangeResults
       })
@@ -111,17 +108,19 @@ export const MarketSelectionEntered = (id, item)  => ({
         })
 
   export const CreateConvertTo = (item, convertFrom)  => ({
-              type: 'CONVERT_TO_ARRAY_CREATED',
+              type: 'CONVERT_TO_LIST_CREATED',
               item,
               convertFrom
             })
 
 // Fetch the Coin by day
-export const CoinByDay = (coin)  => {
-  return (dispatch) => {
-    dispatch(SearchTerm(coin));
-    // dispatch(ApiFetching(true));
-    return axios.get('https://min-api.cryptocompare.com/data/histoday?fsym=' + coin + '&tsym=USD&limit=29&aggregate=1&e=CCCAGG')
+export const CoinByDay = ()  => {
+  return (dispatch, getState) => {
+    const exchange = getState().searchTerm.market
+    const fromSymb = getState().searchTerm.convertFrom
+    const toSymb = getState().searchTerm.convertTo
+    dispatch(SearchTerm(exchange, fromSymb, toSymb));
+    return axios.get('https://min-api.cryptocompare.com/data/histoday?fsym=' + fromSymb + '&tsym=' + toSymb + '&limit=29&aggregate=1&e=' + exchange)
       .then(
         response => dispatch(coinByDaySuccess(response.data.Data)),
         error => dispatch(ApiFetchError(true, error))
@@ -130,6 +129,11 @@ export const CoinByDay = (coin)  => {
     //   dispatch(ApiFetching(false)))
   }
 }
+
+export const SearchTerm = (result) => ({
+    type: 'SEARCH_TERM_ENTERED',
+    SearchTerm: result
+})
 
 
 // Successful Daily Data Retrieval

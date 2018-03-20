@@ -1,5 +1,6 @@
 import React from 'react';
 import SelectControl from '../selectControl/SelectControl'
+import { Button } from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {CoinByDay, SelectData} from '../../actions'
 import PropTypes from 'prop-types'
@@ -40,7 +41,7 @@ handleChange(e) {
 
  handleSubmit(e) {
    e.preventDefault()
-   this.props.search(this.state.value)
+   this.props.search()
  }
 
 
@@ -79,7 +80,11 @@ render() {
     null
   )}
 
-
+  {fromTerm ? (
+    <Button type="submit">Submit</Button>
+  ): (
+    null
+  )}
 
 
     </form>
@@ -90,8 +95,8 @@ render() {
 
 const mapDispatchToProps = dispatch => {
   return {
-    search: (term) => {
-      dispatch(CoinByDay(term))
+    search: () => {
+      dispatch(CoinByDay())
     },
     selectChange: (id, item) => {
       dispatch(SelectData(id, item))
