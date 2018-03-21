@@ -2,7 +2,7 @@ import React from 'react';
 import SelectControl from '../selectControl/SelectControl'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { CoinByDay, SelectData } from '../../actions'
+import { GetJson, SelectData } from '../../actions'
 import PropTypes from 'prop-types'
 
 
@@ -38,7 +38,7 @@ class CoinForm extends React.Component {
   render() {
     let market = this.props.marketTerm
     let fromTerm = this.props.fromTerm
-    
+
     let sortedMarket = Object.keys(this.props.marketArray).sort()
 
     return (
@@ -85,7 +85,7 @@ class CoinForm extends React.Component {
 const mapDispatchToProps = dispatch => {
   return {
     search: () => {
-      dispatch(CoinByDay())
+      dispatch(GetJson())
     },
     selectChange: (id, item) => {
       dispatch(SelectData(id, item))

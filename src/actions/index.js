@@ -65,10 +65,10 @@ export const ApiFetchError = (bool, data) => ({
       dispatch(ConvertFromEntered(id, item))
       dispatch(CreateConvertTo(item, convertFrom))
     }else{
-
-      dispatch(ConvertToEntered(id, item))
-
+       dispatch(ConvertToEntered(id, item))
+       dispatch(GetJson())
     }
+
   }
 }
 
@@ -114,7 +114,7 @@ export const MarketSelectionEntered = (id, item)  => ({
             })
 
 // Fetch the Coin by day
-export const CoinByDay = ()  => {
+export const GetJson = ()  => {
   return (dispatch, getState) => {
     const exchange = getState().searchTerm.market
     const fromSymb = getState().searchTerm.convertFrom
