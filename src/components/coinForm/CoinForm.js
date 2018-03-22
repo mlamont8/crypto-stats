@@ -2,7 +2,7 @@ import React from 'react';
 import SelectControl from '../selectControl/SelectControl'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { GetJson, SelectData } from '../../actions'
+import { DoSearch, SelectData } from '../../actions'
 import PropTypes from 'prop-types'
 
 
@@ -85,7 +85,7 @@ class CoinForm extends React.Component {
 const mapDispatchToProps = dispatch => {
   return {
     search: () => {
-      dispatch(GetJson())
+      dispatch(DoSearch())
     },
     selectChange: (id, item) => {
       dispatch(SelectData(id, item))

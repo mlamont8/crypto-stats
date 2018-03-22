@@ -46,10 +46,6 @@ export const ApiFetchError = (bool, data) => ({
 })
 
 
-
-
-
-
 // Forms the search terms and the
 //  arrays for the upcoming selectors
  export const SelectData = (id, item) => {
@@ -66,7 +62,7 @@ export const ApiFetchError = (bool, data) => ({
       dispatch(CreateConvertTo(item, convertFrom))
     }else{
        dispatch(ConvertToEntered(id, item))
-       dispatch(GetJson())
+       dispatch(DoSearch())
     }
 
   }
@@ -76,7 +72,6 @@ export const MarketSelectionEntered = (id, item)  => ({
     type: 'MARKET_SELECTION_ENTERED',
     id,
     item
-
 })
 
 
@@ -113,20 +108,27 @@ export const MarketSelectionEntered = (id, item)  => ({
               convertFrom
             })
 
-// Fetch the Coin by day
-export const GetJson = ()  => {
+
+// Search using search results from state
+export const DoSearch = ()  => {
   return (dispatch, getState) => {
     const exchange = getState().searchTerm.market
     const fromSymb = getState().searchTerm.convertFrom
     const toSymb = getState().searchTerm.convertTo
-    dispatch(SearchTerm(exchange, fromSymb, toSymb));
-    return axios.get('https://min-api.cryptocompare.com/data/histoday?fsym=' + fromSymb + '&tsym=' + toSymb + '&limit=29&aggregate=1&e=' + exchange)
-      .then(
+    dispatch(SearchTerm(exchange, fromSymb, toSymb))
+    dispatch(byYear(exchange, fromSymb, toSymb))
+  }
+}
+
+
+const byYear = (exchange, fromSymb, toSymb) => {
+  return (dispatch) => {
+    return axios.get('https://min-api.cryptocompare.com/data/histoday?fsym=' + fromSymb + '&tsym=' + toSymb + '&limit=29&aggregate=1&e=' + exchange) 
+      .then (
         response => dispatch(coinByDaySuccess(response.data.Data)),
         error => dispatch(ApiFetchError(true, error))
+
       )
-    // .then(() =>
-    //   dispatch(ApiFetching(false)))
   }
 }
 
