@@ -19,13 +19,15 @@ class Main extends React.Component {
       ? <div>Loading</div>
       :
 
-      <div>
+      <div className="container">
         <Header />
         <Summary />
         <Search
           exchanges={this.props.exchanges}/>
-        <div className="container">
+
+
           <div className="row">
+
             <div className="col-md-6">
               <DailyBarChart
               data={sevenDay} />
@@ -36,7 +38,22 @@ class Main extends React.Component {
                   data={thirtyDay} />
             </div>
           </div>
-        </div>
+
+          <div className="row">
+            <div className="col-md-4">
+                bar chart 2
+            </div>
+
+            <div className="col-md-4">
+                pie chart
+            </div>
+
+            <div className="col-md-4">
+                 streaming
+            </div>
+
+          </div>
+        
     </div>
   }
 }
