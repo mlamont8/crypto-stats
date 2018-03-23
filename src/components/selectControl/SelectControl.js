@@ -8,7 +8,7 @@ import { FormControl, ControlLabel, FormGroup } from 'react-bootstrap'
     const formattedType = type.replace(/([A-Z])/g, ' $1')
     return (
       <div className="col-md-4">
-        <FormGroup controlId={type}>
+        <FormGroup controlId={type} bsSize="small">
         <ControlLabel>{formattedType.toUpperCase()}</ControlLabel>
           <FormControl
             componentClass="select"

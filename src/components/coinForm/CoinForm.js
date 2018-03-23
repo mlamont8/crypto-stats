@@ -38,7 +38,6 @@ class CoinForm extends React.Component {
   render() {
     let market = this.props.marketTerm
     let fromTerm = this.props.fromTerm
-
     let sortedMarket = Object.keys(this.props.marketArray).sort()
 
     return (
