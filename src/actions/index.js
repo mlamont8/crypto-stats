@@ -170,26 +170,15 @@ const topExchanges = (from, to) => {
   return (dispatch) => {
     return axios.get('https://min-api.cryptocompare.com/data/top/exchanges/full?fsym=' + from + '&tsym=' + to + '&limit=5')
       .then (
-        response => dispatch(topExchangeSuccess(response.data.Data)),
+        response => dispatch(exchangeByVolume(response.data.Data.Exchanges)),
         error => dispatch(ApiFetchError(true, error))
       )
   }
 }
 
-const topExchangeSuccess = (data) => {
-  return (dispatch) => {
-    dispatch(exchangeByVolume(data.Exchanges))
-    dispatch(coinInfo(data))
-  }
-}
 
 const exchangeByVolume = (data) => ({
   type: 'EXCHANGE_BY_VOLUME',
-  data
-})
-
-const coinInfo = (data) => ({
-  type: 'COIN_GENERAL_INFO',
   data
 })
 
