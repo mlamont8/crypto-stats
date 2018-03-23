@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {initialFetch} from '../actions'
 import Header from '../components/header/header'
 import Summary from '../components/summary/summary'
-import Search from './search/search'
+import Search from '../components/search/search'
 import DailyBarChart from '../components/dailyBarChart/DailyBarChart'
 import DailyLineChart from '../components/dailyLineChart/DailyLineChart'
 
@@ -22,7 +22,7 @@ class Main extends React.Component {
       <div>
         <Header />
         <Summary />
-        <Search 
+        <Search
           exchanges={this.props.exchanges}/>
         <div className="container">
           <div className="row">
