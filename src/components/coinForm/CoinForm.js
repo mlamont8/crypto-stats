@@ -95,7 +95,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    exchanges: state.allExchangeData.exchanges,
+    exchanges: state.initialLoadData.exchanges,
     isLoading: state.isLoading.isLoading,
     marketArray: state.searchArrays.marketArray,
     marketTerm: state.searchTerm.market,

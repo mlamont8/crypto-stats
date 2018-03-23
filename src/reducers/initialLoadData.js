@@ -1,15 +1,20 @@
 
 const initialState = {
+    coins: {},
     exchanges: {},
     fetched: false
 }
 
-const allExchangeData = (state=initialState, action) => {
+const initialLoadData = (state=initialState, action) => {
     switch (action.type) {
         case 'EXCHANGE_FETCH_SUCCESS':
             return {...state,
               exchanges: action.exchanges,
               fetched: action.fetched}
+
+        case 'COINLIST_FETCH_SUCCESS':
+            return {...state,
+              coins: action.coins}
 
         default:
             return state
@@ -17,4 +22,4 @@ const allExchangeData = (state=initialState, action) => {
 
 }
 
-export default allExchangeData
+export default initialLoadData

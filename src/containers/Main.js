@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchExchanges} from '../actions'
+import {initialFetch} from '../actions'
 import Header from '../components/header/header'
 import Summary from '../components/summary/summary'
 import Search from './search/search'
@@ -43,7 +43,7 @@ class Main extends React.Component {
 const mapDispatchToProps = dispatch => {
   return {
     fetch: () => {
-      dispatch(fetchExchanges())
+      dispatch(initialFetch())
     }
   }
 }

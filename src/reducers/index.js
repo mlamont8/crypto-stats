@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import allExchangeData from './allExchangeData'
+import initialLoadData from './initialLoadData'
 import isLoading from './isLoading'
 import searchTerm from './searchTerm'
 import coinByDay from './coinByDay'
@@ -10,7 +10,7 @@ import topExchanges from './topExchanges'
 const cryptoApp = combineReducers({
 
     isLoading,
-    allExchangeData,
+    initialLoadData,
     searchArrays,
     searchTerm,
     coinByDay,
