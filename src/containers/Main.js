@@ -22,7 +22,8 @@ class Main extends React.Component {
       <div>
         <Header />
         <Summary />
-        <Search />
+        <Search 
+          exchanges={this.props.exchanges}/>
         <div className="container">
           <div className="row">
             <div className="col-md-6">
@@ -50,6 +51,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
+    exchanges: state.initialLoadData.exchanges,
     sevenDay: state.coinByDay.sevenDay,
     thirtyDay: state.coinByDay.thirtyDay,
     hasLoaded: state.isLoading.apiHasLoaded

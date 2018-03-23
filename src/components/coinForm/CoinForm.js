@@ -3,19 +3,12 @@ import SelectControl from '../selectControl/SelectControl'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { DoSearch, SelectData } from '../../actions'
-import PropTypes from 'prop-types'
 
 
 class CoinForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      value: 'BTC',
-      market: '',
-      coinFrom: '',
-      coinTo: ''
-    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
   }
@@ -42,27 +35,43 @@ class CoinForm extends React.Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-
+      <div className="col-md-4">
         <SelectControl
           data={sortedMarket}
           handleSelectChange={this.handleSelectChange}
           type="market" />
+      </div>
 
         {market ? (
-          <SelectControl
-            data={Object.keys(this.props.convertFrom).sort()}
-            handleSelectChange={this.handleSelectChange}
-            type="convertFrom" />
+          <div className="col-md-4">
+            <div className="row">
+            <SelectControl
+              data={Object.keys(this.props.convertFrom).sort()}
+              handleSelectChange={this.handleSelectChange}
+              type="convertFrom" />
+          </div>
+            <div className="row">
+              <p>Convert From Text</p>
+            </div>
+          </div>
+
         ) : (
             null
           )}
 
 
         {fromTerm ? (
-          <SelectControl
-            data={this.props.toArray}
-            handleSelectChange={this.handleSelectChange}
-            type="convertTo" />
+          <div className="col-md-4">
+            <div className="row">
+              <SelectControl
+                data={this.props.toArray}
+                handleSelectChange={this.handleSelectChange}
+                type="convertTo" />
+            </div>
+            <div className="row">
+                <p>Convert to Text</p>
+            </div>
+          </div>
         ) : (
             null
           )}
@@ -104,8 +113,5 @@ const mapStateToProps = state => {
   }
 }
 
-CoinForm.propTypes = {
-  exchanges: PropTypes.object.isRequired,
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinForm)
