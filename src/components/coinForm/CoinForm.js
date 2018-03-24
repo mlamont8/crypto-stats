@@ -35,23 +35,23 @@ class CoinForm extends React.Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-      <div className="col-md-4">
-        <SelectControl
-          data={sortedMarket}
-          handleSelectChange={this.handleSelectChange}
-          type="market" />
-      </div>
+        <div className="col-md-4">
+          <SelectControl
+            data={sortedMarket}
+            handleSelectChange={this.handleSelectChange}
+            type="market" />
+        </div>
 
         {market ? (
           <div className="col-md-4">
             <div className="row">
-            <SelectControl
-              data={Object.keys(this.props.convertFrom).sort()}
-              handleSelectChange={this.handleSelectChange}
-              type="convertFrom" />
-          </div>
+              <SelectControl
+                data={Object.keys(this.props.convertFrom).sort()}
+                handleSelectChange={this.handleSelectChange}
+                type="convertFrom" />
+            </div>
             <div className="row">
-              <p>Convert From Text</p>
+ 
             </div>
           </div>
 
@@ -69,7 +69,7 @@ class CoinForm extends React.Component {
                 type="convertTo" />
             </div>
             <div className="row">
-                <p>Convert to Text</p>
+              <p>{this.props.coinTo}</p>
             </div>
           </div>
         ) : (
@@ -109,7 +109,9 @@ const mapStateToProps = state => {
     marketTerm: state.searchTerm.market,
     fromTerm: state.searchTerm.convertFrom,
     convertFrom: state.searchArrays.convertFrom,
-    toArray: state.searchArrays.convertTo
+    toArray: state.searchArrays.convertTo,
+    coinFrom: state.coinLookup.convertFrom,
+    coinTo: state.coinLookup.convertTo
   }
 }
 

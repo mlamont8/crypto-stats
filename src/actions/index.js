@@ -1,24 +1,6 @@
 import axios from 'axios'
 import moment from 'moment'
 
-// split into coin and exchange initial fetches
-// Fetch the Full Exchange List with Coins
-// export const initialFetch = () => {
-//   return (dispatch) => {
-//     dispatch(apiHasLoaded(false));
-//     return axios.get('https://min-api.cryptocompare.com/data/all/exchanges')
-//       .then(
-//         response =>
-//           Promise.all([
-//             dispatch(exchangeFetch(response.data, true)),
-//             dispatch(marketArrayCreate(response.data)),
-//             dispatch(coinFetch(response.data, true))
-//           ]),
-//         error => dispatch(ApiFetchError(true, error))
-//       ).then(() =>
-//         dispatch(apiHasLoaded(true)))
-//   }
-// }
 
 export const initialFetch = () => {
   return (dispatch) => {
@@ -38,15 +20,15 @@ export const initialFetch = () => {
 }
 
 const coinFetch = () => {
-    return (dispatch) => {
-      return axios.get('https://min-api.cryptocompare.com/data/all/coinlist')
-        .then(
-          response => dispatch(coinFetchSuccess(response.data.Data)),
-          error => dispatch(ApiFetchError(true, error))
-        )
-    }
-
+  return (dispatch) => {
+    return axios.get('https://min-api.cryptocompare.com/data/all/coinlist')
+      .then(
+        response => dispatch(coinFetchSuccess(response.data.Data)),
+        error => dispatch(ApiFetchError(true, error))
+      )
   }
+
+}
 
 const coinFetchSuccess = (coins) => ({
   type: 'COINLIST_FETCH_SUCCESS',
@@ -94,13 +76,31 @@ export const SelectData = (id, item) => {
       const convertFrom = getState().searchArrays.convertFrom
       dispatch(ConvertFromEntered(id, item))
       dispatch(CreateConvertTo(item, convertFrom))
+      dispatch(LookupCoin(id, item))
+
     } else {
       dispatch(ConvertToEntered(id, item))
       dispatch(DoSearch())
+      dispatch(LookupCoin(id, item))
     }
 
   }
 }
+// Get coin info on form select from full coin object
+const LookupCoin = (id, item) => {
+  return (dispatch, getState) => {
+    const coinObject = getState().initialLoadData.coins
+    const coinLookup = coinObject[item]
+    dispatch(CoinInfoObject(coinLookup, id))
+  }
+}
+
+// send coin info to reducer
+export const CoinInfoObject = (coinObject, id) => ({
+  type: 'COIN_LOOKUP',
+  id,
+  coin: coinObject
+})
 
 export const MarketSelectionEntered = (id, item) => ({
   type: 'MARKET_SELECTION_ENTERED',
@@ -169,7 +169,7 @@ const byYear = (exchange, fromSymb, toSymb) => {
 const topExchanges = (from, to) => {
   return (dispatch) => {
     return axios.get('https://min-api.cryptocompare.com/data/top/exchanges/full?fsym=' + from + '&tsym=' + to + '&limit=5')
-      .then (
+      .then(
         response => dispatch(exchangeByVolume(response.data.Data.Exchanges)),
         error => dispatch(ApiFetchError(true, error))
       )

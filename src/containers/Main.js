@@ -1,6 +1,6 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {initialFetch} from '../actions'
+import { connect } from 'react-redux'
+import { initialFetch } from '../actions'
 import Header from '../components/header/header'
 import Summary from '../components/summary/summary'
 import Search from '../components/search/search'
@@ -14,47 +14,47 @@ class Main extends React.Component {
   }
 
   render() {
-    const {hasLoaded, sevenDay, thirtyDay} = this.props
+    const { hasLoaded, sevenDay, thirtyDay } = this.props
     return !hasLoaded
       ? <div>Loading</div>
       :
 
-      <div className="container">
+      <div>
         <Header />
         <Summary />
         <Search
-          exchanges={this.props.exchanges}/>
+          exchanges={this.props.exchanges} />
 
-
+        <div className="container">
           <div className="row">
 
             <div className="col-md-6">
               <DailyBarChart
-              data={sevenDay} />
+                data={sevenDay} />
             </div>
 
             <div className="col-md-6">
-                <DailyLineChart
-                  data={thirtyDay} />
+              <DailyLineChart
+                data={thirtyDay} />
             </div>
           </div>
 
           <div className="row">
             <div className="col-md-4">
-                bar chart 2
+              bar chart 2
             </div>
 
             <div className="col-md-4">
-                pie chart
+              pie chart
             </div>
 
             <div className="col-md-4">
-                 streaming
+              streaming
             </div>
 
           </div>
-        
-    </div>
+        </div>
+      </div>
   }
 }
 
@@ -71,7 +71,8 @@ const mapStateToProps = state => {
     exchanges: state.initialLoadData.exchanges,
     sevenDay: state.coinByDay.sevenDay,
     thirtyDay: state.coinByDay.thirtyDay,
-    hasLoaded: state.isLoading.apiHasLoaded
+    hasLoaded: state.isLoading.apiHasLoaded,
+
   }
 }
 
