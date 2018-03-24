@@ -30,31 +30,29 @@ class Main extends React.Component {
           <div className="row">
 
             <div className="col-md-12">
-                <DailyLineChart
-                  data={thirtyDay} />
+              <DailyLineChart
+                data={thirtyDay} />
             </div>
 
-          <div className="row">
+            <div className="row">
 
-            <div className="col-md-4">
-              <DailyBarChart
-                data={sevenDay} />
+              <div className="col-md-4">
+                <DailyBarChart
+                  data={sevenDay} />
+              </div>
+
+              <div className="col-md=4">
+              </div>
+
+              <div className="col-md-4">
+                <ExchangeVolume
+                  data={exchangeVolume} />
+              </div>
+
             </div>
-
-
-            <div className="col-md-4">
-              <ExchangeVolume
-                data={exchangeVolume} />
-            </div>
-
-            <div className="col-md-4">
-              streaming
-            </div>
-
           </div>
         </div>
       </div>
-    </div>
   }
 }
 
