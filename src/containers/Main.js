@@ -6,6 +6,7 @@ import Summary from '../components/summary/summary'
 import Search from '../components/search/search'
 import DailyBarChart from '../components/dailyBarChart/DailyBarChart'
 import DailyLineChart from '../components/dailyLineChart/DailyLineChart'
+import ExchangeVolume from '../components/exchangeVolume/exchangeVolume'
 
 class Main extends React.Component {
 
@@ -14,7 +15,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { hasLoaded, sevenDay, thirtyDay } = this.props
+    const { hasLoaded, sevenDay, thirtyDay, exchangeVolume } = this.props
     return !hasLoaded
       ? <div>Loading</div>
       :
@@ -28,24 +29,22 @@ class Main extends React.Component {
         <div className="container">
           <div className="row">
 
-            <div className="col-md-6">
+            <div className="col-md-12">
+                <DailyLineChart
+                  data={thirtyDay} />
+            </div>
+
+          <div className="row">
+
+            <div className="col-md-4">
               <DailyBarChart
                 data={sevenDay} />
             </div>
 
-            <div className="col-md-6">
-              <DailyLineChart
-                data={thirtyDay} />
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-md-4">
-              bar chart 2
-            </div>
 
             <div className="col-md-4">
-              pie chart
+              <ExchangeVolume
+                data={exchangeVolume} />
             </div>
 
             <div className="col-md-4">
@@ -55,6 +54,7 @@ class Main extends React.Component {
           </div>
         </div>
       </div>
+    </div>
   }
 }
 
@@ -72,6 +72,7 @@ const mapStateToProps = state => {
     sevenDay: state.coinByDay.sevenDay,
     thirtyDay: state.coinByDay.thirtyDay,
     hasLoaded: state.isLoading.apiHasLoaded,
+    exchangeVolume: state.topExchanges.data
 
   }
 }

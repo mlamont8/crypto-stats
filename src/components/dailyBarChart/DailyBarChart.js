@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 
 
   const DailyBarChart = (props)  => {
-
+    console.log(props.data, 'barchart')
       	return (
         <ResponsiveContainer width="100%" height={300}>
        	<BarChart data={props.data}

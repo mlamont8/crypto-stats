@@ -51,7 +51,7 @@ class CoinForm extends React.Component {
                 type="convertFrom" />
             </div>
             <div className="row">
- 
+              <p>{this.props.coinFrom}</p>
             </div>
           </div>
 
