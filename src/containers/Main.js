@@ -22,19 +22,20 @@ class Main extends React.Component {
 
       <div>
         <Header />
+        <div className="container-fluid dash-container">
         <Summary />
         <Search
           exchanges={this.props.exchanges} />
 
-        <div className="container">
-          <div className="row">
+          <div className="row first-row">
 
             <div className="col-md-12">
               <DailyLineChart
                 data={thirtyDay} />
             </div>
+           </div> 
 
-            <div className="row">
+            <div className="row second-row">
 
               <div className="col-md-4">
                 <DailyBarChart
@@ -52,7 +53,7 @@ class Main extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      
   }
 }
 
