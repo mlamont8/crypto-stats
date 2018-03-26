@@ -1,6 +1,7 @@
-const CoinLookup = (state = {}, action) => {
+const CoinName = (state = {}, action) => {
     switch (action.type) {
         case 'COIN_LOOKUP':
+        console.log(action.coin)
             if (action.coin) {
             return {
                 ...state,
@@ -18,4 +19,4 @@ const CoinLookup = (state = {}, action) => {
     }
 }
 
-export default CoinLookup
+export default CoinName

@@ -50,7 +50,7 @@ class CoinForm extends React.Component {
                 type="convertFrom" />
             </div>
             <div className="row">
-              <p>{this.props.coinFrom}</p>
+              <p>{this.props.cNameFrom}</p>
             </div>
           </div>
 
@@ -68,7 +68,7 @@ class CoinForm extends React.Component {
                 type="convertTo" />
             </div>
             <div className="row">
-              <p>{this.props.coinTo}</p>
+              <p>{this.props.cNameTo}</p>
             </div>
           </div>
         ) : (
@@ -102,8 +102,8 @@ const mapStateToProps = state => {
     fromTerm: state.searchTerm.convertFrom,
     convertFrom: state.searchArrays.convertFrom,
     toArray: state.searchArrays.convertTo,
-    coinFrom: state.coinLookup.convertFrom,
-    coinTo: state.coinLookup.convertTo
+    cNameFrom: state.coinName.convertFrom,
+    cNameTo: state.coinName.convertTo
   }
 }
 

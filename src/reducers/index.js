@@ -5,7 +5,8 @@ import searchTerm from './searchTerm'
 import coinByDay from './coinByDay'
 import searchArrays from './searchArrays'
 import topExchanges from './topExchanges'
-import coinLookup from './coinLookup'
+import coinName from './coinName'
+import coinURL from './coinurl'
 
 
 const cryptoApp = combineReducers({
@@ -16,7 +17,8 @@ const cryptoApp = combineReducers({
     searchTerm,
     coinByDay,
     topExchanges,
-    coinLookup
+    coinName,
+    coinURL
 
 })
 
