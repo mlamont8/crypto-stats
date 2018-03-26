@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 
 const exchangeVolume = (props) => {
-  console.log(props.data, 'piechart')
   return (
     <div className="info-block">
       <ResponsiveContainer width="100%" height={300}>
