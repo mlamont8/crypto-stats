@@ -27,3 +27,16 @@ h1 {
   border-color: #292a2b;
   border-radius: 0;
   margin-bottom: 0; }
+
+.optionTitle {
+  color: #F7FDFF;
+  background: #19578a; }
+
+.optionSelections {
+  color: #8092c4;
+  background: #19578a; }
+
+.form-control {
+  color: #F7FDFF;
+  background: #19578a;
+  border-color: #19578a; }

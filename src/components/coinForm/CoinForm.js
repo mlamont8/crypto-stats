@@ -1,6 +1,5 @@
 import React from 'react';
 import SelectControl from '../selectControl/SelectControl'
-import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { DoSearch, SelectData } from '../../actions'
 
@@ -75,13 +74,6 @@ class CoinForm extends React.Component {
         ) : (
             null
           )}
-
-        {fromTerm ? (
-          <Button type="submit">Submit</Button>
-        ) : (
-            null
-          )}
-
 
       </form>
 

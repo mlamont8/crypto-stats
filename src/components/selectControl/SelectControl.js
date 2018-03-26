@@ -5,17 +5,18 @@ import { FormControl, ControlLabel, FormGroup } from 'react-bootstrap'
 
 const SelectControl = (props) => {
   const { data, type } = props
-  const formattedType = type.replace(/([A-Z])/g, ' $1')
+  const formattedType = type.replace(/([A-Z])/g, ' $1').toUpperCase()
 
   return (
     <FormGroup controlId={type} bsSize="small">
-      <ControlLabel>{formattedType.toUpperCase()}</ControlLabel>
+      <ControlLabel>{formattedType}</ControlLabel>
       <FormControl
         componentClass="select"
         placeholder="select"
         onChange={props.handleSelectChange}>
-        {data.map((item, index) =>
-          <option key={index} value={item}>{item}</option>
+          <option value="select" className="optionTitle">{formattedType}</option>
+            {data.map((item, index) =>
+          <option key={index} value={item} className="optionSelections">{item}</option>
         )}
       </FormControl>
     </FormGroup>
