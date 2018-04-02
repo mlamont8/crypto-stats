@@ -7,7 +7,8 @@ import {
   Area,
   Tooltip,
   Legend,
-  ResponsiveContainer
+  ResponsiveContainer,
+  Label
 } from 'recharts'
 import PropTypes from 'prop-types';
 
@@ -15,6 +16,7 @@ const DailyLineChart = (props) => {
 
   return (
     <div className="info-block">
+    <h4>Previous Month</h4>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={props.data}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
@@ -28,7 +30,9 @@ const DailyLineChart = (props) => {
               <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <XAxis dataKey="time" />
+          <XAxis dataKey="time" >
+          <Label value="Pages of my website" offset={8} position="center" />
+          </XAxis>
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
