@@ -1,8 +1,6 @@
 module.exports = {
-    "extends": "airbnb-base",
-    "parserOptions": {
-      "ecmaFeatures": {
-          "jsx": true
+    "extends": "airbnb",
+    "rules": {
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       }
-  },
   };

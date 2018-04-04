@@ -32,7 +32,8 @@ class CoinForm extends React.Component {
           <SelectControl
             data={sortedMarket}
             handleSelectChange={this.handleSelectChange}
-            type="market" />
+            type="market"
+          />
         </div>
 
         {this.props.marketTerm ? (
