@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import SelectControl from '../selectControl/SelectControl';
 import { DoSearch, SelectData } from '../../actions';
 
@@ -42,7 +43,8 @@ class CoinForm extends React.Component {
               <SelectControl
                 data={Object.keys(this.props.convertFrom).sort()}
                 handleSelectChange={this.handleSelectChange}
-                type="convertFrom" />
+                type="convertFrom"
+              />
             </div>
             <div className="row">
               <p>{this.props.cNameFrom}</p>
@@ -60,7 +62,8 @@ class CoinForm extends React.Component {
               <SelectControl
                 data={this.props.toArray}
                 handleSelectChange={this.handleSelectChange}
-                type="convertTo" />
+                type="convertTo"
+              />
             </div>
             <div className="row">
               <p>{this.props.cNameTo}</p>
@@ -88,8 +91,6 @@ const mapDispatchToProps = dispatch => ({
 
 
 const mapStateToProps = state => ({
-  exchanges: state.initialLoadData.exchanges,
-  isLoading: state.isLoading.isLoading,
   marketArray: state.searchArrays.marketArray,
   marketTerm: state.searchTerm.market,
   fromTerm: state.searchTerm.convertFrom,
@@ -98,5 +99,29 @@ const mapStateToProps = state => ({
   cNameFrom: state.coinName.convertFrom,
   cNameTo: state.coinName.convertTo,
 });
+
+CoinForm.propTypes = {
+  search: PropTypes.func.isRequired,
+  selectChange: PropTypes.func.isRequired,
+  marketArray: PropTypes.objectOf(PropTypes.object),
+  marketTerm: PropTypes.string,
+  fromTerm: PropTypes.string,
+  convertFrom: PropTypes.objectOf(PropTypes.object),
+  toArray: PropTypes.arrayOf(PropTypes.string),
+  cNameFrom: PropTypes.string,
+  cNameTo: PropTypes.string,
+
+};
+
+CoinForm.defaultProps = {
+  marketArray: {},
+  marketTerm: '',
+  fromTerm: '',
+  convertFrom: {},
+  toArray: [],
+  cNameFrom: '',
+  cNameTo: '',
+
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinForm);
