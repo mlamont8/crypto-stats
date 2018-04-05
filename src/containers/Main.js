@@ -75,11 +75,20 @@ const mapStateToProps = state => ({
 });
 
 Main.propTypes = {
-  exchanges: PropTypes.arrayOf(PropTypes.string).isRequired,
-  sevenDay: state.coinByDay.sevenDay,
-  thirtyDay: state.coinByDay.thirtyDay,
-  hasLoaded: state.isLoading.apiHasLoaded,
-  exchangeVolume: state.topExchanges.data,
+  exchanges: PropTypes.objectOf(PropTypes.object),
+  sevenDay: PropTypes.arrayOf(PropTypes.object),
+  thirtyDay: PropTypes.arrayOf(PropTypes.object),
+  hasLoaded: PropTypes.bool,
+  exchangeVolume: PropTypes.arrayOf(PropTypes.string),
+  fetch: PropTypes.func.isRequired,
+};
+
+Main.defaultProps = {
+  exchanges: [],
+  sevenDay: [],
+  thirtyDay: [],
+  hasLoaded: false,
+  exchangeVolume: [],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

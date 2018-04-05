@@ -17,7 +17,10 @@ const DailyBarChart = props => (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart
         data={props.data}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }} >
+        margin={{
+              top: 5, right: 30, left: 20, bottom: 5,
+            }}
+      >
         <XAxis dataKey="time" />
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
@@ -33,6 +36,10 @@ const DailyBarChart = props => (
 
 DailyBarChart.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object),
+};
+
+DailyBarChart.defaultProps = {
+  data: [],
 };
 
 export default DailyBarChart;
