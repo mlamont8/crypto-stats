@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import LineChart from '../../components/lineChart/LineChart';
 
 // Top Summary information
 
@@ -14,7 +15,11 @@ const Summary = props => (
         <p>Exchange: {props.exchange}</p>
       </div>
     </div>
-    <div className="col-sm-8 summary-center" />
+    <div className="col-sm-8 summary-center">
+      <LineChart
+        data={props.byHour}
+      />
+    </div>
     <div className="col-sm-2 summary-right" />
   </div>
 
@@ -26,18 +31,21 @@ const mapStateToProps = state => ({
   exchange: state.searchTerm.market,
   coinFrom: state.searchTerm.convertFrom,
   coinTo: state.searchTerm.convertTo,
+  byHour: state.coinByHour.coinByHour,
 });
 
 Summary.defaultProps = {
   coinFrom: '',
   coinTo: '',
   exchange: '',
+  byHour: [],
 };
 
 Summary.propTypes = {
   coinFrom: PropTypes.string,
   coinTo: PropTypes.string,
   exchange: PropTypes.string,
+  byHour: PropTypes.arrayOf(PropTypes.object),
 };
 
 
