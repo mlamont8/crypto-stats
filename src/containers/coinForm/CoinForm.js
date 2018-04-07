@@ -106,7 +106,7 @@ CoinForm.propTypes = {
   marketArray: PropTypes.objectOf(PropTypes.object),
   marketTerm: PropTypes.string,
   fromTerm: PropTypes.string,
-  convertFrom: PropTypes.objectOf(PropTypes.object),
+  convertFrom: PropTypes.objectOf(PropTypes.array),
   toArray: PropTypes.arrayOf(PropTypes.string),
   cNameFrom: PropTypes.string,
   cNameTo: PropTypes.string,

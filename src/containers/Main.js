@@ -78,7 +78,7 @@ Main.propTypes = {
   sevenDay: PropTypes.arrayOf(PropTypes.object),
   thirtyDay: PropTypes.arrayOf(PropTypes.object),
   hasLoaded: PropTypes.bool,
-  exchangeVolume: PropTypes.arrayOf(PropTypes.string),
+  exchangeVolume: PropTypes.arrayOf(PropTypes.object),
   fetch: PropTypes.func.isRequired,
 };
 

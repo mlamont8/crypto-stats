@@ -28,10 +28,16 @@ const mapStateToProps = state => ({
   coinTo: state.searchTerm.convertTo,
 });
 
+Summary.defaultProps = {
+  coinFrom: '',
+  coinTo: '',
+  exchange: '',
+};
+
 Summary.propTypes = {
-  coinFrom: PropTypes.string.isRequired,
-  coinTo: PropTypes.string.isRequired,
-  exchange: PropTypes.string.isRequired,
+  coinFrom: PropTypes.string,
+  coinTo: PropTypes.string,
+  exchange: PropTypes.string,
 };
 
 

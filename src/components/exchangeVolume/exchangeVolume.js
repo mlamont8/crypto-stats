@@ -24,7 +24,7 @@ const exchangeVolume = (props) => {
             fill="#82ca9d"
           >
             {
-          data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)
+          data.map((MARKET, index) => <Cell key={MARKET} fill={COLORS[index % COLORS.length]} />)
           }
           </Pie>
         </PieChart>
