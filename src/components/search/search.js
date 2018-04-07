@@ -1,5 +1,5 @@
 import React from 'react';
-import CoinForm from '../coinForm/CoinForm';
+import CoinForm from '../../containers/coinForm/CoinForm';
 import CoinInfo from '../coinInfo/coinInfo';
 
 const Search = () => (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import SelectControl from '../selectControl/SelectControl';
+import SelectControl from '../../components/selectControl/SelectControl';
 import { DoSearch, SelectData } from '../../actions';
 
 
