@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 import PropTypes from 'prop-types';
 
-const DailyLineChart = props => (
+const DailyAreaChart = props => (
   <div className="info-block">
     <h4>Previous Month</h4>
     <ResponsiveContainer width="100%" height={300}>
@@ -47,8 +47,8 @@ const DailyLineChart = props => (
 );
 
 
-DailyLineChart.propTypes = {
+DailyAreaChart.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default DailyLineChart;
+export default DailyAreaChart;

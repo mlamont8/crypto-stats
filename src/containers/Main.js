@@ -5,7 +5,7 @@ import Header from '../components/header/header';
 import Summary from '../components/summary/summary';
 import Search from '../components/search/search';
 import DailyBarChart from '../components/dailyBarChart/DailyBarChart';
-import DailyLineChart from '../components/dailyLineChart/DailyLineChart';
+import DailyAreaChart from '../components/dailyAreaChart/DailyAreaChart';
 import ExchangeVolume from '../components/exchangeVolume/exchangeVolume';
 import { initialFetch } from '../actions';
 
@@ -32,7 +32,7 @@ class Main extends React.Component {
 
           <div className="row first-row">
             <div className="col-md-12">
-              <DailyLineChart
+              <DailyAreaChart
                 data={thirtyDay}
               />
             </div>
@@ -47,7 +47,6 @@ class Main extends React.Component {
             </div>
 
             <div className="col-md=4" />
-
             <div className="col-md-4">
               <ExchangeVolume
                 data={exchangeVolume}
