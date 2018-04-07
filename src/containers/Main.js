@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../components/header/header';
-import Summary from '../components/summary/summary';
+import Summary from './summary/summary';
 import Search from '../components/search/search';
 import DailyBarChart from '../components/dailyBarChart/DailyBarChart';
 import DailyAreaChart from '../components/dailyAreaChart/DailyAreaChart';
