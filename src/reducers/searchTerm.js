@@ -1,17 +1,17 @@
 
-const searchTerm = (state={}, action) => {
-    switch (action.type) {
+const searchTerm = (state = {}, action) => {
+  switch (action.type) {
+    case 'MARKET_SELECTION_ENTERED':
+    case 'CONVERT_FROM_ENTERED':
+    case 'CONVERT_TO_ENTERED':
+      return {
+        ...state,
+        [action.id]: action.item,
+      };
 
-        case 'MARKET_SELECTION_ENTERED':
-        case 'CONVERT_FROM_ENTERED':
-        case 'CONVERT_TO_ENTERED':
-            return {...state,
-              [action.id]: action.item }
+    default:
+      return state;
+  }
+};
 
-        default:
-            return state
-    }
-
-}
-
-export default searchTerm
+export default searchTerm;

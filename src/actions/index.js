@@ -16,15 +16,14 @@ const coinFetchSuccess = coins => ({
   coins,
 });
 
-const coinFetch = () => {
-  return (dispatch) => {
-    return axios.get('https://min-api.cryptocompare.com/data/all/coinlist')
+const coinFetch = () =>
+  dispatch => (
+    axios.get('https://min-api.cryptocompare.com/data/all/coinlist')
       .then(
         response => dispatch(coinFetchSuccess(response.data.Data)),
         error => dispatch(ApiFetchError(true, error)),
-      );
-  };
-};
+      )
+  );
 
 // Adds an array of the list of markets for search purposes
 const marketArrayCreate = data => ({
@@ -47,8 +46,10 @@ export const apiHasLoaded = bool => ({
   apiHasLoaded: bool,
 });
 
-export const initialFetch = () => {
-  return (dispatch) => {
+// Initial Fetch on page load
+
+export const initialFetch = () =>
+  (dispatch) => {
     dispatch(apiHasLoaded(false));
     return axios.get('https://min-api.cryptocompare.com/data/all/exchanges')
       .then(
@@ -62,7 +63,7 @@ export const initialFetch = () => {
       ).then(() =>
         dispatch(apiHasLoaded(true)));
   };
-};
+
 
 // Actions for Selectors in form
 
@@ -129,12 +130,12 @@ export const ThirtyDayData = data => ({
 
 // Format the time in the json to m/dd/yyyy format
 const formatTime = (jsondata) => {
-  const fixTime = jsondata.map(obj => {
+  const fixTime = jsondata.map((obj) => {
     let rObj = {};
     rObj = obj;
     rObj.time = moment(rObj.time * 1000).format('MM/D');
-      return rObj;
-    });
+    return rObj;
+  });
   return fixTime;
 };
 
@@ -147,31 +148,30 @@ export const coinByDaySuccess = (data) => {
   };
 };
 
-const byYear = (exchange, fromSymb, toSymb) => {
-  return (dispatch) => {
-    return axios.get('https://min-api.cryptocompare.com/data/histoday?fsym=' + fromSymb + '&tsym=' + toSymb + '&limit=29&aggregate=1&e=' + exchange)
+const byYear = (exchange, fromSymb, toSymb) =>
+  dispatch => (
+    axios.get(`https://min-api.cryptocompare.com/data/histoday?fsym=${fromSymb}&tsym=${toSymb}&limit=29&aggregate=1&e=${exchange}`)
       .then(
         response => dispatch(coinByDaySuccess(response.data.Data)),
         error => dispatch(ApiFetchError(true, error)),
 
-      );
-  };
-};
+      )
+  );
 
 const exchangeByVolume = data => ({
   type: 'EXCHANGE_BY_VOLUME',
   data,
 });
 
-const topExchanges = (from, to) => {
-  return (dispatch) => {
-    return axios.get('https://min-api.cryptocompare.com/data/top/exchanges/full?fsym=' + from + '&tsym=' + to + '&limit=5')
+const topExchanges = (from, to) =>
+  dispatch => (
+    axios.get(`https://min-api.cryptocompare.com/data/top/exchanges/full?fsym=${from}&tsym=${to}&limit=5`)
       .then(
         response => dispatch(exchangeByVolume(response.data.Data.Exchanges)),
         error => dispatch(ApiFetchError(true, error)),
-      );
-  };
-};
+      )
+  );
+
 
 // Search using search results from state
 export const DoSearch = () =>
@@ -193,7 +193,7 @@ export const SelectData = (id, item) =>
       dispatch(MarketSelectionEntered(id, item));
       dispatch(CreateConvertFrom(item, exchangeArray));
     } else if (id === 'convertFrom') {
-      const convertFrom = getState().searchArrays.convertFrom;
+      const { convertFrom } = getState().searchArrays;
       dispatch(ConvertFromEntered(id, item));
       dispatch(CreateConvertTo(item, convertFrom));
       dispatch(LookupCoin(id, item));

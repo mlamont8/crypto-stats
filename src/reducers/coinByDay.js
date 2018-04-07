@@ -1,17 +1,20 @@
-const coinByDay = (state={}, action) => {
-    switch (action.type) {
+const coinByDay = (state = {}, action) => {
+  switch (action.type) {
+    case 'SEVEN_DAY_UPDATE':
+      return {
+        ...state,
+        sevenDay: action.newData,
+      };
 
-        case 'SEVEN_DAY_UPDATE' :
-            return {...state,
-              sevenDay: action.newData}
+    case 'THIRTY_DAY_UPDATE':
+      return {
+        ...state,
+        thirtyDay: action.data,
+      };
 
-        case 'THIRTY_DAY_UPDATE' :
-            return {...state,
-              thirtyDay: action.data}
+    default:
+      return state;
+  }
+};
 
-        default:
-            return state
-    }
-}
-
-export default coinByDay
+export default coinByDay;

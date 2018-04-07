@@ -1,12 +1,8 @@
 import React from 'react';
 
-class CoinInfo extends React.Component {
-  
-    render() {
-        return (
-            <div></div>
-        )
-    }
-}
+const CoinInfo = () => (
 
-export default CoinInfo
+  <div />
+);
+
+export default CoinInfo;

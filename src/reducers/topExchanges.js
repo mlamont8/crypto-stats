@@ -1,13 +1,14 @@
-const topExchanges = (state={}, action) => {
-    switch (action.type) {
+const topExchanges = (state = {}, action) => {
+  switch (action.type) {
+    case 'EXCHANGE_BY_VOLUME':
+      return {
+        ...state,
+        data: action.data,
+      };
 
-        case 'EXCHANGE_BY_VOLUME' :
-            return {...state,
-              data: action.data}
+    default:
+      return state;
+  }
+};
 
-        default:
-            return state
-    }
-}
-
-export default topExchanges
+export default topExchanges;
