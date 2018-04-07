@@ -3,6 +3,7 @@ import initialLoadData from './initialLoadData';
 import isLoading from './isLoading';
 import searchTerm from './searchTerm';
 import coinByDay from './coinByDay';
+import coinByHour from './coinByHour';
 import searchArrays from './searchArrays';
 import topExchanges from './topExchanges';
 import coinName from './coinName';
@@ -15,6 +16,7 @@ const cryptoApp = combineReducers({
   initialLoadData,
   searchArrays,
   searchTerm,
+  coinByHour,
   coinByDay,
   topExchanges,
   coinName,

@@ -128,23 +128,49 @@ export const ThirtyDayData = data => ({
   data,
 });
 
-// Format the time in the json to m/dd/yyyy format
-const formatTime = (jsondata) => {
-  const fixTime = jsondata.map((obj) => {
+// Format the date in the json to m/dd format
+const formatDate = (jsondata) => {
+  const fixDate = jsondata.map((obj) => {
     let rObj = {};
     rObj = obj;
     rObj.time = moment(rObj.time * 1000).format('MM/D');
     return rObj;
   });
-  return fixTime;
+  return fixDate;
 };
+
 
 // Successful Daily Data Retrieval
 export const coinByDaySuccess = (data) => {
-  const formattedData = formatTime(data);
+  const formattedData = formatDate(data);
   return (dispatch) => {
     dispatch(SevenDayData(formattedData));
     dispatch(ThirtyDayData(formattedData));
+  };
+};
+
+// Format the time in the json to hh:mm format
+const formatTime = (jsondata) => {
+  const fixTime = jsondata.map((obj) => {
+    let rObj = {};
+    rObj = obj;
+    rObj.time = moment(rObj.time * 1000).format('LT');
+    return rObj;
+  });
+  return fixTime;
+};
+
+// Last 10 hours
+const dataByHour = data => ({
+  type: 'DATA_BY_HOUR',
+  data,
+});
+
+// Successful Daily Data Retrieval
+export const coinByTimeSuccess = (data) => {
+  const formattedTime = formatTime(data.Data);
+  return (dispatch) => {
+    dispatch(dataByHour(formattedTime));
   };
 };
 
@@ -172,6 +198,17 @@ const topExchanges = (from, to) =>
       )
   );
 
+  // Get data for last 10 hours
+
+const byHour = (from, to) =>
+  dispatch => (
+    axios.get(`https://min-api.cryptocompare.com/data/histohour?fsym=${from}&tsym=${to}&limit=9`)
+      .then(
+        response => dispatch(coinByTimeSuccess(response.data)),
+        error => dispatch(ApiFetchError(true, error)),
+      )
+  );
+
 
 // Search using search results from state
 export const DoSearch = () =>
@@ -181,6 +218,7 @@ export const DoSearch = () =>
     const toSymb = getState().searchTerm.convertTo;
     dispatch(byYear(exchange, fromSymb, toSymb));
     dispatch(topExchanges(fromSymb, toSymb));
+    dispatch(byHour(fromSymb, toSymb));
   };
 
 
