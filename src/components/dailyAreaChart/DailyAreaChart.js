@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   AreaChart,
   XAxis,
@@ -8,9 +8,9 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  Label,
-} from 'recharts';
-import PropTypes from 'prop-types';
+  Label
+} from "recharts";
+import PropTypes from "prop-types";
 
 const DailyAreaChart = props => (
   <div className="info-block">
@@ -19,8 +19,11 @@ const DailyAreaChart = props => (
       <AreaChart
         data={props.data}
         margin={{
-            top: 10, right: 30, left: 0, bottom: 0,
-                }}
+          top: 10,
+          right: 30,
+          left: 0,
+          bottom: 0
+        }}
       >
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -32,23 +35,32 @@ const DailyAreaChart = props => (
             <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
           </linearGradient>
         </defs>
-        <XAxis dataKey="time" >
-          <Label value="Pages of my website" offset={8} position="center" />
-        </XAxis>
+        <XAxis dataKey="time" />
         <YAxis />
-        <CartesianGrid strokeDasharray="3 3" />
+        <CartesianGrid stroke="none" />
         <Tooltip />
         <Legend />
-        <Area type="monotone" dataKey="high" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-        <Area type="monotone" dataKey="low" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
+        <Area
+          type="monotone"
+          dataKey="high"
+          stroke="#8884d8"
+          fillOpacity={1}
+          fill="url(#colorUv)"
+        />
+        <Area
+          type="monotone"
+          dataKey="low"
+          stroke="#82ca9d"
+          fillOpacity={1}
+          fill="url(#colorPv)"
+        />
       </AreaChart>
     </ResponsiveContainer>
   </div>
 );
 
-
 DailyAreaChart.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default DailyAreaChart;
