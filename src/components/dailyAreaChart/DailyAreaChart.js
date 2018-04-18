@@ -14,15 +14,15 @@ import PropTypes from "prop-types";
 
 const DailyAreaChart = props => (
   <div className="info-block">
-    <h4>Previous Month</h4>
+    <h4>LAST 15 DAYS</h4>
     <ResponsiveContainer width="100%" height={300}>
       <AreaChart
         data={props.data}
         margin={{
           top: 10,
           right: 30,
-          left: 0,
-          bottom: 0
+          left: 20,
+          bottom: 10
         }}
       >
         <defs>

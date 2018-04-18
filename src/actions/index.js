@@ -22,7 +22,7 @@ const coinFetch = () =>
       .then(
         response => dispatch(coinFetchSuccess(response.data.Data)),
         error => dispatch(ApiFetchError(true, error)),
-      )
+    )
   );
 
 // Adds an array of the list of markets for search purposes
@@ -60,8 +60,8 @@ export const initialFetch = () =>
             dispatch(coinFetch()),
           ]),
         error => dispatch(ApiFetchError(true, error)),
-      ).then(() =>
-        dispatch(apiHasLoaded(true)));
+    ).then(() =>
+      dispatch(apiHasLoaded(true)));
   };
 
 
@@ -181,7 +181,7 @@ const byYear = (exchange, fromSymb, toSymb) =>
         response => dispatch(coinByDaySuccess(response.data.Data)),
         error => dispatch(ApiFetchError(true, error)),
 
-      )
+    )
   );
 
 const exchangeByVolume = data => ({
@@ -195,10 +195,10 @@ const topExchanges = (from, to) =>
       .then(
         response => dispatch(exchangeByVolume(response.data.Data.Exchanges)),
         error => dispatch(ApiFetchError(true, error)),
-      )
+    )
   );
 
-  // Get data for last 10 hours
+// Get data for last 10 hours
 
 const byHour = (from, to) =>
   dispatch => (
@@ -206,7 +206,7 @@ const byHour = (from, to) =>
       .then(
         response => dispatch(coinByTimeSuccess(response.data)),
         error => dispatch(ApiFetchError(true, error)),
-      )
+    )
   );
 
 
