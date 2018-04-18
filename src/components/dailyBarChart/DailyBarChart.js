@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   BarChart,
   XAxis,
@@ -7,10 +7,9 @@ import {
   Bar,
   Tooltip,
   Legend,
-  ResponsiveContainer,
-} from 'recharts';
-import PropTypes from 'prop-types';
-
+  ResponsiveContainer
+} from "recharts";
+import PropTypes from "prop-types";
 
 const DailyBarChart = props => (
   <div className="info-block">
@@ -18,11 +17,14 @@ const DailyBarChart = props => (
       <BarChart
         data={props.data}
         margin={{
-              top: 5, right: 30, left: 20, bottom: 5,
-            }}
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5
+        }}
       >
-        <XAxis dataKey="time" />
-        <YAxis />
+        <XAxis dataKey="time" tick={{ fill: "#F7FDFF" }} />
+        <YAxis tick={{ fill: "#F7FDFF" }} />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
         <Legend />
@@ -33,13 +35,12 @@ const DailyBarChart = props => (
   </div>
 );
 
-
 DailyBarChart.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object),
+  data: PropTypes.arrayOf(PropTypes.object)
 };
 
 DailyBarChart.defaultProps = {
-  data: [],
+  data: []
 };
 
 export default DailyBarChart;

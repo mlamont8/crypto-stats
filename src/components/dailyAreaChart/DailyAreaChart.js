@@ -35,20 +35,22 @@ const DailyAreaChart = props => (
             <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
           </linearGradient>
         </defs>
-        <XAxis dataKey="time" />
-        <YAxis />
+        <XAxis dataKey="time" tick={{ fill: "#F7FDFF" }}>
+          <Label value="Time" position="insideBottomRight" offset={0} />
+        </XAxis>
+        <YAxis tick={{ fill: "#F7FDFF" }} />
         <CartesianGrid stroke="none" />
         <Tooltip />
         <Legend />
         <Area
-          type="monotone"
+          type="natural"
           dataKey="high"
           stroke="#8884d8"
           fillOpacity={1}
           fill="url(#colorUv)"
         />
         <Area
-          type="monotone"
+          type="natural"
           dataKey="low"
           stroke="#82ca9d"
           fillOpacity={1}

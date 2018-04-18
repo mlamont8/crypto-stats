@@ -1,6 +1,7 @@
 .dash-container {
   background: linear-gradient(to bottom left, #425E9D, #75BBD4);
   color: #F7FDFF;
+  fill: #F7FDFF;
   padding-top: 20px; }
 
 .info-block {
@@ -10,7 +11,7 @@
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   border-radius: 10px;
-  opacity: .8; }
+  opacity: 0.8; }
 
 h1 {
   margin-top: 5px; }

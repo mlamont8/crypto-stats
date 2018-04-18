@@ -1,28 +1,28 @@
+@import "variables";
+@import "mixins";
 
-@import 'variables';
-@import 'mixins';
-
-.dash-container{
-    background: linear-gradient(to bottom left, $dGradient, $lGradient);
-    color: $white;
-    padding-top: 20px;
+.dash-container {
+  background: linear-gradient(to bottom left, $dGradient, $lGradient);
+  color: $white;
+  fill: $white;
+  padding-top: 20px;
 }
 
-.info-block{
-    background: $boxColor;
-    padding: 5px 10px;
-    @include border-radius(10px);
-    opacity: .8;
+.info-block {
+  background: $boxColor;
+  padding: 5px 10px;
+  @include border-radius(10px);
+  opacity: 0.8;
 }
 h1 {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .first-row,
 .second-row {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
-@import './containers/summary/summary';
-@import './components/header/header';
-@import './components/selectControl/selectControl'
+@import "./containers/summary/summary";
+@import "./components/header/header";
+@import "./components/selectControl/selectControl";
