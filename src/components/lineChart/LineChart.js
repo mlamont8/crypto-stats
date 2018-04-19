@@ -26,12 +26,12 @@ const CoinLineChart = props => (
           bottom: 5
         }}
       >
-        <CartesianGrid strokeDasharray="3 3" stroke="none" />
+        <CartesianGrid strokeDasharray="5  5" stroke="none" />
         <XAxis dataKey="time" tick={{ fill: "#F7FDFF" }} />
         <YAxis tick={{ fill: "#F7FDFF" }} />
         <Tooltip />
         <Legend />
-        <Line type="natural" dataKey="open" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="open" stroke="#82ca9d" />
       </LineChart>
     </ResponsiveContainer>
   </div>
