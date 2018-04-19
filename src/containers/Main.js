@@ -7,6 +7,7 @@ import Search from '../components/search/search';
 import DailyBarChart from '../components/dailyBarChart/DailyBarChart';
 import DailyAreaChart from '../components/dailyAreaChart/DailyAreaChart';
 import ExchangeVolume from '../components/exchangeVolume/exchangeVolume';
+import Live from '../components/live/live';
 import { initialFetch } from '../actions';
 
 class Main extends React.Component {
@@ -16,7 +17,7 @@ class Main extends React.Component {
 
   render() {
     const {
-      hasLoaded, sevenDay, thirtyDay, exchangeVolume,
+      hasLoaded, sevenDay, thirtyDay, exchangeVolume, market, from, to
     } = this.props;
     return !hasLoaded
       ? <div>Loading</div>
@@ -46,7 +47,13 @@ class Main extends React.Component {
               />
             </div>
 
-            <div className="col-md=4" />
+            <div className="col-md=4">
+              <Live
+                market={market}
+                from={from}
+                to={to}
+              />
+            </div>
             <div className="col-md-4">
               <ExchangeVolume
                 data={exchangeVolume}
@@ -71,6 +78,9 @@ const mapStateToProps = state => ({
   thirtyDay: state.coinByDay.thirtyDay,
   hasLoaded: state.isLoading.apiHasLoaded,
   exchangeVolume: state.topExchanges.data,
+  market: state.searchTerm.market,
+  from: state.searchTerm.convertFrom,
+  to: state.searchTerm.convertTo,
 });
 
 Main.propTypes = {
@@ -80,6 +90,9 @@ Main.propTypes = {
   hasLoaded: PropTypes.bool,
   exchangeVolume: PropTypes.arrayOf(PropTypes.object),
   fetch: PropTypes.func.isRequired,
+  market: PropTypes.string,
+  from: PropTypes.string,
+  to: PropTypes.string
 };
 
 Main.defaultProps = {
@@ -88,6 +101,9 @@ Main.defaultProps = {
   thirtyDay: [],
   hasLoaded: false,
   exchangeVolume: [],
+  market: "",
+  from: "",
+  to: "",
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
