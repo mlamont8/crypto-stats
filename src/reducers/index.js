@@ -1,17 +1,17 @@
-import { combineEpics } from "redux-observable";
-import { combineReducers } from "redux";
-import initialLoadData from "./initialLoadData";
-import isLoading from "./isLoading";
-import searchTerm from "./searchTerm";
-import coinByDay from "./coinByDay";
-import coinByHour from "./coinByHour";
-import searchArrays from "./searchArrays";
-import topExchanges from "./topExchanges";
-import coinName from "./coinName";
-import coinUrl from "./coinUrl";
-import { live, liveEpic } from "./live";
+import { combineReducers } from 'redux';
+import initialLoadData from './initialLoadData';
+import isLoading from './isLoading';
+import searchTerm from './searchTerm';
+import coinByDay from './coinByDay';
+import coinByHour from './coinByHour';
+import searchArrays from './searchArrays';
+import topExchanges from './topExchanges';
+import coinName from './coinName';
+import coinUrl from './coinUrl';
 
-export const rootReducer = combineReducers({
+
+const cryptoApp = combineReducers({
+
   isLoading,
   initialLoadData,
   searchArrays,
@@ -21,9 +21,7 @@ export const rootReducer = combineReducers({
   topExchanges,
   coinName,
   coinUrl,
-  live
+
 });
 
-export const rootEpic = combineEpics({
-  liveEpic
-});
+export default cryptoApp;
