@@ -33,11 +33,11 @@ const marketArrayCreate = data => ({
 
 // SUCCESSFUL Exchange Fetch from API
 
-export const exchangeFetch = (exchanges, bool) => ({
-  type: 'EXCHANGE_FETCH_SUCCESS',
-  exchanges,
-  fetched: bool,
-});
+// export const exchangeFetch = (exchanges, bool) => ({
+//   type: 'EXCHANGE_FETCH_SUCCESS',
+//   exchanges,
+//   fetched: bool,
+// });
 
 // When fetching from API
 
@@ -55,7 +55,7 @@ export const initialFetch = () =>
       .then(
         response =>
           Promise.all([
-            dispatch(exchangeFetch(response.data, true)),
+            // dispatch(exchangeFetch(response.data, true)),
             dispatch(marketArrayCreate(response.data)),
             dispatch(coinFetch()),
           ]),

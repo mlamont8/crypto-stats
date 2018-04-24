@@ -6,18 +6,21 @@ import mySaga from "../sagas";
 
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
-
 const configureStore = () => {
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
   const store = createStore(
     cryptoApp,
-    composeEnhancers(applyMiddleware(thunk, sagaMiddleware))
+    composeEnhancers(applyMiddleware(sagaMiddleware, thunk))
   );
+  // then run the saga
+  sagaMiddleware.run(mySaga);
+
   return store;
+
 };
 
-// then run the saga
-sagaMiddleware.run(mySaga);
+
 
 export default configureStore;

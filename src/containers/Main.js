@@ -68,7 +68,8 @@ class Main extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   fetch: () => {
-    dispatch(initialFetch());
+    // dispatch(initialFetch());
+    dispatch({ type: "EXCHANGE_FETCH_REQUESTED" })
   },
 });
 
