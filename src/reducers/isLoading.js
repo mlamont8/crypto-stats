@@ -1,10 +1,17 @@
+const loadingState = { fetching: false };
 
-const isLoading = (state = {}, action) => {
+const isLoading = (state = loadingState, action) => {
   switch (action.type) {
-    case 'API_HAS_LOADED':
+    case "EXCHANGE_FETCH_REQUESTED":
       return {
         ...state,
-        apiHasLoaded: action.apiHasLoaded,
+        fetching: true
+      };
+
+    case "FETCH_SUCCESS":
+      return {
+        ...state,
+        fetching: false
       };
 
     default:

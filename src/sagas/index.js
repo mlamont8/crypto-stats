@@ -1,16 +1,20 @@
-import { call, put, takeLatest } from "redux-saga/effects";
-import axios from 'axios';
+import { call, put, takeLatest, all } from "redux-saga/effects";
+import axios from "axios";
 
-const exchangeFetch = () =>
-  axios.get('https://min-api.cryptocompare.com/data/all/exchanges')
+const exchangeGet = () =>
+  axios.get("https://min-api.cryptocompare.com/data/all/exchanges");
 
-
-export function* fetchInitial() {
+// Data to retrieve on page load
+export function* initialFetch() {
   try {
-    const initialResponse = yield call(exchangeFetch)
+    const initialResponse = yield call(exchangeGet);
     const exchanges = initialResponse.data;
-    // dispatch a success action
-    yield put({ type: 'EXCHANGE_FETCH_SUCCESS', exchanges })
+    // dispatch success action and create market list
+    yield all([
+      put({ type: "EXCHANGE_FETCH_SUCCESS", exchanges }),
+      put({ type: "MARKET_LIST_CREATED", exchanges })
+    ]);
+    yield put({ type: "FETCH_SUCCESS" });
   } catch (error) {
     // dispatch a failure action to the store with the error
     yield put({ type: "EXCHANGE_FETCH_FAILURE", error });
@@ -27,7 +31,7 @@ export function* fetchInitial() {
 // }
 
 function* mySaga() {
-  yield takeLatest("EXCHANGE_FETCH_REQUESTED", fetchInitial);
+  yield takeLatest("EXCHANGE_FETCH_REQUESTED", initialFetch);
 }
 
 export default mySaga;
