@@ -4,15 +4,32 @@ import axios from "axios";
 const exchangeGet = () =>
   axios.get("https://min-api.cryptocompare.com/data/all/exchanges");
 
-// Data to retrieve on page load
-export function* initialFetch() {
+const coinsGet = () =>
+  axios.get("https://min-api.cryptocompare.com/data/all/coinlist");
+
+// List of all Coins to retrieve on initial load
+export function* initialCoins() {
+  try {
+    const initialResponse = yield call(coinsGet);
+    const coins = initialResponse.data.Data;
+    // dispatch success action and create market list
+    yield put({ type: "COINLIST_FETCH_SUCCESS", coins });
+  } catch (error) {
+    // dispatch a failure action to the store with the error
+    yield put({ type: "COINLIST_FETCH_FAILURE", error });
+  }
+}
+
+// List of Exchanges to retrieve on page load
+export function* initialExchanges() {
   try {
     const initialResponse = yield call(exchangeGet);
     const exchanges = initialResponse.data;
     // dispatch success action and create market list
     yield all([
       put({ type: "EXCHANGE_FETCH_SUCCESS", exchanges }),
-      put({ type: "MARKET_LIST_CREATED", exchanges })
+      put({ type: "MARKET_LIST_CREATED", exchanges }),
+      call(initialCoins)
     ]);
     yield put({ type: "FETCH_SUCCESS" });
   } catch (error) {
@@ -31,7 +48,8 @@ export function* initialFetch() {
 // }
 
 function* mySaga() {
-  yield takeLatest("EXCHANGE_FETCH_REQUESTED", initialFetch);
+  yield takeLatest("EXCHANGE_FETCH_REQUESTED", initialExchanges);
+  yield takeLatest("COIN_FETCH_REQUESTED", initialCoins);
 }
 
 export default mySaga;

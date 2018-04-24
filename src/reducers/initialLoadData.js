@@ -1,5 +1,5 @@
 const initialState = {
-  // coins: {},
+  coins: {},
   exchanges: {}
 };
 
@@ -11,11 +11,11 @@ const initialLoadData = (state = initialState, action) => {
         exchanges: action.exchanges
       };
 
-    // case "COINLIST_FETCH_SUCCESS":
-    //   return {
-    //     ...state,
-    //     coins: action.coins
-    //   };
+    case "COINLIST_FETCH_SUCCESS":
+      return {
+        ...state,
+        coins: action.coins
+      };
 
     default:
       return state;
