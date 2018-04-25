@@ -1,6 +1,6 @@
 const topExchanges = (state = {}, action) => {
   switch (action.type) {
-    case 'EXCHANGE_BY_VOLUME':
+    case 'EXCHANGE_FETCH_SUCCESS':
       return {
         ...state,
         data: action.data,

@@ -1,0 +1,1 @@
+export const getSelections = state => state.searchTerm;

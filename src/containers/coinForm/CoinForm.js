@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SelectControl from '../../components/selectControl/SelectControl';
-import { DoSearch, SelectData } from '../../actions';
+import { SelectData } from '../../actions';
 
 
 class CoinForm extends React.Component {
@@ -82,7 +82,8 @@ class CoinForm extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   search: () => {
-    dispatch(DoSearch());
+    // dispatch(DoSearch());
+    dispatch({ type: "SEARCH_REQUEST" });
   },
   selectChange: (id, item) => {
     dispatch(SelectData(id, item));

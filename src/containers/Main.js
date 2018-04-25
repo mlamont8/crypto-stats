@@ -28,33 +28,33 @@ class Main extends React.Component {
     return isLoading ? (
       <div>Loading</div>
     ) : (
-      <div>
-        <Header />
-        <div className="container-fluid dash-container">
-          <Summary />
-          <Search />
+        <div>
+          <Header />
+          <div className="container-fluid dash-container">
+            <Summary />
+            <Search />
 
-          <div className="row first-row">
-            <div className="col-md-12">
-              <DailyAreaChart data={thirtyDay} />
-            </div>
-          </div>
-
-          <div className="row second-row">
-            <div className="col-md-4">
-              <DailyBarChart data={sevenDay} />
+            <div className="row first-row">
+              <div className="col-md-12">
+                <DailyAreaChart data={thirtyDay} />
+              </div>
             </div>
 
-            <div className="col-md=4">
-              <Live market={market} from={from} to={to} />
-            </div>
-            <div className="col-md-4">
-              <ExchangeVolume data={exchangeVolume} />
+            <div className="row second-row">
+              <div className="col-md-4">
+                <DailyBarChart data={sevenDay} />
+              </div>
+
+              <div className="col-md=4">
+                <Live market={market} from={from} to={to} />
+              </div>
+              <div className="col-md-4">
+                <ExchangeVolume data={exchangeVolume} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
   }
 }
 

@@ -1,6 +1,6 @@
 const coinByHour = (state = {}, action) => {
   switch (action.type) {
-    case 'DATA_BY_HOUR':
+    case 'HOUR_FETCH_SUCCESS':
       return {
         ...state,
         coinByHour: action.data,
