@@ -13,7 +13,7 @@ class CoinForm extends React.Component {
   }
 
   handleSelectChange(e) {
-    this.props.selectChange(e.target.id, e.target.value);
+    this.props.selectorChange(e.target.id, e.target.value);
   }
 
   handleSubmit(e) {
@@ -72,7 +72,6 @@ class CoinForm extends React.Component {
         ) : (
             null
           )}
-
       </form>
 
 
@@ -82,10 +81,9 @@ class CoinForm extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   search: () => {
-    // dispatch(DoSearch());
     dispatch({ type: "SEARCH_REQUEST" });
   },
-  selectChange: (id, item) => {
+  selectorChange: (id, item) => {
     dispatch(SelectData(id, item));
   },
 });
@@ -103,7 +101,7 @@ const mapStateToProps = state => ({
 
 CoinForm.propTypes = {
   search: PropTypes.func.isRequired,
-  selectChange: PropTypes.func.isRequired,
+  selectorChange: PropTypes.func.isRequired,
   marketArray: PropTypes.objectOf(PropTypes.object),
   marketTerm: PropTypes.string,
   fromTerm: PropTypes.string,

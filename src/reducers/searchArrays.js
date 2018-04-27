@@ -6,13 +6,13 @@ const searchArrays = (state = {}, action) => {
         marketArray: action.exchanges
       };
 
-    case "CONVERT_FROM_LIST_CREATED":
+    case "CREATE_CONVERT_FROM":
       return {
         ...state,
         convertFrom: action.exchangeResults[action.item]
       };
 
-    case "CONVERT_TO_LIST_CREATED":
+    case "CREATE_CONVERT_TO":
       return {
         ...state,
         convertTo: action.convertFrom[action.item]

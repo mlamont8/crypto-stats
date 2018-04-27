@@ -3,7 +3,7 @@ import axios from "axios";
 import moment from "moment";
 
 
-import { getSelections } from './selectors';
+import { getSelections, searchArrays, coinLookup } from './selectors';
 
 const exchangeGet = () =>
   axios.get("https://min-api.cryptocompare.com/data/all/exchanges");
@@ -132,10 +132,28 @@ function* search() {
   yield put({ type: "FETCH_SUCCESS" });
 }
 
+function* selectors(action) {
+
+  const newArray = yield select(searchArrays);
+  const { id, item } = action;
+  const coinObject = yield select(coinLookup);
+  const coin = coinObject[item];
+  if (id === "market") {
+    yield put({ type: "CREATE_CONVERT_FROM", item, exchangeResults: newArray.marketArray })
+  } else if (id === "convertFrom") {
+    yield put({ type: "CREATE_CONVERT_TO", item, convertFrom: newArray.convertFrom })
+    yield put({ type: "COIN_LOOKUP", id, coin })
+  } else {
+    yield put({ type: "SEARCH_REQUEST" })
+    yield put({ type: "COIN_LOOKUP", id, coin })
+  }
+}
+
 function* mySaga() {
   yield takeLatest("EXCHANGE_FETCH_REQUESTED", initialExchanges);
   yield takeLatest("COIN_FETCH_REQUESTED", initialCoins);
   yield takeLatest("SEARCH_REQUEST", search);
+  yield takeLatest("SELECTION_ENTERED", selectors)
 }
 
 export default mySaga;
