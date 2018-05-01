@@ -1,6 +1,7 @@
-import { call, put, takeLatest, all, select } from "redux-saga/effects";
+import { call, put, takeLatest, all, select, eventChannel } from "redux-saga/effects";
 import axios from "axios";
 import moment from "moment";
+import io from 'socket.io-client';
 
 
 import { searchTerm, searchArrays, coinLookup } from './selectors';
@@ -130,12 +131,7 @@ export function* byExchange(...args) {
 
 
 function* search() {
-  // const terms = yield select(searchTerm);
-
   const results = yield call(terms);
-  // const exchangeResult = results.market;
-  // const fromResult = results.convertFrom;
-  // const toResult = results.convertTo;
   yield all([
     call(byYear, results.market, results.convertFrom, results.convertTo),
     call(byHour, results.convertFrom, results.convertTo),
@@ -163,6 +159,10 @@ function* selectors(action) {
 
 // socket io
 
+function* subscription() {
+  const subResults = yield call(terms)
+  return `2~${subResults.market}~${subResults.from}~${subResults.to}`
+}
 // let subscription = [
 //   `2~${this.props.market}~${this.props.from}~${this.props.to}`
 // ];
@@ -171,32 +171,32 @@ function* selectors(action) {
 
 
 
-// function connect() {
-//   const socket = io('https://streamer.cryptocompare.com/');
-//   return new Promise(resolve => {
-//     socket.on('connect', () => {
-//       resolve(socket);
-//     });
-//   });
-// }
+function connect() {
+  const socket = io('https://streamer.cryptocompare.com/');
+  return new Promise(resolve => {
+    socket.on('connect', () => {
+      resolve(socket);
+    });
+  });
+}
 
-// function subscribe(socket) {
-//   return eventChannel(emit => {
-//     socket.on('users.login', ({ username }) => {
-//       emit(addUser({ username }));
-//     });
-//     socket.on('users.logout', ({ username }) => {
-//       emit(removeUser({ username }));
-//     });
-//     socket.on('messages.new', ({ message }) => {
-//       emit(newMessage({ message }));
-//     });
-//     socket.on('disconnect', e => {
-//       // TODO: handle
-//     });
-//     return () => { };
-//   });
-// }
+function subscribe(socket) {
+  return eventChannel(emit => {
+    // socket.on('users.login', ({ username }) => {
+    //   emit(addUser({ username }));
+    // });
+    socket.emit("SubAdd", { subs: subscription() });
+    socket.emit("SubRemove", { subs: subscription() });
+
+    socket.on('messages.new', ({ message }) => {
+      emit(newMessage({ message }));
+    });
+    socket.on('disconnect', e => {
+      // TODO: handle
+    });
+    return () => { };
+  });
+}
 
 // function* read(socket) {
 //   const channel = yield call(subscribe, socket);
