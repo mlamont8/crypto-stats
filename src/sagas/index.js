@@ -3,7 +3,7 @@ import axios from "axios";
 import moment from "moment";
 
 
-import { getSelections, searchArrays, coinLookup } from './selectors';
+import { searchTerm, searchArrays, coinLookup } from './selectors';
 
 const exchangeGet = () =>
   axios.get("https://min-api.cryptocompare.com/data/all/exchanges");
@@ -26,6 +26,16 @@ const getTopExchanges = (from, to) =>
     .get(
       `https://min-api.cryptocompare.com/data/top/exchanges/full?fsym=${from}&tsym=${to}&limit=5`
     );
+
+function* terms() {
+  const searchResults = yield select(searchTerm);
+  return {
+    market: searchResults.market,
+    convertFrom: searchResults.convertFrom,
+    convertTo: searchResults.convertTo,
+  }
+
+}
 
 // List of all Coins to retrieve on initial load
 export function* initialCoins() {
@@ -120,14 +130,16 @@ export function* byExchange(...args) {
 
 
 function* search() {
-  const terms = yield select(getSelections);
-  const exchangeResult = terms.market;
-  const fromResult = terms.convertFrom;
-  const toResult = terms.convertTo;
+  // const terms = yield select(searchTerm);
+
+  const results = yield call(terms);
+  // const exchangeResult = results.market;
+  // const fromResult = results.convertFrom;
+  // const toResult = results.convertTo;
   yield all([
-    call(byYear, exchangeResult, fromResult, toResult),
-    call(byHour, fromResult, toResult),
-    call(byExchange, fromResult, toResult),
+    call(byYear, results.market, results.convertFrom, results.convertTo),
+    call(byHour, results.convertFrom, results.convertTo),
+    call(byExchange, results.convertFrom, results.convertTo),
   ])
   yield put({ type: "FETCH_SUCCESS" });
 }
@@ -148,6 +160,81 @@ function* selectors(action) {
     yield put({ type: "COIN_LOOKUP", id, coin })
   }
 }
+
+// socket io
+
+// let subscription = [
+//   `2~${this.props.market}~${this.props.from}~${this.props.to}`
+// ];
+// let socket = io.connect("https://streamer.cryptocompare.com/");
+// socket.emit("SubRemove", { subs: subscription });
+
+
+
+// function connect() {
+//   const socket = io('https://streamer.cryptocompare.com/');
+//   return new Promise(resolve => {
+//     socket.on('connect', () => {
+//       resolve(socket);
+//     });
+//   });
+// }
+
+// function subscribe(socket) {
+//   return eventChannel(emit => {
+//     socket.on('users.login', ({ username }) => {
+//       emit(addUser({ username }));
+//     });
+//     socket.on('users.logout', ({ username }) => {
+//       emit(removeUser({ username }));
+//     });
+//     socket.on('messages.new', ({ message }) => {
+//       emit(newMessage({ message }));
+//     });
+//     socket.on('disconnect', e => {
+//       // TODO: handle
+//     });
+//     return () => { };
+//   });
+// }
+
+// function* read(socket) {
+//   const channel = yield call(subscribe, socket);
+//   while (true) {
+//     let action = yield take(channel);
+//     yield put(action);
+//   }
+// }
+
+// function* write(socket) {
+//   while (true) {
+//     const { payload } = yield take(`${sendMessage}`);
+//     socket.emit('message', payload);
+//   }
+// }
+
+// function* handleIO(socket) {
+//   yield fork(read, socket);
+//   yield fork(write, socket);
+// }
+
+// function* flow() {
+//   while (true) {
+//     let { payload } = yield take(`${login}`);
+//     const socket = yield call(connect);
+//     socket.emit('login', { username: payload.username });
+
+//     const task = yield fork(handleIO, socket);
+
+//     let action = yield take(`${logout}`);
+//     yield cancel(task);
+//     socket.emit('logout');
+//   }
+// }
+
+// export default function* rootSaga() {
+//   yield fork(flow);
+// }
 
 function* mySaga() {
   yield takeLatest("EXCHANGE_FETCH_REQUESTED", initialExchanges);
