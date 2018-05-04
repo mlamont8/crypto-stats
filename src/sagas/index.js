@@ -1,4 +1,5 @@
-import { call, put, takeLatest, all, select, eventChannel } from "redux-saga/effects";
+import { call, put, takeLatest, all, select, fork, take } from "redux-saga/effects";
+import { eventChannel } from 'redux-saga'
 import axios from "axios";
 import moment from "moment";
 import io from 'socket.io-client';
@@ -132,6 +133,7 @@ export function* byExchange(...args) {
 
 function* search() {
   const results = yield call(terms);
+  yield fork(liveWatch);
   yield all([
     call(byYear, results.market, results.convertFrom, results.convertTo),
     call(byHour, results.convertFrom, results.convertTo),
@@ -160,87 +162,48 @@ function* selectors(action) {
 // socket io
 
 function* subscription() {
-  const subResults = yield call(terms)
+  const subResults = yield call(terms);
+  console.log('subResults', subResults);
   return `2~${subResults.market}~${subResults.from}~${subResults.to}`
-}
-// let subscription = [
-//   `2~${this.props.market}~${this.props.from}~${this.props.to}`
-// ];
-// let socket = io.connect("https://streamer.cryptocompare.com/");
-// socket.emit("SubRemove", { subs: subscription });
-
-
-
-function connect() {
-  const socket = io('https://streamer.cryptocompare.com/');
-  return new Promise(resolve => {
-    socket.on('connect', () => {
-      resolve(socket);
-    });
-  });
 }
 
 function subscribe(socket) {
   return eventChannel(emit => {
-    // socket.on('users.login', ({ username }) => {
-    //   emit(addUser({ username }));
-    // });
-    socket.emit("SubAdd", { subs: subscription() });
-    socket.emit("SubRemove", { subs: subscription() });
 
-    socket.on('messages.new', ({ message }) => {
-      emit(newMessage({ message }));
-    });
-    socket.on('disconnect', e => {
-      // TODO: handle
-    });
-    return () => { };
+    const eventHandler = (event) => {
+      // puts event payload into the channel
+      // this allows a Saga to take this payload from the returned channel
+      emit(event)
+    }
+
+    socket.on("m", eventHandler)
+
+    const unsubscribe = () => {
+      socket.emit('SubRemove', { subs: [`2~Binance~XRP~BTC`] })
+    }
+
+    return unsubscribe
   });
 }
 
-// function* read(socket) {
-//   const channel = yield call(subscribe, socket);
-//   while (true) {
-//     let action = yield take(channel);
-//     yield put(action);
-//   }
-// }
-
-// function* write(socket) {
-//   while (true) {
-//     const { payload } = yield take(`${sendMessage}`);
-//     socket.emit('message', payload);
-//   }
-// }
-
-// function* handleIO(socket) {
-//   yield fork(read, socket);
-//   yield fork(write, socket);
-// }
-
-// function* flow() {
-//   while (true) {
-//     let { payload } = yield take(`${login}`);
-//     const socket = yield call(connect);
-//     socket.emit('login', { username: payload.username });
-
-//     const task = yield fork(handleIO, socket);
-
-//     let action = yield take(`${logout}`);
-//     yield cancel(task);
-//     socket.emit('logout');
-//   }
-// }
-
-// export default function* rootSaga() {
-//   yield fork(flow);
-// }
+function* liveWatch() {
+  const socket = io.connect("https://streamer.cryptocompare.com/");
+  const socketChannel = yield call(subscribe, socket)
+  socket.emit("SubAdd", { subs: [`2~Binance~XRP~BTC`] })
+  yield put({ type: "LIVE_SEARCH", payload: subscription })
+  while (true) {
+    const payload = yield take(socketChannel)
+    yield put({ type: "INCOMING_LIVE_UPDATE", payload })
+    console.log('livewatch payload', payload)
+  }
+}
 
 function* mySaga() {
   yield takeLatest("EXCHANGE_FETCH_REQUESTED", initialExchanges);
   yield takeLatest("COIN_FETCH_REQUESTED", initialCoins);
   yield takeLatest("SEARCH_REQUEST", search);
-  yield takeLatest("SELECTION_ENTERED", selectors)
+  yield takeLatest("SELECTION_ENTERED", selectors);
+
 }
 
 export default mySaga;
