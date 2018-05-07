@@ -159,6 +159,7 @@ function* selectors(action) {
       convertFrom: newArray.convertFrom
     });
     yield put({ type: "COIN_LOOKUP", id, coin });
+    console.log(coin, 'coin data')
   } else {
     yield put({ type: "SEARCH_REQUEST" });
     yield put({ type: "COIN_LOOKUP", id, coin });

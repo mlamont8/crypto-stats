@@ -4,7 +4,7 @@ const CoinURL = (state = {}, action) => {
       if (action.coin) {
         return {
           ...state,
-          [action.id]: action.coin.ImageUrl,
+          [action.id]: `https://cryptocompare.com${action.coin.ImageUrl}`,
         };
       }
       return {
