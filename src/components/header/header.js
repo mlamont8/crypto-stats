@@ -13,18 +13,18 @@ const Header = () => (
     <Navbar.Collapse>
       <Nav>
         <NavItem eventKey={1} href="#">
-              Link
+          Link
         </NavItem>
         <NavItem eventKey={2} href="#">
-              Link
+          Link
         </NavItem>
       </Nav>
       <Nav pullRight>
         <NavItem eventKey={1} href="#">
-              Link Right
+          Link Right
         </NavItem>
         <NavItem eventKey={2} href="#">
-              Link Right
+          Link Right
         </NavItem>
       </Nav>
     </Navbar.Collapse>
