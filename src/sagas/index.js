@@ -35,6 +35,11 @@ const getTopExchanges = (from, to) =>
     `https://min-api.cryptocompare.com/data/top/exchanges/full?fsym=${from}&tsym=${to}&limit=5`
   );
 
+function* dollarExchange(from) {
+  const dollarObject = yield axios.get(`https://min-api.cryptocompare.com/data/price?fsym=${from}&tsyms=USD`)
+  return dollarObject.data.USD;
+}
+
 function* terms() {
   const results = yield select(searchTerm);
   return {
@@ -135,6 +140,7 @@ export function* byExchange(...args) {
   }
 }
 
+
 function* selectors(action) {
   const newArray = yield select(searchArrays);
   const { id, item } = action;
@@ -156,6 +162,8 @@ function* selectors(action) {
   } else {
     yield put({ type: "SEARCH_REQUEST" });
     yield put({ type: "COIN_LOOKUP", id, coin });
+    const dollars = yield call(dollarExchange, coin.Name);
+    yield put({ type: "DOLLAR_CONVERSION", dollars });
   }
 }
 
@@ -183,12 +191,6 @@ function subscribe(socket) {
   });
 }
 
-// function formatPayload(payload) {
-//   console.log(payload, "format live payload");
-//   const valuesArray = payload.split("~");
-//   console.log(valuesArray, "values array");
-// return valuesArray
-// }
 
 function* liveWatch() {
   const socket = io.connect("https://streamer.cryptocompare.com/");
