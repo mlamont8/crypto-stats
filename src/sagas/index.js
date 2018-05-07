@@ -183,15 +183,27 @@ function subscribe(socket) {
   });
 }
 
+// function formatPayload(payload) {
+//   console.log(payload, "format live payload");
+//   const valuesArray = payload.split("~");
+//   console.log(valuesArray, "values array");
+// return valuesArray
+// }
+
 function* liveWatch() {
   const socket = io.connect("https://streamer.cryptocompare.com/");
   const socketChannel = yield call(subscribe, socket);
   const currentResult = yield call(searchResults);
   socket.emit("SubAdd", { subs: [currentResult] });
-  yield put({ type: "LIVE_SEARCH" });
   while (true) {
     const payload = yield take(socketChannel);
-    yield put({ type: "INCOMING_LIVE_UPDATE", payload });
+    console.log("payload", payload);
+    const messageType = payload.substring(0, payload.indexOf("~"));
+    console.log(messageType);
+    if (messageType === 2) {
+      // const finalPayload = yield take(formatPayload, payload);
+      yield put({ type: "INCOMING_LIVE_UPDATE", payload });
+    }
   }
 }
 
