@@ -36,11 +36,11 @@ const getTopExchanges = (from, to) =>
   );
 
 function* terms() {
-  const searchResults = yield select(searchTerm);
+  const results = yield select(searchTerm);
   return {
-    market: searchResults.market,
-    convertFrom: searchResults.convertFrom,
-    convertTo: searchResults.convertTo
+    market: results.market,
+    convertFrom: results.convertFrom,
+    convertTo: results.convertTo
   };
 }
 
@@ -165,7 +165,7 @@ function* searchResults() {
   const subResults = yield call(terms);
   return `2~${subResults.market}~${subResults.convertFrom}~${
     subResults.convertTo
-  }`;
+    }`;
 }
 
 function subscribe(socket) {
@@ -197,12 +197,9 @@ function* liveWatch() {
   socket.emit("SubAdd", { subs: [currentResult] });
   while (true) {
     const payload = yield take(socketChannel);
-    console.log("payload", payload);
-    const messageType = payload.substring(0, payload.indexOf("~"));
-    console.log(messageType);
-    if (messageType === 2) {
-      // const finalPayload = yield take(formatPayload, payload);
-      yield put({ type: "INCOMING_LIVE_UPDATE", payload });
+    const update = payload.split("~");
+    if (update[0] === "2") {
+      yield put({ type: "INCOMING_LIVE_UPDATE", flag: update[4], price: update[5] });
     }
   }
 }
