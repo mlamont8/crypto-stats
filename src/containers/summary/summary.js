@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Image } from 'react-bootstrap';
-import LineChart from '../../components/lineChart/LineChart';
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Image } from "react-bootstrap";
+import LineChart from "../../components/lineChart/LineChart";
+import Live from "../../components/live/live";
 
 // Top Summary information
-
 
 const Summary = props => (
   <div className="row summary">
@@ -17,16 +17,18 @@ const Summary = props => (
       </div>
     </div>
     <div className="col-sm-8 summary-center">
-      <LineChart
-        data={props.byHour}
-      />
+      <div className="row">
+        <LineChart data={props.byHour} />
+      </div>
+      <div className="row">
+        <Live price={props.price} 
+              exchange={props.exchange} 
+              flag={props.flag}/>
+      </div>
     </div>
     <div className="col-sm-2 summary-right" />
   </div>
-
-
 );
-
 
 const mapStateToProps = state => ({
   exchange: state.searchTerm.market,
@@ -35,15 +37,19 @@ const mapStateToProps = state => ({
   byHour: state.coinByHour.coinByHour,
   image: state.coinUrl.convertFrom,
   coinName: state.coinName.convertFrom,
+  price: state.liveResults.price,
+  flag: state.liveResults.flag,
 });
 
 Summary.defaultProps = {
-  coinFrom: '',
-  coinTo: '',
-  exchange: '',
+  coinFrom: "",
+  coinTo: "",
+  exchange: "",
   byHour: [],
-  image: '',
-  coinName: '',
+  image: "",
+  coinName: "",
+  price: '',
+  flag: '',
 };
 
 Summary.propTypes = {
@@ -53,7 +59,8 @@ Summary.propTypes = {
   byHour: PropTypes.arrayOf(PropTypes.object),
   image: PropTypes.string,
   coinName: PropTypes.string,
+  price: PropTypes.string,
+  flag: PropTypes.string,
 };
-
 
 export default connect(mapStateToProps)(Summary);

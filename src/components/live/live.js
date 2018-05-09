@@ -1,16 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-class Live extends React.Component {
-  render() {
-    return <div />;
-  }
-}
+const Live = props => (
+  <div className="col-md-12">
+    <div className="row">
+      <div className="col-md-4">{props.price}</div>
+      <div className="col-md-4">{props.flag}</div>
+      <div className="col-md-4">{props.exchange}</div>
+    </div>
+  </div>
+);
 
 Live.propTypes = {
-  market: PropTypes.string.isRequired,
-  from: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired
+  price: PropTypes.string,
+  flag: PropTypes.string,
+  exchange: PropTypes.string
 };
 
 export default Live;
