@@ -17,4 +17,10 @@ Live.propTypes = {
   exchange: PropTypes.string
 };
 
+Live.defaultProps = {
+  price: "",
+  flag: "",
+  exchange: ""
+};
+
 export default Live;

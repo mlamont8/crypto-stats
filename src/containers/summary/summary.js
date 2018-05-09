@@ -21,9 +21,7 @@ const Summary = props => (
         <LineChart data={props.byHour} />
       </div>
       <div className="row">
-        <Live price={props.price} 
-              exchange={props.exchange} 
-              flag={props.flag}/>
+        <Live price={props.price} exchange={props.exchange} flag={props.flag} />
       </div>
     </div>
     <div className="col-sm-2 summary-right" />
@@ -38,7 +36,7 @@ const mapStateToProps = state => ({
   image: state.coinUrl.convertFrom,
   coinName: state.coinName.convertFrom,
   price: state.liveResults.price,
-  flag: state.liveResults.flag,
+  flag: state.liveResults.flag
 });
 
 Summary.defaultProps = {
@@ -48,8 +46,8 @@ Summary.defaultProps = {
   byHour: [],
   image: "",
   coinName: "",
-  price: '',
-  flag: '',
+  price: "",
+  flag: ""
 };
 
 Summary.propTypes = {
@@ -60,7 +58,7 @@ Summary.propTypes = {
   image: PropTypes.string,
   coinName: PropTypes.string,
   price: PropTypes.string,
-  flag: PropTypes.string,
+  flag: PropTypes.string
 };
 
 export default connect(mapStateToProps)(Summary);
