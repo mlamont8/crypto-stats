@@ -1,9 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import SelectControl from '../../components/selectControl/SelectControl';
-import { SelectData } from '../../actions';
-
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { NavItem } from "react-bootstrap";
+import SelectControl from "../../components/selectControl/SelectControl";
+import { SelectData } from "../../actions";
 
 class CoinForm extends React.Component {
   constructor(props) {
@@ -21,7 +21,6 @@ class CoinForm extends React.Component {
     this.props.search();
   }
 
-
   // After each select, update store with new variables adding current Market,
   // coin converting from and to.
   render() {
@@ -29,52 +28,30 @@ class CoinForm extends React.Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="col-md-4">
+        <NavItem className="col-md-4">
           <SelectControl
             data={sortedMarket}
             handleSelectChange={this.handleSelectChange}
             type="market"
           />
-        </div>
+        </NavItem>
 
-        {this.props.marketTerm ? (
-          <div className="col-md-4">
-            <div className="row">
-              <SelectControl
-                data={Object.keys(this.props.convertFrom).sort()}
-                handleSelectChange={this.handleSelectChange}
-                type="convertFrom"
-              />
-            </div>
-            <div className="row">
-              <p>{this.props.cNameFrom}</p>
-            </div>
-          </div>
+        <NavItem className="col-md-4">
+          <SelectControl
+            data={Object.keys(this.props.convertFrom).sort()}
+            handleSelectChange={this.handleSelectChange}
+            type="convertFrom"
+          />
+        </NavItem>
 
-        ) : (
-            null
-          )}
-
-
-        {this.props.fromTerm ? (
-          <div className="col-md-4">
-            <div className="row">
-              <SelectControl
-                data={this.props.toArray}
-                handleSelectChange={this.handleSelectChange}
-                type="convertTo"
-              />
-            </div>
-            <div className="row">
-              <p>{this.props.cNameTo}</p>
-            </div>
-          </div>
-        ) : (
-            null
-          )}
+        <NavItem className="col-md-4">
+          <SelectControl
+            data={this.props.toArray}
+            handleSelectChange={this.handleSelectChange}
+            type="convertTo"
+          />
+        </NavItem>
       </form>
-
-
     );
   }
 }
@@ -85,9 +62,8 @@ const mapDispatchToProps = dispatch => ({
   },
   selectorChange: (id, item) => {
     dispatch(SelectData(id, item));
-  },
+  }
 });
-
 
 const mapStateToProps = state => ({
   marketArray: state.searchArrays.marketArray,
@@ -96,7 +72,7 @@ const mapStateToProps = state => ({
   convertFrom: state.searchArrays.convertFrom,
   toArray: state.searchArrays.convertTo,
   cNameFrom: state.coinName.convertFrom,
-  cNameTo: state.coinName.convertTo,
+  cNameTo: state.coinName.convertTo
 });
 
 CoinForm.propTypes = {
@@ -108,19 +84,17 @@ CoinForm.propTypes = {
   convertFrom: PropTypes.objectOf(PropTypes.array),
   toArray: PropTypes.arrayOf(PropTypes.string),
   cNameFrom: PropTypes.string,
-  cNameTo: PropTypes.string,
-
+  cNameTo: PropTypes.string
 };
 
 CoinForm.defaultProps = {
   marketArray: {},
-  marketTerm: '',
-  fromTerm: '',
+  marketTerm: "",
+  fromTerm: "",
   convertFrom: {},
   toArray: [],
-  cNameFrom: '',
-  cNameTo: '',
-
+  cNameFrom: "",
+  cNameTo: ""
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinForm);

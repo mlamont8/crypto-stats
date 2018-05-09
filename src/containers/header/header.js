@@ -1,6 +1,7 @@
-import React from 'react';
-import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import React from "react";
+import { Nav, Navbar } from "react-bootstrap";
 
+import CoinForm from "../coinForm/CoinForm";
 
 const Header = () => (
   <Navbar collapseOnSelect>
@@ -12,12 +13,7 @@ const Header = () => (
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav pullRight>
-        <NavItem eventKey={1} href="#">
-          Link Right
-        </NavItem>
-        <NavItem eventKey={2} href="#">
-          Link Right
-        </NavItem>
+        <CoinForm />
       </Nav>
     </Navbar.Collapse>
   </Navbar>
