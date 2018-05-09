@@ -4,3 +4,10 @@
   border-radius: 0;
   margin-bottom: 0;
   }
+  
+.navbar-nav > li > a, .navbar-brand {
+    padding-top:5px !important; padding-bottom:0 !important;
+    height: 35px;
+}
+.navbar {min-height:35px !important;}
+.navbar-brand { color: #F7FDFF}
