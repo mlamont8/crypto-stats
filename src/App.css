@@ -52,3 +52,12 @@ h1 {
   color: #F7FDFF;
   background: #19578a;
   border-color: #19578a; }
+
+.liveItem {
+  font-size: 30px; }
+
+.up {
+  color: green; }
+
+.down {
+  color: red; }
