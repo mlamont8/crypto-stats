@@ -9,6 +9,7 @@ import topExchanges from "./topExchanges";
 import coinName from "./coinName";
 import coinUrl from "./coinUrl";
 import liveResults from "./liveResults";
+import byDollar from "./byDollar";
 
 const cryptoApp = combineReducers({
   isLoading,
@@ -20,7 +21,8 @@ const cryptoApp = combineReducers({
   topExchanges,
   liveResults,
   coinName,
-  coinUrl
+  coinUrl,
+  byDollar
 });
 
 export default cryptoApp;

@@ -22,6 +22,7 @@ const Summary = props => (
           price={props.price}
           exchange={props.exchange}
           flag={props.flag}
+          dollar={props.inDollars}
         />
       </div>
     </div>
@@ -37,7 +38,8 @@ const mapStateToProps = state => ({
   image: state.coinUrl.convertFrom,
   coinName: state.coinName.convertFrom,
   price: state.liveResults.price,
-  flag: state.liveResults.flag
+  flag: state.liveResults.flag,
+  inDollars: state.byDollar.coinConversion
 });
 
 Summary.defaultProps = {
@@ -48,7 +50,8 @@ Summary.defaultProps = {
   image: "",
   coinName: "",
   price: "",
-  flag: ""
+  flag: "",
+  inDollars: 0
 };
 
 Summary.propTypes = {
@@ -59,7 +62,8 @@ Summary.propTypes = {
   image: PropTypes.string,
   coinName: PropTypes.string,
   price: PropTypes.string,
-  flag: PropTypes.string
+  flag: PropTypes.string,
+  inDollars: PropTypes.number
 };
 
 export default connect(mapStateToProps)(Summary);

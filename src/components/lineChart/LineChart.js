@@ -36,7 +36,12 @@ const CoinLineChart = props => (
       </ResponsiveContainer>
     </div>
     <div className="row">
-      <Live price={props.price} exchange={props.exchange} flag={props.flag} />
+      <Live
+        price={props.price}
+        exchange={props.exchange}
+        flag={props.flag}
+        dollar={props.dollar}
+      />
     </div>
   </div>
 );
@@ -45,7 +50,8 @@ CoinLineChart.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   price: PropTypes.string,
   exchange: PropTypes.string,
-  flag: PropTypes.string
+  flag: PropTypes.string,
+  dollar: PropTypes.number
 };
 
 export default CoinLineChart;

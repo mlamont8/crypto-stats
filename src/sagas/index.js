@@ -36,7 +36,9 @@ const getTopExchanges = (from, to) =>
   );
 
 function* dollarExchange(from) {
-  const dollarObject = yield axios.get(`https://min-api.cryptocompare.com/data/price?fsym=${from}&tsyms=USD`)
+  const dollarObject = yield axios.get(
+    `https://min-api.cryptocompare.com/data/price?fsym=${from}&tsyms=USD`
+  );
   return dollarObject.data.USD;
 }
 
@@ -140,7 +142,6 @@ export function* byExchange(...args) {
   }
 }
 
-
 function* selectors(action) {
   const newArray = yield select(searchArrays);
   const { id, item } = action;
@@ -159,12 +160,16 @@ function* selectors(action) {
       convertFrom: newArray.convertFrom
     });
     yield put({ type: "COIN_LOOKUP", id, coin });
-    console.log(coin, 'coin data')
+    console.log(coin, "coin data");
   } else {
     yield put({ type: "SEARCH_REQUEST" });
     yield put({ type: "COIN_LOOKUP", id, coin });
-    const dollars = yield call(dollarExchange, coin.Name);
-    yield put({ type: "DOLLAR_CONVERSION", dollars });
+    console.log(coin.Name, "dest coin");
+    if (coin.Name === "BCH" || "BTC" || "LTC" || "ETH" || "BNB") {
+      console.log("dollar conversion");
+      const dollars = yield call(dollarExchange, coin.Name);
+      yield put({ type: "DOLLAR_CONVERSION", dollars });
+    }
   }
 }
 
@@ -174,7 +179,7 @@ function* searchResults() {
   const subResults = yield call(terms);
   return `2~${subResults.market}~${subResults.convertFrom}~${
     subResults.convertTo
-    }`;
+  }`;
 }
 
 function subscribe(socket) {
@@ -192,7 +197,6 @@ function subscribe(socket) {
   });
 }
 
-
 function* liveWatch() {
   const socket = io.connect("https://streamer.cryptocompare.com/");
   const socketChannel = yield call(subscribe, socket);
@@ -200,9 +204,15 @@ function* liveWatch() {
   socket.emit("SubAdd", { subs: [currentResult] });
   while (true) {
     const payload = yield take(socketChannel);
+    console.log("payload update", payload);
     const update = payload.split("~");
-    if (update[0] === "2") {
-      yield put({ type: "INCOMING_LIVE_UPDATE", flag: update[4], price: update[5] });
+    // only update if flag field is not 4
+    if (update[0] === "2" && update[4] !== "4") {
+      yield put({
+        type: "INCOMING_LIVE_UPDATE",
+        flag: update[4],
+        price: update[5]
+      });
     }
   }
 }
