@@ -9,11 +9,10 @@ import {
   ResponsiveContainer
 } from "recharts";
 import PropTypes from "prop-types";
-import Live from "../live/live";
 
 const CoinLineChart = props => (
-  <div className="info-block">
-    <h4>LAST 10 HOURS</h4>
+  <div className="info-block lineChart">
+    <h1>LAST 10 HOURS</h1>
     <div className="row">
       <ResponsiveContainer width="100%" height={150}>
         <LineChart
@@ -35,23 +34,11 @@ const CoinLineChart = props => (
         </LineChart>
       </ResponsiveContainer>
     </div>
-    <div className="row">
-      <Live
-        price={props.price}
-        exchange={props.exchange}
-        flag={props.flag}
-        dollar={props.dollar}
-      />
-    </div>
   </div>
 );
 
 CoinLineChart.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  price: PropTypes.string,
-  exchange: PropTypes.string,
-  flag: PropTypes.string,
-  dollar: PropTypes.number
+  data: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default CoinLineChart;

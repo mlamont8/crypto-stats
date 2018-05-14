@@ -20,6 +20,12 @@ h1 {
 .second-row {
   margin-top: 30px; }
 
+.summary-left h2 {
+  font-size: 14px; }
+
+.summary-right h1 {
+  font-size: 28px; }
+
 .navbar-default {
   background: #292a2b;
   border-color: #292a2b;
@@ -61,3 +67,13 @@ h1 {
 
 .conversion {
   font-size: 12px; }
+
+.current h1 {
+  font-size: 20px; }
+
+.current h2 {
+  font-size: 14px;
+  margin: 4px; }
+
+.lineChart h1 {
+  font-size: 20px; }

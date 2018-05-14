@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Image } from "react-bootstrap";
 import LineChart from "../../components/lineChart/LineChart";
+import LiveResults from "../../components/liveResults/liveResults";
 
 // Top Summary information
 
@@ -12,21 +13,26 @@ const Summary = props => (
       <div className="info-block">
         <Image src={props.image} responsive />
         <h1>{props.coinFrom}</h1>
-        <p>{props.coinName}</p>
+        <h2>{props.coinName}</h2>
       </div>
     </div>
     <div className="col-sm-8 summary-center">
       <div className="row">
-        <LineChart
-          data={props.byHour}
+        <LineChart data={props.byHour} />
+      </div>
+    </div>
+    <div className="col-sm-2 summary-right">
+      <div className="info-block">
+        <LiveResults
           price={props.price}
           exchange={props.exchange}
           flag={props.flag}
           dollar={props.inDollars}
+          from={props.coinFrom}
+          to={props.coinTo}
         />
       </div>
     </div>
-    <div className="col-sm-2 summary-right" />
   </div>
 );
 

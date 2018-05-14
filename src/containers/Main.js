@@ -6,7 +6,6 @@ import Summary from "./summary/summary";
 import DailyBarChart from "../components/dailyBarChart/DailyBarChart";
 import DailyAreaChart from "../components/dailyAreaChart/DailyAreaChart";
 import ExchangeVolume from "../components/exchangeVolume/exchangeVolume";
-import Live from "../components/live/live";
 
 class Main extends React.Component {
   componentDidMount() {
@@ -14,15 +13,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const {
-      isLoading,
-      sevenDay,
-      thirtyDay,
-      exchangeVolume,
-      market,
-      from,
-      to
-    } = this.props;
+    const { isLoading, sevenDay, thirtyDay, exchangeVolume } = this.props;
     return isLoading ? (
       <div>Loading</div>
     ) : (
@@ -72,19 +63,13 @@ Main.propTypes = {
   thirtyDay: PropTypes.arrayOf(PropTypes.object),
   exchangeVolume: PropTypes.arrayOf(PropTypes.object),
   fetch: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  market: PropTypes.string,
-  from: PropTypes.string,
-  to: PropTypes.string
+  isLoading: PropTypes.bool.isRequired
 };
 
 Main.defaultProps = {
   sevenDay: [],
   thirtyDay: [],
-  exchangeVolume: [],
-  market: "",
-  from: "",
-  to: ""
+  exchangeVolume: []
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
