@@ -38,14 +38,10 @@ class Main extends React.Component {
           </div>
 
           <div className="row second-row">
-            <div className="col-md-4">
+            <div className="col-md-6">
               <DailyBarChart data={sevenDay} />
             </div>
-
-            <div className="col-md=4">
-              <Live market={market} from={from} to={to} />
-            </div>
-            <div className="col-md-4">
+            <div className="col-md-6">
               <ExchangeVolume data={exchangeVolume} />
             </div>
           </div>
