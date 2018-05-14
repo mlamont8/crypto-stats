@@ -24,7 +24,7 @@ const DailyBarChart = props => (
         }}
       >
         <XAxis dataKey="time" tick={{ fill: "#F7FDFF" }} />
-        <YAxis tick={{ fill: "#F7FDFF" }} />
+        <YAxis tick={{ fill: "#F7FDFF" }} domain={["dataMin", "dataMax"]} />
         <CartesianGrid strokeDasharray="3 3" stroke="none" />
         <Tooltip />
         <Legend />

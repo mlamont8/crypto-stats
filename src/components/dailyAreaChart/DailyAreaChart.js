@@ -38,7 +38,7 @@ const DailyAreaChart = props => (
         <XAxis dataKey="time" tick={{ fill: "#F7FDFF" }}>
           <Label value="Time" position="insideBottomRight" offset={0} />
         </XAxis>
-        <YAxis tick={{ fill: "#F7FDFF" }} />
+        <YAxis tick={{ fill: "#F7FDFF" }} domain={["dataMin", "dataMax"]} />
         <CartesianGrid stroke="none" />
         <Tooltip />
         <Legend />
