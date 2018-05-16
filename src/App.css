@@ -26,6 +26,10 @@ h1 {
 .summary-right h1 {
   font-size: 28px; }
 
+.summary-block,
+.info-block {
+  height: 260px; }
+
 .navbar-default {
   background: #292a2b;
   border-color: #292a2b;
