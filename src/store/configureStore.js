@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware, compose } from "redux";
-import thunk from "redux-thunk";
 import createSagaMiddleware from "redux-saga";
 import cryptoApp from "../reducers";
 import mySaga from "../sagas";
@@ -12,15 +11,12 @@ const configureStore = () => {
 
   const store = createStore(
     cryptoApp,
-    composeEnhancers(applyMiddleware(sagaMiddleware, thunk))
+    composeEnhancers(applyMiddleware(sagaMiddleware))
   );
   // then run the saga
   sagaMiddleware.run(mySaga);
 
   return store;
-
 };
-
-
 
 export default configureStore;
