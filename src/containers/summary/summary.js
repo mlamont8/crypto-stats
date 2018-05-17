@@ -10,16 +10,14 @@ import LiveResults from "../../components/liveResults/liveResults";
 const Summary = props => (
   <div className="row summary">
     <div className="col-sm-2 summary-left">
-      <div className="info-block summary-block">
+      <div className="summary-block">
         <Image src={props.image} responsive />
         <h1>{props.coinFrom}</h1>
         <h2>{props.coinName}</h2>
       </div>
     </div>
     <div className="col-sm-8 summary-center summary-block">
-      <div className="row">
-        <LineChart data={props.byHour} />
-      </div>
+      <LineChart data={props.byHour} />
     </div>
     <div className="col-sm-2 summary-right summary-block">
       <div className="info-block">

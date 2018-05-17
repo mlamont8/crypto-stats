@@ -26,9 +26,15 @@ h1 {
 .summary-right h1 {
   font-size: 28px; }
 
-.summary-block,
-.info-block {
-  height: 260px; }
+.summary-block {
+  height: 260px;
+  background: #5271A7;
+  padding: 5px 5px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  opacity: 0.8; }
 
 .navbar-default {
   background: #292a2b;

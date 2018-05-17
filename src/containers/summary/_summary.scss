@@ -6,7 +6,10 @@
   font-size: 28px;
 }
 
-.summary-block,
- .info-block {
+.summary-block {
   height: 260px;
+  background: $boxColor;
+  padding: 5px 5px;
+  @include border-radius(10px);
+  opacity: 0.8;
 }
