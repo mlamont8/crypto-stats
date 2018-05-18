@@ -14,15 +14,15 @@ const CoinLineChart = props => (
   <div className="info-block lineChart">
     <h1>LAST 10 HOURS</h1>
     <div className="row">
-      <ResponsiveContainer width="100%" height={150}>
+      <ResponsiveContainer width="100%" height={200}>
         <LineChart
           width={730}
-          height={150}
+          height={200}
           data={props.data}
           margin={{
             top: 15,
             right: 20,
-            left: 20,
+            left: 25,
             bottom: 5
           }}
         >

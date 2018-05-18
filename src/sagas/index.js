@@ -202,10 +202,18 @@ function* liveWatch() {
   const socketChannel = yield call(subscribe, socket);
   const currentResult = yield call(searchResults);
   socket.emit("SubAdd", { subs: [currentResult] });
+  let payload = yield take(socketChannel);
+  console.log("initial update", payload);
+  let update = payload.split("~");
+  yield put({
+    type: "INCOMING_LIVE_UPDATE",
+    flag: update[4],
+    price: update[5]
+  });
   while (true) {
-    const payload = yield take(socketChannel);
-    console.log("payload update", payload);
-    const update = payload.split("~");
+    payload = yield take(socketChannel);
+    update = payload.split("~");
+    console.log("new update", update);
     // only update if flag field is not 4
     if (update[0] === "2" && update[4] !== "4") {
       yield put({

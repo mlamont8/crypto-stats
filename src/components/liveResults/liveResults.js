@@ -14,7 +14,7 @@ const LiveResults = props => {
       <hr />
       <div className="row">
         <div className="col-md-4 liveItem">
-          <span>{price}</span>
+          <span className="price">{price}</span>
           <span className="toPrice">{to}</span>
         </div>
       </div>
