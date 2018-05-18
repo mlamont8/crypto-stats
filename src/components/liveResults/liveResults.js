@@ -1,30 +1,28 @@
 import React from "react";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 
 const LiveResults = props => {
-  const { flag, dollar, exchange, price, from, to } = props;
+  const { flag, dollar, exchange, price, to } = props;
   const conversion = (price * dollar).toFixed(2);
+  const arrow = flag === "2" ? "arrow-down" : "arrow-up";
   return (
     <div className="current text-center">
       <h1>CURRENT</h1>
-      <h2>
-        {from} to {to}
-      </h2>
+      <FontAwesomeIcon icon={["fas", "coins"]} size="2x" />
+      {exchange}
+      <hr />
       <div className="row">
-        <div
-          className={flag === "2" ? "col-md-4 liveItem" : "col-md-4 liveItem"}
-        >
-          <span className={flag === "2" ? "down" : "up"}>{price}</span>{" "}
+        <div className="col-md-4 liveItem">
+          <span>{price}</span>
+          <span className="toPrice">{to}</span>
         </div>
       </div>
       <div className="row">
-        <span className="conversion">${conversion}</span>
-      </div>
-      <div className="row">
-        <span className="liveItem col-md-4">{flag}</span>
-      </div>
-      <div className="row">
-        <div className="liveItem col-md-4">{exchange}</div>
+        <span className="conversion" id={arrow}>
+          (${conversion})
+        </span>
+        <FontAwesomeIcon icon={["fas", arrow]} />
       </div>
     </div>
   );
@@ -35,7 +33,6 @@ LiveResults.propTypes = {
   flag: PropTypes.string,
   exchange: PropTypes.string,
   dollar: PropTypes.number,
-  from: PropTypes.string,
   to: PropTypes.string
 };
 
@@ -44,7 +41,6 @@ LiveResults.defaultProps = {
   flag: "",
   exchange: "",
   dollar: 0,
-  from: "",
   to: ""
 };
 

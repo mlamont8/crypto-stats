@@ -1,21 +1,27 @@
 .liveItem {
-  font-size: 30px;
+  font-size: 18px;
 }
-.up {
+
+#arrow-up {
   color: green;
 }
-.down {
+#arrow-down {
   color: red;
 }
 .conversion {
-  font-size: 12px;
+  font-size: 16px;
 }
 
-.current h1 {
-  font-size: 20px;
-}
+// .current h1 {
+//   font-size: 20px;
+// }
 
-.current h2 {
-  font-size: 14px;
-  margin: 4px;
+// .current h2 {
+//   font-size: 14px;
+//   margin: 4px;
+// }
+
+.toPrice {
+  padding-left: 2px;
+  font-size: 8px;
 }

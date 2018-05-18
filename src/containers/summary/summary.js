@@ -16,8 +16,10 @@ const Summary = props => (
         <h2>{props.coinName}</h2>
       </div>
     </div>
-    <div className="col-sm-8 summary-center summary-block">
-      <LineChart data={props.byHour} />
+    <div className="col-sm-8 summary-center">
+      <div className="summary-block">
+        <LineChart data={props.byHour} />
+      </div>
     </div>
     <div className="col-sm-2 summary-right summary-block">
       <div className="info-block">
@@ -26,7 +28,6 @@ const Summary = props => (
           exchange={props.exchange}
           flag={props.flag}
           dollar={props.inDollars}
-          from={props.coinFrom}
           to={props.coinTo}
         />
       </div>
