@@ -13,7 +13,7 @@ const LiveResults = props => {
       {exchange}
       <hr />
       <div className="row">
-        <div className="col-md-4 liveItem">
+        <div className="liveItem">
           <span className="price">{price}</span>
           <span className="toPrice">{to}</span>
         </div>
