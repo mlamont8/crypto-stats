@@ -5,56 +5,19 @@ import {
   all,
   select,
   fork,
-  take
 } from "redux-saga/effects";
-import { eventChannel } from "redux-saga";
-import axios from "axios";
 import moment from "moment";
-import io from "socket.io-client";
+import * as api from './api';
+import liveWatch from './live';
 
-import { searchTerm, searchArrays, coinLookup } from "./selectors";
+import { searchArrays, coinLookup, terms } from "./selectors";
 
-const exchangeGet = () =>
-  axios.get("https://min-api.cryptocompare.com/data/all/exchanges");
 
-const coinsGet = () =>
-  axios.get("https://min-api.cryptocompare.com/data/all/coinlist");
-
-const getByYear = (exch, from, to) =>
-  axios.get(
-    `https://min-api.cryptocompare.com/data/histoday?fsym=${from}&tsym=${to}&limit=29&aggregate=1&e=${exch}`
-  );
-
-const getByHour = (from, to) =>
-  axios.get(
-    `https://min-api.cryptocompare.com/data/histohour?fsym=${from}&tsym=${to}&limit=9`
-  );
-
-const getTopExchanges = (from, to) =>
-  axios.get(
-    `https://min-api.cryptocompare.com/data/top/exchanges/full?fsym=${from}&tsym=${to}&limit=5`
-  );
-
-function* dollarExchange(from) {
-  const dollarObject = yield axios.get(
-    `https://min-api.cryptocompare.com/data/price?fsym=${from}&tsyms=USD`
-  );
-  return dollarObject.data.USD;
-}
-
-function* terms() {
-  const results = yield select(searchTerm);
-  return {
-    market: results.market,
-    convertFrom: results.convertFrom,
-    convertTo: results.convertTo
-  };
-}
 
 // List of all Coins to retrieve on initial load
 export function* initialCoins() {
   try {
-    const initialResponse = yield call(coinsGet);
+    const initialResponse = yield call(api.coinsGet);
     const coins = initialResponse.data.Data;
     // dispatch success action and create market list
     yield put({ type: "COINLIST_FETCH_SUCCESS", coins });
@@ -67,7 +30,7 @@ export function* initialCoins() {
 // List of Exchanges to retrieve on page load
 export function* initialExchanges() {
   try {
-    const initialResponse = yield call(exchangeGet);
+    const initialResponse = yield call(api.exchangeGet);
     const exchanges = initialResponse.data;
     // dispatch success action and create market list
     yield all([
@@ -106,7 +69,7 @@ const formatTime = jsondata => {
 
 export function* byYear(...args) {
   try {
-    const yearData = yield call(getByYear, ...args);
+    const yearData = yield call(api.getByYear, ...args);
     const yearChartData = formatDate(yearData.data.Data);
     const newData = yearChartData.slice(23);
     yield all([
@@ -122,7 +85,7 @@ export function* byYear(...args) {
 
 export function* byHour(...args) {
   try {
-    const hourData = yield call(getByHour, ...args);
+    const hourData = yield call(api.getByHour, ...args);
     const hourChartData = formatTime(hourData.data.Data);
     yield put({ type: "HOUR_FETCH_SUCCESS", data: hourChartData });
   } catch (error) {
@@ -132,7 +95,7 @@ export function* byHour(...args) {
 
 export function* byExchange(...args) {
   try {
-    const exchangeData = yield call(getTopExchanges, ...args);
+    const exchangeData = yield call(api.getTopExchanges, ...args);
     const exchangeChartData = exchangeData.data.Data.Exchanges;
     // dispatch success action and create market list
     yield put({ type: "EXCHANGE_FETCH_SUCCESS", data: exchangeChartData });
@@ -167,67 +130,20 @@ function* selectors(action) {
     console.log(coin.Name, "dest coin");
     if (coin.Name === "BCH" || "BTC" || "LTC" || "ETH" || "BNB") {
       console.log("dollar conversion");
-      const dollars = yield call(dollarExchange, coin.Name);
+      const dollars = yield call(api.dollarExchange, coin.Name);
       yield put({ type: "DOLLAR_CONVERSION", dollars });
     }
   }
 }
 
-// Live results from websocket
 
-function* searchResults() {
-  const subResults = yield call(terms);
-  return `2~${subResults.market}~${subResults.convertFrom}~${
-    subResults.convertTo
-  }`;
-}
-
-function subscribe(socket) {
-  return eventChannel(emit => {
-    const eventHandler = event => {
-      emit(event);
-    };
-    socket.on("m", eventHandler);
-
-    const unsubscribe = () => {
-      socket.emit("SubRemove", { subs: [searchResults] });
-    };
-
-    return unsubscribe;
-  });
-}
-
-function* liveWatch() {
-  const socket = io.connect("https://streamer.cryptocompare.com/");
-  const socketChannel = yield call(subscribe, socket);
-  const currentResult = yield call(searchResults);
-  socket.emit("SubAdd", { subs: [currentResult] });
-  let payload = yield take(socketChannel);
-  console.log("initial update", payload);
-  let update = payload.split("~");
-  yield put({
-    type: "INCOMING_LIVE_UPDATE",
-    flag: update[4],
-    price: update[5]
-  });
-  while (true) {
-    payload = yield take(socketChannel);
-    update = payload.split("~");
-    console.log("new update", update);
-    // only update if flag field is not 4
-    if (update[0] === "2" && update[4] !== "4") {
-      yield put({
-        type: "INCOMING_LIVE_UPDATE",
-        flag: update[4],
-        price: update[5]
-      });
-    }
-  }
-}
+// New Search
 
 function* search() {
   const results = yield call(terms);
+  // Perform socket search 
   yield fork(liveWatch);
+  // Get Results for charts
   yield all([
     call(byYear, results.market, results.convertFrom, results.convertTo),
     call(byHour, results.convertFrom, results.convertTo),
