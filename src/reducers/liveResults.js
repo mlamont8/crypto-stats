@@ -3,8 +3,9 @@ const liveResults = (state = {}, action) => {
     case "INCOMING_LIVE_UPDATE":
       return {
         ...state,
-        flag: action.flag,
-        price: action.price,
+        flag: action.update.flag,
+        price: action.update.price,
+        time: action.update.time,
       };
 
     default:

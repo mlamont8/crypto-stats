@@ -141,15 +141,19 @@ function* selectors(action) {
 
 function* search() {
   const results = yield call(terms);
-  // Perform socket search 
+  // Connect for live results 
   yield fork(liveWatch);
-  // Get Results for charts
-  yield all([
-    call(byYear, results.market, results.convertFrom, results.convertTo),
-    call(byHour, results.convertFrom, results.convertTo),
-    call(byExchange, results.convertFrom, results.convertTo)
-  ]);
-  yield put({ type: "FETCH_SUCCESS" });
+  // Get current results for charts
+  try {
+    yield all([
+      call(byYear, results.market, results.convertFrom, results.convertTo),
+      call(byHour, results.convertFrom, results.convertTo),
+      call(byExchange, results.convertFrom, results.convertTo)
+    ]);
+    yield put({ type: "FETCH_SUCCESS" });
+  } catch (error) {
+    yield put({ type: "SEARCH_FETCH_FAILURE", error });
+  }
 }
 
 function* mySaga() {
