@@ -1,3 +1,5 @@
+import { liveTime } from "../helpers";
+
 const liveResults = (state = {}, action) => {
   switch (action.type) {
     case "INCOMING_LIVE_UPDATE":
@@ -5,7 +7,7 @@ const liveResults = (state = {}, action) => {
         ...state,
         flag: action.update.flag,
         price: action.update.price,
-        time: action.update.time,
+        time: liveTime(action.update.time)
       };
 
     default:
