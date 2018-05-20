@@ -1,18 +1,8 @@
-import {
-  call,
-  put,
-  takeLatest,
-  all,
-  select,
-  fork,
-} from "redux-saga/effects";
-import moment from "moment";
-import * as api from './api';
-import liveWatch from './live';
-
+import { call, put, takeLatest, all, select, fork } from "redux-saga/effects";
+import * as api from "./api";
+import liveWatch from "./live";
+import { formatDate, formatTime } from "../helpers/index";
 import { searchArrays, coinLookup, terms } from "./selectors";
-
-
 
 // List of all Coins to retrieve on initial load
 export function* initialCoins() {
@@ -44,28 +34,6 @@ export function* initialExchanges() {
     yield put({ type: "EXCHANGE_FETCH_FAILURE", error });
   }
 }
-
-// Format the date in the json to m/dd format
-const formatDate = jsondata => {
-  const fixDate = jsondata.map(obj => {
-    let rObj = {};
-    rObj = obj;
-    rObj.time = moment(rObj.time * 1000).format("MM/D");
-    return rObj;
-  });
-  return fixDate;
-};
-
-// Format the time in the json to hh:mm format
-const formatTime = jsondata => {
-  const fixTime = jsondata.map(obj => {
-    let rObj = {};
-    rObj = obj;
-    rObj.time = moment(rObj.time * 1000).format("LT");
-    return rObj;
-  });
-  return fixTime;
-};
 
 export function* byYear(...args) {
   try {
@@ -123,25 +91,21 @@ function* selectors(action) {
       convertFrom: newArray.convertFrom
     });
     yield put({ type: "COIN_LOOKUP", id, coin });
-    console.log(coin, "coin data");
   } else {
     yield put({ type: "SEARCH_REQUEST" });
     yield put({ type: "COIN_LOOKUP", id, coin });
-    console.log(coin.Name, "dest coin");
     if (coin.Name === "BCH" || "BTC" || "LTC" || "ETH" || "BNB") {
-      console.log("dollar conversion");
       const dollars = yield call(api.dollarExchange, coin.Name);
       yield put({ type: "DOLLAR_CONVERSION", dollars });
     }
   }
 }
 
-
 // New Search
 
 function* search() {
   const results = yield call(terms);
-  // Connect for live results 
+  // Connect for live results
   yield fork(liveWatch);
   // Get current results for charts
   try {
