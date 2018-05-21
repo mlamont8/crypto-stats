@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 
 const CoinLineChart = props => (
   <div className="info-block lineChart">
-    <h1>LAST 10 HOURS</h1>
+    <h3>LAST 10 HOURS</h3>
     <div className="row">
       <ResponsiveContainer width="100%" height={200}>
         <LineChart

@@ -13,7 +13,6 @@ export const formatDate = jsondata => {
 
 // Format the time in the json to hh:mm format
 export const formatTime = jsondata => {
-  console.log(jsondata, "fixed time jsondata");
   const fixTime = jsondata.map(obj => {
     let rObj = {};
     rObj = obj;
@@ -23,6 +22,5 @@ export const formatTime = jsondata => {
   return fixTime;
 };
 
-export const liveTime = time => {
-  return moment(time * 1000).format("LT");
-};
+// Format individual time item
+export const liveTime = time => moment(time * 1000).format("LT");

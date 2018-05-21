@@ -6,6 +6,7 @@ import Summary from "./summary/summary";
 import DailyBarChart from "../components/dailyBarChart/DailyBarChart";
 import DailyAreaChart from "../components/dailyAreaChart/DailyAreaChart";
 import ExchangeVolume from "../components/exchangeVolume/exchangeVolume";
+import LiveGrid from "../components/liveGrid/liveGrid";
 
 class Main extends React.Component {
   componentDidMount() {
@@ -23,7 +24,15 @@ class Main extends React.Component {
           <Summary />
 
           <div className="row first-row">
-            <div className="col-md-12">
+            <div className="col-md-4">
+              <LiveGrid
+                price={this.props.price}
+                flag={this.props.flag}
+                time={this.props.time}
+                liveResults={this.props.liveResults}
+              />
+            </div>
+            <div className="col-md-8">
               <DailyAreaChart data={thirtyDay} />
             </div>
           </div>
@@ -55,7 +64,11 @@ const mapStateToProps = state => ({
   exchangeVolume: state.topExchanges.data,
   market: state.searchTerm.market,
   from: state.searchTerm.convertFrom,
-  to: state.searchTerm.convertTo
+  to: state.searchTerm.convertTo,
+  price: state.liveResults.price,
+  flag: state.liveResults.flag,
+  time: state.liveResults.time,
+  liveResults: state.liveResults
 });
 
 Main.propTypes = {
@@ -63,13 +76,21 @@ Main.propTypes = {
   thirtyDay: PropTypes.arrayOf(PropTypes.object),
   exchangeVolume: PropTypes.arrayOf(PropTypes.object),
   fetch: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool.isRequired,
+  price: PropTypes.string,
+  flag: PropTypes.string,
+  time: PropTypes.string,
+  liveResults: PropTypes.objectOf(PropTypes.string)
 };
 
 Main.defaultProps = {
   sevenDay: [],
   thirtyDay: [],
-  exchangeVolume: []
+  exchangeVolume: [],
+  price: "",
+  flag: "",
+  time: "",
+  liveResults: {}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
