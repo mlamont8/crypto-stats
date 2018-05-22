@@ -55,6 +55,7 @@ const streamFormat = stream => {
 }
 
 export default function* liveWatch() {
+    let payloadId = 0;
     const socket = io.connect("https://streamer.cryptocompare.com/");
     const socketChannel = yield call(subscribe, socket);
     const currentResult = yield call(searchResults);
@@ -67,6 +68,7 @@ export default function* liveWatch() {
         if (update !== null) {
             yield put({
                 type: "INCOMING_LIVE_UPDATE",
+                id: payloadId += 1,
                 update
             });
         }

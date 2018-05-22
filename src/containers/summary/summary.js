@@ -7,33 +7,38 @@ import LiveResults from "../../components/liveResults/liveResults";
 
 // Top Summary information
 
-const Summary = props => (
-  <div className="row summary">
-    <div className="col-sm-2 summary-left">
-      <div className="summary-block">
-        <Image src={props.image} responsive />
-        <h1>{props.coinFrom}</h1>
-        <h2>{props.coinName}</h2>
+const Summary = props => {
+  const currentResult = (props.liveResults[props.liveResults.length - 1]);
+  const { price, flag } = currentResult;
+  return (
+    <div className="row summary" >
+      <div className="col-sm-2 summary-left">
+        <div className="summary-block">
+          <Image src={props.image} responsive />
+          <h1>{props.coinFrom}</h1>
+          <h2>{props.coinName}</h2>
+        </div>
       </div>
-    </div>
-    <div className="col-sm-8 summary-center">
-      <div className="summary-block">
-        <LineChart data={props.byHour} />
+      <div className="col-sm-8 summary-center">
+        <div className="summary-block">
+          <LineChart data={props.byHour} />
+        </div>
       </div>
-    </div>
-    <div className="col-sm-2 summary-right summary-block">
-      <div className="info-block">
-        <LiveResults
-          price={props.price}
-          exchange={props.exchange}
-          flag={props.flag}
-          dollar={props.inDollars}
-          to={props.coinTo}
-        />
+      <div className="col-sm-2 summary-right summary-block">
+        <div className="info-block">
+          <LiveResults
+            price={price}
+            exchange={props.exchange}
+            flag={flag}
+            dollar={props.inDollars}
+            to={props.coinTo}
+          />
+        </div>
       </div>
-    </div>
-  </div>
-);
+    </div >
+  )
+}
+
 
 const mapStateToProps = state => ({
   exchange: state.searchTerm.market,
@@ -42,9 +47,9 @@ const mapStateToProps = state => ({
   byHour: state.coinByHour.coinByHour,
   image: state.coinUrl.convertFrom,
   coinName: state.coinName.convertFrom,
-  price: state.liveResults.price,
-  flag: state.liveResults.flag,
-  inDollars: state.byDollar.coinConversion
+  inDollars: state.byDollar.coinConversion,
+  liveResults: state.liveResults,
+  newResult: state.liveResults[state.liveResults.length - 1],
 });
 
 Summary.defaultProps = {
@@ -54,8 +59,6 @@ Summary.defaultProps = {
   byHour: [],
   image: "",
   coinName: "",
-  price: "",
-  flag: "",
   inDollars: 0
 };
 
@@ -66,9 +69,15 @@ Summary.propTypes = {
   byHour: PropTypes.arrayOf(PropTypes.object),
   image: PropTypes.string,
   coinName: PropTypes.string,
-  price: PropTypes.string,
-  flag: PropTypes.string,
-  inDollars: PropTypes.number
+  inDollars: PropTypes.number,
+  liveResults: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      flag: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
 };
 
 export default connect(mapStateToProps)(Summary);

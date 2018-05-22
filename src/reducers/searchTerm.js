@@ -1,3 +1,4 @@
+
 const searchTerm = (state = {}, action) => {
   switch (action.type) {
     case "SELECTION_ENTERED":

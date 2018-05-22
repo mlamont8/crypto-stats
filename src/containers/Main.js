@@ -14,40 +14,39 @@ class Main extends React.Component {
   }
 
   render() {
-    const { isLoading, sevenDay, thirtyDay, exchangeVolume } = this.props;
+    const { isLoading, sevenDay, thirtyDay, exchangeVolume, liveResults } = this.props;
+    const currentPrice = liveResults[liveResults.length - 1];
     return isLoading ? (
       <div>Loading</div>
     ) : (
-      <div>
-        <Header />
-        <div className="container-fluid dash-container">
-          <Summary />
+        <div>
+          <Header />
+          <div className="container-fluid dash-container">
+            <Summary />
 
-          <div className="row first-row">
-            <div className="col-md-4">
-              <LiveGrid
-                price={this.props.price}
-                flag={this.props.flag}
-                time={this.props.time}
-                liveResults={this.props.liveResults}
-              />
+            <div className="row first-row">
+              <div className="col-md-4">
+                <LiveGrid
+                  currentPrice={currentPrice}
+                  liveResults={liveResults}
+                />
+              </div>
+              <div className="col-md-8">
+                <DailyAreaChart data={thirtyDay} />
+              </div>
             </div>
-            <div className="col-md-8">
-              <DailyAreaChart data={thirtyDay} />
-            </div>
-          </div>
 
-          <div className="row second-row">
-            <div className="col-md-6">
-              <DailyBarChart data={sevenDay} />
-            </div>
-            <div className="col-md-6">
-              <ExchangeVolume data={exchangeVolume} />
+            <div className="row second-row">
+              <div className="col-md-6">
+                <DailyBarChart data={sevenDay} />
+              </div>
+              <div className="col-md-6">
+                <ExchangeVolume data={exchangeVolume} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
   }
 }
 
@@ -65,9 +64,6 @@ const mapStateToProps = state => ({
   market: state.searchTerm.market,
   from: state.searchTerm.convertFrom,
   to: state.searchTerm.convertTo,
-  price: state.liveResults.price,
-  flag: state.liveResults.flag,
-  time: state.liveResults.time,
   liveResults: state.liveResults
 });
 
@@ -77,20 +73,20 @@ Main.propTypes = {
   exchangeVolume: PropTypes.arrayOf(PropTypes.object),
   fetch: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  price: PropTypes.string,
-  flag: PropTypes.string,
-  time: PropTypes.string,
-  liveResults: PropTypes.objectOf(PropTypes.string)
+  liveResults: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      flag: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
 };
 
 Main.defaultProps = {
   sevenDay: [],
   thirtyDay: [],
   exchangeVolume: [],
-  price: "",
-  flag: "",
-  time: "",
-  liveResults: {}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
