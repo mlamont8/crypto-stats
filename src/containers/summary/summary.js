@@ -8,8 +8,8 @@ import LiveResults from "../../components/liveResults/liveResults";
 // Top Summary information
 
 const Summary = props => {
-  const currentResult = (props.liveResults[props.liveResults.length - 1]);
-  const { price, flag } = currentResult;
+  const currentPrice = (props.liveResults[props.liveResults.length - 1]);
+  const { price, flag } = currentPrice;
   return (
     <div className="row summary" >
       <div className="col-sm-2 summary-left">

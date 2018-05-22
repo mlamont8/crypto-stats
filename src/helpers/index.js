@@ -23,4 +23,4 @@ export const formatTime = jsondata => {
 };
 
 // Format individual time item
-export const liveTime = time => moment(time * 1000).format("LT");
+export const liveTime = time => moment(time * 1000).format("LTS");

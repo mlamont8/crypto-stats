@@ -15,7 +15,6 @@ class Main extends React.Component {
 
   render() {
     const { isLoading, sevenDay, thirtyDay, exchangeVolume, liveResults } = this.props;
-    const currentPrice = liveResults[liveResults.length - 1];
     return isLoading ? (
       <div>Loading</div>
     ) : (
@@ -27,7 +26,6 @@ class Main extends React.Component {
             <div className="row first-row">
               <div className="col-md-4">
                 <LiveGrid
-                  currentPrice={currentPrice}
                   liveResults={liveResults}
                 />
               </div>
