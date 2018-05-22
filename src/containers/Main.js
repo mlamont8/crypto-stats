@@ -14,7 +14,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { isLoading, sevenDay, thirtyDay, exchangeVolume, liveResults } = this.props;
+    const { isLoading, sevenDay, thirtyDay, exchangeVolume, liveResults, inDollars } = this.props;
     return isLoading ? (
       <div>Loading</div>
     ) : (
@@ -27,6 +27,7 @@ class Main extends React.Component {
               <div className="col-md-4">
                 <LiveGrid
                   liveResults={liveResults}
+                  usd={inDollars}
                 />
               </div>
               <div className="col-md-8">
@@ -62,7 +63,9 @@ const mapStateToProps = state => ({
   market: state.searchTerm.market,
   from: state.searchTerm.convertFrom,
   to: state.searchTerm.convertTo,
-  liveResults: state.liveResults
+  liveResults: state.liveResults,
+  inDollars: state.byDollar.coinConversion,
+
 });
 
 Main.propTypes = {
@@ -79,6 +82,7 @@ Main.propTypes = {
       time: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
+  inDollars: PropTypes.string.isRequired,
 };
 
 Main.defaultProps = {

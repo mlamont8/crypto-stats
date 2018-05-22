@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const liveGrid = props => {
-  const { liveResults } = props;
+  const { liveResults, usd } = props;
+
   return (
     <div className="info-block live-table">
       <h3>LIVE UPDATES</h3>
@@ -11,8 +12,9 @@ const liveGrid = props => {
           <thead>
             <tr>
               <th>TIME</th>
-              <th>LAST CHANGE</th>
-              <th>Last Price</th>
+              <th>CHANGE</th>
+              <th>PRICE</th>
+              <th>USD</th>
             </tr>
           </thead>
           <tbody>
@@ -22,6 +24,7 @@ const liveGrid = props => {
                 <td>{result.time}</td>
                 <td>{result.flag}</td>
                 <td>{result.price}</td>
+                <td>${(usd * result.price).toFixed(2)}</td>
               </tr>)
             )}
           </tbody>
@@ -41,6 +44,7 @@ liveGrid.propTypes = {
       time: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
+  usd: PropTypes.string
 };
 
 export default liveGrid;
