@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Header from "../containers/header/header";
-import Summary from "./summary/summary";
-import DailyBarChart from "../components/dailyBarChart/DailyBarChart";
-import DailyAreaChart from "../components/dailyAreaChart/DailyAreaChart";
-import ExchangeVolume from "../components/exchangeVolume/exchangeVolume";
-import LiveGrid from "../components/liveGrid/liveGrid";
+import Header from "../../containers/header/header";
+import Summary from "../summary/summary";
+import DailyBarChart from "../../components/dailyBarChart/DailyBarChart";
+import DailyAreaChart from "../../components/dailyAreaChart/DailyAreaChart";
+import ExchangeVolume from "../../components/exchangeVolume/exchangeVolume";
+import LiveGrid from "../../components/liveGrid/liveGrid";
 
 class Main extends React.Component {
   componentDidMount() {

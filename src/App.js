@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Main from "./containers/Main";
+import Main from "./containers/main/Main";
 import fontawesome from "@fortawesome/fontawesome";
 import solids from "@fortawesome/fontawesome-free-solid";
 import "./App.css";

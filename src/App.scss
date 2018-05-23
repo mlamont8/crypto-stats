@@ -1,30 +1,11 @@
 @import "variables";
 @import "mixins";
 
-.dash-container {
-  background: linear-gradient(to bottom left, $dGradient, $lGradient);
-  color: $white;
-  fill: $white;
-  padding-top: 20px;
-}
 
-.info-block {
-  background: $boxColor;
-  padding: 5px 10px;
-  @include border-radius(10px);
-  opacity: 0.8;
-}
-h1 {
-  margin-top: 5px;
-}
-
-.first-row,
-.second-row {
-  margin-top: 30px;
-}
 
 @import "./containers/summary/summary";
 @import "./containers/header/header";
+@import "./containers/main/main";
 @import "./components/selectControl/selectControl";
 @import "./components/liveResults/liveResults";
 @import "./components/lineChart/lineChart";
