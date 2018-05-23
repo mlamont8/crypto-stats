@@ -43,10 +43,10 @@ const streamFormat = stream => {
     // 10 {Volume24h}
     // 11 {Volume24hTo}
     // 12 {MaskInt} 
-
+    // MaskInt describes the format of raw stream
     // The only usable MaskInts are ce9 or 38ce9
+
     const maskInt = stream[stream.length - 1];
-    console.log('maskInt', maskInt.substr(-3), maskInt)
     if (stream[0] === "2" && maskInt.substr(-3) === "ce9") {
         return {
             flag: stream[4],

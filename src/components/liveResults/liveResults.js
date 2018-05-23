@@ -8,7 +8,7 @@ const LiveResults = props => {
   const arrow = flag === "2" ? "arrow-down" : "arrow-up";
   return (
     <div className="current text-center">
-      <h3>CURRENT</h3>
+      <h1>CURRENT</h1>
       <FontAwesomeIcon icon={["fas", "coins"]} size="2x" />
       {exchange}
       <hr />

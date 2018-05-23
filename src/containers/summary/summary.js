@@ -25,7 +25,7 @@ const Summary = props => {
         </div>
       </div>
       <div className="col-sm-2 summary-right summary-block">
-        <div className="info-block">
+        <div className="summary-block">
           <LiveResults
             price={price}
             exchange={props.exchange}

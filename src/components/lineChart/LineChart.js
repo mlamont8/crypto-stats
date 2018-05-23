@@ -11,8 +11,8 @@ import {
 import PropTypes from "prop-types";
 
 const CoinLineChart = props => (
-  <div className="info-block lineChart">
-    <h3>LAST 10 HOURS</h3>
+  <div className="summary-block lineChart">
+    <h1>LAST 10 HOURS</h1>
     <div className="row">
       <ResponsiveContainer width="100%" height={200}>
         <LineChart

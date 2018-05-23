@@ -10,8 +10,9 @@ const exchangeVolume = (props) => {
     ? null
     :
     <div className="info-block">
+      <h1>VOLUME BY EXCHANGE</h1>
       <ResponsiveContainer width="100%" height={300}>
-        <PieChart width={730} height={250}>
+        <PieChart width={730} height={300}>
           <Legend layout="vertical" align="right" verticalAlign="middle" height={36} />
           <Pie
             data={data}
@@ -24,8 +25,8 @@ const exchangeVolume = (props) => {
             fill="#82ca9d"
           >
             {
-          data.map((MARKET, index) => <Cell key={MARKET} fill={COLORS[index % COLORS.length]} />)
-          }
+              data.map((MARKET, index) => <Cell key={MARKET} fill={COLORS[index % COLORS.length]} />)
+            }
           </Pie>
         </PieChart>
       </ResponsiveContainer>

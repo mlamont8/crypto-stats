@@ -82,13 +82,14 @@ Main.propTypes = {
       time: PropTypes.string,
     }).isRequired
   ).isRequired,
-  inDollars: PropTypes.string,
+  inDollars: PropTypes.number,
 };
 
 Main.defaultProps = {
   sevenDay: [],
   thirtyDay: [],
   exchangeVolume: [],
+  inDollars: 0,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

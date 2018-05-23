@@ -8,7 +8,7 @@ const liveGrid = props => {
     liveResults : liveResults.slice(-10);
   return (
     <div className="info-block live-table">
-      <h3>LIVE UPDATES</h3>
+      <h1>LIVE UPDATES</h1>
       <div className="row">
         <table>
           <thead>
@@ -46,7 +46,7 @@ liveGrid.propTypes = {
       time: PropTypes.string,
     }).isRequired
   ).isRequired,
-  usd: PropTypes.string
+  usd: PropTypes.number.isRequired,
 };
 
 export default liveGrid;

@@ -14,7 +14,7 @@ import PropTypes from "prop-types";
 
 const DailyAreaChart = props => (
   <div className="info-block">
-    <h3>LAST 15 DAYS</h3>
+    <h1>LAST 15 DAYS</h1>
     <ResponsiveContainer width="100%" height={300}>
       <AreaChart
         data={props.data}

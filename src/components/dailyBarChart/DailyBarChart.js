@@ -13,7 +13,8 @@ import PropTypes from "prop-types";
 
 const DailyBarChart = props => (
   <div className="info-block">
-    <ResponsiveContainer width="100%" height={300}>
+    <h1>DAILY BAR CHART</h1>
+    <ResponsiveContainer width="100%" height={200}>
       <BarChart
         data={props.data}
         margin={{
