@@ -73,9 +73,9 @@ Summary.propTypes = {
   liveResults: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      flag: PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired,
-      time: PropTypes.string.isRequired,
+      flag: PropTypes.string,
+      price: PropTypes.string,
+      time: PropTypes.string,
     }).isRequired
   ).isRequired,
 };

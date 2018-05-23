@@ -2,11 +2,7 @@ import { liveTime } from "../helpers";
 
 const initialState = [{
   id: 0,
-  flag: "",
-  price: "0",
-  time: "-",
 }]
-
 const liveResults = (state = initialState, action) => {
   switch (action.type) {
     case "INCOMING_LIVE_UPDATE":

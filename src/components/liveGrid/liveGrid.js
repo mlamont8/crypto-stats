@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 
 const liveGrid = props => {
   const { liveResults, usd } = props;
-
+  // get last 10 items in array
+  const fixedArray = liveResults <= 10 ?
+    liveResults : liveResults.slice(-10);
   return (
     <div className="info-block live-table">
       <h3>LIVE UPDATES</h3>
@@ -19,7 +21,7 @@ const liveGrid = props => {
           </thead>
           <tbody>
 
-            {liveResults.slice(1).map((result) =>
+            {fixedArray.slice(1).map((result) =>
               (<tr key={result.id}>
                 <td>{result.time}</td>
                 <td>{result.flag}</td>
@@ -39,9 +41,9 @@ liveGrid.propTypes = {
   liveResults: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      flag: PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired,
-      time: PropTypes.string.isRequired,
+      flag: PropTypes.string,
+      price: PropTypes.string,
+      time: PropTypes.string,
     }).isRequired
   ).isRequired,
   usd: PropTypes.string
