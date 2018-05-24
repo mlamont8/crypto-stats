@@ -24,3 +24,13 @@ export const formatTime = jsondata => {
 
 // Format individual time item
 export const liveTime = time => moment(time * 1000).format("LTS");
+
+export const monthYear = jsondata => {
+  const newTime = jsondata.map(obj => {
+    let rObj = {};
+    rObj = obj;
+    rObj.time = moment(rObj.time * 1000).format("M/YY");
+    return rObj;
+  });
+  return newTime;
+}

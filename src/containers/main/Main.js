@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Header from "../../containers/header/header";
 import Summary from "../summary/summary";
-import DailyBarChart from "../../components/dailyBarChart/DailyBarChart";
+import HistoricalChart from "../../components/historicalChart/historicalChart";
 import DailyAreaChart from "../../components/dailyAreaChart/DailyAreaChart";
 import ExchangeVolume from "../../components/exchangeVolume/exchangeVolume";
 import LiveGrid from "../../components/liveGrid/liveGrid";
@@ -14,7 +14,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { isLoading, sevenDay, thirtyDay, exchangeVolume, liveResults, inDollars } = this.props;
+    const { isLoading, fifteenDay, historicalDay, exchangeVolume, liveResults, inDollars } = this.props;
     return isLoading ? (
       <div>Loading</div>
     ) : (
@@ -31,13 +31,13 @@ class Main extends React.Component {
                 />
               </div>
               <div className="col-md-8">
-                <DailyAreaChart data={thirtyDay} />
+                <DailyAreaChart data={fifteenDay} />
               </div>
             </div>
 
             <div className="row second-row">
               <div className="col-md-6">
-                <DailyBarChart data={sevenDay} />
+                <HistoricalChart data={historicalDay} />
               </div>
               <div className="col-md-6">
                 <ExchangeVolume data={exchangeVolume} />
@@ -56,8 +56,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  sevenDay: state.coinByDay.sevenDay,
-  thirtyDay: state.coinByDay.thirtyDay,
+  fifteenDay: state.coinByDay.fifteenDay,
+  historicalDay: state.historical.fullHistory,
   isLoading: state.isLoading.fetching,
   exchangeVolume: state.topExchanges.data,
   market: state.searchTerm.market,
@@ -69,8 +69,8 @@ const mapStateToProps = state => ({
 });
 
 Main.propTypes = {
-  sevenDay: PropTypes.arrayOf(PropTypes.object),
-  thirtyDay: PropTypes.arrayOf(PropTypes.object),
+  fifteenDay: PropTypes.arrayOf(PropTypes.object),
+  historicalDay: PropTypes.arrayOf(PropTypes.object),
   exchangeVolume: PropTypes.arrayOf(PropTypes.object),
   fetch: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
@@ -86,8 +86,8 @@ Main.propTypes = {
 };
 
 Main.defaultProps = {
-  sevenDay: [],
-  thirtyDay: [],
+  fifteenDay: [],
+  historicalDay: [],
   exchangeVolume: [],
   inDollars: 0,
 };

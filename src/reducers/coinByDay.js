@@ -1,15 +1,9 @@
 const coinByDay = (state = {}, action) => {
   switch (action.type) {
-    case 'SEVEN_DAY_UPDATE':
+    case 'FIFTEEN_DAY_UPDATE':
       return {
         ...state,
-        sevenDay: action.newData,
-      };
-
-    case 'THIRTY_DAY_UPDATE':
-      return {
-        ...state,
-        thirtyDay: action.data,
+        fifteenDay: action.newData,
       };
 
     default:

@@ -6,9 +6,14 @@ export const exchangeGet = () =>
 export const coinsGet = () =>
     axios.get("https://min-api.cryptocompare.com/data/all/coinlist");
 
-export const getByYear = (exch, from, to) =>
+export const getByDay = (exch, from, to) =>
     axios.get(
-        `https://min-api.cryptocompare.com/data/histoday?fsym=${from}&tsym=${to}&limit=29&aggregate=1&e=${exch}`
+        `https://min-api.cryptocompare.com/data/histoday?fsym=${from}&tsym=${to}&limit=15&aggregate=1&e=${exch}`
+    );
+
+export const historical = (exch, from, to) =>
+    axios.get(
+        `https://min-api.cryptocompare.com/data/histoday?fsym=${from}&tsym=${to}&allData=true&aggregate=1&e=${exch}`
     );
 
 export const getByHour = (from, to) =>

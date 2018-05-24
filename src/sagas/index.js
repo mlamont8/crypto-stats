@@ -1,7 +1,7 @@
 import { call, put, takeLatest, all, select, fork } from "redux-saga/effects";
 import * as api from "./api";
 import liveWatch from "./live";
-import { formatDate, formatTime } from "../helpers/index";
+import { formatDate, formatTime, monthYear } from "../helpers/index";
 import { searchArrays, coinLookup, terms } from "./selectors";
 
 // List of all Coins to retrieve on initial load
@@ -35,19 +35,24 @@ export function* initialExchanges() {
   }
 }
 
-export function* byYear(...args) {
+export function* historical(...args) {
   try {
-    const yearData = yield call(api.getByYear, ...args);
-    const yearChartData = formatDate(yearData.data.Data);
-    const newData = yearChartData.slice(23);
-    yield all([
-      put({ type: "SEVEN_DAY_UPDATE", newData }),
-      put({ type: "THIRTY_DAY_UPDATE", data: yearChartData })
-    ]);
-    yield put({ type: "YEAR_FETCH_SUCCESS" });
+    const historicalData = yield call(api.historical, ...args)
+    const fullHistory = monthYear(historicalData.data.Data);
+    yield put({ type: "HISTORICAL_DAY_UPDATE", fullHistory })
   } catch (error) {
     // dispatch a failure action to the store with the error
-    yield put({ type: "YEAR_FETCH_FAILURE", error });
+    yield put({ type: "HISTORICAL_FETCH_FAILURE", error });
+  }
+}
+
+export function* byDay(...args) {
+  try {
+    const dayData = yield call(api.getByDay, ...args);
+    const newData = formatDate(dayData.data.Data);
+    yield put({ type: "FIFTEEN_DAY_UPDATE", newData });
+  } catch (error) {
+    yield put({ type: "FIFTEEN_DAY_FETCH_FAILURE", error });
   }
 }
 
@@ -110,7 +115,8 @@ function* search() {
   // Get current results for charts
   try {
     yield all([
-      call(byYear, results.market, results.convertFrom, results.convertTo),
+      call(historical, results.market, results.convertFrom, results.convertTo),
+      call(byDay, results.market, results.convertFrom, results.convertTo),
       call(byHour, results.convertFrom, results.convertTo),
       call(byExchange, results.convertFrom, results.convertTo)
     ]);
