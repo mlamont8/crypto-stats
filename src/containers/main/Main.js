@@ -14,7 +14,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { isLoading, fifteenDay, historicalDay, exchangeVolume, liveResults, inDollars } = this.props;
+    const { isLoading, fifteenDay, historicalDay, exchangeVolume, liveResults, inDollars, to } = this.props;
     return isLoading ? (
       <div>Loading</div>
     ) : (
@@ -28,6 +28,7 @@ class Main extends React.Component {
                 <LiveGrid
                   liveResults={liveResults}
                   usd={inDollars}
+                  to={to}
                 />
               </div>
               <div className="col-md-8">
@@ -83,6 +84,7 @@ Main.propTypes = {
     }).isRequired
   ).isRequired,
   inDollars: PropTypes.number,
+  to: PropTypes.string,
 };
 
 Main.defaultProps = {
@@ -90,6 +92,7 @@ Main.defaultProps = {
   historicalDay: [],
   exchangeVolume: [],
   inDollars: 0,
+  to: "",
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

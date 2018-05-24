@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+
 
 const liveGrid = props => {
-  const { liveResults, usd } = props;
+  const { liveResults, usd, to } = props;
   // get last 10 items in array
   const fixedArray = liveResults <= 10 ?
     liveResults : liveResults.slice(-10);
@@ -13,21 +15,26 @@ const liveGrid = props => {
         <table>
           <thead>
             <tr>
+              <th />
               <th>TIME</th>
-              <th>CHANGE</th>
               <th>PRICE</th>
               <th>USD</th>
             </tr>
           </thead>
           <tbody>
 
-            {fixedArray.slice(1).map((result) =>
-              (<tr key={result.id}>
+            {fixedArray.slice(1).map((result) => {
+              const arrow = result.flag === "2" ? "arrow-circle-down" : "arrow-circle-up";
+              return (<tr key={result.id}>
+                <td><FontAwesomeIcon icon={["fas", arrow]} /></td>
                 <td>{result.time}</td>
-                <td>{result.flag}</td>
-                <td>{result.price}</td>
-                <td>${(usd * result.price).toFixed(2)}</td>
+                <td>{result.price}<span className="toPrice">{to}</span></td>
+                <td>${(usd * result.price).toFixed(2)}
+
+
+                </td>
               </tr>)
+            }
             )}
           </tbody>
         </table>
@@ -47,6 +54,7 @@ liveGrid.propTypes = {
     }).isRequired
   ).isRequired,
   usd: PropTypes.number.isRequired,
+  to: PropTypes.string,
 };
 
 export default liveGrid;
