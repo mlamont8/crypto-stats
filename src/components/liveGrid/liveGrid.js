@@ -13,9 +13,11 @@ const liveGrid = props => {
   const currentSearch = liveResults[currentloc].counter;
   console.log('current search', currentSearch);
   // create new array that only has the currentsearch as the counter
+  const filteredArray = liveResults.filter((value) => value.counter === currentSearch);
+  console.log('filtered array', filteredArray);
   // get last 10 items in array
-  const fixedArray = liveResults <= 10 ?
-    liveResults : liveResults.slice(-10);
+  const fixedArray = filteredArray <= 10 ?
+    filteredArray : filteredArray.slice(-10);
   return (
     <div className="info-block live-table">
       <h1>LIVE UPDATES</h1>
@@ -38,8 +40,6 @@ const liveGrid = props => {
                 <td>{result.time}</td>
                 <td>{result.price}<span className="toPrice">{to}</span></td>
                 <td>${(usd * result.price).toFixed(2)}
-
-
                 </td>
               </tr>)
             }
