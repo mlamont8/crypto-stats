@@ -39,7 +39,7 @@ export function* historical(...args) {
   try {
     const historicalData = yield call(api.historical, ...args)
     const fullHistory = monthYear(historicalData.data.Data);
-    yield put({ type: "HISTORICAL_DAY_UPDATE", fullHistory })
+    yield put({ type: "HISTORICAL_UPDATE", fullHistory })
   } catch (error) {
     // dispatch a failure action to the store with the error
     yield put({ type: "HISTORICAL_FETCH_FAILURE", error });
@@ -107,11 +107,12 @@ function* selectors(action) {
 }
 
 // New Search
-
+var searchCounter = 0;
 function* search() {
   const results = yield call(terms);
+  searchCounter += 1;
   // Connect for live results
-  yield fork(liveWatch);
+  yield fork(liveWatch, searchCounter);
   // Get current results for charts
   try {
     yield all([

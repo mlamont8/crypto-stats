@@ -9,6 +9,7 @@ const liveResults = (state = initialState, action) => {
       return [
         ...state,
         {
+          counter: action.counter,
           id: action.id,
           flag: action.update.flag,
           price: action.update.price,

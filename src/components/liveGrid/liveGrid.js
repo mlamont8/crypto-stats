@@ -5,6 +5,14 @@ import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 
 const liveGrid = props => {
   const { liveResults, usd, to } = props;
+  console.log('raw Live Results', liveResults)
+  // get the counter of the last object of the array, 
+  // this is the counter of the last search done by the user.
+  const currentloc = liveResults.length - 1;
+  console.log('current location', currentloc);
+  const currentSearch = liveResults[currentloc].counter;
+  console.log('current search', currentSearch);
+  // create new array that only has the currentsearch as the counter
   // get last 10 items in array
   const fixedArray = liveResults <= 10 ?
     liveResults : liveResults.slice(-10);
@@ -25,7 +33,7 @@ const liveGrid = props => {
 
             {fixedArray.slice(1).map((result) => {
               const arrow = result.flag === "2" ? "arrow-circle-down" : "arrow-circle-up";
-              return (<tr key={result.id}>
+              return (<tr key={result.time}>
                 <td><FontAwesomeIcon icon={["fas", arrow]} /></td>
                 <td>{result.time}</td>
                 <td>{result.price}<span className="toPrice">{to}</span></td>
