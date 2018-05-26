@@ -87,5 +87,9 @@
   width: 100%;
   margin-left: 15px; }
 
+.form-group {
+  margin-top: 5px;
+  margin-bottom: 0; }
+
 h1 {
   font-size: 20px; }
