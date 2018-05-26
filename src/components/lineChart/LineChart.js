@@ -28,7 +28,7 @@ const CoinLineChart = props => (
         >
           <CartesianGrid strokeDasharray="5 5" stroke="none" />
           <XAxis dataKey="time" tick={{ fill: "#F7FDFF" }} />
-          <YAxis tick={{ fill: "#F7FDFF" }} domain={["dataMin", "dataMax"]} />
+          <YAxis tick={{ fill: "#F7FDFF" }} mirror={true} domain={["dataMin", "dataMax"]} />
           <Tooltip />
           <Line type="monotone" dataKey="open" stroke="#82ca9d" dot={false} />
         </LineChart>

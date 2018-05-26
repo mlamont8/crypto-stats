@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Image } from "react-bootstrap";
 import LineChart from "../../components/lineChart/LineChart";
 import LiveResults from "../../components/liveResults/liveResults";
+import ImageBlock from "../../components/imageBlock/imageBlock";
 
 // Top Summary information
 
@@ -14,9 +15,11 @@ const Summary = props => {
     <div className="row summary" >
       <div className="col-sm-2 summary-left">
         <div className="summary-block">
-          <Image src={props.image} responsive />
-          <h1>{props.coinFrom}</h1>
-          <h2>{props.coinName}</h2>
+          <ImageBlock
+            img={props.image}
+            coinFrom={props.coinFrom}
+            coinName={props.coinName}
+          />
         </div>
       </div>
       <div className="col-sm-8 summary-center">
