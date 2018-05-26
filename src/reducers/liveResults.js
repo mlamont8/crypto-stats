@@ -2,6 +2,8 @@ import { liveTime } from "../helpers";
 
 const initialState = [{
   id: 0,
+  counter: 0,
+  time: "",
 }]
 const liveResults = (state = initialState, action) => {
   switch (action.type) {
