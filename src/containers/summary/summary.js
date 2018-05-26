@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Image } from "react-bootstrap";
 import LineChart from "../../components/lineChart/LineChart";
 import LiveResults from "../../components/liveResults/liveResults";
 import ImageBlock from "../../components/imageBlock/imageBlock";
