@@ -37,9 +37,10 @@ export function* initialExchanges() {
 
 export function* historical(...args) {
   try {
-    const historicalData = yield call(api.historical, ...args)
+    const historicalData = yield call(api.historical, ...args);
+    console.log("input historical data", historicalData.data.Data);
     const fullHistory = monthYear(historicalData.data.Data);
-    yield put({ type: "HISTORICAL_UPDATE", fullHistory })
+    yield put({ type: "HISTORICAL_UPDATE", fullHistory });
   } catch (error) {
     // dispatch a failure action to the store with the error
     yield put({ type: "HISTORICAL_FETCH_FAILURE", error });
@@ -49,6 +50,7 @@ export function* historical(...args) {
 export function* byDay(...args) {
   try {
     const dayData = yield call(api.getByDay, ...args);
+    console.log("input Format Date", dayData.data.Data);
     const newData = formatDate(dayData.data.Data);
     yield put({ type: "FIFTEEN_DAY_UPDATE", newData });
   } catch (error) {
@@ -59,6 +61,7 @@ export function* byDay(...args) {
 export function* byHour(...args) {
   try {
     const hourData = yield call(api.getByHour, ...args);
+    console.log("input format time", hourData.data.Data);
     const hourChartData = formatTime(hourData.data.Data);
     yield put({ type: "HOUR_FETCH_SUCCESS", data: hourChartData });
   } catch (error) {

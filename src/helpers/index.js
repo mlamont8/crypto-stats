@@ -33,4 +33,4 @@ export const monthYear = jsondata => {
     return rObj;
   });
   return newTime;
-}
+};
