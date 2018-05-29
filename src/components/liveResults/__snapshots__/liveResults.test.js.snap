@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`liveResults component renders correctly 1`] = `
+<div
+  className="current text-center"
+>
+  <h1>
+    CURRENT
+  </h1>
+  Binance
+  <hr />
+  <div
+    className="row"
+  >
+    <div
+      className="liveItem"
+    >
+      <span
+        className="price"
+      >
+        0.0000379
+      </span>
+      <span
+        className="toPrice"
+      >
+        BTC
+      </span>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <span
+      className="conversion"
+      id="arrow-up"
+    >
+      ($
+      0.28
+      )
+    </span>
+  </div>
+</div>
+`;

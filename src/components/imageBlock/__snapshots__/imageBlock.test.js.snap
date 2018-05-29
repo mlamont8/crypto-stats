@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageBlock component renders correctly 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col-xs-6"
+    >
+      <img
+        className="img-responsive img-circle"
+        src="https://url.com/testurl.jpg"
+      />
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col-xs-12"
+    >
+      <h1>
+        ARK
+      </h1>
+      <h2>
+        Test Coin Name
+      </h2>
+    </div>
+  </div>
+</div>
+`;
