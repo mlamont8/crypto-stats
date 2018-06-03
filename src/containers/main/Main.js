@@ -10,13 +10,17 @@ import LiveGrid from "../../components/liveGrid/liveGrid";
 
 class Main extends React.Component {
   componentDidMount() {
-    this.props.fetch();
+    this.props.fetch(true);
   }
 
   render() {
-    const { isLoading, fifteenDay, historicalDay, exchangeVolume, liveResults, inDollars, to } = this.props;
-    return isLoading ? (
-      <div>Loading</div>
+    const { fifteenDay, firstLoad, historicalDay, exchangeVolume, liveResults, inDollars, to } = this.props;
+    console.log('first load', firstLoad);
+    return firstLoad ? (
+      <div>
+        <Header />
+        <div>FIRST PAGE LOAD</div>
+      </div>
     ) : (
         <div>
           <Header />
@@ -51,15 +55,15 @@ class Main extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetch: () => {
-    dispatch({ type: "EXCHANGE_FETCH_REQUESTED" });
+  fetch: (bool) => {
+    dispatch({ type: "INITIAL_MOUNT", status: bool });
   }
 });
 
 const mapStateToProps = state => ({
   fifteenDay: state.coinByDay.fifteenDay,
   historicalDay: state.historical.fullHistory,
-  isLoading: state.isLoading.fetching,
+  firstLoad: state.isLoading.firstLoad,
   exchangeVolume: state.topExchanges.data,
   market: state.searchTerm.market,
   from: state.searchTerm.convertFrom,
@@ -74,7 +78,7 @@ Main.propTypes = {
   historicalDay: PropTypes.arrayOf(PropTypes.object),
   exchangeVolume: PropTypes.arrayOf(PropTypes.object),
   fetch: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  firstLoad: PropTypes.bool.isRequired,
   liveResults: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

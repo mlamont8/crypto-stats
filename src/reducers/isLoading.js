@@ -1,4 +1,4 @@
-const loadingState = { fetching: false };
+const loadingState = { fetching: false, firstLoad: true };
 
 const isLoading = (state = loadingState, action) => {
   switch (action.type) {
@@ -12,8 +12,21 @@ const isLoading = (state = loadingState, action) => {
     case "FETCH_SUCCESS":
       return {
         ...state,
-        fetching: false
+        fetching: false,
+
       };
+
+    case "INITIAL_LOAD":
+      return {
+        ...state,
+        firstLoad: action.status
+      };
+
+    case "NEW_SEARCH":
+      return {
+        ...state,
+        firstLoad: action.status
+      }
 
     default:
       return state;

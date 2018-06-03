@@ -1,8 +1,8 @@
-import { call, put, takeLatest, all, select, fork } from "redux-saga/effects";
+import { all, call, fork, put, select, takeLatest } from "redux-saga/effects";
+import { formatDate, formatTime, monthYear } from "../helpers/index";
 import * as api from "./api";
 import liveWatch from "./live";
-import { formatDate, formatTime, monthYear } from "../helpers/index";
-import { searchArrays, coinLookup, terms } from "./selectors";
+import { coinLookup, searchArrays, terms } from "./selectors";
 
 // List of all Coins to retrieve on initial load
 export function* initialCoins() {
@@ -26,13 +26,21 @@ export function* initialExchanges() {
     yield all([
       put({ type: "EXCHANGE_FETCH_SUCCESS", exchanges }),
       put({ type: "MARKET_LIST_CREATED", exchanges }),
-      call(initialCoins)
+      // call(initialCoins)
     ]);
     yield put({ type: "FETCH_SUCCESS" });
   } catch (error) {
     // dispatch a failure action to the store with the error
     yield put({ type: "EXCHANGE_FETCH_FAILURE", error });
   }
+}
+
+
+export function* initialMount(action) {
+
+  yield put({ type: "INITIAL_LOAD", status: action.status });
+  yield call(initialExchanges);
+  yield call(initialCoins);
 }
 
 export function* historical(...args) {
@@ -122,17 +130,18 @@ function* search() {
       call(historical, results.market, results.convertFrom, results.convertTo),
       call(byDay, results.market, results.convertFrom, results.convertTo),
       call(byHour, results.convertFrom, results.convertTo),
-      call(byExchange, results.convertFrom, results.convertTo)
+      call(byExchange, results.convertFrom, results.convertTo),
+      put({ type: "NEW_SEARCH", status: false }),
     ]);
     yield put({ type: "FETCH_SUCCESS" });
+
   } catch (error) {
     yield put({ type: "SEARCH_FETCH_FAILURE", error });
   }
 }
 
 function* mySaga() {
-  yield takeLatest("EXCHANGE_FETCH_REQUESTED", initialExchanges);
-  yield takeLatest("COIN_FETCH_REQUESTED", initialCoins);
+  yield takeLatest("INITIAL_MOUNT", initialMount);
   yield takeLatest("SEARCH_REQUEST", search);
   yield takeLatest("SELECTION_ENTERED", selectors);
 }
