@@ -7,6 +7,7 @@ import HistoricalChart from "../../components/historicalChart/historicalChart";
 import DailyAreaChart from "../../components/dailyAreaChart/DailyAreaChart";
 import ExchangeVolume from "../../components/exchangeVolume/exchangeVolume";
 import LiveGrid from "../../components/liveGrid/liveGrid";
+import FirstPage from "../../components/firstPage/firstPage";
 
 class Main extends React.Component {
   componentDidMount() {
@@ -15,11 +16,10 @@ class Main extends React.Component {
 
   render() {
     const { fifteenDay, firstLoad, historicalDay, exchangeVolume, liveResults, inDollars, to } = this.props;
-    console.log('first load', firstLoad);
     return firstLoad ? (
       <div>
         <Header />
-        <div>FIRST PAGE LOAD</div>
+        <FirstPage />
       </div>
     ) : (
         <div>

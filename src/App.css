@@ -87,6 +87,13 @@
   width: 100%;
   margin-left: 15px; }
 
+.firstPage {
+  background: linear-gradient(to bottom left, #425E9D, #75BBD4);
+  color: #F7FDFF;
+  fill: #F7FDFF;
+  padding-top: 20px;
+  height: 700px; }
+
 .form-group {
   margin-top: 5px;
   margin-bottom: 0; }

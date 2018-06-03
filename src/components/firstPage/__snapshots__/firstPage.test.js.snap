@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`First Page component renders correctly 1`] = `
+<div
+  className="container-fluid firstPage"
+>
+  <span>
+     FIRST PAGE 
+  </span>
+  <span>
+     First render 
+  </span>
+</div>
+`;
