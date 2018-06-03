@@ -3,5 +3,15 @@
     color: $white;
     fill: $white;
     padding-top: 20px;
-    height: 700px;
+    height: 600px;
+  }
+
+  .firstPageInfo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 500px;
+    p {
+      text-align: center;
+    }
   }

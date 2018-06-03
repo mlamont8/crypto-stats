@@ -92,7 +92,15 @@
   color: #F7FDFF;
   fill: #F7FDFF;
   padding-top: 20px;
-  height: 700px; }
+  height: 600px; }
+
+.firstPageInfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 400px; }
+  .firstPageInfo p {
+    text-align: center; }
 
 .form-group {
   margin-top: 5px;
