@@ -7,6 +7,7 @@ import coinByDay from "./coinByDay";
 import coinByHour from "./coinByHour";
 import searchArrays from "./searchArrays";
 import topExchanges from "./topExchanges";
+import coinId from "./coinId";
 import coinName from "./coinName";
 import coinUrl from "./coinUrl";
 import liveResults from "./liveResults";
@@ -22,6 +23,7 @@ const cryptoApp = combineReducers({
   coinByDay,
   topExchanges,
   liveResults,
+  coinId,
   coinName,
   coinUrl,
   byDollar

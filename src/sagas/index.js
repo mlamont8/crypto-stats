@@ -25,7 +25,7 @@ export function* initialExchanges() {
     // dispatch success action and create market list
     yield all([
       put({ type: "EXCHANGE_FETCH_SUCCESS", exchanges }),
-      put({ type: "MARKET_LIST_CREATED", exchanges }),
+      put({ type: "MARKET_LIST_CREATED", exchanges })
       // call(initialCoins)
     ]);
     yield put({ type: "FETCH_SUCCESS" });
@@ -35,9 +35,7 @@ export function* initialExchanges() {
   }
 }
 
-
 export function* initialMount(action) {
-
   yield put({ type: "INITIAL_LOAD", status: action.status });
   yield call(initialExchanges);
   yield call(initialCoins);
@@ -131,10 +129,9 @@ function* search() {
       call(byDay, results.market, results.convertFrom, results.convertTo),
       call(byHour, results.convertFrom, results.convertTo),
       call(byExchange, results.convertFrom, results.convertTo),
-      put({ type: "NEW_SEARCH", status: false }),
+      put({ type: "NEW_SEARCH", status: false })
     ]);
     yield put({ type: "FETCH_SUCCESS" });
-
   } catch (error) {
     yield put({ type: "SEARCH_FETCH_FAILURE", error });
   }
