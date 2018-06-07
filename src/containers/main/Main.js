@@ -15,47 +15,51 @@ class Main extends React.Component {
   }
 
   render() {
-    const { fifteenDay, firstLoad, historicalDay, exchangeVolume, liveResults, inDollars, to } = this.props;
+    const {
+      fifteenDay,
+      firstLoad,
+      historicalDay,
+      exchangeVolume,
+      liveResults,
+      inDollars,
+      to
+    } = this.props;
     return firstLoad ? (
       <div>
-        <Header />
+        <Header firstLoad={firstLoad} />
         <FirstPage />
       </div>
     ) : (
-        <div>
-          <Header />
-          <div className="container-fluid dash-container">
-            <Summary />
+      <div>
+        <Header firstLoad={firstLoad} />
+        <div className="container-fluid dash-container">
+          <Summary />
 
-            <div className="row first-row">
-              <div className="col-md-4">
-                <LiveGrid
-                  liveResults={liveResults}
-                  usd={inDollars}
-                  to={to}
-                />
-              </div>
-              <div className="col-md-8">
-                <DailyAreaChart data={fifteenDay} />
-              </div>
+          <div className="row first-row">
+            <div className="col-md-4">
+              <LiveGrid liveResults={liveResults} usd={inDollars} to={to} />
             </div>
+            <div className="col-md-8">
+              <DailyAreaChart data={fifteenDay} />
+            </div>
+          </div>
 
-            <div className="row second-row">
-              <div className="col-md-6">
-                <HistoricalChart data={historicalDay} />
-              </div>
-              <div className="col-md-6">
-                <ExchangeVolume data={exchangeVolume} />
-              </div>
+          <div className="row second-row">
+            <div className="col-md-6">
+              <HistoricalChart data={historicalDay} />
+            </div>
+            <div className="col-md-6">
+              <ExchangeVolume data={exchangeVolume} />
             </div>
           </div>
         </div>
-      );
+      </div>
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetch: (bool) => {
+  fetch: bool => {
     dispatch({ type: "INITIAL_MOUNT", status: bool });
   }
 });
@@ -69,8 +73,7 @@ const mapStateToProps = state => ({
   from: state.searchTerm.convertFrom,
   to: state.searchTerm.convertTo,
   liveResults: state.liveResults,
-  inDollars: state.byDollar.coinConversion,
-
+  inDollars: state.byDollar.coinConversion
 });
 
 Main.propTypes = {
@@ -78,17 +81,17 @@ Main.propTypes = {
   historicalDay: PropTypes.arrayOf(PropTypes.object),
   exchangeVolume: PropTypes.arrayOf(PropTypes.object),
   fetch: PropTypes.func.isRequired,
-  firstLoad: PropTypes.bool.isRequired,
+  firstLoad: PropTypes.bool,
   liveResults: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       flag: PropTypes.string,
       price: PropTypes.string,
-      time: PropTypes.string,
+      time: PropTypes.string
     }).isRequired
   ).isRequired,
   inDollars: PropTypes.number,
-  to: PropTypes.string,
+  to: PropTypes.string
 };
 
 Main.defaultProps = {
@@ -97,6 +100,7 @@ Main.defaultProps = {
   exchangeVolume: [],
   inDollars: 0,
   to: "",
+  firstLoad: true
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
