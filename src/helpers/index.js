@@ -34,3 +34,18 @@ export const monthYear = jsondata => {
   });
   return newTime;
 };
+
+// Return only array values for the current user search attempt
+export const filterArray = liveResults => {
+  // Get number of current search
+  const currentSearchCount =
+    liveResults[liveResults.length - 1].searchesThisSession;
+  // filter to objects of current search only
+  const currentArray = liveResults.filter(
+    obj => obj.searchesThisSession === currentSearchCount
+  );
+  // Only show the last 10 results of the array if array is greater than 10
+  const lastTen =
+    currentArray.id <= 10 ? currentArray : currentArray.slice(-10);
+  return lastTen;
+};

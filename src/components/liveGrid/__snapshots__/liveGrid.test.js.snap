@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LiveGrid matches snapshot 1`] = `
+<liveResults
+  liveResults={
+    Array [
+      Object {
+        "flag": "0",
+        "id": 1,
+        "price": "0.002498",
+        "searchesThisSession": 1,
+        "time": "8:57:59 PM",
+      },
+      Object {
+        "flag": "1",
+        "id": 2,
+        "price": "0.002498",
+        "searchesThisSession": 1,
+        "time": "8:58:59 PM",
+      },
+      Object {
+        "flag": "1",
+        "id": 3,
+        "price": "0.002498",
+        "searchesThisSession": 1,
+        "time": "8:59:59 PM",
+      },
+      Object {
+        "flag": "1",
+        "id": 1,
+        "price": "0.002498",
+        "searchesThisSession": 2,
+        "time": "9:00:59 PM",
+      },
+    ]
+  }
+  to="BTC"
+  usd={7702.12}
+/>
+`;

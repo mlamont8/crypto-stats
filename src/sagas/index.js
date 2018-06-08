@@ -116,12 +116,12 @@ function* selectors(action) {
 }
 
 // New Search
-var searchCounter = 0;
+var searchesThisSession = 0;
 function* search() {
   const results = yield call(terms);
-  searchCounter += 1;
+  searchesThisSession += 1;
   // Connect for live results
-  yield fork(liveWatch, searchCounter);
+  yield fork(liveWatch, searchesThisSession);
   // Get current results for charts
   try {
     yield all([
