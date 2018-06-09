@@ -7,8 +7,7 @@ import { coinLookup, searchArrays, terms } from "./selectors";
 // List of all Coins to retrieve on initial load
 export function* initialCoins() {
   try {
-    const initialResponse = yield call(api.coinsGet);
-    const coins = initialResponse.data.Data;
+    const coins = yield call(api.coinsGet);
     // dispatch success action and create market list
     yield put({ type: "COINLIST_FETCH_SUCCESS", coins });
   } catch (error) {
@@ -106,6 +105,7 @@ function* selectors(action) {
     });
     yield put({ type: "COIN_LOOKUP", id, coin });
   } else {
+    // creates convert-to
     yield put({ type: "SEARCH_REQUEST" });
     yield put({ type: "COIN_LOOKUP", id, coin });
     if (coin.Name === "BCH" || "BTC" || "LTC" || "ETH" || "BNB") {
@@ -115,11 +115,19 @@ function* selectors(action) {
   }
 }
 
+export function* fetchSocials() {
+  // fetch id
+  // call getSocial with id
+  // success
+}
+
 // New Search
 var searchesThisSession = 0;
 function* search() {
   const results = yield call(terms);
   searchesThisSession += 1;
+  // Get Social info for Coin
+  yield call(fetchSocials);
   // Connect for live results
   yield fork(liveWatch, searchesThisSession);
   // Get current results for charts

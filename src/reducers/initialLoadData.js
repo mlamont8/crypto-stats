@@ -14,7 +14,7 @@ const initialLoadData = (state = initialState, action) => {
     case "COINLIST_FETCH_SUCCESS":
       return {
         ...state,
-        coins: action.coins
+        coins: action.coins.data.Data
       };
 
     default:
