@@ -4,11 +4,17 @@ exports[`First Page component renders correctly 1`] = `
 <div
   className="container-fluid firstPage"
 >
-  <span>
-     FIRST PAGE 
-  </span>
-  <span>
-     First render 
-  </span>
+  <div
+    className="frontLeft col-xs-6"
+  />
+  <div
+    className="frontRight col-xs-6"
+  >
+    <div
+      className="firstPageInfo"
+    >
+      <Connect(CoinForm) />
+    </div>
+  </div>
 </div>
 `;

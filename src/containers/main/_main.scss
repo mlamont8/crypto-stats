@@ -1,9 +1,11 @@
+
 .dash-container {
-  background: linear-gradient(to bottom left, $dGradient, $lGradient);
   color: $white;
   fill: $white;
-  padding-top: 20px;
-}
+  padding-top: 40px;
+  border: 1px solid transparent;
+  background: linear-gradient(to bottom left, $dGradient, $lGradient);
+  }
 
 .info-block {
   background: $boxColor;

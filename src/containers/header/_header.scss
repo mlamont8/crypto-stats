@@ -1,8 +1,12 @@
 .navbar-default {
-  background: $black;
-  border-color: $black;
+  border-color: transparent;
+  background-color: transparent;
   border-radius: 0;
   margin-bottom: 0;
+  }
+
+  .navbar.navbar-default{
+    border: 1px solid transparent;
   }
   
 .navbar-nav > li > a, .navbar-brand {

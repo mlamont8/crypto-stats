@@ -30,31 +30,31 @@ class Main extends React.Component {
         <FirstPage />
       </div>
     ) : (
-      <div className="mainContainer">
-        <Header firstLoad={firstLoad} />
-        <div className="container-fluid dash-container">
-          <Summary />
+        <div className="mainContainer">
+          <Header firstLoad={firstLoad} />
+          <div className="container-fluid dash-container">
+            <Summary />
 
-          <div className="row first-row">
-            <div className="col-md-4">
-              <LiveGrid liveResults={liveResults} usd={inDollars} to={to} />
+            <div className="row first-row">
+              <div className="col-md-4">
+                <LiveGrid liveResults={liveResults} usd={inDollars} to={to} />
+              </div>
+              <div className="col-md-8">
+                <DailyAreaChart data={fifteenDay} />
+              </div>
             </div>
-            <div className="col-md-8">
-              <DailyAreaChart data={fifteenDay} />
-            </div>
-          </div>
 
-          <div className="row second-row">
-            <div className="col-md-6">
-              <HistoricalChart data={historicalDay} />
-            </div>
-            <div className="col-md-6">
-              <ExchangeVolume data={exchangeVolume} />
+            <div className="row second-row">
+              <div className="col-md-6">
+                <HistoricalChart data={historicalDay} />
+              </div>
+              <div className="col-md-6">
+                <ExchangeVolume data={exchangeVolume} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
   }
 }
 

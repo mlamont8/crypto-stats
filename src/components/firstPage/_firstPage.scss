@@ -1,6 +1,6 @@
 .firstPage {
   overflow: hidden;
-  height: 700px;
+  height: 100vh;
   padding: 0;
 }
 
@@ -10,6 +10,10 @@
   fill: $white;
   padding: 20px 0 0 0;
   height: 700px;
+}
+.frontLeft{
+  background-color: $white;
+  background: none;
 }
 
 .firstPageInfo {
