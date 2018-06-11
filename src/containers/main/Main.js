@@ -30,7 +30,7 @@ class Main extends React.Component {
         <FirstPage />
       </div>
     ) : (
-      <div>
+      <div className="mainContainer">
         <Header firstLoad={firstLoad} />
         <div className="container-fluid dash-container">
           <Summary />

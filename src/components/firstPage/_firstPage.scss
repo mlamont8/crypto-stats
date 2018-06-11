@@ -1,17 +1,23 @@
 .firstPage {
-    background: linear-gradient(to bottom left, $dGradient, $lGradient);
-    color: $white;
-    fill: $white;
-    padding-top: 20px;
-    height: 600px;
-  }
+  overflow: hidden;
+  height: 700px;
+  padding: 0;
+}
 
-  .firstPageInfo {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 500px;
-    p {
-      text-align: center;
-    }
+.frontRight {
+  background: linear-gradient(to bottom left, $dGradient, $lGradient);
+  color: $white;
+  fill: $white;
+  padding: 20px 0 0 0;
+  height: 700px;
+}
+
+.firstPageInfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 500px;
+  p {
+    text-align: center;
   }
+}

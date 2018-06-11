@@ -33,7 +33,7 @@ describe("initialCoins catch error", () => {
 // const id = 999;
 // const socials = { data: { Data: [1, 2, 3] } };
 // const iterator = fetchSocials();
-// it("must call api.coinsget", () => {
+// it("must call api.getSocial", () => {
 //   const testValue = iterator.next().value;
 //   expect(testValue).toEqual(call(api.getSocial, id));
 // });
