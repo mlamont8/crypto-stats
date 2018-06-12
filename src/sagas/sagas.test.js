@@ -1,6 +1,10 @@
-import { call, put } from "redux-saga/effects";
+import { call, put, select } from "redux-saga/effects";
 import * as api from "./api";
+import { coinID } from "./selectors";
 import { initialCoins, fetchSocials } from "./index";
+
+
+/* -------initialCoins()----------*/
 
 describe("initialCoins successful try", () => {
   const coins = { data: { Data: [1, 2, 3] } };
@@ -29,15 +33,41 @@ describe("initialCoins catch error", () => {
   });
 });
 
-// describe("getSocial successful try");
-// const id = 999;
-// const socials = { data: { Data: [1, 2, 3] } };
-// const iterator = fetchSocials();
-// it("must call api.getSocial", () => {
-//   const testValue = iterator.next().value;
-//   expect(testValue).toEqual(call(api.getSocial, id));
-// });
-// it("must put CoinList Fetch Success action", () => {
-//   const testValue = iterator.next(socials).value;
-//   expect(testValue).toEqual(put({ type: "SOCIAL_FETCH_SUCCESS", socials }));
-// });
+/* -------fetchSocials()----------*/
+
+describe("fetchSocials()", () => {
+  const socials = { data: { Data: [1, 2, 3] } };
+  const iterator = fetchSocials();
+  it("should retrieve id from state using selector", () => {
+    const idValue = iterator.next().value;
+    expect(idValue).toEqual(select(coinID));
+  })
+  it("must call api.fetchSocials", () => {
+    const idValue = 999;
+    const testValue = iterator.next(idValue).value;
+    expect(testValue).toEqual(call(api.getSocial, idValue));
+  });
+  it("must put fetchsocials Success action", () => {
+    const testValue = iterator.next(socials).value;
+    expect(testValue).toEqual(put({ type: "SOCIAL_FETCH_SUCCESS", socials }));
+  });
+});
+
+describe('fetchSocials() error', () => {
+  const iterator = fetchSocials();
+  const error = "Fetch Unsuccessful";
+  it("should retrieve id from state using selector", () => {
+    const idValue = iterator.next().value;
+    expect(idValue).toEqual(select(coinID));
+  })
+  it("must call api.fetchSocials", () => {
+    const idValue = 999;
+    const testValue = iterator.next(idValue).value;
+    expect(testValue).toEqual(call(api.getSocial, idValue));
+  });
+  it("throw on unsuccessful fetch", () => {
+    iterator.next();
+    const testValue = iterator.throw("Fetch Unsuccessful").value;
+    expect(testValue).toEqual(put({ type: "SOCIAL_FETCH_ERROR", error }));
+  });
+})

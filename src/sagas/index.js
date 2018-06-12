@@ -2,7 +2,7 @@ import { all, call, fork, put, select, takeLatest } from "redux-saga/effects";
 import { formatDate, formatTime, monthYear } from "../helpers/index";
 import * as api from "./api";
 import liveWatch from "./live";
-import { coinLookup, searchArrays, terms } from "./selectors";
+import { coinLookup, searchArrays, terms, coinID } from "./selectors";
 
 // List of all Coins to retrieve on initial load
 export function* initialCoins() {
@@ -116,9 +116,13 @@ function* selectors(action) {
 }
 
 export function* fetchSocials() {
-  // fetch id
-  // call getSocial with id
-  // success
+  try {
+    const id = yield select(coinID);
+    const socials = yield call(api.getSocial, id);
+    yield put({ type: "SOCIAL_FETCH_SUCCESS", socials })
+  } catch (error) {
+    yield put({ type: "SOCIAL_FETCH_ERROR", error })
+  }
 }
 
 // New Search
