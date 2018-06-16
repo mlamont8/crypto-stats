@@ -8,6 +8,7 @@ import DailyAreaChart from "../../components/dailyAreaChart/DailyAreaChart";
 import ExchangeVolume from "../../components/exchangeVolume/exchangeVolume";
 import LiveGrid from "../../components/liveGrid/liveGrid";
 import FirstPage from "../../components/firstPage/firstPage";
+import News from "../../components/news/news";
 
 class Main extends React.Component {
   componentDidMount() {
@@ -22,7 +23,8 @@ class Main extends React.Component {
       exchangeVolume,
       liveResults,
       inDollars,
-      to
+      to,
+      news
     } = this.props;
     return firstLoad ? (
       <div>
@@ -30,31 +32,34 @@ class Main extends React.Component {
         <FirstPage />
       </div>
     ) : (
-        <div className="mainContainer">
-          <Header firstLoad={firstLoad} />
-          <div className="container-fluid dash-container">
-            <Summary />
+      <div className="mainContainer">
+        <Header firstLoad={firstLoad} />
+        <div className="container-fluid dash-container">
+          <Summary />
 
-            <div className="row first-row">
-              <div className="col-md-4">
-                <LiveGrid liveResults={liveResults} usd={inDollars} to={to} />
-              </div>
-              <div className="col-md-8">
-                <DailyAreaChart data={fifteenDay} />
-              </div>
+          <div className="row first-row">
+            <div className="col-md-4">
+              <LiveGrid liveResults={liveResults} usd={inDollars} to={to} />
             </div>
+            <div className="col-md-8">
+              <DailyAreaChart data={fifteenDay} />
+            </div>
+          </div>
 
-            <div className="row second-row">
-              <div className="col-md-6">
-                <HistoricalChart data={historicalDay} />
-              </div>
-              <div className="col-md-6">
-                <ExchangeVolume data={exchangeVolume} />
-              </div>
+          <div className="row second-row">
+            <div className="col-md-4">
+              <HistoricalChart data={historicalDay} />
+            </div>
+            <div className="col-md-4">
+              <ExchangeVolume data={exchangeVolume} />
+            </div>
+            <div className="col-md-4">
+              <News data={news} />
             </div>
           </div>
         </div>
-      );
+      </div>
+    );
   }
 }
 
@@ -73,7 +78,8 @@ const mapStateToProps = state => ({
   from: state.searchTerm.convertFrom,
   to: state.searchTerm.convertTo,
   liveResults: state.liveResults,
-  inDollars: state.byDollar.coinConversion
+  inDollars: state.byDollar.coinConversion,
+  news: state.news.news
 });
 
 Main.propTypes = {
@@ -91,7 +97,8 @@ Main.propTypes = {
     }).isRequired
   ).isRequired,
   inDollars: PropTypes.number,
-  to: PropTypes.string
+  to: PropTypes.string,
+  news: PropTypes.arrayOf(PropTypes.object)
 };
 
 Main.defaultProps = {
@@ -100,7 +107,8 @@ Main.defaultProps = {
   exchangeVolume: [],
   inDollars: 0,
   to: "",
-  firstLoad: true
+  firstLoad: true,
+  news: []
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
