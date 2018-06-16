@@ -12,10 +12,12 @@ import coinName from "./coinName";
 import coinUrl from "./coinUrl";
 import liveResults from "./liveResults";
 import byDollar from "./byDollar";
+import news from "./news";
 
 const cryptoApp = combineReducers({
   isLoading,
   initialLoadData,
+  news,
   searchArrays,
   searchTerm,
   historical,

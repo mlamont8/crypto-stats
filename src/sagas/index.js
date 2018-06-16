@@ -2,7 +2,7 @@ import { all, call, fork, put, select, takeLatest } from "redux-saga/effects";
 import { formatDate, formatTime, monthYear } from "../helpers/index";
 import * as api from "./api";
 import liveWatch from "./live";
-import { coinLookup, searchArrays, terms, coinID } from "./selectors";
+import { coinLookup, searchArrays, terms } from "./selectors";
 
 // List of all Coins to retrieve on initial load
 export function* initialCoins() {
@@ -34,16 +34,28 @@ export function* initialExchanges() {
   }
 }
 
+export function* fetchNews() {
+  try {
+    const newsData = yield call(api.getNews);
+    const news = newsData.data.Data;
+    yield put({ type: "NEWS_FETCH_SUCCESS", news });
+  } catch (error) {
+    yield put({ type: "NEWS_FETCH_ERROR", error });
+  }
+}
+
+// Loads initial coin, exchange and news data
+
 export function* initialMount(action) {
   yield put({ type: "INITIAL_LOAD", status: action.status });
   yield call(initialExchanges);
   yield call(initialCoins);
+  yield call(fetchNews);
 }
 
 export function* historical(...args) {
   try {
     const historicalData = yield call(api.historical, ...args);
-    console.log("input historical data", historicalData.data.Data);
     const fullHistory = monthYear(historicalData.data.Data);
     yield put({ type: "HISTORICAL_UPDATE", fullHistory });
   } catch (error) {
@@ -55,7 +67,6 @@ export function* historical(...args) {
 export function* byDay(...args) {
   try {
     const dayData = yield call(api.getByDay, ...args);
-    console.log("input Format Date", dayData.data.Data);
     const newData = formatDate(dayData.data.Data);
     yield put({ type: "FIFTEEN_DAY_UPDATE", newData });
   } catch (error) {
@@ -66,7 +77,6 @@ export function* byDay(...args) {
 export function* byHour(...args) {
   try {
     const hourData = yield call(api.getByHour, ...args);
-    console.log("input format time", hourData.data.Data);
     const hourChartData = formatTime(hourData.data.Data);
     yield put({ type: "HOUR_FETCH_SUCCESS", data: hourChartData });
   } catch (error) {
@@ -115,23 +125,11 @@ function* selectors(action) {
   }
 }
 
-export function* fetchSocials() {
-  try {
-    const id = yield select(coinID);
-    const socials = yield call(api.getSocial, id);
-    yield put({ type: "SOCIAL_FETCH_SUCCESS", socials })
-  } catch (error) {
-    yield put({ type: "SOCIAL_FETCH_ERROR", error })
-  }
-}
-
 // New Search
 var searchesThisSession = 0;
 function* search() {
   const results = yield call(terms);
   searchesThisSession += 1;
-  // Get Social info for Coin
-  yield call(fetchSocials);
   // Connect for live results
   yield fork(liveWatch, searchesThisSession);
   // Get current results for charts

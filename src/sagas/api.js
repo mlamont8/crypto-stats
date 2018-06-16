@@ -26,8 +26,10 @@ export const getTopExchanges = (from, to) =>
     `https://min-api.cryptocompare.com/data/top/exchanges/full?fsym=${from}&tsym=${to}&limit=5`
   );
 
-export const getSocial = id =>
-  axios.get(`https://www.cryptocompare.com/api/data/socialstats/?id=${id}`);
+export const getNews = () =>
+  axios.get(
+    `https://min-api.cryptocompare.com/data/v2/news/?lang=EN&sortOrder=latest`
+  );
 
 export function* dollarExchange(from) {
   const dollarObject = yield axios.get(
