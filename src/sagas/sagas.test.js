@@ -1,7 +1,8 @@
 import { call, put, select } from "redux-saga/effects";
 import * as api from "./api";
-import { coinID } from "./selectors";
-import { initialCoins, fetchSocials } from "./index";
+import { searchArrays, coinLookup } from './selectors';
+import { initialCoins, fetchNews, formSelector } from "./index";
+import { cloneableGenerator } from "redux-saga/utils";
 
 
 /* -------initialCoins()----------*/
@@ -33,41 +34,33 @@ describe("initialCoins catch error", () => {
   });
 });
 
-/* -------fetchSocials()----------*/
+/* -------fetchNews()----------*/
 
-describe("fetchSocials()", () => {
-  const socials = { data: { Data: [1, 2, 3] } };
-  const iterator = fetchSocials();
-  it("should retrieve id from state using selector", () => {
-    const idValue = iterator.next().value;
-    expect(idValue).toEqual(select(coinID));
-  })
-  it("must call api.fetchSocials", () => {
-    const idValue = 999;
-    const testValue = iterator.next(idValue).value;
-    expect(testValue).toEqual(call(api.getSocial, idValue));
+describe("fetchNews()", () => {
+  const news = { data: { Data: [1, 2, 3] } };
+  const iterator = fetchNews();
+  it("must call api.fetchNews", () => {
+    const testValue = iterator.next().value;
+    expect(testValue).toEqual(call(api.getNews));
   });
-  it("must put fetchsocials Success action", () => {
-    const testValue = iterator.next(socials).value;
-    expect(testValue).toEqual(put({ type: "SOCIAL_FETCH_SUCCESS", socials }));
+  it("must put fetchNews Success action", () => {
+    const testValue = iterator.next(news).value;
+    expect(testValue).toEqual(put({ type: "NEWS_FETCH_SUCCESS", news }));
   });
 });
 
-describe('fetchSocials() error', () => {
-  const iterator = fetchSocials();
+describe('fetchNews() error', () => {
+  const iterator = fetchNews();
   const error = "Fetch Unsuccessful";
-  it("should retrieve id from state using selector", () => {
-    const idValue = iterator.next().value;
-    expect(idValue).toEqual(select(coinID));
-  })
-  it("must call api.fetchSocials", () => {
-    const idValue = 999;
-    const testValue = iterator.next(idValue).value;
-    expect(testValue).toEqual(call(api.getSocial, idValue));
+  it("must call api.fetchNews", () => {
+    const testValue = iterator.next().value;
+    expect(testValue).toEqual(call(api.getNews));
   });
-  it("throw on unsuccessful fetch", () => {
+
+  it("throws on unsuccessful fetch", () => {
     iterator.next();
     const testValue = iterator.throw("Fetch Unsuccessful").value;
-    expect(testValue).toEqual(put({ type: "SOCIAL_FETCH_ERROR", error }));
+    expect(testValue).toEqual(put({ type: "NEWS_FETCH_ERROR", error }));
   });
 })
+

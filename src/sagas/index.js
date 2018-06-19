@@ -36,8 +36,7 @@ export function* initialExchanges() {
 
 export function* fetchNews() {
   try {
-    const newsData = yield call(api.getNews);
-    const news = newsData.data.Data;
+    const news = yield call(api.getNews);
     yield put({ type: "NEWS_FETCH_SUCCESS", news });
   } catch (error) {
     yield put({ type: "NEWS_FETCH_ERROR", error });
@@ -96,32 +95,38 @@ export function* byExchange(...args) {
   }
 }
 
-function* selectors(action) {
-  const newArray = yield select(searchArrays);
+
+
+export function* formSelector(action) {
   const { id, item } = action;
+  const newArray = yield select(searchArrays);
   const coinObject = yield select(coinLookup);
   const coin = coinObject[item];
+
   if (id === "market") {
     yield put({
       type: "CREATE_CONVERT_FROM",
       item,
-      exchangeResults: newArray.marketArray
+      exchangeResults: newArray
     });
-  } else if (id === "convertFrom") {
+
+  } else if (id === "convertFrom" && coin) {
     yield put({
       type: "CREATE_CONVERT_TO",
       item,
       convertFrom: newArray.convertFrom
-    });
-    yield put({ type: "COIN_LOOKUP", id, coin });
-  } else {
-    // creates convert-to
+    })
+    yield put({ type: "COIN_LOOKUP", id, coin })
+
+  } else if (id === "convertTo" && coin) {
     yield put({ type: "SEARCH_REQUEST" });
     yield put({ type: "COIN_LOOKUP", id, coin });
     if (coin.Name === "BCH" || "BTC" || "LTC" || "ETH" || "BNB") {
       const dollars = yield call(api.dollarExchange, coin.Name);
       yield put({ type: "DOLLAR_CONVERSION", dollars });
     }
+  } else {
+    console.log(`${item} was not found!`)
   }
 }
 
@@ -150,7 +155,7 @@ function* search() {
 function* mySaga() {
   yield takeLatest("INITIAL_MOUNT", initialMount);
   yield takeLatest("SEARCH_REQUEST", search);
-  yield takeLatest("SELECTION_ENTERED", selectors);
+  yield takeLatest("SELECTION_ENTERED", formSelector);
 }
 
 export default mySaga;

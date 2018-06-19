@@ -9,7 +9,7 @@ const searchArrays = (state = {}, action) => {
     case "CREATE_CONVERT_FROM":
       return {
         ...state,
-        convertFrom: action.exchangeResults[action.item]
+        convertFrom: action.exchangeResults.marketArray[action.item]
       };
 
     case "CREATE_CONVERT_TO":
