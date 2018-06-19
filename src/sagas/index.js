@@ -4,6 +4,8 @@ import * as api from "./api";
 import liveWatch from "./live";
 import { coinLookup, searchArrays, terms } from "./selectors";
 
+let searchesThisSession = 0;
+
 // List of all Coins to retrieve on initial load
 export function* initialCoins() {
   try {
@@ -110,7 +112,7 @@ export function* formSelector(action) {
       exchangeResults: newArray
     });
 
-  } else if (id === "convertFrom" && coin) {
+  } else if (id === "convertFrom") {
     yield put({
       type: "CREATE_CONVERT_TO",
       item,
@@ -118,20 +120,32 @@ export function* formSelector(action) {
     })
     yield put({ type: "COIN_LOOKUP", id, coin })
 
-  } else if (id === "convertTo" && coin) {
+  } else {
     yield put({ type: "SEARCH_REQUEST" });
     yield put({ type: "COIN_LOOKUP", id, coin });
     if (coin.Name === "BCH" || "BTC" || "LTC" || "ETH" || "BNB") {
       const dollars = yield call(api.dollarExchange, coin.Name);
       yield put({ type: "DOLLAR_CONVERSION", dollars });
     }
-  } else {
-    console.log(`${item} was not found!`)
   }
 }
 
+// Checks to see if data currently exists for coin
+
+export function* checkForCoin(action) {
+  const coinObject = yield select(coinLookup);
+  const coin = coinObject[action.item];
+  if (coin || action.id === "market") {
+    yield call(formSelector, action)
+  } else {
+    console.log(`Coin was not found!`)
+  }
+
+}
+
+
 // New Search
-var searchesThisSession = 0;
+
 function* search() {
   const results = yield call(terms);
   searchesThisSession += 1;
@@ -155,7 +169,7 @@ function* search() {
 function* mySaga() {
   yield takeLatest("INITIAL_MOUNT", initialMount);
   yield takeLatest("SEARCH_REQUEST", search);
-  yield takeLatest("SELECTION_ENTERED", formSelector);
+  yield takeLatest("SELECTION_ENTERED", checkForCoin);
 }
 
 export default mySaga;

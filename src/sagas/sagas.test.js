@@ -1,7 +1,7 @@
 import { call, put, select } from "redux-saga/effects";
 import * as api from "./api";
 import { searchArrays, coinLookup } from './selectors';
-import { initialCoins, fetchNews, formSelector } from "./index";
+import { initialCoins, fetchNews, checkForCoin } from "./index";
 import { cloneableGenerator } from "redux-saga/utils";
 
 
