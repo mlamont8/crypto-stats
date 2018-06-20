@@ -35,6 +35,35 @@ export const monthYear = jsondata => {
   return newTime;
 };
 
+// Format full calender time for items in array
+const calendar = data => {
+  const fixTime = data.map(obj => {
+    let rObj = {};
+    rObj = obj;
+    rObj.published_on = moment(rObj.published_on * 1000).format("ll");
+    return rObj;
+  });
+  return fixTime;
+};
+
+export const fixLength = data => {
+  const newObj = data.map(arr => {
+    let rObj = {};
+    rObj = arr;
+    if (rObj.title.length > 75) {
+      rObj.title = `${arr.title.slice(0, 75)}...`;
+    }
+    return rObj;
+  });
+  return newObj;
+};
+
+export const formatNews = data => {
+  const fixTime = calendar(data);
+  const fixNewsLength = fixLength(fixTime);
+  return fixNewsLength;
+};
+
 // Return only array values for the current user search attempt
 export const filterArray = liveResults => {
   // Get number of current search

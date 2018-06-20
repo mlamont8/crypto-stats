@@ -1,5 +1,5 @@
 import React from "react";
-import { filterArray } from "./index";
+import { filterArray, fixLength } from "./index";
 
 describe("helpers", () => {
   describe("filterArray", () => {
@@ -110,5 +110,25 @@ describe("helpers", () => {
     it("should only return results of current search", () => {
       expect(filterArray(liveResults)[0].searchesThisSession).toBe(2);
     });
+  });
+});
+
+/*   Fix news length  */
+
+describe("fixLength", () => {
+  const origObj = [
+    {
+      id: 1,
+      title:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      id: 2,
+      title:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }
+  ];
+  it("should limit title in array objects", () => {
+    expect(fixLength(origObj)[0].title.length).toEqual(78);
   });
 });

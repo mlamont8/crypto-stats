@@ -3,7 +3,7 @@ const news = (state = {}, action) => {
     case "NEWS_FETCH_SUCCESS":
       return {
         ...state,
-        news: action.news.data.Data
+        news: action.news
       };
 
     default:

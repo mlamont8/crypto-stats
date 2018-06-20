@@ -1,5 +1,10 @@
 import { all, call, fork, put, select, takeLatest } from "redux-saga/effects";
-import { formatDate, formatTime, monthYear } from "../helpers/index";
+import {
+  formatDate,
+  formatTime,
+  monthYear,
+  formatNews
+} from "../helpers/index";
 import * as api from "./api";
 import liveWatch from "./live";
 import { coinLookup, searchArrays, terms } from "./selectors";
@@ -38,7 +43,9 @@ export function* initialExchanges() {
 
 export function* fetchNews() {
   try {
-    const news = yield call(api.getNews);
+    const fetch = yield call(api.getNews);
+    const limitNews = fetch.data.Data.slice(0, 5);
+    const news = formatNews(limitNews);
     yield put({ type: "NEWS_FETCH_SUCCESS", news });
   } catch (error) {
     yield put({ type: "NEWS_FETCH_ERROR", error });
@@ -97,8 +104,6 @@ export function* byExchange(...args) {
   }
 }
 
-
-
 export function* formSelector(action) {
   const { id, item } = action;
   const newArray = yield select(searchArrays);
@@ -111,15 +116,13 @@ export function* formSelector(action) {
       item,
       exchangeResults: newArray
     });
-
   } else if (id === "convertFrom") {
     yield put({
       type: "CREATE_CONVERT_TO",
       item,
       convertFrom: newArray.convertFrom
-    })
-    yield put({ type: "COIN_LOOKUP", id, coin })
-
+    });
+    yield put({ type: "COIN_LOOKUP", id, coin });
   } else {
     yield put({ type: "SEARCH_REQUEST" });
     yield put({ type: "COIN_LOOKUP", id, coin });
@@ -136,13 +139,11 @@ export function* checkForCoin(action) {
   const coinObject = yield select(coinLookup);
   const coin = coinObject[action.item];
   if (coin || action.id === "market") {
-    yield call(formSelector, action)
+    yield call(formSelector, action);
   } else {
-    console.log(`Coin was not found!`)
+    console.log(`Coin was not found!`);
   }
-
 }
-
 
 // New Search
 

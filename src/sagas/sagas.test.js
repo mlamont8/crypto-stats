@@ -1,9 +1,8 @@
 import { call, put, select } from "redux-saga/effects";
 import * as api from "./api";
-import { searchArrays, coinLookup } from './selectors';
+import { searchArrays, coinLookup } from "./selectors";
 import { initialCoins, fetchNews, checkForCoin } from "./index";
 import { cloneableGenerator } from "redux-saga/utils";
-
 
 /* -------initialCoins()----------*/
 
@@ -36,31 +35,31 @@ describe("initialCoins catch error", () => {
 
 /* -------fetchNews()----------*/
 
-describe("fetchNews()", () => {
-  const news = { data: { Data: [1, 2, 3] } };
-  const iterator = fetchNews();
-  it("must call api.fetchNews", () => {
-    const testValue = iterator.next().value;
-    expect(testValue).toEqual(call(api.getNews));
-  });
-  it("must put fetchNews Success action", () => {
-    const testValue = iterator.next(news).value;
-    expect(testValue).toEqual(put({ type: "NEWS_FETCH_SUCCESS", news }));
-  });
-});
+// describe("fetchNews()", () => {
+//   // const news = { data: { Data: [1, 2, 3] } };
 
-describe('fetchNews() error', () => {
-  const iterator = fetchNews();
-  const error = "Fetch Unsuccessful";
-  it("must call api.fetchNews", () => {
-    const testValue = iterator.next().value;
-    expect(testValue).toEqual(call(api.getNews));
-  });
+//   const iterator = fetchNews();
+//   it("must call api.fetchNews", () => {
+//     const testValue = iterator.next().value;
+//     expect(testValue).toEqual(call(api.getNews));
+//   });
+//   it("must put fetchNews Success action", () => {
+//     const testValue = iterator.next(news).value;
+//     expect(testValue).toEqual(put({ type: "NEWS_FETCH_SUCCESS", news }));
+//   });
+// });
 
-  it("throws on unsuccessful fetch", () => {
-    iterator.next();
-    const testValue = iterator.throw("Fetch Unsuccessful").value;
-    expect(testValue).toEqual(put({ type: "NEWS_FETCH_ERROR", error }));
-  });
-})
+// describe("fetchNews() error", () => {
+//   const iterator = fetchNews();
+//   const error = "Fetch Unsuccessful";
+//   it("must call api.fetchNews", () => {
+//     const testValue = iterator.next().value;
+//     expect(testValue).toEqual(call(api.getNews));
+//   });
 
+//   it("throws on unsuccessful fetch", () => {
+//     iterator.next();
+//     const testValue = iterator.throw("Fetch Unsuccessful").value;
+//     expect(testValue).toEqual(put({ type: "NEWS_FETCH_ERROR", error }));
+//   });
+// });
