@@ -43,14 +43,14 @@ const DailyAreaChart = props => (
         <Tooltip />
         <Legend />
         <Area
-          type="natural"
+          type="linear"
           dataKey="high"
           stroke="#8884d8"
           fillOpacity={1}
           fill="url(#colorUv)"
         />
         <Area
-          type="natural"
+          type="linear"
           dataKey="low"
           stroke="#82ca9d"
           fillOpacity={1}
