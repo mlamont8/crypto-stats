@@ -1,5 +1,5 @@
 import React from "react";
-import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+// import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 
 const LiveResults = props => {
@@ -9,7 +9,7 @@ const LiveResults = props => {
   return (
     <div className="current text-center">
       <h1>CURRENT</h1>
-      <FontAwesomeIcon icon={["fas", "coins"]} size="2x" />
+      {/* <FontAwesomeIcon icon={["fas", "coins"]} size="2x" /> */}
       {exchange}
       <hr />
       <div className="row">
@@ -22,7 +22,7 @@ const LiveResults = props => {
         <span className="conversion" id={arrow}>
           (${conversion})
         </span>
-        <FontAwesomeIcon icon={["fas", arrow]} />
+        {/* <FontAwesomeIcon icon={["fas", arrow]} /> */}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+// import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 import { filterArray } from "../../helpers/index";
 
 const liveGrid = props => {
@@ -20,12 +20,12 @@ const liveGrid = props => {
           </thead>
           <tbody>
             {filterArray(liveResults).map(result => {
-              const arrow =
-                result.flag === "2" ? "arrow-circle-down" : "arrow-circle-up";
+              // const arrow =
+              //   result.flag === "2" ? "arrow-circle-down" : "arrow-circle-up";
               return (
                 <tr key={result.time}>
                   <td>
-                    <FontAwesomeIcon icon={["fas", arrow]} />
+                    {/* <FontAwesomeIcon icon={["fas", arrow]} /> */}
                   </td>
                   <td>{result.time}</td>
                   <td>

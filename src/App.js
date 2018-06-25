@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import Main from "./containers/main/Main";
-import fontawesome from "@fortawesome/fontawesome";
-import solids from "@fortawesome/fontawesome-free-solid";
+// import fontawesome from "@fortawesome/fontawesome";
+// import solids from "@fortawesome/fontawesome-free-solid";
 import "./App.css";
 
-fontawesome.library.add(solids);
+// fontawesome.library.add(solids);
 
 class App extends Component {
   render() {
