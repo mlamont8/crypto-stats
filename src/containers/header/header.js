@@ -1,16 +1,16 @@
 import React from "react";
-import { Nav, Navbar } from "react-bootstrap";
+// import { Nav, Navbar } from "react-bootstrap";
 import PropTypes from "prop-types";
-import CoinForm from "../coinForm/CoinForm";
+// import CoinForm from "../coinForm/CoinForm";
 
-const Header = props => {
-  const firstRender = props.firstLoad ? null : (
-    <Navbar.Collapse>
-      <Nav pullRight>
-        <CoinForm />
-      </Nav>
-    </Navbar.Collapse>
-  );
+const Header = () => {
+  // const firstRender = props.firstLoad ? null : (
+  //   <Navbar.Collapse>
+  //     <Nav pullRight>
+  //       <CoinForm />
+  //     </Nav>
+  //   </Navbar.Collapse>
+  // );
   return (
     // <Navbar collapseOnSelect>
     //   <Navbar.Header>

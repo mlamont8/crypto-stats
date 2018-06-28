@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { FormControl, FormGroup } from "react-bootstrap";
+// import { FormControl, FormGroup } from "react-bootstrap";
 
 const SelectControl = props => {
   const { data, type } = props;
@@ -24,7 +24,7 @@ const SelectControl = props => {
     // </FormGroup>
 
 
-    <select className="uk-select">
+    <select className="uk-select uk-form-small" id={type} onChange={props.handleSelectChange} >
       <option value="select" className="optionTitle">
         {formattedType}
       </option>
