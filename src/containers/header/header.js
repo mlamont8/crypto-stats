@@ -22,7 +22,7 @@ const Header = props => {
     //   {firstRender}
     // </Navbar>
 
-    <nav className="uk-navbar-container" uk-navbar>
+    <nav className="uk-navbar-container" uk-navbar="true">
       <div className="uk-navbar-left">
 
         <span className="uk-navbar-item uk-logo">Crypto Stats</span>
