@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import UIkit from 'uikit';
 import Header from "../../containers/header/header";
 import Summary from "../summary/summary";
 import HistoricalChart from "../../components/historicalChart/historicalChart";
@@ -14,6 +15,12 @@ class Main extends React.Component {
   componentDidMount() {
     this.props.fetch(true);
   }
+
+  notification() {
+    return(
+    UIkit.notification({message: 'Notification message', pos: 'top-right', status: 'primary'})
+    )
+}
 
   render() {
     const {
@@ -39,7 +46,7 @@ class Main extends React.Component {
 
             <div className="row first-row">
               <div className="col-md-4">
-                <LiveGrid liveResults={liveResults} usd={inDollars} to={to} />
+                <LiveGrid liveResults={liveResults} usd={inDollars} to={to} notification={this.notification} />
               </div>
               <div className="col-md-8">
                 <DailyAreaChart data={fifteenDay} />

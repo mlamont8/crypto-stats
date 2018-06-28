@@ -3,10 +3,21 @@ import PropTypes from "prop-types";
 // import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 import { filterArray } from "../../helpers/index";
 
-const liveGrid = props => {
-  const { liveResults, usd, to } = props;
+class LiveGrid extends React.Component {
+
+  componentDidUpdate(prevProps) {
+    // Used to send notification when live results arrive
+    if (this.props.liveResults !== prevProps.liveResults) {
+      this.props.notification();
+    }
+    return null
+  }
+
+render() {
+  const { liveResults, usd, to } = this.props;
   return (
     <div className="info-block live-table">
+    <button className="demo uk-button uk-button-default" type="button" onClick={this.props.handleClick} >Click me</button>
       <h1>LIVE UPDATES</h1>
       <div className="row">
         <table>
@@ -42,8 +53,9 @@ const liveGrid = props => {
     </div>
   );
 };
+}
 
-liveGrid.propTypes = {
+LiveGrid.propTypes = {
   liveResults: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -56,4 +68,4 @@ liveGrid.propTypes = {
   to: PropTypes.string.isRequired
 };
 
-export default liveGrid;
+export default LiveGrid;
