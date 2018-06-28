@@ -8,13 +8,10 @@ describe("Header", () => {
     const snap = shallow(<Header />);
     expect(snap).toMatchSnapshot();
   });
-  it("should not show form on initial render", () => {
-    const wrapper = shallow(<Header firstLoad />);
-    expect(wrapper.find("CoinForm").exists()).toBeFalsy();
+  it("should render a `.uk-navbar-container`", () => {
+    const wrapper = shallow(<Header />);
+    expect(wrapper.find(".uk-navbar-container").length).toBe(1);
   });
 
-  it("should show form after initial render", () => {
-    const wrapper = shallow(<Header firstLoad={false} />);
-    expect(wrapper.find("CoinForm").exists());
-  });
+
 });

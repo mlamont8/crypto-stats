@@ -12,15 +12,23 @@ const Header = props => {
     </Navbar.Collapse>
   );
   return (
-    <Navbar collapseOnSelect>
-      <Navbar.Header>
-        <Navbar.Brand>
-          <a href="#brand">CryptoStats</a>
-        </Navbar.Brand>
-        <Navbar.Toggle />
-      </Navbar.Header>
-      {firstRender}
-    </Navbar>
+    // <Navbar collapseOnSelect>
+    //   <Navbar.Header>
+    //     <Navbar.Brand>
+    //       <a href="#brand">CryptoStats</a>
+    //     </Navbar.Brand>
+    //     <Navbar.Toggle />
+    //   </Navbar.Header>
+    //   {firstRender}
+    // </Navbar>
+
+    <nav className="uk-navbar-container" uk-navbar>
+      <div className="uk-navbar-left">
+
+        <span className="uk-navbar-item uk-logo">Crypto Stats</span>
+
+      </div>
+    </nav>
   );
 };
 

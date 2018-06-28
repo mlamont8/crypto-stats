@@ -1,12 +1,10 @@
 @import "variables";
 @import "mixins";
 
-// Import default variables and available mixins.
-@import "~uikit/src/scss/variables-theme";
-@import "~uikit/src/scss/mixins-theme";
+@import "node_modules/uikit/src/scss/variables-theme";
+@import "node_modules/uikit/src/scss/mixins-theme";
 
-//  Import UIkit.
-@import "~uikit/src/scss/uikit-theme";
+@import "node_modules/uikit/src/scss/uikit-theme";
 
 @import "./base";
 @import "./containers/summary/summary";
