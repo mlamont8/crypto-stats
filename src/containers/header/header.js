@@ -4,29 +4,22 @@ import PropTypes from "prop-types";
 // import CoinForm from "../coinForm/CoinForm";
 
 const Header = () => {
-  // const firstRender = props.firstLoad ? null : (
-  //   <Navbar.Collapse>
-  //     <Nav pullRight>
-  //       <CoinForm />
-  //     </Nav>
-  //   </Navbar.Collapse>
-  // );
   return (
-    // <Navbar collapseOnSelect>
-    //   <Navbar.Header>
-    //     <Navbar.Brand>
-    //       <a href="#brand">CryptoStats</a>
-    //     </Navbar.Brand>
-    //     <Navbar.Toggle />
-    //   </Navbar.Header>
-    //   {firstRender}
-    // </Navbar>
+
 
     <nav className="uk-navbar-container" uk-navbar="true">
       <div className="uk-navbar-left">
 
         <span className="uk-navbar-item uk-logo">Crypto Stats</span>
 
+      </div>
+
+      <div className="uk-navbar-right">
+      <div className="uk-margin uk-grid-small uk-child-width-auto">
+            <label> Notifications</label>
+            <label><input className="uk-radio" type="radio" checked /> On</label>
+            <label><input className="uk-radio" type="radio" /> Off</label>
+        </div>
       </div>
     </nav>
   );
