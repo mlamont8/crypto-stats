@@ -1,19 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { notificationAlert, filterArray } from '../../helpers/index';
-
+import { notificationAlert, filterArray } from "../../helpers/index";
 
 class LiveGrid extends React.Component {
-
   componentDidUpdate(prevProps) {
+    const { liveResults } = this.props;
     // Used to send notification when live results arrive
     if (this.props.liveResults !== prevProps.liveResults) {
+      const currentResult = liveResults[liveResults.length - 1];
       return notificationAlert();
     }
-    return null
+    return null;
   }
-
-
 
   render() {
     const { liveResults, usd, to } = this.props;
@@ -36,9 +34,7 @@ class LiveGrid extends React.Component {
                 //   result.flag === "2" ? "arrow-circle-down" : "arrow-circle-up";
                 return (
                   <tr key={result.time}>
-                    <td>
-                      {/* <FontAwesomeIcon icon={["fas", arrow]} /> */}
-                    </td>
+                    <td>{/* <FontAwesomeIcon icon={["fas", arrow]} /> */}</td>
                     <td>{result.time}</td>
                     <td>
                       {result.price}
@@ -53,7 +49,7 @@ class LiveGrid extends React.Component {
         </div>
       </div>
     );
-  };
+  }
 }
 
 LiveGrid.propTypes = {
