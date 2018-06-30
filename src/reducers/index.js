@@ -13,6 +13,7 @@ import coinUrl from "./coinUrl";
 import liveResults from "./liveResults";
 import byDollar from "./byDollar";
 import news from "./news";
+import notification from "./notification";
 
 const cryptoApp = combineReducers({
   isLoading,
@@ -28,7 +29,8 @@ const cryptoApp = combineReducers({
   coinId,
   coinName,
   coinUrl,
-  byDollar
+  byDollar,
+  notification
 });
 
 export default cryptoApp;

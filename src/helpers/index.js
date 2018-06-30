@@ -1,4 +1,5 @@
 import moment from "moment";
+import UIkit from 'uikit';
 
 // Format the date in the json to m/dd format
 export const formatDate = jsondata => {
@@ -78,3 +79,7 @@ export const filterArray = liveResults => {
     currentArray.id <= 10 ? currentArray : currentArray.slice(-10);
   return lastTen;
 };
+
+export const notificationAlert = () => {
+  return UIkit.notification({ message: 'Notification message', pos: 'top-right', status: 'primary' })
+}

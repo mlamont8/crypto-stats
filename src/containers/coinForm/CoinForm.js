@@ -13,7 +13,6 @@ class CoinForm extends React.Component {
   }
 
   handleSelectChange(e) {
-    console.log(e.target);
     this.props.selectorChange(e.target.id, e.target.value);
   }
 

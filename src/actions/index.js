@@ -3,3 +3,8 @@ export const SelectData = (id, item) => ({
   id,
   item
 });
+
+export const notificationOption = (option) => ({
+  type: "NOTIFICATION_TOGGLE",
+  option
+});

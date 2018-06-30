@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import UIkit from 'uikit';
 import Header from "../../containers/header/header";
 import Summary from "../summary/summary";
 import HistoricalChart from "../../components/historicalChart/historicalChart";
@@ -15,12 +14,6 @@ class Main extends React.Component {
   componentDidMount() {
     this.props.fetch(true);
   }
-
-  notification() {
-    return(
-    UIkit.notification({message: 'Notification message', pos: 'top-right', status: 'primary'})
-    )
-}
 
   render() {
     const {
@@ -46,7 +39,7 @@ class Main extends React.Component {
 
             <div className="row first-row">
               <div className="col-md-4">
-                <LiveGrid liveResults={liveResults} usd={inDollars} to={to} notification={this.notification} />
+                <LiveGrid liveResults={liveResults} usd={inDollars} to={to} notifyStatus={this.props.notifyStatus} />
               </div>
               <div className="col-md-8">
                 <DailyAreaChart data={fifteenDay} />
@@ -86,7 +79,8 @@ const mapStateToProps = state => ({
   to: state.searchTerm.convertTo,
   liveResults: state.liveResults,
   inDollars: state.byDollar.coinConversion,
-  news: state.news.news
+  news: state.news.news,
+  notifyStatus: state.notification.option
 });
 
 Main.propTypes = {
@@ -115,7 +109,8 @@ Main.defaultProps = {
   inDollars: 0,
   to: "",
   firstLoad: true,
-  news: []
+  news: [],
+  notify: "on"
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
