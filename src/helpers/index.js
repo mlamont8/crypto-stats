@@ -1,5 +1,10 @@
 import moment from "moment";
-import UIkit from 'uikit';
+import UIkit from "uikit";
+
+import Icons from "uikit/dist/js/uikit-icons";
+
+// loads the Icon plugin
+UIkit.use(Icons);
 
 // Format the date in the json to m/dd format
 export const formatDate = jsondata => {
@@ -80,6 +85,10 @@ export const filterArray = liveResults => {
   return lastTen;
 };
 
-export const notificationAlert = () => {
-  return UIkit.notification({ message: 'Notification message', pos: 'top-right', status: 'primary' })
-}
+export const notificationAlert = (msg, stat) => {
+  return UIkit.notification({
+    message: `Current Update: ${msg}`,
+    pos: "top-right",
+    status: stat
+  });
+};

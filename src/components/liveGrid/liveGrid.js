@@ -1,16 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { notificationAlert, filterArray } from "../../helpers/index";
+import UIkit from "uikit";
+import Icons from "uikit/dist/js/uikit-icons";
+
+// loads the Icon plugin
+UIkit.use(Icons);
 
 class LiveGrid extends React.Component {
   componentDidUpdate(prevProps) {
-    const { liveResults } = this.props;
     // Used to send notification when live results arrive
     if (this.props.liveResults !== prevProps.liveResults) {
-      const currentResult = liveResults[liveResults.length - 1];
-      return notificationAlert();
+      this.sendNotification();
     }
-    return null;
+  }
+
+  sendNotification() {
+    const { liveResults, to, usd } = this.props;
+    // get the current result
+    const currentResult = liveResults[liveResults.length - 1];
+    // set color style of notification
+    const setStatus = currentResult.flag === "2" ? "danger" : "success";
+    // Up or down arrow depending on update
+    const setArrow = setStatus === "danger" ? "arrow-down" : "arrow-up";
+    const price = currentResult.price;
+    const dollars = (usd * price).toFixed(2);
+    const setMessage = `<div><span uk-icon='icon: ${setArrow}'></span></div>
+     <div><div>${price} ${to}</div><div>($${dollars})</div></div>`;
+    return notificationAlert(setMessage, setStatus);
   }
 
   render() {
@@ -30,11 +47,13 @@ class LiveGrid extends React.Component {
             </thead>
             <tbody>
               {filterArray(liveResults).map(result => {
-                // const arrow =
-                //   result.flag === "2" ? "arrow-circle-down" : "arrow-circle-up";
+                const arrow = result.flag === "2" ? "arrow-down" : "arrow-up";
                 return (
                   <tr key={result.time}>
-                    <td>{/* <FontAwesomeIcon icon={["fas", arrow]} /> */}</td>
+                    <td>
+                      {" "}
+                      <span uk-icon={`icon: ${arrow}`} />
+                    </td>
                     <td>{result.time}</td>
                     <td>
                       {result.price}
