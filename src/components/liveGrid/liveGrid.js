@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { notificationAlert, filterArray } from "../../helpers/index";
 import UIkit from "uikit";
 import Icons from "uikit/dist/js/uikit-icons";
+import { notificationAlert, filterArray } from "../../helpers/index";
 
 // loads the Icon plugin
 UIkit.use(Icons);
@@ -10,7 +10,8 @@ UIkit.use(Icons);
 class LiveGrid extends React.Component {
   componentDidUpdate(prevProps) {
     // Used to send notification when live results arrive
-    if (this.props.liveResults !== prevProps.liveResults) {
+    const { notifyStatus, liveResults } = this.props;
+    if (liveResults !== prevProps.liveResults && notifyStatus === "on") {
       this.sendNotification();
     }
   }
@@ -81,7 +82,8 @@ LiveGrid.propTypes = {
     }).isRequired
   ).isRequired,
   usd: PropTypes.number.isRequired,
-  to: PropTypes.string.isRequired
+  to: PropTypes.string.isRequired,
+  notifyStatus: PropTypes.string.isRequired
 };
 
 export default LiveGrid;
