@@ -19,41 +19,43 @@ class Header extends React.Component {
   }
 
   render() {
+    const firstRender = this.props.firstLoad ? null : (
+      <div className="uk-navbar-right">
+        <div className="uk-flex uk-flex-column">
+          <div>
+            <label>Notifications</label>
+          </div>
+          <div>
+            <label>
+              <input
+                className="uk-radio"
+                value="on"
+                type="radio"
+                onChange={this.updateNotificationStatus}
+                checked={this.props.toggle === "on"}
+              />{" "}
+              On
+        </label>
+            <label>
+              <input
+                className="uk-radio"
+                value="off"
+                type="radio"
+                onChange={this.updateNotificationStatus}
+                checked={this.props.toggle === "off"}
+              />{" "}
+              Off
+        </label>
+          </div>
+        </div>
+      </div>
+    );
     return (
       <nav className="uk-navbar-container" uk-navbar="true">
         <div className="uk-navbar-left">
           <span className="uk-navbar-item uk-logo">Crypto Stats</span>
         </div>
-
-        <div className="uk-navbar-right">
-          <div className="uk-flex uk-flex-column">
-            <div>
-              <label>Notifications</label>
-            </div>
-            <div>
-              <label>
-                <input
-                  className="uk-radio"
-                  value="on"
-                  type="radio"
-                  onChange={this.updateNotificationStatus}
-                  checked={this.props.toggle === "on"}
-                />{" "}
-                On
-            </label>
-              <label>
-                <input
-                  className="uk-radio"
-                  value="off"
-                  type="radio"
-                  onChange={this.updateNotificationStatus}
-                  checked={this.props.toggle === "off"}
-                />{" "}
-                Off
-            </label>
-            </div>
-          </div>
-        </div>
+        {firstRender}
       </nav>
     );
   }
@@ -61,7 +63,8 @@ class Header extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    toggle: state.notification.option
+    toggle: state.notification.option,
+    firstLoad: state.isLoading.firstLoad
   };
 };
 
