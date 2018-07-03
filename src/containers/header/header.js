@@ -26,28 +26,32 @@ class Header extends React.Component {
         </div>
 
         <div className="uk-navbar-right">
-          <div className="uk-margin uk-grid-small uk-child-width-auto">
-            <label>Notifications</label>
-            <label>
-              <input
-                className="uk-radio"
-                value="on"
-                type="radio"
-                onChange={this.updateNotificationStatus}
-                checked={this.props.toggle === "on"}
-              />{" "}
-              On
+          <div className="uk-flex uk-flex-column">
+            <div>
+              <label>Notifications</label>
+            </div>
+            <div>
+              <label>
+                <input
+                  className="uk-radio"
+                  value="on"
+                  type="radio"
+                  onChange={this.updateNotificationStatus}
+                  checked={this.props.toggle === "on"}
+                />{" "}
+                On
             </label>
-            <label>
-              <input
-                className="uk-radio"
-                value="off"
-                type="radio"
-                onChange={this.updateNotificationStatus}
-                checked={this.props.toggle === "off"}
-              />{" "}
-              Off
+              <label>
+                <input
+                  className="uk-radio"
+                  value="off"
+                  type="radio"
+                  onChange={this.updateNotificationStatus}
+                  checked={this.props.toggle === "off"}
+                />{" "}
+                Off
             </label>
+            </div>
           </div>
         </div>
       </nav>
