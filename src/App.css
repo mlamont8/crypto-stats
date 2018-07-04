@@ -9705,6 +9705,13 @@ form li {
   .firstPageInfo p {
     text-align: center; }
 
+.imageIcon {
+  border-radius: 50%;
+  max-width: 40%; }
+
 .form-group {
   margin-top: 5px;
   margin-bottom: 0; }
+
+h1 {
+  font-size: 20px; }
