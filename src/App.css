@@ -9599,7 +9599,7 @@ iframe.uk-cover {
     page-break-after: avoid; } }
 
 .summary-left h2 {
-  font-size: 14px; }
+  font-size: 20px; }
 
 .summary-block {
   height: 260px;
@@ -9655,6 +9655,9 @@ iframe.uk-cover {
 form li {
   list-style: none; }
 
+.uk-select {
+  border-radius: 20px; }
+
 .liveItem {
   font-size: 18px; }
 
@@ -9709,9 +9712,15 @@ form li {
   border-radius: 50%;
   max-width: 40%; }
 
+.ibContainer-sr {
+  padding-top: 10px; }
+
 .form-group {
   margin-top: 5px;
   margin-bottom: 0; }
+
+.vertSelect {
+  padding: 4px; }
 
 h1 {
   font-size: 20px; }

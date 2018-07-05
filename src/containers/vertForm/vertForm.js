@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { NavItem } from "react-bootstrap";
 import SelectControl from "../../components/selectControl/SelectControl";
 import { SelectData } from "../../actions";
 
@@ -28,29 +27,33 @@ class VertForm extends React.Component {
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <NavItem className="row">
+
+                <div className="vertSelect">
                     <SelectControl
                         data={sortedMarket}
                         handleSelectChange={this.handleSelectChange}
                         type="market"
                     />
-                </NavItem>
+                </div>
 
-                <NavItem className="row">
+                <div className="vertSelect">
                     <SelectControl
                         data={Object.keys(this.props.convertFrom).sort()}
                         handleSelectChange={this.handleSelectChange}
                         type="convertFrom"
                     />
-                </NavItem>
+                </div>
 
-                <NavItem className="row">
+
+                <div className="vertSelect">
                     <SelectControl
                         data={this.props.toArray}
                         handleSelectChange={this.handleSelectChange}
                         type="convertTo"
                     />
-                </NavItem>
+                </div>
+
+
             </form>
         );
     }
