@@ -9631,6 +9631,9 @@ iframe.uk-cover {
 .navbar-brand {
   color: #F7FDFF; }
 
+.uk-navbar-right {
+  margin-right: 20px; }
+
 .dash-container {
   color: #F7FDFF;
   fill: #F7FDFF;
