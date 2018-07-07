@@ -9598,6 +9598,9 @@ iframe.uk-cover {
   h3 {
     page-break-after: avoid; } }
 
+html, body, #root {
+  height: 100%; }
+
 .summary-left h2 {
   font-size: 20px; }
 
@@ -9635,6 +9638,9 @@ iframe.uk-cover {
 .second-row {
   margin-top: 30px; }
 
+.mainContainer {
+  height: 100%; }
+
 form li {
   list-style: none; }
 
@@ -9669,17 +9675,20 @@ form li {
 
 .frontContainer {
   overflow: hidden;
-  height: 100vh;
+  height: 100%;
   padding: 0;
-  display: flex;
-  flex-direction: row-reverse; }
+  display: flex; }
+  .frontContainer > div {
+    flex: 1; }
 
 .frontRight {
   background: linear-gradient(to bottom left, #425E9D, #75BBD4);
   color: #F7FDFF;
   fill: #F7FDFF;
-  padding: 20px 0 0 0;
-  height: 700px; }
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .frontLeft {
   background-color: #F7FDFF;
@@ -9687,9 +9696,7 @@ form li {
 
 .firstPageInfo {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  height: 500px; }
+  width: 100%; }
   .firstPageInfo p {
     text-align: center; }
 
@@ -9703,6 +9710,11 @@ form li {
 .form-group {
   margin-top: 5px;
   margin-bottom: 0; }
+
+.frontForm {
+  display: flex;
+  justify-content: space-around;
+  width: 100%; }
 
 .vertSelect {
   padding: 4px; }
