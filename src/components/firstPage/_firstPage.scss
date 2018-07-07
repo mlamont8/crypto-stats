@@ -1,7 +1,9 @@
-.firstPage {
+.frontContainer {
   overflow: hidden;
   height: 100vh;
   padding: 0;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .frontRight {

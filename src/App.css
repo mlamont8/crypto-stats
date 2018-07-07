@@ -9684,10 +9684,12 @@ form li {
   width: 100%;
   margin-left: 15px; }
 
-.firstPage {
+.frontContainer {
   overflow: hidden;
   height: 100vh;
-  padding: 0; }
+  padding: 0;
+  display: flex;
+  flex-direction: row-reverse; }
 
 .frontRight {
   background: linear-gradient(to bottom left, #425E9D, #75BBD4);
