@@ -34,11 +34,11 @@ class Main extends React.Component {
     ) : (
         <div className="mainContainer">
           <Header firstLoad={firstLoad} />
-          <div className="container-fluid dash-container">
+          <div className="dash-container">
             <Summary />
 
-            <div className="row first-row">
-              <div className="col-md-4">
+            <div className="first-row">
+              <div className="col-md-4 liveGrid">
                 <LiveGrid
                   liveResults={liveResults}
                   usd={inDollars}
@@ -46,7 +46,7 @@ class Main extends React.Component {
                   notifyStatus={this.props.notifyStatus}
                 />
               </div>
-              <div className="col-md-8">
+              <div className="col-md-8 areaChart">
                 <DailyAreaChart data={fifteenDay} />
               </div>
             </div>
