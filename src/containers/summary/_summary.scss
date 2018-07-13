@@ -3,9 +3,22 @@
 }
 
 .summary-block {
-  height: 260px;
+  // height: 260px;
   background: $boxColor;
   padding: 5px 5px;
   @include border-radius(10px);
   opacity: 0.8;
+}
+
+.summary-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .summary-left,
+  .summary-right {
+    flex-basis: 20%;
+  }
+  .summary-center {
+    flex-basis: 55%;
+  }
 }

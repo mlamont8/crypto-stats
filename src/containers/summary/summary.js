@@ -8,11 +8,11 @@ import ImageBlock from "../../components/imageBlock/imageBlock";
 // Top Summary information
 
 const Summary = props => {
-  const currentPrice = (props.liveResults[props.liveResults.length - 1]);
+  const currentPrice = props.liveResults[props.liveResults.length - 1];
   const { price, flag } = currentPrice;
   return (
-    <div className="row summary" >
-      <div className="col-sm-2 summary-left">
+    <div className="summary-container">
+      <div className="summary-left">
         <div className="summary-block">
           <ImageBlock
             img={props.image}
@@ -21,12 +21,12 @@ const Summary = props => {
           />
         </div>
       </div>
-      <div className="col-sm-8 summary-center">
+      <div className="summary-center">
         <div className="summary-block">
           <LineChart data={props.byHour} />
         </div>
       </div>
-      <div className="col-sm-2 summary-right summary-block">
+      <div className="summary-right summary-block">
         <div className="summary-block">
           <LiveResults
             price={price}
@@ -37,10 +37,9 @@ const Summary = props => {
           />
         </div>
       </div>
-    </div >
-  )
-}
-
+    </div>
+  );
+};
 
 const mapStateToProps = state => ({
   exchange: state.searchTerm.market,
@@ -51,7 +50,7 @@ const mapStateToProps = state => ({
   coinName: state.coinName.convertFrom,
   inDollars: state.byDollar.coinConversion,
   liveResults: state.liveResults,
-  newResult: state.liveResults[state.liveResults.length - 1],
+  newResult: state.liveResults[state.liveResults.length - 1]
 });
 
 Summary.defaultProps = {
@@ -77,9 +76,9 @@ Summary.propTypes = {
       id: PropTypes.number.isRequired,
       flag: PropTypes.string,
       price: PropTypes.string,
-      time: PropTypes.string,
+      time: PropTypes.string
     }).isRequired
-  ).isRequired,
+  ).isRequired
 };
 
 export default connect(mapStateToProps)(Summary);

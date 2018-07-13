@@ -9605,7 +9605,6 @@ html, body, #root {
   font-size: 20px; }
 
 .summary-block {
-  height: 260px;
   background: #5271A7;
   padding: 5px 5px;
   -webkit-border-radius: 10px;
@@ -9613,6 +9612,16 @@ html, body, #root {
   -ms-border-radius: 10px;
   border-radius: 10px;
   opacity: 0.8; }
+
+.summary-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .summary-container .summary-left,
+  .summary-container .summary-right {
+    flex-basis: 20%; }
+  .summary-container .summary-center {
+    flex-basis: 55%; }
 
 .uk-navbar-right {
   margin-right: 20px; }
@@ -9639,9 +9648,7 @@ html, body, #root {
   margin-top: 30px; }
 
 .mainContainer {
-  height: 100%;
-  display: flex;
-  flex-direction: column; }
+  height: 100%; }
 
 form li {
   list-style: none; }
