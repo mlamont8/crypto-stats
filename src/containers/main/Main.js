@@ -36,8 +36,7 @@ class Main extends React.Component {
           <Header firstLoad={firstLoad} />
           <div className="dash-container">
             <Summary />
-
-            <div className="first-row">
+            <div className="chartContainer">
               <div className="col-md-4 liveGrid">
                 <LiveGrid
                   liveResults={liveResults}
@@ -49,9 +48,7 @@ class Main extends React.Component {
               <div className="col-md-8 areaChart">
                 <DailyAreaChart data={fifteenDay} />
               </div>
-            </div>
 
-            <div className="row second-row">
               <div className="col-md-4">
                 <HistoricalChart data={historicalDay} />
               </div>

@@ -9650,6 +9650,15 @@ html, body, #root {
 .mainContainer {
   height: 100%; }
 
+.chartContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .chartContainer div {
+    flex: 4; }
+  .chartContainer .areaChart {
+    flex: 8; }
+
 form li {
   list-style: none; }
 
