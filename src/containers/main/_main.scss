@@ -9,6 +9,7 @@
 .info-block {
   background: $boxColor;
   padding: 10px 10px;
+  margin-top: 20px;
   @include border-radius(10px);
   opacity: 0.8;
   height: 350px;
@@ -28,9 +29,11 @@
   flex-wrap: wrap;
   justify-content: space-between;
   div {
-    flex: 4;
+    flex-grow: 0;
+    flex-basis: 33.333%;
   }
   .areaChart {
-    flex: 8;
+    flex-grow: 0;
+    flex-basis: 66.666%
   }
 }
