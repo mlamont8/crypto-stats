@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import LineChart from "../../components/lineChart/LineChart";
+import CoinLineChart from "../../components/lineChart/LineChart";
 import LiveResults from "../../components/liveResults/liveResults";
 import ImageBlock from "../../components/imageBlock/imageBlock";
 
@@ -12,30 +12,24 @@ const Summary = props => {
   const { price, flag } = currentPrice;
   return (
     <div className="summary-container">
-      <div className="summary-left">
-        <div className="summary-block">
-          <ImageBlock
-            img={props.image}
-            coinFrom={props.coinFrom}
-            coinName={props.coinName}
-          />
-        </div>
+      <div className="summary-left summary-block">
+        <ImageBlock
+          img={props.image}
+          coinFrom={props.coinFrom}
+          coinName={props.coinName}
+        />
       </div>
-      <div className="summary-center">
-        <div className="summary-block">
-          <LineChart data={props.byHour} />
-        </div>
+      <div className="summary-center summary-block">
+        <CoinLineChart data={props.byHour} />
       </div>
       <div className="summary-right summary-block">
-        <div className="summary-block">
-          <LiveResults
-            price={price}
-            exchange={props.exchange}
-            flag={flag}
-            dollar={props.inDollars}
-            to={props.coinTo}
-          />
-        </div>
+        <LiveResults
+          price={price}
+          exchange={props.exchange}
+          flag={flag}
+          dollar={props.inDollars}
+          to={props.coinTo}
+        />
       </div>
     </div>
   );
