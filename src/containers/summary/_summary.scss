@@ -5,6 +5,8 @@
 .summary-block {
   background: $boxColor;
   @include border-radius(10px);
+  height: 300px;
+  margin-top: 20px;
 }
 
 .summary-container {

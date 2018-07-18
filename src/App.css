@@ -9609,7 +9609,9 @@ html, body, #root {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  height: 300px;
+  margin-top: 20px; }
 
 .summary-container {
   display: flex;
@@ -9650,7 +9652,7 @@ html, body, #root {
   -ms-border-radius: 10px;
   border-radius: 10px;
   opacity: 0.8;
-  height: 350px; }
+  height: 300px; }
 
 .first-row,
 .second-row {
