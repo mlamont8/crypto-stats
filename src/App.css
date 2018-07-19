@@ -9645,7 +9645,6 @@ html, body, #root {
 
 .info-block {
   background: #5271A7;
-  padding: 10px 10px;
   margin: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -9675,8 +9674,10 @@ html, body, #root {
 @media all and (max-width: 1150px) {
   .chartContainer {
     flex-wrap: wrap; }
-    .chartContainer div {
-      flex: 1 1 100%; } }
+    .chartContainer div, .chartContainer .fifteenDayChart {
+      flex-grow: 1;
+      flex-basis: 100%;
+      margin: 10px; } }
 
 form li {
   list-style: none; }

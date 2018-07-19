@@ -9,10 +9,10 @@ const exchangeVolume = (props) => {
   return !data
     ? null
     :
-    <div>
+    <div className="pieChart">
       <h1>VOLUME BY EXCHANGE</h1>
-      <ResponsiveContainer width="100%" height={300}>
-        <PieChart width={730} height={300}>
+      <ResponsiveContainer width="80%" height={200}>
+        <PieChart>
           <Legend layout="vertical" align="right" verticalAlign="middle" height={36} />
           <Pie
             data={data}

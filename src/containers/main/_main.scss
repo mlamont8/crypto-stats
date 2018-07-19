@@ -8,7 +8,7 @@
 
 .info-block {
   background: $boxColor;
-  padding: 10px 10px;
+  // padding: 10px 10px;
   // margin-top: 20px;
   margin: 10px;
   @include border-radius(10px);
@@ -35,15 +35,17 @@
   }
   .fifteenDayChart {
     flex-grow: 0;
-    flex-basis: 66%
+    flex-basis: 66%;
   }
 }
 
 @media all and (max-width: 1150px) {
   .chartContainer {
     flex-wrap: wrap;
-    div {
-      flex: 1 1 100%;
+    div, .fifteenDayChart {
+      flex-grow: 1;
+      flex-basis: 100%;
+      margin: 10px;
     }
   }
 }
