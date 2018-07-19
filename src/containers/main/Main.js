@@ -37,7 +37,7 @@ class Main extends React.Component {
           <div className="dash-container">
             <Summary />
             <div className="chartContainer">
-              <div className="col-md-4 liveGrid">
+              <div className="info-block">
                 <LiveGrid
                   liveResults={liveResults}
                   usd={inDollars}
@@ -45,17 +45,17 @@ class Main extends React.Component {
                   notifyStatus={this.props.notifyStatus}
                 />
               </div>
-              <div className="col-md-8 areaChart">
+              <div className="info-block fifteenDayChart">
                 <DailyAreaChart data={fifteenDay} />
               </div>
 
-              <div className="col-md-4">
+              <div className="info-block">
                 <HistoricalChart data={historicalDay} />
               </div>
-              <div className="col-md-4">
+              <div className="info-block">
                 <ExchangeVolume data={exchangeVolume} />
               </div>
-              <div className="col-md-4">
+              <div className="info-block">
                 <News data={news} />
               </div>
             </div>

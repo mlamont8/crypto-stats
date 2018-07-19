@@ -11,7 +11,7 @@ import {
 import PropTypes from "prop-types";
 
 const HistoricalChart = props => (
-    <div className="info-block">
+    <div>
         <h1>HISTORICAL</h1>
         <div className="row">
             <ResponsiveContainer width="80%" height={200}>

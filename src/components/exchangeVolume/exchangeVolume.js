@@ -9,7 +9,7 @@ const exchangeVolume = (props) => {
   return !data
     ? null
     :
-    <div className="info-block">
+    <div>
       <h1>VOLUME BY EXCHANGE</h1>
       <ResponsiveContainer width="100%" height={300}>
         <PieChart width={730} height={300}>

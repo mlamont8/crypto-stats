@@ -9646,7 +9646,7 @@ html, body, #root {
 .info-block {
   background: #5271A7;
   padding: 10px 10px;
-  margin-top: 20px;
+  margin: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
@@ -9663,14 +9663,20 @@ html, body, #root {
 
 .chartContainer {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; }
+  justify-content: space-between;
+  flex-wrap: wrap; }
   .chartContainer div {
     flex-grow: 0;
-    flex-basis: 33.333%; }
-  .chartContainer .areaChart {
+    flex-basis: 30%; }
+  .chartContainer .fifteenDayChart {
     flex-grow: 0;
-    flex-basis: 66.666%; }
+    flex-basis: 66%; }
+
+@media all and (max-width: 1150px) {
+  .chartContainer {
+    flex-wrap: wrap; }
+    .chartContainer div {
+      flex: 1 1 100%; } }
 
 form li {
   list-style: none; }
