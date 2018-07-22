@@ -87,7 +87,7 @@ export const filterArray = liveResults => {
 
 export const notificationAlert = (msg, stat) => {
   return UIkit.notification({
-    message: `Current Update: ${msg}`,
+    message: `${msg}`,
     pos: "top-right",
     status: stat
   });

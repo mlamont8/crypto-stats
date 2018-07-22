@@ -10,10 +10,11 @@ class Header extends React.Component {
     this.updateNotificationStatus = this.updateNotificationStatus.bind(this);
   }
 
-  // Notify user and make notification status chnage
+  // Toggles notification status; Sends update to user
   updateNotificationStatus() {
     const { toggle } = this.props;
-    const msg = `NOTIFICATIONS: ${toggle}`;
+    const status = toggle === "on" ? "OFF" : "ON";
+    const msg = `Notifications are now ${status}`;
     this.props.changeNotification();
     notificationAlert(msg, "alert");
   }
