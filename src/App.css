@@ -9679,6 +9679,10 @@ html, body, #root {
       flex-basis: 100%;
       margin: 10px; } }
 
+.uk-notification-message {
+  border-radius: 30px;
+  background-color: #425E9D; }
+
 form li {
   list-style: none; }
 
