@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Header from "../../containers/header/header";
 import Summary from "../summary/summary";
-import HistoricalChart from "../../components/historicalChart/historicalChart";
+import HistoricalChart from "../../components/lineChart/LineChart";
 import DailyAreaChart from "../../components/dailyAreaChart/DailyAreaChart";
 import ExchangeVolume from "../../components/exchangeVolume/exchangeVolume";
 import LiveGrid from "../../components/liveGrid/liveGrid";
@@ -19,7 +19,7 @@ class Main extends React.Component {
     const {
       fifteenDay,
       firstLoad,
-      historicalDay,
+      byHour,
       exchangeVolume,
       liveResults,
       inDollars,
@@ -50,7 +50,7 @@ class Main extends React.Component {
               </div>
 
               <div className="info-block">
-                <HistoricalChart data={historicalDay} />
+                <HistoricalChart title="LAST 10 HOURS" data={byHour} />
               </div>
               <div className="info-block">
                 <ExchangeVolume data={exchangeVolume} />
@@ -73,7 +73,6 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   fifteenDay: state.coinByDay.fifteenDay,
-  historicalDay: state.historical.fullHistory,
   firstLoad: state.isLoading.firstLoad,
   exchangeVolume: state.topExchanges.data,
   market: state.searchTerm.market,
@@ -82,15 +81,16 @@ const mapStateToProps = state => ({
   liveResults: state.liveResults,
   inDollars: state.byDollar.coinConversion,
   news: state.news.news,
-  notifyStatus: state.notification.option
+  notifyStatus: state.notification.option,
+  byHour: state.coinByHour.coinByHour,
 });
 
 Main.propTypes = {
   fifteenDay: PropTypes.arrayOf(PropTypes.object),
-  historicalDay: PropTypes.arrayOf(PropTypes.object),
   exchangeVolume: PropTypes.arrayOf(PropTypes.object),
   fetch: PropTypes.func.isRequired,
   firstLoad: PropTypes.bool,
+  byHour: PropTypes.arrayOf(PropTypes.object),
   liveResults: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -107,13 +107,12 @@ Main.propTypes = {
 
 Main.defaultProps = {
   fifteenDay: [],
-  historicalDay: [],
   exchangeVolume: [],
   inDollars: 0,
   to: "",
   firstLoad: true,
   news: [],
-  notify: "on"
+  byHour: [],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

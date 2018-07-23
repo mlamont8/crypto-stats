@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 
 const CoinLineChart = props => (
   <div>
-    <h1>LAST 10 HOURS</h1>
+    <h1>{props.title}</h1>
     <div className="row">
       <ResponsiveContainer width="80%" height={200}>
         <LineChart
@@ -36,7 +36,8 @@ const CoinLineChart = props => (
 );
 
 CoinLineChart.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default CoinLineChart;

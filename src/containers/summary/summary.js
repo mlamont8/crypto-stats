@@ -20,7 +20,7 @@ const Summary = props => {
         />
       </div>
       <div className="summary-center summary-block">
-        <CoinLineChart data={props.byHour} />
+        <CoinLineChart title="History" data={props.historicalDay} />
       </div>
       <div className="summary-right summary-block">
         <LiveResults
@@ -39,7 +39,7 @@ const mapStateToProps = state => ({
   exchange: state.searchTerm.market,
   coinFrom: state.searchTerm.convertFrom,
   coinTo: state.searchTerm.convertTo,
-  byHour: state.coinByHour.coinByHour,
+  historicalDay: state.historical.fullHistory,
   image: state.coinUrl.convertFrom,
   coinName: state.coinName.convertFrom,
   inDollars: state.byDollar.coinConversion,
@@ -51,7 +51,7 @@ Summary.defaultProps = {
   coinFrom: "",
   coinTo: "",
   exchange: "",
-  byHour: [],
+  historicalDay: [],
   image: "",
   coinName: "",
   inDollars: 0
@@ -61,7 +61,7 @@ Summary.propTypes = {
   coinFrom: PropTypes.string,
   coinTo: PropTypes.string,
   exchange: PropTypes.string,
-  byHour: PropTypes.arrayOf(PropTypes.object),
+  historicalDay: PropTypes.arrayOf(PropTypes.object),
   image: PropTypes.string,
   coinName: PropTypes.string,
   inDollars: PropTypes.number,
