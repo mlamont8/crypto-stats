@@ -9636,6 +9636,10 @@ html, body, #root {
 .uk-navbar-right {
   margin-right: 20px; }
 
+.notificationLabel {
+  display: flex;
+  justify-content: space-between; }
+
 .dash-container {
   color: #F7FDFF;
   fill: #F7FDFF;

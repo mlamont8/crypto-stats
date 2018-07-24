@@ -26,7 +26,7 @@ class Header extends React.Component {
           <div>
             <label>Notifications</label>
           </div>
-          <div>
+          <div className="notificationLabel">
             <label>
               <input
                 className="uk-radio"
