@@ -8,3 +8,13 @@
   justify-content: space-between;
 
 }
+
+.uk-navbar-container:not(.uk-navbar-transparent) {
+  background-color: $background;
+  color: $textColor;
+}
+
+.uk-logo {
+  color: $textColor;
+}
+

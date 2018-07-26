@@ -25,10 +25,10 @@ const CoinLineChart = props => (
           }}
         >
           <CartesianGrid strokeDasharray="5 5" stroke="none" />
-          <XAxis dataKey="time" tick={{ fill: "#F7FDFF" }} />
-          <YAxis tick={{ fill: "#F7FDFF" }} mirror={true} domain={["dataMin", "dataMax"]} />
+          <XAxis dataKey="time" tick={{ fill: "#E3E3E3" }} />
+          <YAxis tick={{ fill: "#E3E3E3" }} mirror={true} domain={["dataMin", "dataMax"]} />
           <Tooltip />
-          <Line type="linear" dataKey="open" stroke="#82ca9d" dot={false} />
+          <Line type="linear" dataKey="open" stroke="#00B5FF" dot={false} />
         </LineChart>
       </ResponsiveContainer>
     </div>
