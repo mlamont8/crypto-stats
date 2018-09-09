@@ -7,7 +7,7 @@ const LiveResults = props => {
   const conversion = (price * dollar).toFixed(2);
   const arrow = flag === "2" ? "arrow-down" : "arrow-up";
   return (
-    <div className="current text-center">
+    <div className="current text-center infoBlock">
       <div className="blockTitle">
         <h1>CURRENT</h1>
       </div>

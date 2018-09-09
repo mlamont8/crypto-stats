@@ -7,7 +7,7 @@ const COLORS = ["#3c4eba", "#fffefb", "#3cddf1", "#1b6ff3"];
 const exchangeVolume = props => {
   const { data } = props;
   return !data ? null : (
-    <div className="pieChart">
+    <div className="pieChart infoBlock">
       <div className="blockTitle">
         <h1>VOLUME BY EXCHANGE</h1>
       </div>

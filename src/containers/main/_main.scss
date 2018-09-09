@@ -1,19 +1,8 @@
 .dash-container {
-  
   fill: $white;
   padding-top: 40px;
   border: 1px solid transparent;
   background-color: $background;
-}
-
-.info-block {
-  display: flex;
-  flex-direction: column;
-  background: $boxColor;
-  margin: 10px;
-  @include border-radius(10px);
-  opacity: 0.8;
-  height: 300px;
 }
 
 .first-row,
@@ -42,7 +31,8 @@
 @media all and (max-width: 1150px) {
   .chartContainer {
     flex-wrap: wrap;
-    div, .fifteenDayChart {
+    div,
+    .fifteenDayChart {
       flex-grow: 1;
       flex-basis: 100%;
       margin: 10px;

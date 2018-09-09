@@ -11,7 +11,7 @@ import {
 import PropTypes from "prop-types";
 
 const CoinLineChart = props => (
-  <div>
+  <div className="infoBlock">
     <div className="blockTitle">
       <h1>{props.title}</h1>
     </div>

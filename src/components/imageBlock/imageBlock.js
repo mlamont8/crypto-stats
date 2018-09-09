@@ -2,7 +2,7 @@ import React from "react";
 import VertForm from "../../containers/vertForm/vertForm";
 
 const ImageBlock = props => (
-  <div className="ibContainer uk-flex uk-flex-column">
+  <div className="ibContainer infoBlock">
     <div className="ibContainer-fr uk-flex uk-flex-around uk-flex-middle">
       <img
         className="imageIcon"

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const News = props => (
-  <div>
+  <div className="infoBlock">
     <div className="blockTitle">
       <h1>RECENT NEWS</h1>
     </div>

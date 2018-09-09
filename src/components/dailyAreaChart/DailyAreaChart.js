@@ -13,7 +13,7 @@ import {
 import PropTypes from "prop-types";
 
 const DailyAreaChart = props => (
-  <div>
+  <div className="mainBlock infoBlock">
     <div className="blockTitle">
       <h1>LAST 15 DAYS</h1>
     </div>
