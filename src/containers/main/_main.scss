@@ -7,9 +7,9 @@
 }
 
 .info-block {
+  display: flex;
+  flex-direction: column;
   background: $boxColor;
-  // padding: 10px 10px;
-  // margin-top: 20px;
   margin: 10px;
   @include border-radius(10px);
   opacity: 0.8;

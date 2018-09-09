@@ -8,8 +8,9 @@ const LiveResults = props => {
   const arrow = flag === "2" ? "arrow-down" : "arrow-up";
   return (
     <div className="current text-center">
-      <h1>CURRENT</h1>
-      {/* <FontAwesomeIcon icon={["fas", "coins"]} size="2x" /> */}
+      <div className="blockTitle">
+        <h1>CURRENT</h1>
+      </div>
       {exchange}
       <hr />
       <div className="row">
@@ -22,7 +23,6 @@ const LiveResults = props => {
         <span className="conversion" id={arrow}>
           (${conversion})
         </span>
-        {/* <FontAwesomeIcon icon={["fas", arrow]} /> */}
       </div>
     </div>
   );

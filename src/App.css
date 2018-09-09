@@ -9598,12 +9598,18 @@ iframe.uk-cover {
   h3 {
     page-break-after: avoid; } }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   color: #E1E1E1; }
 
-h1, h2 {
+h1,
+h2 {
   color: #E1E1E1; }
+
+.blockTitle {
+  text-align: center; }
 
 .summary-left h2 {
   font-size: 20px; }
@@ -9658,6 +9664,8 @@ h1, h2 {
   background-color: #0F1213; }
 
 .info-block {
+  display: flex;
+  flex-direction: column;
   background: #2A2A2A;
   margin: 10px;
   -webkit-border-radius: 10px;

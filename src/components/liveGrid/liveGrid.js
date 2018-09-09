@@ -35,7 +35,9 @@ class LiveGrid extends React.Component {
     const { liveResults, usd, to } = this.props;
     return (
       <div className="live-table">
-        <h1>LIVE UPDATES</h1>
+        <div className="blockTitle">
+          <h1>LIVE UPDATES</h1>
+        </div>
         <div className="row">
           <table>
             <thead>

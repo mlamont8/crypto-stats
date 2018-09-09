@@ -14,7 +14,9 @@ import PropTypes from "prop-types";
 
 const DailyAreaChart = props => (
   <div>
-    <h1>LAST 15 DAYS</h1>
+    <div className="blockTitle">
+      <h1>LAST 15 DAYS</h1>
+    </div>
     <ResponsiveContainer width="80%" height={200}>
       <AreaChart
         data={props.data}
@@ -38,7 +40,11 @@ const DailyAreaChart = props => (
         <XAxis dataKey="time" tick={{ fill: "#F7FDFF" }}>
           <Label value="Time" position="insideBottomRight" offset={0} />
         </XAxis>
-        <YAxis tick={{ fill: "#F7FDFF" }} mirror={true} domain={["dataMin", "dataMax"]} />
+        <YAxis
+          tick={{ fill: "#F7FDFF" }}
+          mirror={true}
+          domain={["dataMin", "dataMax"]}
+        />
         <CartesianGrid stroke="none" />
         <Tooltip />
         <Legend />

@@ -1,11 +1,17 @@
-// base settings 
+// base settings
 
-html, body, #root {
-    height: 100%;
-    color: $textColor;
+html,
+body,
+#root {
+  height: 100%;
+  color: $textColor;
 }
 
-h1, h2 {
-    color: $textColor;
+h1,
+h2 {
+  color: $textColor;
 }
 
+.blockTitle {
+  text-align: center;
+}

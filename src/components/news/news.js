@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 
 const News = props => (
   <div>
-    <h1>RECENT NEWS</h1>
+    <div className="blockTitle">
+      <h1>RECENT NEWS</h1>
+    </div>
     <div className="row">
       <table>
         <tbody>

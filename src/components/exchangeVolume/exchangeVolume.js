@@ -1,19 +1,24 @@
-import React from 'react';
-import { PieChart, Pie, ResponsiveContainer, Legend, Cell } from 'recharts';
-import PropTypes from 'prop-types';
+import React from "react";
+import { PieChart, Pie, ResponsiveContainer, Legend, Cell } from "recharts";
+import PropTypes from "prop-types";
 
-const COLORS = ['#3c4eba', '#fffefb', '#3cddf1', '#1b6ff3'];
+const COLORS = ["#3c4eba", "#fffefb", "#3cddf1", "#1b6ff3"];
 
-const exchangeVolume = (props) => {
+const exchangeVolume = props => {
   const { data } = props;
-  return !data
-    ? null
-    :
+  return !data ? null : (
     <div className="pieChart">
-      <h1>VOLUME BY EXCHANGE</h1>
+      <div className="blockTitle">
+        <h1>VOLUME BY EXCHANGE</h1>
+      </div>
       <ResponsiveContainer width="80%" height={200}>
         <PieChart>
-          <Legend layout="vertical" align="right" verticalAlign="middle" height={36} />
+          <Legend
+            layout="vertical"
+            align="right"
+            verticalAlign="middle"
+            height={36}
+          />
           <Pie
             data={data}
             dataKey="VOLUME24HOUR"
@@ -24,17 +29,18 @@ const exchangeVolume = (props) => {
             outerRadius={80}
             fill="#82ca9d"
           >
-            {
-              data.map((MARKET, index) => <Cell key={MARKET} fill={COLORS[index % COLORS.length]} />)
-            }
+            {data.map((MARKET, index) => (
+              <Cell key={MARKET} fill={COLORS[index % COLORS.length]} />
+            ))}
           </Pie>
         </PieChart>
       </ResponsiveContainer>
-    </div>;
+    </div>
+  );
 };
 
 exchangeVolume.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default exchangeVolume;
