@@ -9763,6 +9763,9 @@ form li {
   .firstPageInfo p {
     text-align: center; }
 
+.nameBlk {
+  margin: 5px; }
+
 .imageIcon {
   border-radius: 50%;
   max-width: 40%; }
