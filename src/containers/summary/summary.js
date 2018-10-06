@@ -17,6 +17,7 @@ const Summary = props => {
           img={props.image}
           coinFrom={props.coinFrom}
           coinName={props.coinName}
+          coinTo={props.coinTo}
         />
       </div>
       <div className="summary-center summary-block">

@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import VertForm from "../../containers/vertForm/vertForm";
 
 const ImageBlock = props => (
@@ -12,7 +14,10 @@ const ImageBlock = props => (
         uk-img="true"
       />
       <span className="nameBlk">
-        <h1>{props.coinFrom}</h1>
+        {props.coinFrom}{' '}
+        <FontAwesomeIcon icon={faArrowRight} />{' '}
+        {props.coinTo}
+        
       </span>
    
       <div className="ibContainer-sr">
