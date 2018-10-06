@@ -1,8 +1,14 @@
+
+
 .imageIcon {
   border-radius: 50%;
   max-width: 40%;
 }
 
-.ibContainer-sr {
-  padding-top: 10px;
+.imageBlock{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
 }
