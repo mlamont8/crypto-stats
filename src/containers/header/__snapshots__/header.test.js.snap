@@ -19,55 +19,8 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <div
-        className="uk-navbar-left"
->
-        <span
-                className="uk-navbar-item uk-logo"
-        >
-                Crypto Stats
-        </span>
-</div>,
-      "className": "uk-navbar-container",
-      "uk-navbar": "true",
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <span
-          className="uk-navbar-item uk-logo"
->
-          Crypto Stats
-</span>,
-        "className": "uk-navbar-left",
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "Crypto Stats",
-          "className": "uk-navbar-item uk-logo",
-        },
-        "ref": null,
-        "rendered": "Crypto Stats",
-        "type": "span",
-      },
-      "type": "div",
-    },
-    "type": "nav",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <div
+      "children": Array [
+        <div
           className="uk-navbar-left"
 >
           <span
@@ -76,11 +29,14 @@ ShallowWrapper {
                     Crypto Stats
           </span>
 </div>,
-        "className": "uk-navbar-container",
-        "uk-navbar": "true",
-      },
-      "ref": null,
-      "rendered": Object {
+        null,
+      ],
+      "className": "uk-navbar-container",
+      "uk-navbar": "true",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
         "instance": null,
         "key": undefined,
         "nodeType": "host",
@@ -107,6 +63,62 @@ ShallowWrapper {
         },
         "type": "div",
       },
+      null,
+    ],
+    "type": "nav",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="uk-navbar-left"
+>
+            <span
+                        className="uk-navbar-item uk-logo"
+            >
+                        Crypto Stats
+            </span>
+</div>,
+          null,
+        ],
+        "className": "uk-navbar-container",
+        "uk-navbar": "true",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <span
+              className="uk-navbar-item uk-logo"
+>
+              Crypto Stats
+</span>,
+            "className": "uk-navbar-left",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Crypto Stats",
+              "className": "uk-navbar-item uk-logo",
+            },
+            "ref": null,
+            "rendered": "Crypto Stats",
+            "type": "span",
+          },
+          "type": "div",
+        },
+        null,
+      ],
       "type": "nav",
     },
   ],

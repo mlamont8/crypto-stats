@@ -2,13 +2,13 @@
 
 exports[`First Page component renders correctly 1`] = `
 <div
-  className="container-fluid firstPage"
+  className="frontContainer"
 >
   <div
-    className="frontLeft col-xs-6"
+    className="frontLeft "
   />
   <div
-    className="frontRight col-xs-6"
+    className="frontRight "
   >
     <div
       className="firstPageInfo"

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { notificationOption } from "../../actions";
 import { notificationAlert } from "../../helpers/index";
 
-class Header extends React.Component {
+export class Header extends React.Component {
   constructor(props) {
     super(props);
     this.updateNotificationStatus = this.updateNotificationStatus.bind(this);
@@ -79,8 +79,8 @@ const mapDispatchToProps = dispatch => {
 
 Header.propTypes = {
   firstLoad: PropTypes.bool,
-  changeNotification: PropTypes.func.isRequired,
-  toggle: PropTypes.string.isRequired
+  changeNotification: PropTypes.func,
+  toggle: PropTypes.string
 };
 
 Header.defaultProps = {
@@ -88,3 +88,4 @@ Header.defaultProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
