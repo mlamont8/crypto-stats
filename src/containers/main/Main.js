@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import Header from "../../containers/header/header";
-import Summary from "../summary/summary";
-import HistoricalChart from "../../components/lineChart/LineChart";
-import DailyAreaChart from "../../components/dailyAreaChart/DailyAreaChart";
-import ExchangeVolume from "../../components/exchangeVolume/exchangeVolume";
-import LiveGrid from "../../components/liveGrid/liveGrid";
-import FirstPage from "../../components/firstPage/firstPage";
-import News from "../../components/news/news";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Header from '../../containers/header/header';
+import Summary from '../summary/summary';
+import HistoricalChart from '../../components/lineChart/LineChart';
+import DailyAreaChart from '../../components/dailyAreaChart/DailyAreaChart';
+import ExchangeVolume from '../../components/exchangeVolume/exchangeVolume';
+import LiveGrid from '../../components/liveGrid/liveGrid';
+import FirstPage from '../../components/firstPage/firstPage';
+import News from '../../components/news/news';
 
 class Main extends React.Component {
   componentDidMount() {
@@ -24,7 +24,7 @@ class Main extends React.Component {
       liveResults,
       inDollars,
       to,
-      news
+      news,
     } = this.props;
     return firstLoad ? (
       <div className="mainContainer">
@@ -67,8 +67,8 @@ class Main extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   fetch: bool => {
-    dispatch({ type: "INITIAL_MOUNT", status: bool });
-  }
+    dispatch({ type: 'INITIAL_MOUNT', status: bool });
+  },
 });
 
 const mapStateToProps = state => ({
@@ -96,23 +96,26 @@ Main.propTypes = {
       id: PropTypes.number.isRequired,
       flag: PropTypes.string,
       price: PropTypes.string,
-      time: PropTypes.string
+      time: PropTypes.string,
     }).isRequired
   ).isRequired,
   inDollars: PropTypes.number,
   to: PropTypes.string,
   news: PropTypes.arrayOf(PropTypes.object),
-  notifyStatus: PropTypes.string.isRequired
+  notifyStatus: PropTypes.string.isRequired,
 };
 
 Main.defaultProps = {
   fifteenDay: [],
   exchangeVolume: [],
   inDollars: 0,
-  to: "",
+  to: '',
   firstLoad: true,
   news: [],
   byHour: [],
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Main);

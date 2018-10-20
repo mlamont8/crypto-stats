@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   AreaChart,
   XAxis,
@@ -8,23 +8,23 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  Label
-} from "recharts";
-import PropTypes from "prop-types";
+  Label,
+} from 'recharts';
+import PropTypes from 'prop-types';
 
 const DailyAreaChart = props => (
   <div className="mainBlock infoBlock">
     <div className="blockTitle">
       <h1>LAST 15 DAYS</h1>
     </div>
-    <ResponsiveContainer width="80%" height={200}>
+    <ResponsiveContainer width="90%" height={200}>
       <AreaChart
         data={props.data}
         margin={{
           top: 10,
           right: 20,
           left: 20,
-          bottom: 10
+          bottom: 10,
         }}
       >
         <defs>
@@ -37,13 +37,13 @@ const DailyAreaChart = props => (
             <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
           </linearGradient>
         </defs>
-        <XAxis dataKey="time" tick={{ fill: "#F7FDFF" }}>
+        <XAxis dataKey="time" tick={{ fill: '#F7FDFF' }}>
           <Label value="Time" position="insideBottomRight" offset={0} />
         </XAxis>
         <YAxis
-          tick={{ fill: "#F7FDFF" }}
-          mirror={true}
-          domain={["dataMin", "dataMax"]}
+          tick={{ fill: '#F7FDFF' }}
+          mirror={false}
+          domain={['dataMin', 'dataMax']}
         />
         <CartesianGrid stroke="none" />
         <Tooltip />
@@ -68,7 +68,7 @@ const DailyAreaChart = props => (
 );
 
 DailyAreaChart.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default DailyAreaChart;

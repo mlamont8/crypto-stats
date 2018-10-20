@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   LineChart,
   XAxis,
@@ -6,9 +6,9 @@ import {
   CartesianGrid,
   Line,
   Tooltip,
-  ResponsiveContainer
-} from "recharts";
-import PropTypes from "prop-types";
+  ResponsiveContainer,
+} from 'recharts';
+import PropTypes from 'prop-types';
 
 const CoinLineChart = props => (
   <div className="infoBlock">
@@ -23,15 +23,15 @@ const CoinLineChart = props => (
             top: 15,
             right: 20,
             left: 25,
-            bottom: 5
+            bottom: 5,
           }}
         >
           <CartesianGrid strokeDasharray="5 5" stroke="none" />
-          <XAxis dataKey="time" tick={{ fill: "#E3E3E3" }} />
+          <XAxis dataKey="time" tick={{ fill: '#E3E3E3' }} />
           <YAxis
-            tick={{ fill: "#E3E3E3" }}
-            mirror={true}
-            domain={["dataMin", "dataMax"]}
+            tick={{ fill: '#E3E3E3' }}
+            mirror={false}
+            domain={['dataMin', 'dataMax']}
           />
           <Tooltip />
           <Line type="linear" dataKey="open" stroke="#00B5FF" dot={false} />
@@ -43,7 +43,7 @@ const CoinLineChart = props => (
 
 CoinLineChart.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 export default CoinLineChart;

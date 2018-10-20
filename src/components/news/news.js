@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const News = props => (
   <div className="infoBlock">
@@ -24,7 +24,7 @@ const News = props => (
 );
 
 News.propTypes = {
-  news: PropTypes.arrayOf(PropTypes.object)
+  news: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default News;
