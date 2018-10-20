@@ -9602,11 +9602,11 @@ html,
 body,
 #root {
   height: 100%;
-  color: #E1E1E1; }
+  color: #F7FDFF; }
 
 h1,
 h2 {
-  color: #E1E1E1; }
+  color: #F7FDFF; }
 
 .blockTitle {
   text-align: center; }
@@ -9620,7 +9620,7 @@ h2 {
 .infoBlock {
   display: flex;
   flex-direction: column;
-  background: #2A2A2A;
+  background: #3498db;
   margin: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -9660,17 +9660,17 @@ h2 {
   justify-content: space-between; }
 
 .uk-navbar-container:not(.uk-navbar-transparent) {
-  background-color: #0F1213;
-  color: #E1E1E1; }
+  background-color: #2980b9;
+  color: #F7FDFF; }
 
 .uk-logo {
-  color: #E1E1E1; }
+  color: #F7FDFF; }
 
 .dash-container {
   fill: #F7FDFF;
   padding-top: 40px;
   border: 1px solid transparent;
-  background-color: #0F1213; }
+  background-color: #2980b9; }
 
 .first-row,
 .second-row {
