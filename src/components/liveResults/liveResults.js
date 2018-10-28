@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 // import FontAwesomeIcon from "@fortawesome/react-fontawesome";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const LiveResults = props => {
   const { flag, dollar, exchange, price, to } = props;
   const conversion = (price * dollar).toFixed(2);
-  const arrow = flag === "2" ? "arrow-down" : "arrow-up";
+  const arrow = flag === '2' ? 'arrow-down' : 'arrow-up';
   return (
     <div className="current text-center infoBlock">
       <div className="blockTitle">
@@ -21,7 +21,7 @@ const LiveResults = props => {
       </div>
       <div className="row">
         <span className="conversion" id={arrow}>
-          (${conversion})
+          ${conversion}
         </span>
       </div>
     </div>
@@ -33,15 +33,15 @@ LiveResults.propTypes = {
   flag: PropTypes.string,
   exchange: PropTypes.string,
   dollar: PropTypes.number,
-  to: PropTypes.string
+  to: PropTypes.string,
 };
 
 LiveResults.defaultProps = {
-  price: "",
-  flag: "",
-  exchange: "",
+  price: '',
+  flag: '',
+  exchange: '',
   dollar: 0,
-  to: ""
+  to: '',
 };
 
 export default LiveResults;

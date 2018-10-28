@@ -1,8 +1,5 @@
-@import "variables";
-@import "mixins";
-
 // 1. Your custom variables and variable overwrites.
-$global-link-color: #DA7D02;
+@import "variables";
 
 // 2. Import default variables and available mixins.
 
@@ -11,7 +8,7 @@ $global-link-color: #DA7D02;
 
 // 3. Your custom mixin overwrites.
 
-@mixin hook-card() { color: #000; }
+@import "mixins";
 
 // 4. Import UIkit.
 

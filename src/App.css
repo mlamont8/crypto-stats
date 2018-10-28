@@ -46,7 +46,7 @@ a:hover {
  */
 a,
 .uk-link {
-  color: #DA7D02;
+  color: #1e87f0;
   text-decoration: none;
   cursor: pointer; }
 
@@ -1998,7 +1998,7 @@ select.uk-form-width-xsmall {
   line-height: 1.5;
   background: none;
   /* 2 */
-  color: #DA7D02; }
+  color: #1e87f0; }
 
 /* Hover + Focus */
 .uk-button-link:hover,
@@ -2631,7 +2631,7 @@ select.uk-form-width-xsmall {
 .uk-card {
   position: relative;
   box-sizing: border-box;
-  color: #000; }
+  transition: box-shadow 0.1s ease-in-out; }
 
 /* Sections
  ========================================================================== */
@@ -9620,7 +9620,7 @@ h2 {
 .infoBlock {
   display: flex;
   flex-direction: column;
-  background: #3498db;
+  background: #2B3E4F;
   margin: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -9660,7 +9660,7 @@ h2 {
   justify-content: space-between; }
 
 .uk-navbar-container:not(.uk-navbar-transparent) {
-  background-color: #2980b9;
+  background-color: #2B3E4F;
   color: #F7FDFF; }
 
 .uk-logo {
@@ -9670,7 +9670,7 @@ h2 {
   fill: #F7FDFF;
   padding-top: 40px;
   border: 1px solid transparent;
-  background-color: #2980b9; }
+  background-color: #2B3E4F; }
 
 .first-row,
 .second-row {
@@ -9701,7 +9701,7 @@ h2 {
 
 .uk-notification-message {
   border-radius: 30px;
-  background-color: #425E9D; }
+  color: #2B3E4F; }
 
 form li {
   list-style: none; }
@@ -9714,10 +9714,10 @@ form li {
   font-size: 18px; }
 
 #arrow-up {
-  color: green; }
+  color: #29A02A; }
 
 #arrow-down {
-  color: red; }
+  color: #FE7F0E; }
 
 .conversion {
   font-size: 16px; }
