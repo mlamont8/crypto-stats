@@ -2,7 +2,7 @@
 
 exports[`liveResults component renders correctly 1`] = `
 <div
-  className="current text-center infoBlock"
+  className="current infoBlock"
 >
   <div
     className="blockTitle"
@@ -38,9 +38,8 @@ exports[`liveResults component renders correctly 1`] = `
       className="conversion"
       id="arrow-up"
     >
-      ($
+      $
       0.28
-      )
     </span>
   </div>
 </div>

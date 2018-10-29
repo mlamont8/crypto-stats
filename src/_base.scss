@@ -12,14 +12,10 @@ h2 {
   color: $textColor;
 }
 
-.blockTitle {
-  text-align: center;
-}
-
 .mainBlock {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
 }
 

@@ -20,15 +20,22 @@ export class Header extends React.Component {
   }
 
   render() {
+    console.log(this.props.liveResults)
+    const liveResult = this.props.liveResults.slice(-1);
+    // Get the updated current price
+    const price = liveResult[0].price;
+
+    //Convert the price to US Dollars
+    const usDollars = (price * this.props.inDollars).toFixed(2);
     return (
       <nav className="navbar-container">
         <div className="navbar-left">
           <span className="uk-navbar-item uk-logo">Crypto Stats</span>
         </div>
-        <div className={`${this.props.firstLoad ? 'navbar-hide' : 'navbar-center'}`}>
-          <h1>{this.props.coinName}</h1>
+        <div className={`${isNaN(usDollars) ? 'navbar-hide' : 'navbar-center'}`}>
+          <h1>{this.props.coinName} - ${usDollars} ({price})</h1>
         </div>
-        <div className={`${this.props.firstLoad ? 'navbar-hide' : 'navbar-right'}`}>
+        <div className={`${isNaN(usDollars) ? 'navbar-hide' : 'navbar-right'}`}>
           <div className="uk-flex uk-flex-column">
             <div>
               <label>Notifications</label>
@@ -66,7 +73,9 @@ const mapStateToProps = state => {
   return {
     toggle: state.notification.option,
     firstLoad: state.isLoading.firstLoad,
-    coinName: state.coinName.convertFrom
+    coinName: state.coinName.convertFrom,
+    inDollars: state.byDollar.coinConversion,
+    liveResults: state.liveResults,
   };
 };
 
@@ -81,11 +90,18 @@ const mapDispatchToProps = dispatch => {
 Header.propTypes = {
   firstLoad: PropTypes.bool,
   changeNotification: PropTypes.func,
-  toggle: PropTypes.string
+  toggle: PropTypes.string,
+  inDollars: PropTypes.number,
+
 };
 
 Header.defaultProps = {
-  firstLoad: true
+  firstLoad: true,
+  inDollars: 0,
+  liveResults: {
+    price: 0
+  }
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

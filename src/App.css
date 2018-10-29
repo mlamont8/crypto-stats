@@ -9608,13 +9608,9 @@ h1,
 h2 {
   color: #F7FDFF; }
 
-.blockTitle {
-  text-align: center; }
-
 .mainBlock {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center; }
 
 .infoBlock {
