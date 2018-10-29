@@ -4,13 +4,19 @@ import { Header } from "./header";
 
 
 describe("Header", () => {
+  const wrapper = shallow(<Header />);
   it("renders without crashing", () => {
-    const snap = shallow(<Header />);
-    expect(snap).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
-  it("should render a `.uk-navbar-container`", () => {
-    const wrapper = shallow(<Header />);
-    expect(wrapper.find(".uk-navbar-container").length).toBe(1);
+
+  it("should render a `.navbar-container`", () => {
+    expect(wrapper.find(".navbar-container").length).toBe(1);
+  });
+
+  it("should hide center and right content on homepage", () => {
+    const homepageHeader = shallow(<Header
+      firstLoad />)
+    expect(homepageHeader.find('.navbar-hide').length).toBe(2);
   });
 
 

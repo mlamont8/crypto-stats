@@ -9652,9 +9652,6 @@ h2 {
     .summary-container .summary-center {
       flex: 1 1 100%; } }
 
-.uk-navbar-right {
-  margin-right: 20px; }
-
 .notificationLabel {
   display: flex;
   justify-content: space-between; }
@@ -9665,6 +9662,22 @@ h2 {
 
 .uk-logo {
   color: #F7FDFF; }
+
+.navbar-container {
+  background-color: #2B3E4F;
+  color: #F7FDFF;
+  display: flex;
+  align-items: center; }
+
+.navbar-center {
+  margin-left: auto;
+  margin-right: auto; }
+
+.navbar-right {
+  margin-right: 20px; }
+
+.navbar-hide {
+  display: none; }
 
 .dash-container {
   fill: #F7FDFF;
