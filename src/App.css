@@ -9759,6 +9759,7 @@ form li {
   fill: #F7FDFF;
   height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center; }
 
@@ -9768,9 +9769,13 @@ form li {
 
 .firstPageInfo {
   display: flex;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 15px; }
   .firstPageInfo p {
     text-align: center; }
+
+.modalButton {
+  color: #0058CC; }
 
 .nameBlk {
   margin: 5px; }
@@ -9798,6 +9803,29 @@ form li {
 
 .vertSelect {
   padding: 4px; }
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); }
+
+.display-block {
+  display: block; }
+
+.display-none {
+  display: none; }
+
+.modalContent {
+  position: fixed;
+  background: white;
+  width: 80%;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
 
 h1 {
   font-size: 20px; }
