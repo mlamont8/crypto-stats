@@ -15,6 +15,16 @@ exports[`First Page component renders correctly 1`] = `
     >
       <Connect(CoinForm) />
     </div>
+    <div
+      className="modalButton"
+    >
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        Get Started
+      </button>
+    </div>
   </div>
 </div>
 `;

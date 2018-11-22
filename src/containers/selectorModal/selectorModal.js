@@ -2,14 +2,31 @@ import React from 'react';
 import { connect } from "react-redux";
 
 
-class SelectorModal extends React.Component {
+export class SelectorModal extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.setObject = this.setObject.bind(this);
+    }
+
+    // Sets the current viewable selections for user
+    setObject() {
+        const { market, convertFrom, marketArray, fromArray, toArray } = this.props;
+        if (market === undefined) {
+            return { ...marketArray };
+        } else if (market !== undefined && convertFrom === undefined) {
+            return { ...fromArray }
+        } else {
+            return { ...toArray }
+        }
+    }
 
     render() {
-        const { market, convertFrom, convertTo, marketArray, fromArray, toArray } = this.props;
-        let currentArray = {};
+        const { market, marketArray } = this.props;
         console.log({ market });
         console.log({ marketArray });
-        if (market === false) { currentArray = marketArray; }
+
+        let currentArray = this.setObject();
         console.log('currentArray', currentArray);
         return (
             <div className="modalContainer">

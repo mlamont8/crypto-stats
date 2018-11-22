@@ -1,6 +1,6 @@
 import React from "react";
 import CoinForm from "../../containers/coinForm/CoinForm";
-import SelectorModal from '../selectorModal/selectorModal';
+import SelectorModal from '../../containers/selectorModal/selectorModal';
 
 class FirstPage extends React.Component {
   constructor(props) {

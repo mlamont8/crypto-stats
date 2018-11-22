@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Selector Modal renders without crashing 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SelectorModal />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <div
+        className="modalContent"
+>
+        Modal Content
+        <button
+                onClick={undefined}
+                type="button"
+        >
+                Close
+        </button>
+</div>,
+      "className": "modalContainer",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          "Modal Content",
+          <button
+            onClick={undefined}
+            type="button"
+>
+            Close
+</button>,
+        ],
+        "className": "modalContent",
+      },
+      "ref": null,
+      "rendered": Array [
+        "Modal Content",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Close",
+            "onClick": undefined,
+            "type": "button",
+          },
+          "ref": null,
+          "rendered": "Close",
+          "type": "button",
+        },
+      ],
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="modalContent"
+>
+          Modal Content
+          <button
+                    onClick={undefined}
+                    type="button"
+          >
+                    Close
+          </button>
+</div>,
+        "className": "modalContainer",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "Modal Content",
+            <button
+              onClick={undefined}
+              type="button"
+>
+              Close
+</button>,
+          ],
+          "className": "modalContent",
+        },
+        "ref": null,
+        "rendered": Array [
+          "Modal Content",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Close",
+              "onClick": undefined,
+              "type": "button",
+            },
+            "ref": null,
+            "rendered": "Close",
+            "type": "button",
+          },
+        ],
+        "type": "div",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
