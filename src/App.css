@@ -9806,6 +9806,8 @@ form li {
 
 .modalContainer {
   position: fixed;
+  justify-content: center;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -9822,10 +9824,20 @@ form li {
   position: fixed;
   background: white;
   width: 80%;
-  height: 200px;
+  max-height: 80vh;
+  overflow-y: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); }
+
+.selectorItems {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around; }
+  .selectorItems div {
+    color: black;
+    list-style: none;
+    flex: 0 1 100px; }
 
 h1 {
   font-size: 20px; }
