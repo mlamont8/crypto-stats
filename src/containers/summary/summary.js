@@ -45,7 +45,8 @@ const mapStateToProps = state => ({
   coinName: state.coinName.convertFrom,
   inDollars: state.byDollar.coinConversion,
   liveResults: state.liveResults,
-  newResult: state.liveResults[state.liveResults.length - 1]
+  newResult: state.liveResults[state.liveResults.length - 1],
+  modal: state.modal.status,
 });
 
 Summary.defaultProps = {

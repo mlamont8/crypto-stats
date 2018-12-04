@@ -8,7 +8,6 @@ const searchArrays = (state = {}, action) => {
       };
 
     case "CREATE_CONVERT_FROM":
-      console.log(Object.keys(action.exchangeResults.marketArray[action.item]))
       return {
         ...state,
         convertFrom: action.exchangeResults.marketArray[action.item],
@@ -21,7 +20,11 @@ const searchArrays = (state = {}, action) => {
         convertTo: action.convertFrom[action.item],
         currentArray: action.convertFrom[action.item]
       };
-
+    case "SEARCH_RESET":
+      return {
+        ...state,
+        currentArray: Object.keys(action.currentArray)
+      }
     default:
       return state;
   }

@@ -126,11 +126,26 @@ export function* formSelector(action) {
   } else {
     yield put({ type: "SEARCH_REQUEST" });
     yield put({ type: "COIN_LOOKUP", id, coin });
+    // reset currentArray to Market for new searches
+    // yield put({
+    //   type: "SEARCH_RESET",
+    //   currentArray: newArray.marketArray
+    // })
+    yield call({ resetSearch })
     if (coin.Name === "BCH" || "BTC" || "LTC" || "ETH" || "BNB") {
       const dollars = yield call(api.dollarExchange, coin.Name);
       yield put({ type: "DOLLAR_CONVERSION", dollars });
     }
   }
+}
+
+// Reset Currentarray during search
+function* resetSearch() {
+  const newArray = yield select(searchArrays);
+  yield put({
+    type: "SEARCH_RESET",
+    currentArray: newArray.marketArray
+  })
 }
 
 // Checks to see if data currently exists for coin
@@ -171,6 +186,7 @@ function* mySaga() {
   yield takeLatest("INITIAL_MOUNT", initialMount);
   yield takeLatest("SEARCH_REQUEST", search);
   yield takeLatest("SELECTION_ENTERED", checkForCoin);
+  yield takeLatest("NEW_RESET", resetSearch);
 }
 
 export default mySaga;

@@ -9,6 +9,7 @@ import ExchangeVolume from '../../components/exchangeVolume/exchangeVolume';
 import LiveGrid from '../../components/liveGrid/liveGrid';
 import FirstPage from '../../components/firstPage/firstPage';
 import News from '../../components/news/news';
+import SelectorModal from '../selectorModal/selectorModal'
 
 class Main extends React.Component {
   componentDidMount() {
@@ -33,6 +34,9 @@ class Main extends React.Component {
       </div>
     ) : (
         <div className="mainContainer">
+          {this.props.modal &&
+            <SelectorModal />
+          }
           <Header firstLoad={firstLoad} />
           <div className="dash-container">
             <Summary />
@@ -83,6 +87,7 @@ const mapStateToProps = state => ({
   news: state.news.news,
   notifyStatus: state.notification.option,
   byHour: state.coinByHour.coinByHour,
+  modal: state.modal.status
 });
 
 Main.propTypes = {

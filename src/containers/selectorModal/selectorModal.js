@@ -19,9 +19,9 @@ export class SelectorModal extends React.Component {
         });
     }
 
-
-
+    // Updates to new id after click
     onOptionClick(item) {
+
         const id = this.state.id;
         // send item with current id
         this.props.optionClick(id, item)
@@ -39,11 +39,15 @@ export class SelectorModal extends React.Component {
             })
         }
         else {
-
             // reset id
             this.setState({
                 id: 'market',
             });
+            // Set modal to closed
+            this.props.modalStatus(false)
+
+
+
         }
 
     }
@@ -61,6 +65,7 @@ export class SelectorModal extends React.Component {
                             </div>)}
                     </div>
                     <button type="button" onClick={this.props.modalStatus.bind(this, false)}>Close</button>
+                    <button type="button" onClick={this.props.searchReset}>Reset</button>
                 </div>
             </div>
         )
@@ -83,6 +88,9 @@ const mapDispatchToProps = dispatch => {
         },
         modalStatus: (toggle) => {
             dispatch(modalState(toggle));
+        },
+        searchReset: () => {
+            dispatch({ type: "NEW_RESET" });
         }
     };
 };
