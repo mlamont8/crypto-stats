@@ -1,6 +1,4 @@
 export const SelectData = (id, item) => {
-  console.log('id', id)
-  console.log('item', item)
   return {
     type: "SELECTION_ENTERED",
     id,
@@ -12,3 +10,8 @@ export const notificationOption = (option) => ({
   type: "NOTIFICATION_TOGGLE",
   option
 });
+
+export const modalState = (toggle) => ({
+  type: "MODAL_TOGGLE",
+  toggle
+})

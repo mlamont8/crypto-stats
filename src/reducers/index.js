@@ -14,8 +14,10 @@ import liveResults from "./liveResults";
 import byDollar from "./byDollar";
 import news from "./news";
 import notification from "./notification";
+import modal from "./modal";
 
 const cryptoApp = combineReducers({
+  modal,
   isLoading,
   initialLoadData,
   news,

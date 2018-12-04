@@ -21,7 +21,7 @@ class CoinForm extends React.Component {
   }
 
   // After each select, update store with new variables adding current Market,
-  // coin converting from and to.
+  // and if the coin that is being converted from and to
   render() {
     const sortedMarket = Object.keys(this.props.marketArray).sort();
 

@@ -1,39 +1,17 @@
 import React from "react";
 import CoinForm from "../../containers/coinForm/CoinForm";
 import SelectorModal from '../../containers/selectorModal/selectorModal';
+import { connect } from "react-redux";
+import { modalState } from "../../actions";
 
 class FirstPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: false
-    }
-    this.showModal = this.showModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-  }
 
-  showModal() {
-    this.setState({
-      show: true
-    })
-  }
-
-  closeModal() {
-    this.setState({
-      show: false
-    })
-  }
 
   render() {
     return (
-
-
       <div className="frontContainer">
-        {this.state.show &&
-          <SelectorModal
-            show={this.state.show}
-            handleClose={this.closeModal}
-          />
+        {this.props.modal &&
+          <SelectorModal />
         }
         <div className="frontLeft " />
         <div className="frontRight ">
@@ -41,7 +19,7 @@ class FirstPage extends React.Component {
             <CoinForm />
           </div>
           <div className="modalButton">
-            <button type="button" onClick={this.showModal}>
+            <button type="button" onClick={this.props.modalToggle.bind(this, true)}>
               Get Started
             </button>
 
@@ -54,4 +32,14 @@ class FirstPage extends React.Component {
   }
 };
 
-export default FirstPage;
+const mapStateToProps = state => ({
+  modal: state.modal.status,
+});
+
+const mapDispatchToProps = dispatch => ({
+  modalToggle: (toggle) => {
+    dispatch(modalState(toggle));
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(FirstPage);

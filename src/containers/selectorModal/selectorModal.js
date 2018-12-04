@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { SelectData } from "../../actions";
+import { SelectData, modalState } from "../../actions";
 
 
 export class SelectorModal extends React.Component {
@@ -23,9 +23,10 @@ export class SelectorModal extends React.Component {
 
     onOptionClick(item) {
         const id = this.state.id;
+        // send item with current id
         this.props.optionClick(id, item)
         if (id === 'market') {
-            // send item with id of market
+
             // set id to convertfrom
             this.setState({
                 id: 'convertFrom',
@@ -48,7 +49,7 @@ export class SelectorModal extends React.Component {
     }
 
     render() {
-        // get object from state
+        // get object from state store
         const { currentArray } = this.props;
         return (
             <div className="modalContainer">
@@ -59,7 +60,7 @@ export class SelectorModal extends React.Component {
                                 <a onClick={this.onOptionClick.bind(this, { item }.item)}>{item}</a>
                             </div>)}
                     </div>
-                    <button type="button" onClick={this.props.handleClose}>Close</button>
+                    <button type="button" onClick={this.props.modalStatus.bind(this, false)}>Close</button>
                 </div>
             </div>
         )
@@ -80,6 +81,9 @@ const mapDispatchToProps = dispatch => {
         search: () => {
             dispatch({ type: "SEARCH_REQUEST" });
         },
+        modalStatus: (toggle) => {
+            dispatch(modalState(toggle));
+        }
     };
 };
 

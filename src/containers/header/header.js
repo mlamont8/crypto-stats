@@ -20,7 +20,6 @@ export class Header extends React.Component {
   }
 
   render() {
-    console.log(this.props.liveResults)
     const liveResult = this.props.liveResults.slice(-1);
     // Get the updated current price
     const price = liveResult[0].price;
