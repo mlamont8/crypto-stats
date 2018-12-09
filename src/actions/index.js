@@ -20,3 +20,8 @@ export const searchReset = (currentArray) => ({
   type: "SEARCH_RESET",
   currentArray
 })
+
+export const idUpdate = (id) => ({
+  type: "ID_UPDATE",
+  id
+})

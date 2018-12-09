@@ -4,7 +4,7 @@ import SelectorModal from '../../containers/selectorModal/selectorModal';
 import { connect } from "react-redux";
 import { modalState } from "../../actions";
 
-class FirstPage extends React.Component {
+export class FirstPage extends React.Component {
 
 
   render() {

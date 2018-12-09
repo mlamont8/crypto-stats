@@ -126,25 +126,24 @@ export function* formSelector(action) {
   } else {
     yield put({ type: "SEARCH_REQUEST" });
     yield put({ type: "COIN_LOOKUP", id, coin });
+
     // reset currentArray to Market for new searches
-    // yield put({
-    //   type: "SEARCH_RESET",
-    //   currentArray: newArray.marketArray
-    // })
-    yield call({ resetSearch })
+
     if (coin.Name === "BCH" || "BTC" || "LTC" || "ETH" || "BNB") {
       const dollars = yield call(api.dollarExchange, coin.Name);
       yield put({ type: "DOLLAR_CONVERSION", dollars });
     }
+    yield call(resetSearch)
+
   }
 }
 
 // Reset Currentarray during search
 function* resetSearch() {
-  const newArray = yield select(searchArrays);
+  const previousArray = yield select(searchArrays);
   yield put({
     type: "SEARCH_RESET",
-    currentArray: newArray.marketArray
+    currentArray: previousArray.marketArray
   })
 }
 
@@ -153,6 +152,8 @@ function* resetSearch() {
 export function* checkForCoin(action) {
   const coinObject = yield select(coinLookup);
   const coin = coinObject[action.item];
+  // if it finds the coin, calls the formSelector logic
+  // else the coin was not found
   if (coin || action.id === "market") {
     yield call(formSelector, action);
   } else {
@@ -163,7 +164,9 @@ export function* checkForCoin(action) {
 // New Search
 
 function* search() {
+  // Retrieve search terms
   const results = yield call(terms);
+
   searchesThisSession += 1;
   // Connect for live results
   yield fork(liveWatch, searchesThisSession);

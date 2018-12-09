@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { SelectData, modalState } from "../../actions";
+import { SelectData, modalState, idUpdate } from "../../actions";
 
 
 export class SelectorModal extends React.Component {
@@ -13,43 +13,33 @@ export class SelectorModal extends React.Component {
         this.onOptionClick = this.onOptionClick.bind(this);
     }
 
-    componentDidMount() {
-        this.setState({
-            id: 'market',
-        });
-    }
+    // componentDidMount() {
+    //     this.setState({
+    //         id: 'market',
+    //     });
+    // }
 
     // Updates to new id after click
     onOptionClick(item) {
 
-        const id = this.state.id;
+        const id = this.props.id;
         // send item with current id
         this.props.optionClick(id, item)
         if (id === 'market') {
 
             // set id to convertfrom
-            this.setState({
-                id: 'convertFrom',
-            })
+            this.props.idUpdate('convertFrom')
 
         } else if (id === 'convertFrom') {
             // set id to convertTo
-            this.setState({
-                id: 'convertTo',
-            })
+            this.props.idUpdate('convertTo')
         }
         else {
             // reset id
-            this.setState({
-                id: 'market',
-            });
+            this.props.idUpdate('market')
             // Set modal to closed
             this.props.modalStatus(false)
-
-
-
         }
-
     }
 
     render() {
@@ -75,6 +65,7 @@ export class SelectorModal extends React.Component {
 const mapStateToProps = state => {
     return {
         currentArray: state.searchArrays.currentArray,
+        id: state.searchArrays.currentID
     };
 };
 
@@ -91,6 +82,9 @@ const mapDispatchToProps = dispatch => {
         },
         searchReset: () => {
             dispatch({ type: "NEW_RESET" });
+        },
+        idUpdate: (id) => {
+            dispatch(idUpdate(id));
         }
     };
 };

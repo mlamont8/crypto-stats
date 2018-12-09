@@ -1,4 +1,4 @@
-const searchArrays = (state = {}, action) => {
+const searchArrays = (state = { currentID: 'market' }, action) => {
   switch (action.type) {
     case "MARKET_LIST_CREATED":
       return {
@@ -24,6 +24,13 @@ const searchArrays = (state = {}, action) => {
       return {
         ...state,
         currentArray: Object.keys(action.currentArray)
+      };
+
+    case "ID_UPDATE":
+      console.log(action.id)
+      return {
+        ...state,
+        currentID: action.id
       }
     default:
       return state;
