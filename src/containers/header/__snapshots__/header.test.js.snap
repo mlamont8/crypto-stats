@@ -1,0 +1,776 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders without crashing 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Header
+    firstLoad={true}
+    inDollars={0}
+    liveResults={
+        Array [
+            Object {},
+            Object {
+              "flag": 4,
+              "id": 1,
+              "price": "0.0999",
+            },
+          ]
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="navbar-left"
+>
+          <span
+                    className="uk-navbar-item uk-logo"
+          >
+                    Crypto Stats
+          </span>
+</div>,
+        <div
+          className="navbar-center"
+>
+          <h1>
+                     - $
+                    0.00
+                     (
+                    0.0999
+                    )
+          </h1>
+</div>,
+        <div
+          className="navbar-right"
+>
+          <div
+                    className="uk-flex uk-flex-column"
+          >
+                    <div>
+                              <label>
+                                        Notifications
+                              </label>
+                    </div>
+                    <div
+                              className="notificationLabel"
+                    >
+                              <label>
+                                        <input
+                                                  checked={false}
+                                                  className="uk-radio"
+                                                  onChange={[Function]}
+                                                  type="radio"
+                                                  value="on"
+                                        />
+                                         
+                                        On
+                              </label>
+                              <label>
+                                        <input
+                                                  checked={false}
+                                                  className="uk-radio"
+                                                  onChange={[Function]}
+                                                  type="radio"
+                                                  value="off"
+                                        />
+                                         
+                                        Off
+                              </label>
+                    </div>
+          </div>
+</div>,
+      ],
+      "className": "navbar-container",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <span
+            className="uk-navbar-item uk-logo"
+>
+            Crypto Stats
+</span>,
+          "className": "navbar-left",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Crypto Stats",
+            "className": "uk-navbar-item uk-logo",
+          },
+          "ref": null,
+          "rendered": "Crypto Stats",
+          "type": "span",
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <h1>
+             - $
+            0.00
+             (
+            0.0999
+            )
+</h1>,
+          "className": "navbar-center",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              undefined,
+              " - $",
+              "0.00",
+              " (",
+              "0.0999",
+              ")",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            undefined,
+            " - $",
+            "0.00",
+            " (",
+            "0.0999",
+            ")",
+          ],
+          "type": "h1",
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <div
+            className="uk-flex uk-flex-column"
+>
+            <div>
+                        <label>
+                                    Notifications
+                        </label>
+            </div>
+            <div
+                        className="notificationLabel"
+            >
+                        <label>
+                                    <input
+                                                checked={false}
+                                                className="uk-radio"
+                                                onChange={[Function]}
+                                                type="radio"
+                                                value="on"
+                                    />
+                                     
+                                    On
+                        </label>
+                        <label>
+                                    <input
+                                                checked={false}
+                                                className="uk-radio"
+                                                onChange={[Function]}
+                                                type="radio"
+                                                value="off"
+                                    />
+                                     
+                                    Off
+                        </label>
+            </div>
+</div>,
+          "className": "navbar-right",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div>
+                <label>
+                                Notifications
+                </label>
+</div>,
+              <div
+                className="notificationLabel"
+>
+                <label>
+                                <input
+                                                checked={false}
+                                                className="uk-radio"
+                                                onChange={[Function]}
+                                                type="radio"
+                                                value="on"
+                                />
+                                 
+                                On
+                </label>
+                <label>
+                                <input
+                                                checked={false}
+                                                className="uk-radio"
+                                                onChange={[Function]}
+                                                type="radio"
+                                                value="off"
+                                />
+                                 
+                                Off
+                </label>
+</div>,
+            ],
+            "className": "uk-flex uk-flex-column",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <label>
+                  Notifications
+</label>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Notifications",
+                },
+                "ref": null,
+                "rendered": "Notifications",
+                "type": "label",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <label>
+                    <input
+                                        checked={false}
+                                        className="uk-radio"
+                                        onChange={[Function]}
+                                        type="radio"
+                                        value="on"
+                    />
+                     
+                    On
+</label>,
+                  <label>
+                    <input
+                                        checked={false}
+                                        className="uk-radio"
+                                        onChange={[Function]}
+                                        type="radio"
+                                        value="off"
+                    />
+                     
+                    Off
+</label>,
+                ],
+                "className": "notificationLabel",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <input
+                        checked={false}
+                        className="uk-radio"
+                        onChange={[Function]}
+                        type="radio"
+                        value="on"
+/>,
+                      " ",
+                      "On",
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "checked": false,
+                        "className": "uk-radio",
+                        "onChange": [Function],
+                        "type": "radio",
+                        "value": "on",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "input",
+                    },
+                    " ",
+                    "On",
+                  ],
+                  "type": "label",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <input
+                        checked={false}
+                        className="uk-radio"
+                        onChange={[Function]}
+                        type="radio"
+                        value="off"
+/>,
+                      " ",
+                      "Off",
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "checked": false,
+                        "className": "uk-radio",
+                        "onChange": [Function],
+                        "type": "radio",
+                        "value": "off",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "input",
+                    },
+                    " ",
+                    "Off",
+                  ],
+                  "type": "label",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        "type": "div",
+      },
+    ],
+    "type": "nav",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="navbar-left"
+>
+            <span
+                        className="uk-navbar-item uk-logo"
+            >
+                        Crypto Stats
+            </span>
+</div>,
+          <div
+            className="navbar-center"
+>
+            <h1>
+                         - $
+                        0.00
+                         (
+                        0.0999
+                        )
+            </h1>
+</div>,
+          <div
+            className="navbar-right"
+>
+            <div
+                        className="uk-flex uk-flex-column"
+            >
+                        <div>
+                                    <label>
+                                                Notifications
+                                    </label>
+                        </div>
+                        <div
+                                    className="notificationLabel"
+                        >
+                                    <label>
+                                                <input
+                                                            checked={false}
+                                                            className="uk-radio"
+                                                            onChange={[Function]}
+                                                            type="radio"
+                                                            value="on"
+                                                />
+                                                 
+                                                On
+                                    </label>
+                                    <label>
+                                                <input
+                                                            checked={false}
+                                                            className="uk-radio"
+                                                            onChange={[Function]}
+                                                            type="radio"
+                                                            value="off"
+                                                />
+                                                 
+                                                Off
+                                    </label>
+                        </div>
+            </div>
+</div>,
+        ],
+        "className": "navbar-container",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <span
+              className="uk-navbar-item uk-logo"
+>
+              Crypto Stats
+</span>,
+            "className": "navbar-left",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Crypto Stats",
+              "className": "uk-navbar-item uk-logo",
+            },
+            "ref": null,
+            "rendered": "Crypto Stats",
+            "type": "span",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <h1>
+               - $
+              0.00
+               (
+              0.0999
+              )
+</h1>,
+            "className": "navbar-center",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                undefined,
+                " - $",
+                "0.00",
+                " (",
+                "0.0999",
+                ")",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              undefined,
+              " - $",
+              "0.00",
+              " (",
+              "0.0999",
+              ")",
+            ],
+            "type": "h1",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <div
+              className="uk-flex uk-flex-column"
+>
+              <div>
+                            <label>
+                                          Notifications
+                            </label>
+              </div>
+              <div
+                            className="notificationLabel"
+              >
+                            <label>
+                                          <input
+                                                        checked={false}
+                                                        className="uk-radio"
+                                                        onChange={[Function]}
+                                                        type="radio"
+                                                        value="on"
+                                          />
+                                           
+                                          On
+                            </label>
+                            <label>
+                                          <input
+                                                        checked={false}
+                                                        className="uk-radio"
+                                                        onChange={[Function]}
+                                                        type="radio"
+                                                        value="off"
+                                          />
+                                           
+                                          Off
+                            </label>
+              </div>
+</div>,
+            "className": "navbar-right",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <div>
+                  <label>
+                                    Notifications
+                  </label>
+</div>,
+                <div
+                  className="notificationLabel"
+>
+                  <label>
+                                    <input
+                                                      checked={false}
+                                                      className="uk-radio"
+                                                      onChange={[Function]}
+                                                      type="radio"
+                                                      value="on"
+                                    />
+                                     
+                                    On
+                  </label>
+                  <label>
+                                    <input
+                                                      checked={false}
+                                                      className="uk-radio"
+                                                      onChange={[Function]}
+                                                      type="radio"
+                                                      value="off"
+                                    />
+                                     
+                                    Off
+                  </label>
+</div>,
+              ],
+              "className": "uk-flex uk-flex-column",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <label>
+                    Notifications
+</label>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Notifications",
+                  },
+                  "ref": null,
+                  "rendered": "Notifications",
+                  "type": "label",
+                },
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <label>
+                      <input
+                                            checked={false}
+                                            className="uk-radio"
+                                            onChange={[Function]}
+                                            type="radio"
+                                            value="on"
+                      />
+                       
+                      On
+</label>,
+                    <label>
+                      <input
+                                            checked={false}
+                                            className="uk-radio"
+                                            onChange={[Function]}
+                                            type="radio"
+                                            value="off"
+                      />
+                       
+                      Off
+</label>,
+                  ],
+                  "className": "notificationLabel",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": Array [
+                        <input
+                          checked={false}
+                          className="uk-radio"
+                          onChange={[Function]}
+                          type="radio"
+                          value="on"
+/>,
+                        " ",
+                        "On",
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "checked": false,
+                          "className": "uk-radio",
+                          "onChange": [Function],
+                          "type": "radio",
+                          "value": "on",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "input",
+                      },
+                      " ",
+                      "On",
+                    ],
+                    "type": "label",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": Array [
+                        <input
+                          checked={false}
+                          className="uk-radio"
+                          onChange={[Function]}
+                          type="radio"
+                          value="off"
+/>,
+                        " ",
+                        "Off",
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "checked": false,
+                          "className": "uk-radio",
+                          "onChange": [Function],
+                          "type": "radio",
+                          "value": "off",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "input",
+                      },
+                      " ",
+                      "Off",
+                    ],
+                    "type": "label",
+                  },
+                ],
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+          "type": "div",
+        },
+      ],
+      "type": "nav",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

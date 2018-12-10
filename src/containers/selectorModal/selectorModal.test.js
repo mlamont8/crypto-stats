@@ -3,9 +3,10 @@ import { shallow } from "enzyme";
 import { SelectorModal } from "./selectorModal";
 
 describe("Selector Modal", () => {
-    const wrapper = shallow(<SelectorModal />);
+    const currentArray = [0, 1];
+    const component = shallow(<SelectorModal currentArray={currentArray} modalStatus={jest.fn} />)
 
     it("renders without crashing", () => {
-        expect(wrapper).toMatchSnapshot();
+        expect(component).toMatchSnapshot();
     });
 })

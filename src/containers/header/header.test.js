@@ -4,19 +4,15 @@ import { Header } from "./header";
 
 
 describe("Header", () => {
-  const wrapper = shallow(<Header />);
+  const liveResults = [{}, { flag: 4, id: 1, price: "0.0999" }]
+  const wrapper = shallow(<Header liveResults={liveResults} />);
+
   it("renders without crashing", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   it("should render a `.navbar-container`", () => {
     expect(wrapper.find(".navbar-container").length).toBe(1);
-  });
-
-  it("should hide center and right content on homepage", () => {
-    const homepageHeader = shallow(<Header
-      firstLoad />)
-    expect(homepageHeader.find('.navbar-hide').length).toBe(2);
   });
 
 

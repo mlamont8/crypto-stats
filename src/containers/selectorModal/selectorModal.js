@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { SelectData, modalState, idUpdate } from "../../actions";
 
+// Receives props from state tree
 
 export class SelectorModal extends React.Component {
 
@@ -12,12 +13,6 @@ export class SelectorModal extends React.Component {
         }
         this.onOptionClick = this.onOptionClick.bind(this);
     }
-
-    // componentDidMount() {
-    //     this.setState({
-    //         id: 'market',
-    //     });
-    // }
 
     // Updates to new id after click
     onOptionClick(item) {

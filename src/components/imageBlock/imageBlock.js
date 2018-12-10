@@ -5,7 +5,7 @@ import VertForm from "../../containers/vertForm/vertForm";
 import { connect } from 'react-redux';
 import { modalState } from "../../actions";
 
-const ImageBlock = props => (
+export const ImageBlock = props => (
   <div className="infoBlock imageBlock">
     <img
       className="imageIcon"
