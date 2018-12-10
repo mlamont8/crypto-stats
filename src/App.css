@@ -9791,19 +9791,6 @@ form li {
   align-items: center;
   padding: 10px; }
 
-.form-group {
-  margin-top: 5px;
-  margin-bottom: 0; }
-
-.frontForm {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  flex-wrap: wrap; }
-
-.vertSelect {
-  padding: 4px; }
-
 .modalContainer {
   position: fixed;
   justify-content: center;
