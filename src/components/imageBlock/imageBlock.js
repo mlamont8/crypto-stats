@@ -1,9 +1,14 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import VertForm from "../../containers/vertForm/vertForm";
 import { connect } from 'react-redux';
 import { modalState } from "../../actions";
+
+
+// Child of summary.js
+//  - main
+//    -summary
+//      -imageBlock
 
 export const ImageBlock = props => (
   <div className="infoBlock imageBlock">
@@ -28,7 +33,7 @@ export const ImageBlock = props => (
     </div>
 
     <div className="ibContainer-tr">
-      <VertForm />
+
       <button type="button" onClick={props.modalToggle.bind(this, true)}>
         New Search
       </button>

@@ -1,5 +1,4 @@
 import React from "react";
-import CoinForm from "../../containers/coinForm/CoinForm";
 import SelectorModal from '../../containers/selectorModal/selectorModal';
 import { connect } from "react-redux";
 import { modalState } from "../../actions";
@@ -16,7 +15,6 @@ export class FirstPage extends React.Component {
         <div className="frontLeft " />
         <div className="frontRight ">
           <div className="firstPageInfo">
-            <CoinForm />
           </div>
           <div className="modalButton">
             <button type="button" onClick={this.props.modalToggle.bind(this, true)}>

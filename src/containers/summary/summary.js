@@ -6,6 +6,7 @@ import LiveResults from "../../components/liveResults/liveResults";
 import ImageBlock from "../../components/imageBlock/imageBlock";
 
 // Top Summary information
+// Child of Main.js
 
 const Summary = props => {
   const currentPrice = props.liveResults[props.liveResults.length - 1];

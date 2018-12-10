@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import { notificationOption } from "../../actions";
 import { notificationAlert } from "../../helpers/index";
 
+// Child of main.js
+// Prop firstload from main.js
+
 export class Header extends React.Component {
   constructor(props) {
     super(props);

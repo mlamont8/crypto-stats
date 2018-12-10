@@ -12,9 +12,7 @@ exports[`First Page component renders correctly 1`] = `
   >
     <div
       className="firstPageInfo"
-    >
-      <Connect(CoinForm) />
-    </div>
+    />
     <div
       className="modalButton"
     >
