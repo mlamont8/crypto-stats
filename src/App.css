@@ -9816,16 +9816,27 @@ form li {
   overflow-y: auto;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+  padding: 0 5px 0 8px;
+  color: black; }
 
 .selectorItems {
   display: flex;
   flex-wrap: wrap;
-  align-content: space-around; }
+  align-items: center;
+  justify-content: space-around; }
   .selectorItems div {
     color: black;
     list-style: none;
-    flex: 0 1 100px; }
+    flex: 0 1 100px;
+    text-align: center; }
+
+.modalHeader {
+  text-align: center;
+  height: 10px;
+  color: black; }
+  .modalHeader div {
+    flex: 1; }
 
 h1 {
   font-size: 20px; }
