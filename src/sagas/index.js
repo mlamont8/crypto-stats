@@ -162,7 +162,8 @@ export function* checkForCoin(action) {
   if (coin || action.id === "market") {
     yield call(formSelector, action);
   } else {
-    console.log(`Coin was not found!`);
+    console.log(action.id, ` was not found!`);
+    yield call(resetSearch)
   }
 }
 
