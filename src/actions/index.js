@@ -16,9 +16,10 @@ export const modalState = (toggle) => ({
   toggle
 })
 
-export const searchReset = (currentArray) => ({
+export const searchReset = (currentArray, searchTerm) => ({
   type: "SEARCH_RESET",
-  currentArray
+  currentArray,
+  searchTerm
 })
 
 export const idUpdate = (id) => ({

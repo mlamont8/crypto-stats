@@ -23,7 +23,8 @@ const searchArrays = (state = { currentID: 'market' }, action) => {
     case "SEARCH_RESET":
       return {
         ...state,
-        currentArray: Object.keys(action.currentArray)
+        currentArray: Object.keys(action.currentArray),
+        currentID: "market"
       };
 
     case "ID_UPDATE":

@@ -53,15 +53,16 @@ export class SelectorModal extends React.Component {
 
     render() {
         // get object from state store
-        const { currentArray } = this.props;
+        const { currentArray, currentMarket, currentFrom } = this.props;
         const instructions = this.instructs();
-        console.log('currentArray', currentArray)
+
         return (
             <div className="modalContainer">
                 <div className="modalContent">
 
                     <div className="modalHeader">
-                        Header
+                        <div>Market: {currentMarket} </div>
+                        <div> Coin: {currentFrom}</div>
                     </div>
                     <div className="modalInstructions">
                         {instructions}
@@ -89,7 +90,9 @@ export class SelectorModal extends React.Component {
 const mapStateToProps = state => {
     return {
         currentArray: state.searchArrays.currentArray,
-        id: state.searchArrays.currentID
+        id: state.searchArrays.currentID,
+        currentMarket: state.searchTerm.market,
+        currentFrom: state.searchTerm.convertFrom,
     };
 };
 

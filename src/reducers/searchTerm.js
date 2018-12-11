@@ -4,9 +4,15 @@ const searchTerm = (state = {}, action) => {
       return {
         ...state,
         [action.id]: action.item,
-
       };
 
+    case "SEARCH_RESET":
+      return {
+        ...state,
+        market: "",
+        convertFrom: "",
+        convertTo: ""
+      }
 
     default:
       return state;

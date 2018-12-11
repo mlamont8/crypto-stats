@@ -138,12 +138,17 @@ export function* formSelector(action) {
   }
 }
 
-// Reset Currentarray during search
+// Resets Currentarray SearchTerms 
 function* resetSearch() {
   const previousArray = yield select(searchArrays);
   yield put({
     type: "SEARCH_RESET",
-    currentArray: previousArray.marketArray
+    currentArray: previousArray.marketArray,
+    searchTerm: {
+      market: "",
+      convertFrom: "",
+      convertTo: ""
+    },
   })
 }
 
