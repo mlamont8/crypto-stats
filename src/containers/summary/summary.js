@@ -2,15 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import CoinLineChart from "../../components/lineChart/LineChart";
-import LiveResults from "../../components/liveResults/liveResults";
 import ImageBlock from "../../components/imageBlock/imageBlock";
 
 // Top Summary information
 // Child of Main.js
+// Props from Redux State
 
 const Summary = props => {
-  const currentPrice = props.liveResults[props.liveResults.length - 1];
-  const { price, flag } = currentPrice;
   return (
     <div className="summary-container">
       <div className="summary-left summary-block">
@@ -24,15 +22,7 @@ const Summary = props => {
       <div className="summary-center summary-block">
         <CoinLineChart title="History" data={props.historicalDay} />
       </div>
-      <div className="summary-right summary-block">
-        <LiveResults
-          price={price}
-          exchange={props.exchange}
-          flag={flag}
-          dollar={props.inDollars}
-          to={props.coinTo}
-        />
-      </div>
+
     </div>
   );
 };

@@ -9616,13 +9616,12 @@ h2 {
 .infoBlock {
   display: flex;
   flex-direction: column;
-  background: #0058CC;
+  background: #fff;
   margin: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   border-radius: 10px;
-  opacity: 0.8;
   height: 300px; }
 
 .summary-left h2 {
@@ -9637,7 +9636,7 @@ h2 {
     flex-basis: 20%; }
   .summary-container .summary-center {
     flex-grow: 0;
-    flex-basis: 50%;
+    flex-basis: 80%;
     height: 300px; }
 
 @media all and (max-width: 1150px) {
@@ -9718,28 +9717,6 @@ form li {
 .uk-select {
   border-radius: 20px;
   width: 150px; }
-
-.liveItem {
-  font-size: 18px; }
-
-#arrow-up {
-  color: #29A02A; }
-
-#arrow-down {
-  color: #FE7F0E; }
-
-.conversion {
-  font-size: 16px; }
-
-.current h1 {
-  font-size: 20px; }
-
-.price {
-  font-size: 20px; }
-
-.toPrice {
-  padding-left: 4px;
-  font-size: 10px; }
 
 .live-table table {
   width: 100%;

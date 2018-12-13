@@ -15,16 +15,14 @@ h2 {
 .mainBlock {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
 }
 
 .infoBlock {
   display: flex;
   flex-direction: column;
-  background: $boxColor;
+  background: #fff;
   margin: 10px;
   @include border-radius(10px);
-  opacity: 0.8;
   height: 300px;
 }
