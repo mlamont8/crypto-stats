@@ -9816,23 +9816,49 @@ form li {
   background: rgba(0, 0, 0, 0.6);
   z-index: 3; }
 
-.display-block {
-  display: block; }
-
-.display-none {
-  display: none; }
-
 .modalContent {
   position: fixed;
   background: white;
   width: 80%;
   max-height: 80vh;
+  border-radius: 10px;
   overflow-y: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 0 5px 0 8px;
   color: black; }
+
+.modalHeader {
+  background-color: #0058CC;
+  color: #F7FDFF;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: underline; }
+  .modalHeader div {
+    flex: 1;
+    font-size: 2em; }
+
+.modalInstructions {
+  text-align: center;
+  height: 50px;
+  font-size: 1.8em;
+  background-color: #0058CC;
+  color: #F7FDFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px; }
+  .modalInstructions button {
+    color: #0058CC;
+    font-size: .8em;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: all .2s ease; }
+  .modalInstructions button:hover {
+    transform: scale(1.1); }
 
 .selectorItems {
   display: flex;
@@ -9842,15 +9868,10 @@ form li {
   .selectorItems div {
     color: black;
     list-style: none;
-    flex: 0 1 100px;
-    text-align: center; }
-
-.modalHeader {
-  text-align: center;
-  height: 10px;
-  color: black; }
-  .modalHeader div {
-    flex: 1; }
+    flex: 0 1 180px;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 8px; }
 
 h1 {
   font-size: 20px; }

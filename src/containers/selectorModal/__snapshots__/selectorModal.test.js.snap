@@ -29,6 +29,40 @@ ShallowWrapper {
         className="modalContent"
 >
         <div
+                className="modalInstructions"
+        >
+                <div>
+                        Choose your conversion currency
+                </div>
+                <div>
+                        <button
+                                onClick={undefined}
+                                type="button"
+                        >
+                                Reset
+                        </button>
+                        <button
+                                onClick={[Function]}
+                                type="button"
+                        >
+                                Close
+                        </button>
+                </div>
+        </div>
+        <div
+                className="modalHeader"
+        >
+                <div>
+                         
+                </div>
+                <div />
+        </div>
+        <div
+                className="modalAlerts"
+        >
+                Alerts
+        </div>
+        <div
                 className="selectorItems"
         >
                 <div>
@@ -44,18 +78,22 @@ ShallowWrapper {
                         </a>
                 </div>
         </div>
-        <button
-                onClick={[Function]}
-                type="button"
+        <div
+                className="modalFooter"
         >
-                Close
-        </button>
-        <button
-                onClick={undefined}
-                type="button"
-        >
-                Reset
-        </button>
+                <button
+                        onClick={[Function]}
+                        type="button"
+                >
+                        Close
+                </button>
+                <button
+                        onClick={undefined}
+                        type="button"
+                >
+                        Reset
+                </button>
+        </div>
 </div>,
       "className": "modalContainer",
     },
@@ -66,6 +104,40 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
+          <div
+            className="modalInstructions"
+>
+            <div>
+                        Choose your conversion currency
+            </div>
+            <div>
+                        <button
+                                    onClick={undefined}
+                                    type="button"
+                        >
+                                    Reset
+                        </button>
+                        <button
+                                    onClick={[Function]}
+                                    type="button"
+                        >
+                                    Close
+                        </button>
+            </div>
+</div>,
+          <div
+            className="modalHeader"
+>
+            <div>
+                         
+            </div>
+            <div />
+</div>,
+          <div
+            className="modalAlerts"
+>
+            Alerts
+</div>,
           <div
             className="selectorItems"
 >
@@ -82,23 +154,178 @@ ShallowWrapper {
                         </a>
             </div>
 </div>,
-          <button
-            onClick={[Function]}
-            type="button"
+          <div
+            className="modalFooter"
 >
-            Close
-</button>,
-          <button
-            onClick={undefined}
-            type="button"
->
-            Reset
-</button>,
+            <button
+                        onClick={[Function]}
+                        type="button"
+            >
+                        Close
+            </button>
+            <button
+                        onClick={undefined}
+                        type="button"
+            >
+                        Reset
+            </button>
+</div>,
         ],
         "className": "modalContent",
       },
       "ref": null,
       "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div>
+                Choose your conversion currency
+</div>,
+              <div>
+                <button
+                                onClick={undefined}
+                                type="button"
+                >
+                                Reset
+                </button>
+                <button
+                                onClick={[Function]}
+                                type="button"
+                >
+                                Close
+                </button>
+</div>,
+            ],
+            "className": "modalInstructions",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Choose your conversion currency",
+              },
+              "ref": null,
+              "rendered": "Choose your conversion currency",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <button
+                    onClick={undefined}
+                    type="button"
+>
+                    Reset
+</button>,
+                  <button
+                    onClick={[Function]}
+                    type="button"
+>
+                    Close
+</button>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Reset",
+                    "onClick": undefined,
+                    "type": "button",
+                  },
+                  "ref": null,
+                  "rendered": "Reset",
+                  "type": "button",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Close",
+                    "onClick": [Function],
+                    "type": "button",
+                  },
+                  "ref": null,
+                  "rendered": "Close",
+                  "type": "button",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div>
+                 
+</div>,
+              <div />,
+            ],
+            "className": "modalHeader",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  undefined,
+                  " ",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                undefined,
+                " ",
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Alerts",
+            "className": "modalAlerts",
+          },
+          "ref": null,
+          "rendered": "Alerts",
+          "type": "div",
+        },
         Object {
           "instance": null,
           "key": undefined,
@@ -180,26 +407,52 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "Close",
-            "onClick": [Function],
-            "type": "button",
+            "children": Array [
+              <button
+                onClick={[Function]}
+                type="button"
+>
+                Close
+</button>,
+              <button
+                onClick={undefined}
+                type="button"
+>
+                Reset
+</button>,
+            ],
+            "className": "modalFooter",
           },
           "ref": null,
-          "rendered": "Close",
-          "type": "button",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Reset",
-            "onClick": undefined,
-            "type": "button",
-          },
-          "ref": null,
-          "rendered": "Reset",
-          "type": "button",
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Close",
+                "onClick": [Function],
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": "Close",
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Reset",
+                "onClick": undefined,
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": "Reset",
+              "type": "button",
+            },
+          ],
+          "type": "div",
         },
       ],
       "type": "div",
@@ -216,6 +469,40 @@ ShallowWrapper {
           className="modalContent"
 >
           <div
+                    className="modalInstructions"
+          >
+                    <div>
+                              Choose your conversion currency
+                    </div>
+                    <div>
+                              <button
+                                        onClick={undefined}
+                                        type="button"
+                              >
+                                        Reset
+                              </button>
+                              <button
+                                        onClick={[Function]}
+                                        type="button"
+                              >
+                                        Close
+                              </button>
+                    </div>
+          </div>
+          <div
+                    className="modalHeader"
+          >
+                    <div>
+                               
+                    </div>
+                    <div />
+          </div>
+          <div
+                    className="modalAlerts"
+          >
+                    Alerts
+          </div>
+          <div
                     className="selectorItems"
           >
                     <div>
@@ -231,18 +518,22 @@ ShallowWrapper {
                               </a>
                     </div>
           </div>
-          <button
-                    onClick={[Function]}
-                    type="button"
+          <div
+                    className="modalFooter"
           >
-                    Close
-          </button>
-          <button
-                    onClick={undefined}
-                    type="button"
-          >
-                    Reset
-          </button>
+                    <button
+                              onClick={[Function]}
+                              type="button"
+                    >
+                              Close
+                    </button>
+                    <button
+                              onClick={undefined}
+                              type="button"
+                    >
+                              Reset
+                    </button>
+          </div>
 </div>,
         "className": "modalContainer",
       },
@@ -253,6 +544,40 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
+            <div
+              className="modalInstructions"
+>
+              <div>
+                            Choose your conversion currency
+              </div>
+              <div>
+                            <button
+                                          onClick={undefined}
+                                          type="button"
+                            >
+                                          Reset
+                            </button>
+                            <button
+                                          onClick={[Function]}
+                                          type="button"
+                            >
+                                          Close
+                            </button>
+              </div>
+</div>,
+            <div
+              className="modalHeader"
+>
+              <div>
+                             
+              </div>
+              <div />
+</div>,
+            <div
+              className="modalAlerts"
+>
+              Alerts
+</div>,
             <div
               className="selectorItems"
 >
@@ -269,23 +594,178 @@ ShallowWrapper {
                             </a>
               </div>
 </div>,
-            <button
-              onClick={[Function]}
-              type="button"
+            <div
+              className="modalFooter"
 >
-              Close
-</button>,
-            <button
-              onClick={undefined}
-              type="button"
->
-              Reset
-</button>,
+              <button
+                            onClick={[Function]}
+                            type="button"
+              >
+                            Close
+              </button>
+              <button
+                            onClick={undefined}
+                            type="button"
+              >
+                            Reset
+              </button>
+</div>,
           ],
           "className": "modalContent",
         },
         "ref": null,
         "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <div>
+                  Choose your conversion currency
+</div>,
+                <div>
+                  <button
+                                    onClick={undefined}
+                                    type="button"
+                  >
+                                    Reset
+                  </button>
+                  <button
+                                    onClick={[Function]}
+                                    type="button"
+                  >
+                                    Close
+                  </button>
+</div>,
+              ],
+              "className": "modalInstructions",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Choose your conversion currency",
+                },
+                "ref": null,
+                "rendered": "Choose your conversion currency",
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <button
+                      onClick={undefined}
+                      type="button"
+>
+                      Reset
+</button>,
+                    <button
+                      onClick={[Function]}
+                      type="button"
+>
+                      Close
+</button>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Reset",
+                      "onClick": undefined,
+                      "type": "button",
+                    },
+                    "ref": null,
+                    "rendered": "Reset",
+                    "type": "button",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Close",
+                      "onClick": [Function],
+                      "type": "button",
+                    },
+                    "ref": null,
+                    "rendered": "Close",
+                    "type": "button",
+                  },
+                ],
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <div>
+                   
+</div>,
+                <div />,
+              ],
+              "className": "modalHeader",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    undefined,
+                    " ",
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  undefined,
+                  " ",
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Alerts",
+              "className": "modalAlerts",
+            },
+            "ref": null,
+            "rendered": "Alerts",
+            "type": "div",
+          },
           Object {
             "instance": null,
             "key": undefined,
@@ -367,26 +847,52 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "Close",
-              "onClick": [Function],
-              "type": "button",
+              "children": Array [
+                <button
+                  onClick={[Function]}
+                  type="button"
+>
+                  Close
+</button>,
+                <button
+                  onClick={undefined}
+                  type="button"
+>
+                  Reset
+</button>,
+              ],
+              "className": "modalFooter",
             },
             "ref": null,
-            "rendered": "Close",
-            "type": "button",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "Reset",
-              "onClick": undefined,
-              "type": "button",
-            },
-            "ref": null,
-            "rendered": "Reset",
-            "type": "button",
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Close",
+                  "onClick": [Function],
+                  "type": "button",
+                },
+                "ref": null,
+                "rendered": "Close",
+                "type": "button",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Reset",
+                  "onClick": undefined,
+                  "type": "button",
+                },
+                "ref": null,
+                "rendered": "Reset",
+                "type": "button",
+              },
+            ],
+            "type": "div",
           },
         ],
         "type": "div",

@@ -40,13 +40,13 @@ export class SelectorModal extends React.Component {
         const { id } = this.props;
         if (id === 'market') {
 
-            return "Choose a MARKET"
+            return "Choose a market"
 
         } else if (id === 'convertFrom') {
-            return "Choose the coin you are CONVERTING FROM"
+            return "Choose your coin"
         }
         else {
-            return "Choose the coin you are CONVERTING TO"
+            return "Choose your conversion currency"
         }
 
     }
@@ -60,16 +60,21 @@ export class SelectorModal extends React.Component {
             <div className="modalContainer">
                 <div className="modalContent">
 
-                    <div className="modalHeader">
-                        <div>Market: {currentMarket} </div>
-                        <div> Coin: {currentFrom}</div>
-                    </div>
                     <div className="modalInstructions">
-                        {instructions}
+                        <div>{instructions}</div>
+                        <div>
+                            <button type="button" onClick={this.props.searchReset}>Reset</button>
+                            <button type="button" onClick={this.props.modalStatus.bind(this, false)}>Close</button>
+                        </div>
+                    </div>
+
+                    <div className="modalHeader">
+                        <div>{currentMarket} </div>
+                        <div>{currentFrom}</div>
                     </div>
 
                     <div className="modalAlerts">
-                        Alert
+                        Alerts
                     </div>
                     <div className="selectorItems">
                         {currentArray.sort().map(item =>
