@@ -1,6 +1,6 @@
 .frontContainer {
   overflow: hidden;
-  height: 100%;
+  height: 100vh;
   padding: 0;
   display: flex;
   > div {
@@ -34,4 +34,27 @@
 
 .modalButton {
   color: $baseBlue;
+}
+
+.frontViewArea{
+  position: relative;
+  background:
+  $baseBlue
+  url(images/cryptoImage.png) no-repeat;
+  background-size: contain;
+  background-blend-mode: soft-light;
+  width: 100%;
+  height: 85%;
+}
+
+
+
+#curve{
+  position: absolute;
+  bottom: 0;
+  width: auto;
+}
+
+#curve path{
+  fill: #fff;
 }

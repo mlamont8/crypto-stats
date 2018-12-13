@@ -9747,7 +9747,7 @@ form li {
 
 .frontContainer {
   overflow: hidden;
-  height: 100%;
+  height: 100vh;
   padding: 0;
   display: flex; }
   .frontContainer > div {
@@ -9776,6 +9776,22 @@ form li {
 
 .modalButton {
   color: #0058CC; }
+
+.frontViewArea {
+  position: relative;
+  background: #0058CC url(images/cryptoImage.png) no-repeat;
+  background-size: contain;
+  background-blend-mode: soft-light;
+  width: 100%;
+  height: 85%; }
+
+#curve {
+  position: absolute;
+  bottom: 0;
+  width: auto; }
+
+#curve path {
+  fill: #fff; }
 
 .nameBlk {
   margin: 5px; }
