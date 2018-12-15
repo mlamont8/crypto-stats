@@ -1,7 +1,6 @@
 import React from "react";
 import SelectorModal from '../../containers/selectorModal/selectorModal';
 import { connect } from "react-redux";
-import { modalState } from "../../actions";
 
 export class FirstPage extends React.Component {
 
@@ -25,7 +24,7 @@ export class FirstPage extends React.Component {
               <li>Real time data</li>
             </ul>
 
-            <button type="button" onClick={this.props.modalToggle.bind(this, true)}>Try it Now</button>
+            <button type="button" onClick={this.props.initialSearch.bind(this, true)}>Try it Now</button>
           </div>
           <svg id="curve" width="1400" height="300" xmlns="http://www.w3.org/2000/svg" svg="http://www.w3.org/2000/svg">
             <path d="m-0.60241,236.74699c336.14458,-68.6747 578.31326,-30.12049 734.93976,16.86747c156.6265,46.98795 687.95181,-46.98795 687.3494,-47.59036c-0.60241,-0.60241 -9.03615,104.21686 -9.63856,103.61445c-0.60241,-0.60241 -1412.6506,9.03615 -1412.04819,8.43374c0.60241,-0.60241 -336.74699,-12.6506 -0.60241,-81.3253z"
@@ -47,8 +46,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  modalToggle: (toggle) => {
-    dispatch(modalState(toggle));
+  initialSearch: (toggle) => {
+    dispatch({ type: "SEARCH_FROM_FRONT"});
   }
 })
 

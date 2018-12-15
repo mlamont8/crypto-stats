@@ -2,7 +2,6 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
-import { modalState } from "../../actions";
 
 
 // Child of summary.js
@@ -34,7 +33,7 @@ export const ImageBlock = props => (
 
     <div className="ibContainer-tr">
 
-      <button type="button" onClick={props.modalToggle.bind(this, true)}>
+      <button type="button" onClick={props.newSearch.bind(this, true)}>
         New Search
       </button>
     </div>
@@ -42,8 +41,8 @@ export const ImageBlock = props => (
 )
 
 const mapDispatchToProps = dispatch => ({
-  modalToggle: (toggle) => {
-    dispatch(modalState(toggle));
+  newSearch: (toggle) => {
+    dispatch({ type: 'SEARCH_FROM_MAIN'});
   }
 })
 

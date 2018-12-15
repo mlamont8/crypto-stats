@@ -6,7 +6,7 @@ describe('First Page component', () => {
     const renderer = new ShallowRenderer;
     it('renders correctly', () => {
         const renderedImage = renderer.render(
-            <FirstPage modalToggle={jest.fn} />
+            <FirstPage initialSearch={jest.fn} />
         );
         expect(renderedImage).toMatchSnapshot();
     })

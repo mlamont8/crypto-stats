@@ -13,6 +13,21 @@ const searchTerm = (state = {}, action) => {
         convertFrom: "",
         convertTo: ""
       }
+//  If opening modal then reset searchterms, else
+//  Return current state if modal is closing
+      case "MODAL_TOGGLE":
+      if (action.toggle) {
+        return {
+          ...state,
+          market: "",
+          convertFrom: "",
+          convertTo: ""
+        }
+      }else{
+        return {
+          ...state
+        }
+         }
 
     default:
       return state;

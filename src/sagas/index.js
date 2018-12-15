@@ -133,7 +133,7 @@ export function* formSelector(action) {
       const dollars = yield call(api.dollarExchange, coin.Name);
       yield put({ type: "DOLLAR_CONVERSION", dollars });
     }
-    yield call(resetSearch)
+
 
   }
 }
@@ -191,11 +191,63 @@ function* search() {
   }
 }
 
+// When a new search from the main page is initiated.
+// Retrieves marketarray and sets as currentarray
+// Sets modal to open
+function* searchFromMain() {
+  // Resets Currentarray SearchTerms 
+  const searchArray = yield select(searchArrays);
+  yield put({
+    type: "SEARCH_RESET",
+    currentArray: searchArray.marketArray,
+    searchTerm: {
+      market: "",
+      convertFrom: "",
+      convertTo: ""
+    },
+    toggle: true
+  })
+}
+
+function* initialSearch() {
+  // On a new search from frontpage 
+  const searchArray = yield select(searchArrays);
+  yield put({
+    type: "INITIAL_SEARCH",
+    currentArray: searchArray.marketArray,
+    searchTerm: {
+      market: "",
+      convertFrom: "",
+      convertTo: ""
+    },
+    id: "market",
+    toggle: true
+  })
+}
+
+
+// function* closeModal() {
+//     // Resets Currentarray SearchTerms 
+//     const searchArray = yield select(searchArrays);
+//     yield put({
+//       type: "CLOSE_MODAL",
+//       currentArray: searchArray.marketArray,
+//       searchTerm: {
+//         market: "",
+//         convertFrom: "",
+//         convertTo: ""
+//       },
+//       toggle: true
+//     })
+// }
+
 function* mySaga() {
   yield takeLatest("INITIAL_MOUNT", initialMount);
   yield takeLatest("SEARCH_REQUEST", search);
   yield takeLatest("SELECTION_ENTERED", checkForCoin);
   yield takeLatest("NEW_RESET", resetSearch);
+  yield takeLatest('SEARCH_FROM_MAIN', searchFromMain)
+  yield takeLatest('SEARCH_FROM_FRONT', initialSearch)
 }
 
 export default mySaga;

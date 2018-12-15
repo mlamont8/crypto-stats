@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { SelectData, modalState, idUpdate } from "../../actions";
+import { SelectData, closeModal, idUpdate } from "../../actions";
 
 // Receives props from state tree
 // Child of firstPage.js and Main.js
@@ -31,7 +31,7 @@ export class SelectorModal extends React.Component {
             // reset id
             this.props.idUpdate('market')
             // Set modal to closed
-            this.props.modalStatus(false)
+            this.props.closeModal(false)
         }
     }
 
@@ -64,7 +64,7 @@ export class SelectorModal extends React.Component {
                         <div>{instructions}</div>
                         <div>
                             <button type="button" onClick={this.props.searchReset}>Reset</button>
-                            <button type="button" onClick={this.props.modalStatus.bind(this, false)}>Close</button>
+                            <button type="button" onClick={this.props.closeModal.bind(this, false)}>Close</button>
                         </div>
                     </div>
 
@@ -77,13 +77,13 @@ export class SelectorModal extends React.Component {
                         Alerts
                     </div>
                     <div className="selectorItems">
-                        {currentArray.sort().map(item =>
+                        {currentArray.map(item =>
                             <div key={item}>
                                 <a onClick={this.onOptionClick.bind(this, { item }.item)}>{item}</a>
                             </div>)}
                     </div>
                     <div className="modalFooter">
-                        <button type="button" onClick={this.props.modalStatus.bind(this, false)}>Close</button>
+                        <button type="button" onClick={this.props.closeModal.bind(this, false)}>Close</button>
                         <button type="button" onClick={this.props.searchReset}>Reset</button>
                     </div>
                 </div>
@@ -109,8 +109,8 @@ const mapDispatchToProps = dispatch => {
         search: () => {
             dispatch({ type: "SEARCH_REQUEST" });
         },
-        modalStatus: (toggle) => {
-            dispatch(modalState(toggle));
+        closeModal: (toggle) => {
+            dispatch(closeModal(toggle));
         },
         searchReset: () => {
             dispatch({ type: "NEW_RESET" });

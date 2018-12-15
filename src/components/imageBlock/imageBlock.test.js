@@ -4,7 +4,7 @@ import { ImageBlock } from './imageBlock';
 
 describe('ImageBlock component', () => {
     it('renders correctly', () => {
-        const snap = shallow(<ImageBlock modalToggle={jest.fn} />);
+        const snap = shallow(<ImageBlock newSearch={jest.fn} />);
         expect(snap).toMatchSnapshot();
     })
 })

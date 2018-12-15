@@ -5,13 +5,13 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SelectorModal
+    closeModal={[Function]}
     currentArray={
         Array [
             0,
             1,
           ]
     }
-    modalStatus={[Function]}
 />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

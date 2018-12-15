@@ -27,11 +27,23 @@ const searchArrays = (state = { currentID: 'market' }, action) => {
         currentID: "market"
       };
 
+      case "NEW_SEARCH":
+      return {
+        ...state,
+        currentArray: action.currentArray,
+      }
+
     case "ID_UPDATE":
-      console.log(action.id)
       return {
         ...state,
         currentID: action.id
+      }
+
+      case "INITIAL_SEARCH":
+      return {
+        ...state,
+        currentID: action.id,
+        currentArray: Object.keys(action.currentArray),
       }
     default:
       return state;
