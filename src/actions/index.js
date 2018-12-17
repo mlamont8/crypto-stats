@@ -14,25 +14,20 @@ export const notificationOption = (option) => ({
 
 // Opens modal on original and new search
 // Resets searchTerm on searchTerm tree
-export const initialSearch = (currentArray, searchTerm, id, toggle) => ({
+export const initialSearch = (currentArray) => ({
   type: "INITIAL_SEARCH",
   currentArray,
-  searchTerm,
-  id,
-  toggle
 })
 
 // Receives currentArray and toggles modal on
 // new search
-export const newSearch = (currentArray, toggle) => ({
+export const newSearch = () => ({
   type: ''
 })
 
-export const searchReset = (currentArray, searchTerm, toggle) => ({
+export const searchReset = (currentArray) => ({
   type: "SEARCH_RESET",
   currentArray,
-  searchTerm,
-  toggle
 })
 
 export const idUpdate = (id) => ({

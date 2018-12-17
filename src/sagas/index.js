@@ -144,11 +144,6 @@ function* resetSearch() {
   yield put({
     type: "SEARCH_RESET",
     currentArray: previousArray.marketArray,
-    searchTerm: {
-      market: "",
-      convertFrom: "",
-      convertTo: ""
-    },
   })
 }
 
@@ -200,12 +195,7 @@ function* searchFromMain() {
   yield put({
     type: "SEARCH_RESET",
     currentArray: searchArray.marketArray,
-    searchTerm: {
-      market: "",
-      convertFrom: "",
-      convertTo: ""
-    },
-    toggle: true
+
   })
 }
 
@@ -215,22 +205,13 @@ function* initialSearch() {
   yield put({
     type: "INITIAL_SEARCH",
     currentArray: searchArray.marketArray,
-    searchTerm: {
-      market: "",
-      convertFrom: "",
-      convertTo: ""
-    },
-    id: "market",
-    toggle: true
   })
 }
 
 // When user selects close modal button on modal
 // reset currentArray to marketArray
-//reset searchterm object
 function* closeModal() {
   const searchArray = yield select(searchArrays);
-  console.log('close', searchArray.marketArray)
   yield put({
     type: "CLOSE_MODAL",
     currentArray: searchArray.marketArray,

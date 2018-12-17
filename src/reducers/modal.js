@@ -1,21 +1,19 @@
 const modal = (state = { status: false }, action) => {
     switch (action.type) {
-        case "INITIAL_SEARCH":
-            return {
-                ...state,
-                status: action.toggle
-            };
 
+        // Closes Modal
         case 'CLOSE_MODAL':
             return {
                 ...state,
                 status: false
             };
 
+        // Opens Modal
+        case "INITIAL_SEARCH":
         case "SEARCH_RESET":
             return {
                 ...state,
-                status: action.toggle
+                status: true
             }
 
         default:

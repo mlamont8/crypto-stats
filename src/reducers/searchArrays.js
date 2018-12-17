@@ -22,6 +22,7 @@ const searchArrays = (state = { currentID: 'market' }, action) => {
       };
     case "CLOSE_MODAL":
     case "SEARCH_RESET":
+    case "INITIAL_SEARCH":
       return {
         ...state,
         currentArray: Object.keys(action.currentArray),
@@ -39,12 +40,12 @@ const searchArrays = (state = { currentID: 'market' }, action) => {
         currentID: action.id
       }
 
-    case "INITIAL_SEARCH":
-      return {
-        ...state,
-        currentID: action.id,
-        currentArray: Object.keys(action.currentArray),
-      }
+    // case "INITIAL_SEARCH":
+    //   return {
+    //     ...state,
+    //     currentID: action.id,
+    //     currentArray: Object.keys(action.currentArray),
+    //   }
     default:
       return state;
   }
