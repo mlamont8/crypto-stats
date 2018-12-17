@@ -186,28 +186,6 @@ function* search() {
   }
 }
 
-// When a new search from the main page is initiated.
-// Retrieves marketarray and sets as currentarray
-// Sets modal to open
-// function* searchFromMain() {
-//   // Resets Currentarray SearchTerms 
-//   const searchArray = yield select(searchArrays);
-//   yield put({
-//     type: "SEARCH_RESET",
-//     currentArray: searchArray.marketArray,
-
-//   })
-// }
-
-// function* initialSearch() {
-//   // On a new search from frontpage 
-//   const searchArray = yield select(searchArrays);
-//   yield put({
-//     type: "INITIAL_SEARCH",
-//     currentArray: searchArray.marketArray,
-//   })
-// }
-
 function* searchRequest() {
   // On a new search from frontpage 
   const searchArray = yield select(searchArrays);
@@ -234,8 +212,6 @@ function* mySaga() {
   yield takeLatest("SEARCH_REQUEST", search);
   yield takeLatest("SELECTION_ENTERED", checkForCoin);
   yield takeLatest("NEW_RESET", resetSearch);
-  // yield takeLatest('SEARCH_FROM_MAIN', searchFromMain)
-  // yield takeLatest('SEARCH_FROM_FRONT', initialSearch)
   yield takeLatest('CLOSE_ACTION', closeModal)
   yield takeLatest('SEARCH_MODAL_REQUEST', searchRequest)
 }

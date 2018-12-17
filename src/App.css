@@ -9616,7 +9616,7 @@ h2 {
 .infoBlock {
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: #34495e;
   margin: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -9659,7 +9659,7 @@ h2 {
   color: #F7FDFF; }
 
 .navbar-container {
-  background-color: #0058CC;
+  background-color: #34495e;
   color: #F7FDFF;
   display: flex;
   align-items: center; }
@@ -9678,7 +9678,7 @@ h2 {
   fill: #F7FDFF;
   padding-top: 40px;
   border: 1px solid transparent;
-  background-color: #0058CC; }
+  background-color: #34495e; }
 
 .first-row,
 .second-row {
@@ -9733,7 +9733,7 @@ form li {
 
 .frontViewArea {
   position: relative;
-  background: #0058CC url(images/cryptoImage.png) no-repeat;
+  background: #34495e url(images/cryptoImage.png) no-repeat;
   background-size: contain;
   background-blend-mode: soft-light;
   width: 100%;
@@ -9759,14 +9759,15 @@ form li {
     font-weight: 500; }
   .titleArea ul {
     font-size: 1.5em;
-    font-weight: 200; }
+    font-weight: 200;
+    color: #fff; }
   .titleArea button {
-    color: #0058CC;
+    color: #34495e;
     font-size: 1.5em;
     border-radius: 6px;
     transition: all .4s ease; }
   .titleArea button:hover {
-    background-color: #0058CC;
+    background-color: #34495e;
     color: #fff; }
 
 .nameBlk {
@@ -9807,7 +9808,7 @@ form li {
   color: black; }
 
 .modalHeader {
-  background-color: #0058CC;
+  background-color: #34495e;
   color: #F7FDFF;
   height: 50px;
   text-align: center;
@@ -9823,14 +9824,14 @@ form li {
   text-align: center;
   height: 50px;
   font-size: 1.8em;
-  background-color: #0058CC;
+  background-color: #34495e;
   color: #F7FDFF;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 8px; }
   .modalInstructions button {
-    color: #0058CC;
+    color: #34495e;
     font-size: .8em;
     margin: 0 10px;
     border-radius: 5px;

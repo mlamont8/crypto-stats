@@ -11,7 +11,7 @@
 .frontViewArea{
   position: relative;
   background:
-  $baseBlue
+  $grayBlue
   url(images/cryptoImage.png) no-repeat;
   background-size: contain;
   background-blend-mode: soft-light;
@@ -45,15 +45,16 @@
   ul{
     font-size: 1.5em;
     font-weight: 200;
+    color: #fff;
   }
   button{
-    color: $baseBlue;
+    color: $grayBlue;
     font-size: 1.5em;
     border-radius: 6px;
     transition: all .4s ease;
   }
   button:hover {
-    background-color: $baseBlue;
+    background-color: $grayBlue;
     color: #fff;
   }
 }
