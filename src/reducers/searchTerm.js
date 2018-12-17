@@ -6,6 +6,7 @@ const searchTerm = (state = {}, action) => {
         [action.id]: action.item,
       };
     case "CLOSE_MODAL":
+    case "SEARCH_MODAL":
     case "SEARCH_RESET":
       return {
         ...state,

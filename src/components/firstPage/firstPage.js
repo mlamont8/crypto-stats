@@ -33,10 +33,6 @@ export class FirstPage extends React.Component {
         </div>
       </div>
 
-
-
-
-
     )
   }
 };
@@ -46,8 +42,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  initialSearch: (toggle) => {
-    dispatch({ type: "SEARCH_FROM_FRONT"});
+  initialSearch: () => {
+    dispatch({ type: "SEARCH_MODAL_REQUEST" });
   }
 })
 

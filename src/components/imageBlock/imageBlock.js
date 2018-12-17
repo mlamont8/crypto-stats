@@ -41,8 +41,8 @@ export const ImageBlock = props => (
 )
 
 const mapDispatchToProps = dispatch => ({
-  newSearch: (toggle) => {
-    dispatch({ type: 'SEARCH_FROM_MAIN'});
+  newSearch: () => {
+    dispatch({ type: 'SEARCH_MODAL_REQUEST' });
   }
 })
 

@@ -9,8 +9,7 @@ const modal = (state = { status: false }, action) => {
             };
 
         // Opens Modal
-        case "INITIAL_SEARCH":
-        case "SEARCH_RESET":
+        case "SEARCH_MODAL":
             return {
                 ...state,
                 status: true

@@ -20,19 +20,17 @@ const searchArrays = (state = { currentID: 'market' }, action) => {
         convertTo: action.convertFrom[action.item],
         currentArray: action.convertFrom[action.item]
       };
+
     case "CLOSE_MODAL":
+    case "SEARCH_MODAL":
     case "SEARCH_RESET":
-    case "INITIAL_SEARCH":
       return {
         ...state,
         currentArray: Object.keys(action.currentArray),
         currentID: "market"
       };
-    case "NEW_SEARCH":
-      return {
-        ...state,
-        currentArray: action.currentArray,
-      }
+
+
 
     case "ID_UPDATE":
       return {
@@ -40,12 +38,6 @@ const searchArrays = (state = { currentID: 'market' }, action) => {
         currentID: action.id
       }
 
-    // case "INITIAL_SEARCH":
-    //   return {
-    //     ...state,
-    //     currentID: action.id,
-    //     currentArray: Object.keys(action.currentArray),
-    //   }
     default:
       return state;
   }
