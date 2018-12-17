@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { SelectData, closeModal, idUpdate } from "../../actions";
+import { SelectData, idUpdate } from "../../actions";
 
 // Receives props from state tree
 // Child of firstPage.js and Main.js
@@ -110,7 +110,7 @@ const mapDispatchToProps = dispatch => {
             dispatch({ type: "SEARCH_REQUEST" });
         },
         closeModal: (toggle) => {
-            dispatch(closeModal(toggle));
+            dispatch({ type: "CLOSE_ACTION" });
         },
         searchReset: () => {
             dispatch({ type: "NEW_RESET" });

@@ -6,13 +6,13 @@ const modal = (state = { status: false }, action) => {
                 status: action.toggle
             };
 
-            case 'CLOSE_MODAL':
+        case 'CLOSE_MODAL':
             return {
                 ...state,
-                status: action.toggle
+                status: false
             };
-            
-            case "SEARCH_RESET":
+
+        case "SEARCH_RESET":
             return {
                 ...state,
                 status: action.toggle

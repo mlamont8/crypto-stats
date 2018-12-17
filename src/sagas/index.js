@@ -225,21 +225,17 @@ function* initialSearch() {
   })
 }
 
-
-// function* closeModal() {
-//     // Resets Currentarray SearchTerms 
-//     const searchArray = yield select(searchArrays);
-//     yield put({
-//       type: "CLOSE_MODAL",
-//       currentArray: searchArray.marketArray,
-//       searchTerm: {
-//         market: "",
-//         convertFrom: "",
-//         convertTo: ""
-//       },
-//       toggle: true
-//     })
-// }
+// When user selects close modal button on modal
+// reset currentArray to marketArray
+//reset searchterm object
+function* closeModal() {
+  const searchArray = yield select(searchArrays);
+  console.log('close', searchArray.marketArray)
+  yield put({
+    type: "CLOSE_MODAL",
+    currentArray: searchArray.marketArray,
+  })
+}
 
 function* mySaga() {
   yield takeLatest("INITIAL_MOUNT", initialMount);
@@ -248,6 +244,7 @@ function* mySaga() {
   yield takeLatest("NEW_RESET", resetSearch);
   yield takeLatest('SEARCH_FROM_MAIN', searchFromMain)
   yield takeLatest('SEARCH_FROM_FRONT', initialSearch)
+  yield takeLatest('CLOSE_ACTION', closeModal)
 }
 
 export default mySaga;

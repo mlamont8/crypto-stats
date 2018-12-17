@@ -40,7 +40,7 @@ export const idUpdate = (id) => ({
   id
 })
 
-export const closeModal = (toggle) => ({
+export const closeModal = (currentArray) => ({
   type: "CLOSE_MODAL",
-  toggle
+  currentArray,
 })
