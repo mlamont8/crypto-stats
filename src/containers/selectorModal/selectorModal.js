@@ -37,8 +37,10 @@ export class SelectorModal extends React.Component {
 
     // Offers user instructions in Modal Header
     instructs() {
-        const { id } = this.props;
-        if (id === 'market') {
+        const { id, errorItem } = this.props;
+        if (errorItem) {
+            return `ERROR: ${errorItem} not found at this time`
+        } else if (id === 'market') {
 
             return "Choose a market"
 
@@ -76,12 +78,14 @@ export class SelectorModal extends React.Component {
                     <div className="modalAlerts">
                         Alerts
                     </div>
-                    <div className="selectorItems">
-                        {currentArray.map(item =>
-                            <div key={item}>
-                                <a onClick={this.onOptionClick.bind(this, { item }.item)}>{item}</a>
-                            </div>)}
-                    </div>
+                    {currentArray &&
+                        <div className="selectorItems">
+                            {currentArray.map(item =>
+                                <div key={item}>
+                                    <a onClick={this.onOptionClick.bind(this, { item }.item)}>{item}</a>
+                                </div>)}
+                        </div>
+                    }
                     <div className="modalFooter">
                         <button type="button" onClick={this.props.closeModal.bind(this, false)}>Close</button>
                         <button type="button" onClick={this.props.searchReset}>Reset</button>
@@ -98,6 +102,8 @@ const mapStateToProps = state => {
         id: state.searchArrays.currentID,
         currentMarket: state.searchTerm.market,
         currentFrom: state.searchTerm.convertFrom,
+        errorType: state.errors.type,
+        errorItem: state.errors.item,
     };
 };
 

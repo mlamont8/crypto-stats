@@ -38,6 +38,12 @@ const searchArrays = (state = { currentID: 'market' }, action) => {
         currentID: action.id
       }
 
+    case "COIN_LISTING_ERROR":
+      return {
+        ...state,
+        currentArray: null
+      }
+
     default:
       return state;
   }

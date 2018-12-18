@@ -10,6 +10,7 @@ const modal = (state = { status: false }, action) => {
 
         // Opens Modal
         case "SEARCH_MODAL":
+        case "COIN_LISTING_ERROR":
             return {
                 ...state,
                 status: true

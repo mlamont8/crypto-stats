@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import errors from "./errors";
 import initialLoadData from "./initialLoadData";
 import isLoading from "./isLoading";
 import searchTerm from "./searchTerm";
@@ -17,6 +18,7 @@ import notification from "./notification";
 import modal from "./modal";
 
 const cryptoApp = combineReducers({
+  errors,
   modal,
   isLoading,
   initialLoadData,

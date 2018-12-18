@@ -148,6 +148,7 @@ function* resetSearch() {
 }
 
 // Checks to see if data currently exists for coin
+// Action contains 'id' and 'item' selected
 
 export function* checkForCoin(action) {
   const coinObject = yield select(coinLookup);
@@ -159,7 +160,17 @@ export function* checkForCoin(action) {
   } else {
     console.log(action.id, ` was not found!`);
     yield call(resetSearch)
+    yield call(coinError, action)
   }
+}
+
+// When there is an error finding a listed coin
+
+function* coinError(error) {
+  yield put({
+    type: "COIN_LISTING_ERROR",
+    error
+  })
 }
 
 // New Search
@@ -183,6 +194,7 @@ function* search() {
     yield put({ type: "FETCH_SUCCESS" });
   } catch (error) {
     yield put({ type: "SEARCH_FETCH_FAILURE", error });
+    console.log('Search was not successful');
   }
 }
 

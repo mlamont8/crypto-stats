@@ -30,3 +30,11 @@ export const closeModal = currentArray => ({
   type: "CLOSE_MODAL",
   currentArray,
 })
+
+// If error, set modal to open,
+// set currentArray to empty,
+// send error info to modal
+export const coinError = (error) => ({
+  type: "COIN_LISTING_ERROR",
+  error
+})
