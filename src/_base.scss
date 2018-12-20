@@ -23,6 +23,7 @@ h2 {
   flex-direction: column;
   background: $grayBlue;
   margin: 10px;
+  padding: 10px;
   @include border-radius(10px);
   height: 300px;
 }
