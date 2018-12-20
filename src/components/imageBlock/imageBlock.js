@@ -24,6 +24,9 @@ export const ImageBlock = props => (
       <FontAwesomeIcon icon={faArrowRight} />{' '}
       {props.coinTo}
     </span>
+    <div className="ibMarket">
+      ({props.market})
+      </div>
 
     <div className="ibContainer-sr">
       <span>
@@ -34,7 +37,7 @@ export const ImageBlock = props => (
     <div className="ibContainer-tr">
 
       <button type="button" onClick={props.newSearch.bind(this, true)}>
-        New Search
+        SEARCH AGAIN
       </button>
     </div>
   </div>

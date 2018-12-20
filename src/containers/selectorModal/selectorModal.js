@@ -31,7 +31,7 @@ export class SelectorModal extends React.Component {
             // reset id
             this.props.idUpdate('market')
             // Set modal to closed
-            this.props.closeModal(false)
+            this.props.closeModal()
         }
     }
 
@@ -66,7 +66,7 @@ export class SelectorModal extends React.Component {
                         <div>{instructions}</div>
                         <div>
                             <button type="button" onClick={this.props.searchReset}>Reset</button>
-                            <button type="button" onClick={this.props.closeModal.bind(this, false)}>Close</button>
+                            <button type="button" onClick={this.props.closeModal}>Close</button>
                         </div>
                     </div>
 
@@ -87,7 +87,7 @@ export class SelectorModal extends React.Component {
                         </div>
                     }
                     <div className="modalFooter">
-                        <button type="button" onClick={this.props.closeModal.bind(this, false)}>Close</button>
+                        <button type="button" onClick={this.props.closeModal}>Close</button>
                         <button type="button" onClick={this.props.searchReset}>Reset</button>
                     </div>
                 </div>
@@ -112,10 +112,7 @@ const mapDispatchToProps = dispatch => {
         optionClick: (id, selection) => {
             dispatch(SelectData(id, selection));
         },
-        search: () => {
-            dispatch({ type: "SEARCH_REQUEST" });
-        },
-        closeModal: (toggle) => {
+        closeModal: () => {
             dispatch({ type: "CLOSE_ACTION" });
         },
         searchReset: () => {

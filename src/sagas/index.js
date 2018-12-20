@@ -124,8 +124,9 @@ export function* formSelector(action) {
     });
     yield put({ type: "COIN_LOOKUP", id, coin });
   } else {
-    yield put({ type: "SEARCH_REQUEST" });
+    yield call(search);
     yield put({ type: "COIN_LOOKUP", id, coin });
+
 
     // reset currentArray to Market for new searches
 
@@ -176,9 +177,14 @@ function* coinError(error) {
 // New Search
 
 function* search() {
-  // Retrieve search terms
+  // Retrieve search terms from temp hold in state
   const results = yield call(terms);
 
+  console.log('results', results)
+  // Clear previous search terms
+  yield put({ type: "CLEAR_CURRENT" });
+  // Inform of search using new search terms
+  yield put({ type: "API_CALL", results });
   searchesThisSession += 1;
   // Connect for live results
   yield fork(liveWatch, searchesThisSession);
@@ -189,7 +195,7 @@ function* search() {
       call(byDay, results.market, results.convertFrom, results.convertTo),
       call(byHour, results.convertFrom, results.convertTo),
       call(byExchange, results.convertFrom, results.convertTo),
-      put({ type: "NEW_SEARCH", status: false })
+      put({ type: "NEW_SEARCH", status: false }),
     ]);
     yield put({ type: "FETCH_SUCCESS" });
   } catch (error) {

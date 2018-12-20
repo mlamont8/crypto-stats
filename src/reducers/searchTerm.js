@@ -1,5 +1,6 @@
 const searchTerm = (state = {}, action) => {
   switch (action.type) {
+    // For each entry, add temporary value
     case "SELECTION_ENTERED":
       return {
         ...state,
@@ -13,6 +14,24 @@ const searchTerm = (state = {}, action) => {
         market: "",
         convertFrom: "",
         convertTo: ""
+      };
+
+    // terms that are sent to API to search for
+    case "API_CALL":
+      return {
+        ...state,
+        currentMarket: action.results.market,
+        currentFrom: action.results.convertFrom,
+        currentTo: action.results.convertTo,
+      };
+
+    // clear current items
+    case "CLEAR_CURRENT":
+      return {
+        ...state,
+        currentMarket: "",
+        currentFrom: "",
+        currentTo: "",
       };
 
 

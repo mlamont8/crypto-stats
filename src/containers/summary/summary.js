@@ -17,6 +17,7 @@ const Summary = props => {
           coinFrom={props.coinFrom}
           coinName={props.coinName}
           coinTo={props.coinTo}
+          market={props.exchange}
         />
       </div>
       <div className="summary-center summary-block">
@@ -28,9 +29,9 @@ const Summary = props => {
 };
 
 const mapStateToProps = state => ({
-  exchange: state.searchTerm.market,
-  coinFrom: state.searchTerm.convertFrom,
-  coinTo: state.searchTerm.convertTo,
+  exchange: state.searchTerm.currentMarket,
+  coinFrom: state.searchTerm.currentFrom,
+  coinTo: state.searchTerm.currentTo,
   historicalDay: state.historical.fullHistory,
   image: state.coinUrl.convertFrom,
   coinName: state.coinName.convertFrom,

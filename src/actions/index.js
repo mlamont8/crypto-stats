@@ -4,6 +4,15 @@ export const SelectData = (id, item) => ({
   item
 });
 
+export const apiCall = results => ({
+  type: "API_CALL",
+  results,
+})
+
+export const clearCurrent = () => ({
+  type: "CLEAR_CURRENT"
+
+})
 export const notificationOption = option => ({
   type: "NOTIFICATION_TOGGLE",
   option
