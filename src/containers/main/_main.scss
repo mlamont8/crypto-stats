@@ -1,3 +1,6 @@
+a {
+  color: $orange;
+}
 .dash-container {
   fill: $white;
   padding-top: 40px;
@@ -29,6 +32,8 @@
   }
 }
 
+
+
 @media all and (max-width: 1150px) {
   .chartContainer {
     flex-wrap: wrap;
@@ -44,4 +49,8 @@
 .uk-notification-message {
   border-radius: 30px;
   color: $background;
+}
+
+.blockTitle h1 {
+  font-weight: bold;
 }

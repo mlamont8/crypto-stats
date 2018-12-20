@@ -18,6 +18,16 @@ h2 {
   align-items: center;
 }
 
+button{
+  color: $grayBlue;
+  font-size: 1.5em;
+  border-radius: 6px;
+  transition: all .4s ease;
+}
+button:hover {
+  background-color: $grayBlue;
+  color: #fff;
+}
 .infoBlock {
   display: flex;
   flex-direction: column;

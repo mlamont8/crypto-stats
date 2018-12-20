@@ -44,7 +44,7 @@ export function* initialExchanges() {
 export function* fetchNews() {
   try {
     const fetch = yield call(api.getNews);
-    const limitNews = fetch.data.Data.slice(0, 5);
+    const limitNews = fetch.data.Data.slice(0, 4);
     const news = formatNews(limitNews);
     yield put({ type: "NEWS_FETCH_SUCCESS", news });
   } catch (error) {

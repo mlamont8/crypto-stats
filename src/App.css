@@ -9613,6 +9613,16 @@ h2 {
   flex-direction: column;
   align-items: center; }
 
+button {
+  color: #34495e;
+  font-size: 1.5em;
+  border-radius: 6px;
+  transition: all .4s ease; }
+
+button:hover {
+  background-color: #34495e;
+  color: #fff; }
+
 .infoBlock {
   display: flex;
   flex-direction: column;
@@ -9631,7 +9641,8 @@ h2 {
 .summary-container {
   display: flex;
   justify-content: space-around;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  color: white; }
   .summary-container div {
     flex-grow: 0;
     flex-basis: 20%; }
@@ -9675,6 +9686,9 @@ h2 {
 .navbar-hide {
   display: none; }
 
+a {
+  color: #FE7F0E; }
+
 .dash-container {
   fill: #F7FDFF;
   padding-top: 40px;
@@ -9712,6 +9726,9 @@ h2 {
 .uk-notification-message {
   border-radius: 30px;
   color: #0058CC; }
+
+.blockTitle h1 {
+  font-weight: bold; }
 
 form li {
   list-style: none; }
@@ -9762,14 +9779,6 @@ form li {
     font-size: 1.5em;
     font-weight: 200;
     color: #fff; }
-  .titleArea button {
-    color: #34495e;
-    font-size: 1.5em;
-    border-radius: 6px;
-    transition: all .4s ease; }
-  .titleArea button:hover {
-    background-color: #34495e;
-    color: #fff; }
 
 .nameBlk {
   margin: 5px; }
@@ -9784,6 +9793,17 @@ form li {
   justify-content: space-around;
   align-items: center;
   padding: 10px; }
+  .imageBlock button {
+    font-size: 1.1em; }
+
+.pieChart {
+  padding: 0; }
+
+.recharts-legend-item-text {
+  color: #F7FDFF; }
+
+table td {
+  color: #F7FDFF; }
 
 .modalContainer {
   position: fixed;
