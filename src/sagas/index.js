@@ -7,7 +7,7 @@ import {
 } from "../helpers/index";
 import * as api from "./api";
 import liveWatch from "./live";
-import { coinLookup, searchArrays, terms } from "./selectors";
+import { coinLookup, searchArrays, terms, errors } from "./selectors";
 
 let searchesThisSession = 0;
 
@@ -219,10 +219,15 @@ function* searchRequest() {
 // reset currentArray to marketArray
 function* closeModal() {
   const searchArray = yield select(searchArrays);
-  yield put({
-    type: "CLOSE_MODAL",
-    currentArray: searchArray.marketArray,
-  })
+  const errorStatus = yield select(errors)
+
+  // Only if there are no errors, close modal
+  if (errorStatus.item == null) {
+    yield put({
+      type: "CLOSE_MODAL",
+      currentArray: searchArray.marketArray,
+    })
+  }
 }
 
 function* mySaga() {
