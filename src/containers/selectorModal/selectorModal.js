@@ -80,7 +80,7 @@ export class SelectorModal extends React.Component {
                     </div>
                     {currentArray &&
                         <div className="selectorItems">
-                            {currentArray.map(item =>
+                            {currentArray.sort().map(item =>
                                 <div key={item}>
                                     <a onClick={this.onOptionClick.bind(this, { item }.item)}>{item}</a>
                                 </div>)}
