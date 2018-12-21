@@ -75,9 +75,6 @@ export class SelectorModal extends React.Component {
                         <div>{currentFrom}</div>
                     </div>
 
-                    <div className="modalAlerts">
-                        Alerts
-                    </div>
                     {currentArray &&
                         <div className="selectorItems">
                             {currentArray.sort().map(item =>
