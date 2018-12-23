@@ -79,9 +79,9 @@ export const filterArray = liveResults => {
   const currentArray = liveResults.filter(
     obj => obj.searchesThisSession === currentSearchCount
   );
-  // Only show the last 10 results of the array if array is greater than 10
+  // Only show the last 5 results of the array if array is greater than 5
   const lastTen =
-    currentArray.id <= 10 ? currentArray : currentArray.slice(-10);
+    currentArray.id <= 5 ? currentArray : currentArray.slice(-5);
   return lastTen;
 };
 

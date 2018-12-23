@@ -7,6 +7,9 @@
   color: white;
   width: 100%;
   display: grid;
+  align-content: end;
+  justify-content: space-between;
+  margin-bottom: 20px;
   grid-gap: 2px;
   grid-template-columns: repeat(4,25%);
   grid-template-rows: repeat(1, 1px);
@@ -16,6 +19,8 @@
   color: white;
   width: 100%;
   display: grid;
+  justify-content: space-between;
+  align-content: center;
   grid-gap: 2px;
   grid-template-columns: repeat(4,25%);
   grid-template-rows: repeat(1, 1fr);
