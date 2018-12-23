@@ -31,47 +31,44 @@ class LiveGrid extends React.Component {
     return notificationAlert(setMessage, setStatus);
   }
 
-  render() {
-    const { liveResults, usd, to } = this.props;
-    return (
-      <div className="live-table mainBlock infoBlock">
-        <div className="blockTitle">
-          <h1>LIVE UPDATES</h1>
-        </div>
-        <div className="row">
-          <table>
-            <thead>
-              <tr>
-                <th />
-                <th>TIME</th>
-                <th>PRICE</th>
-                <th>USD</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filterArray(liveResults).map(result => {
+render() {
+  const { liveResults, usd, to } = this.props;
+  return(
+    <div className="live-table mainBlock infoBlock">
+    <div className="blockTitle">
+    <h1>LIVE UPDATES</h1>
+    </div>
+    <div className="gridTitle">
+
+    <div></div>
+    <div>TIME</div>
+    <div>PRICE</div>
+    <div>USD</div>
+    </div>
+
+                 {filterArray(liveResults).map(result => {
                 const arrow = result.flag === "2" ? "arrow-down" : "arrow-up";
                 return (
-                  <tr key={result.time}>
-                    <td>
+                  <div className="gridTable" key={result.time}>
+                    <div>
                       {" "}
                       <span uk-icon={`icon: ${arrow}`} />
-                    </td>
-                    <td>{result.time}</td>
-                    <td>
+                    </div>
+                    <div>{result.time}</div>
+                    <div>
                       {result.price}
                       <span className="toPrice">{to}</span>
-                    </td>
-                    <td>${(usd * result.price).toFixed(2)}</td>
-                  </tr>
+                    </div>
+                    <div>${(usd * result.price).toFixed(2)}</div>
+                  </div>
+             
                 );
               })}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    );
-  }
+
+    </div>
+  )
+}
+
 }
 
 LiveGrid.propTypes = {
