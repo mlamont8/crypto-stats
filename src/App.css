@@ -9765,6 +9765,10 @@ form li {
   grid-template-columns: repeat(4, 25%);
   grid-template-rows: repeat(1, 1fr); }
 
+.currentResult {
+  color: #82ca9d;
+  font-weight: bold; }
+
 .frontContainer {
   overflow: hidden;
   height: 100vh;

@@ -33,6 +33,8 @@ class LiveGrid extends React.Component {
 
 render() {
   const { liveResults, usd, to } = this.props;
+  console.log('liveResults', liveResults);
+  console.log('filter', filterArray(liveResults));
   return(
     <div className="live-table mainBlock infoBlock">
     <div className="blockTitle">
@@ -49,7 +51,8 @@ render() {
                  {filterArray(liveResults).map(result => {
                 const arrow = result.flag === "2" ? "arrow-down" : "arrow-up";
                 return (
-                  <div className="gridTable" key={result.time}>
+                  <div className={(result.time === liveResults[liveResults.length-1].time) ?"currentResult gridTable" : "gridTable"}
+                  key={result.time}>
                     <div>
                       {" "}
                       <span uk-icon={`icon: ${arrow}`} />
