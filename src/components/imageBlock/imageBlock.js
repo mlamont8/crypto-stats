@@ -25,7 +25,7 @@ export const ImageBlock = props => (
       {props.coinTo}
     </span>
     <div className="ibMarket">
-      ({props.market})
+      {props.market}
       </div>
 
     <div className="ibContainer-sr">

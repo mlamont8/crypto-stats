@@ -9784,7 +9784,12 @@ form li {
     color: #fff; }
 
 .nameBlk {
-  margin: 5px; }
+  margin: 5px;
+  font-size: 1.5em; }
+
+.ibMarket {
+  font-size: 1.2em;
+  font-style: italic; }
 
 .imageIcon {
   border-radius: 50%;
