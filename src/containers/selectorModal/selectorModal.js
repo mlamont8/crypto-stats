@@ -55,18 +55,18 @@ export class SelectorModal extends React.Component {
 
     render() {
         // get object from state store
-        const { currentArray, currentMarket, currentFrom } = this.props;
+        const { currentArray, currentMarket, currentFrom, errorItem } = this.props;
         const instructions = this.instructs();
 
         return (
             <div className="modalContainer">
                 <div className="modalContent">
 
-                    <div className="modalInstructions">
+                    <div className={errorItem ? 'modalInstructions coinError' : "modalInstructions"}>
                         <div>{instructions}</div>
-                        <div>
+                        <div className="modalHeaderButtons">
                             <button type="button" onClick={this.props.searchReset}>Reset</button>
-                            <button type="button" onClick={this.props.closeModal}>Close</button>
+                            <button className={errorItem ? 'hideItem' : null} type="button" onClick={this.props.closeModal}>Close</button>
                         </div>
                     </div>
 
@@ -83,7 +83,7 @@ export class SelectorModal extends React.Component {
                                 </div>)}
                         </div>
                     }
-                    <div className="modalFooter">
+                    <div className={errorItem ? 'hideItem' : 'modalFooter'}>
                         <button type="button" onClick={this.props.closeModal}>Close</button>
                         <button type="button" onClick={this.props.searchReset}>Reset</button>
                     </div>

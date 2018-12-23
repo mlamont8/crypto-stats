@@ -40,9 +40,13 @@
     
   }
 
+  .modalFooter{
+    background-color: $grayBlue;
+    color: $white;
+    height: 50px;
+  }
+
   .modalInstructions{
-    
-    text-align: center;
     height: 50px;
     font-size: 1.8em;
     background-color: $grayBlue;
@@ -60,9 +64,14 @@
       transition: all .2s ease;
     }
     button:hover {
-      transform: scale(1.1);
+      background-color: $grayBlue; 
+      color: #dddddd;
     }
-  
+
+  }
+
+  .coinError {
+    color: red;
   }
 
   .selectorItems {

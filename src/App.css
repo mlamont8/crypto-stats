@@ -9635,6 +9635,9 @@ button:hover {
   border-radius: 10px;
   height: 300px; }
 
+.hideItem {
+  display: none; }
+
 .summary-left h2 {
   font-size: 20px; }
 
@@ -9841,8 +9844,12 @@ table td {
     flex: 1;
     font-size: 2em; }
 
+.modalFooter {
+  background-color: #34495e;
+  color: #F7FDFF;
+  height: 50px; }
+
 .modalInstructions {
-  text-align: center;
   height: 50px;
   font-size: 1.8em;
   background-color: #34495e;
@@ -9858,7 +9865,11 @@ table td {
     border-radius: 5px;
     transition: all .2s ease; }
   .modalInstructions button:hover {
-    transform: scale(1.1); }
+    background-color: #34495e;
+    color: #dddddd; }
+
+.coinError {
+  color: red; }
 
 .selectorItems {
   display: flex;

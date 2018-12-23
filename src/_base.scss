@@ -37,3 +37,7 @@ button:hover {
   @include border-radius(10px);
   height: 300px;
 }
+
+.hideItem {
+  display: none;
+}
