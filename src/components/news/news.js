@@ -6,18 +6,14 @@ const News = props => (
     <div className="blockTitle">
       <h1>RECENT NEWS</h1>
     </div>
-    <table>
-      <tbody>
-        {props.data.map(result => (
-          <tr key={result.id}>
-            <td>{result.published_on}</td>
-            <td>
-              <a href={result.url}>{result.title}</a>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    {props.data.map(result => (
+      <div key={result.id} className="newsRow">
+        <div>
+          <a href={result.url}>{result.title}</a>
+        </div>
+      </div>
+    ))}
+
   </div>
 );
 

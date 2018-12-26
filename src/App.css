@@ -9841,8 +9841,8 @@ form li {
 .recharts-legend-item-text {
   color: #F7FDFF; }
 
-table td {
-  color: #F7FDFF; }
+.newsRow {
+  margin: 5px 0; }
 
 .modalContainer {
   position: fixed;
