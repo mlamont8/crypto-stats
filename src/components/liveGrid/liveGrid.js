@@ -31,46 +31,44 @@ class LiveGrid extends React.Component {
     return notificationAlert(setMessage, setStatus);
   }
 
-render() {
-  const { liveResults, usd, to } = this.props;
-  console.log('liveResults', liveResults);
-  console.log('filter', filterArray(liveResults));
-  return(
-    <div className="live-table mainBlock infoBlock">
-    <div className="blockTitle">
-    <h1>LIVE UPDATES</h1>
-    </div>
-    <div className="gridTitle">
+  render() {
+    const { liveResults, usd, to } = this.props;
+    return (
+      <div className="live-table mainBlock infoBlock">
+        <div className="blockTitle liveTitle">
+          <h1>LIVE UPDATES</h1>
+        </div>
 
-    <div></div>
-    <div>TIME</div>
-    <div>PRICE</div>
-    <div>USD</div>
-    </div>
+        <div className="gridTitle">
+          <div></div>
+          <div>TIME</div>
+          <div>PRICE</div>
+          <div>USD</div>
+        </div>
+        <div className="gridRows">
+          {filterArray(liveResults).map(result => {
+            const arrow = result.flag === "2" ? "arrow-down" : "arrow-up";
+            return (
+              <div className={(result.time === liveResults[liveResults.length - 1].time) ? "currentResult gridColumns" : "gridColumns"}
+                key={result.time}>
+                <div>
+                  {" "}
+                  <span uk-icon={`icon: ${arrow}`} />
+                </div>
+                <div>{result.time}</div>
+                <div>
+                  {result.price}
+                  <span className="toPrice">{to}</span>
+                </div>
+                <div>${(usd * result.price).toFixed(2)}</div>
 
-                 {filterArray(liveResults).map(result => {
-                const arrow = result.flag === "2" ? "arrow-down" : "arrow-up";
-                return (
-                  <div className={(result.time === liveResults[liveResults.length-1].time) ?"currentResult gridTable" : "gridTable"}
-                  key={result.time}>
-                    <div>
-                      {" "}
-                      <span uk-icon={`icon: ${arrow}`} />
-                    </div>
-                    <div>{result.time}</div>
-                    <div>
-                      {result.price}
-                      <span className="toPrice">{to}</span>
-                    </div>
-                    <div>${(usd * result.price).toFixed(2)}</div>
-                  </div>
-             
-                );
-              })}
-
-    </div>
-  )
-}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    )
+  }
 
 }
 

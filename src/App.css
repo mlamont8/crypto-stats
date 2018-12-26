@@ -9710,7 +9710,7 @@ a {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap; }
-  .chartContainer div {
+  .chartContainer .info-block {
     flex-grow: 0;
     flex-basis: 30%; }
   .chartContainer .fifteenDayChart {
@@ -9718,13 +9718,12 @@ a {
     flex-basis: 66%; }
 
 @media all and (max-width: 1150px) {
-  .chartContainer {
-    flex-wrap: wrap; }
-    .chartContainer div,
-    .chartContainer .fifteenDayChart {
-      flex-grow: 1;
-      flex-basis: 100%;
-      margin: 10px; } }
+  .chartContainer .info-block {
+    flex-basis: 50%; } }
+
+@media all and (max-width: 900px) {
+  .chartContainer .info-block {
+    flex-basis: 100%; } }
 
 .uk-notification-message {
   border-radius: 30px;
@@ -9740,34 +9739,41 @@ form li {
   border-radius: 20px;
   width: 150px; }
 
-.live-table table {
+.liveTitle {
   width: 100%;
-  margin-left: 15px; }
+  height: 50px; }
 
 .gridTitle {
   color: white;
   width: 100%;
-  display: grid;
-  align-content: end;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  grid-gap: 2px;
-  grid-template-columns: repeat(4, 25%);
-  grid-template-rows: repeat(1, 1px); }
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center; }
 
 .gridTable {
   color: white;
   width: 100%;
-  display: grid;
-  justify-content: space-between;
-  align-content: center;
-  grid-gap: 2px;
-  grid-template-columns: repeat(4, 25%);
-  grid-template-rows: repeat(1, 1fr); }
+  display: flex; }
 
 .currentResult {
   color: #82ca9d;
   font-weight: bold; }
+
+.gridRows {
+  display: flex;
+  width: 100%;
+  flex-direction: column-reverse;
+  justify-content: start;
+  align-items: center;
+  color: white; }
+
+.gridColumns {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center; }
+  .gridColumns div {
+    flex: 1; }
 
 .frontContainer {
   overflow: hidden;
