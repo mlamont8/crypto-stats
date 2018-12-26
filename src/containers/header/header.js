@@ -7,6 +7,8 @@ import { notificationAlert } from "../../helpers/index";
 // Child of main.js
 // Prop firstload from main.js
 
+// Contains Notifications
+
 export class Header extends React.Component {
   constructor(props) {
     super(props);

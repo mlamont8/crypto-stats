@@ -16,6 +16,8 @@ class LiveGrid extends React.Component {
     }
   }
 
+  // Notification events when price updates
+  // ** Add Icon and Name**
   sendNotification() {
     const { liveResults, to, usd } = this.props;
     // get the current result

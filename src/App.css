@@ -9727,9 +9727,14 @@ a {
   .chartContainer .info-block {
     flex-basis: 100%; } }
 
+.uk-notification {
+  width: 250px; }
+
 .uk-notification-message {
   border-radius: 30px;
-  color: #0058CC; }
+  border: 2px solid #F7FDFF;
+  background-color: #292a2b;
+  color: #F7FDFF; }
 
 .blockTitle {
   width: 100%; }
