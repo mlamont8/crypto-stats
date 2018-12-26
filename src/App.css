@@ -9828,7 +9828,7 @@ form li {
   .titleArea ul {
     font-size: 1.5em;
     font-weight: 200;
-    color: #fff; }
+    color: #dddddd; }
 
 .nameBlk {
   margin: 5px;
@@ -9870,7 +9870,7 @@ form li {
 
 .modalContent {
   position: fixed;
-  background: white;
+  background: #34495e;
   width: 80%;
   max-height: 80vh;
   border-radius: 10px;
@@ -9882,7 +9882,7 @@ form li {
 
 .modalHeader {
   background-color: #34495e;
-  color: #F7FDFF;
+  color: #dddddd;
   height: 50px;
   text-align: center;
   display: flex;
@@ -9902,7 +9902,7 @@ form li {
   height: 50px;
   font-size: 1.8em;
   background-color: #34495e;
-  color: #F7FDFF;
+  color: #dddddd;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9932,6 +9932,8 @@ form li {
     text-align: center;
     font-size: 20px;
     margin-bottom: 8px; }
+  .selectorItems a {
+    color: #8092c4; }
 
 h1 {
   font-size: 20px; }

@@ -13,7 +13,7 @@
 
 .modalContent {
     position: fixed;
-    background: white;
+    background: $grayBlue;
     width: 80%;
     max-height: 80vh;
     border-radius: 10px;
@@ -26,7 +26,7 @@
 
   .modalHeader{
     background-color: $grayBlue;
-    color: $white;
+    color: #dddddd;
     height: 50px;
     text-align: center;
     display: flex;
@@ -50,7 +50,7 @@
     height: 50px;
     font-size: 1.8em;
     background-color: $grayBlue;
-    color: $white;
+    color: #dddddd;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -89,6 +89,9 @@
       font-size: 20px;
       margin-bottom: 8px;
     }
+      a {
+       color: $selectText;
+     }
   }
 
   
