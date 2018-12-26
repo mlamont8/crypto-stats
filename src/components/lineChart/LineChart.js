@@ -16,7 +16,7 @@ const CoinLineChart = props => (
       <h1>{props.title}</h1>
     </div>
 
-    <ResponsiveContainer width="80%" height={200}>
+    <ResponsiveContainer width="95%" height={200}>
       <LineChart
         data={props.data}
         margin={{

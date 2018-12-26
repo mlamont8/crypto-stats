@@ -9745,15 +9745,13 @@ form li {
 
 .gridTitle {
   color: white;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center; }
+  font-size: 1.2em; }
 
 .gridTable {
   color: white;
   width: 100%;
-  display: flex; }
+  display: flex;
+  font-size: 1.5em; }
 
 .currentResult {
   color: #82ca9d;
@@ -9767,13 +9765,22 @@ form li {
   align-items: center;
   color: white; }
 
-.gridColumns {
+.gridColumns,
+.gridTitle {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center; }
-  .gridColumns div {
-    flex: 1; }
+  .gridColumns :nth-child(1),
+  .gridColumns :nth-child(4),
+  .gridTitle :nth-child(1),
+  .gridTitle :nth-child(4) {
+    flex-basis: 10%; }
+  .gridColumns :nth-child(2),
+  .gridColumns :nth-child(3),
+  .gridTitle :nth-child(2),
+  .gridTitle :nth-child(3) {
+    flex-basis: 40%; }
 
 .frontContainer {
   overflow: hidden;
