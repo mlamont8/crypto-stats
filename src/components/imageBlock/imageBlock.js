@@ -15,8 +15,8 @@ export const ImageBlock = props => (
       className="imageIcon"
       alt={props.coinFrom}
       data-src={props.img}
-      width="40px"
-      height="40px"
+      width="50px"
+      height="50px"
       uk-img="true"
     />
     <span className="nameBlk">
@@ -26,7 +26,7 @@ export const ImageBlock = props => (
     </span>
     <div className="ibMarket">
       {props.market}
-      </div>
+    </div>
 
     <div className="ibContainer-sr">
       <span>
