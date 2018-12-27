@@ -32,7 +32,6 @@ export function* initialExchanges() {
     yield all([
       put({ type: "EXCHANGE_FETCH_SUCCESS", exchanges }),
       put({ type: "MARKET_LIST_CREATED", exchanges })
-      // call(initialCoins)
     ]);
     yield put({ type: "FETCH_SUCCESS" });
   } catch (error) {
@@ -124,18 +123,14 @@ export function* formSelector(action) {
     });
     yield put({ type: "COIN_LOOKUP", id, coin });
   } else {
-    yield call(search);
-    yield put({ type: "COIN_LOOKUP", id, coin });
-
-
-    // reset currentArray to Market for new searches
-
+    // Convert coin price into dollars if applicable
     if (coin.Name === "BCH" || "BTC" || "LTC" || "ETH" || "BNB") {
       const dollars = yield call(api.dollarExchange, coin.Name);
       yield put({ type: "DOLLAR_CONVERSION", dollars });
     }
 
-
+    yield put({ type: "COIN_LOOKUP", id, coin });
+    yield call(search);
   }
 }
 
@@ -180,9 +175,6 @@ function* search() {
   // Retrieve search terms from temp hold in state
   const results = yield call(terms);
 
-  console.log('results', results)
-  // Clear previous search terms
-  yield put({ type: "CLEAR_CURRENT" });
   // Inform of search using new search terms
   yield put({ type: "API_CALL", results });
   searchesThisSession += 1;
@@ -198,10 +190,12 @@ function* search() {
       put({ type: "NEW_SEARCH", status: false }),
     ]);
     yield put({ type: "FETCH_SUCCESS" });
+
   } catch (error) {
     yield put({ type: "SEARCH_FETCH_FAILURE", error });
     console.log('Search was not successful');
   }
+  yield call(closeModal);
 }
 
 function* searchRequest() {

@@ -30,8 +30,7 @@ export class SelectorModal extends React.Component {
         else {
             // reset id
             this.props.idUpdate('market')
-            // Set modal to closed
-            this.props.closeModal()
+            // Search begins on recognition of new convertTo
         }
     }
 
