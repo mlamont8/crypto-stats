@@ -46,3 +46,16 @@ font-size: 1.2em;
     flex-basis: 40%;
   }
 }
+
+.notiContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.notiLeft, .notiRight{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

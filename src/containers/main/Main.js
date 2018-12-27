@@ -47,6 +47,8 @@ class Main extends React.Component {
                   usd={inDollars}
                   to={to}
                   notifyStatus={this.props.notifyStatus}
+                  from={this.props.from}
+                  image={this.props.image}
                 />
               </div>
               <div className="info-block fifteenDayChart">
@@ -79,15 +81,17 @@ const mapStateToProps = state => ({
   fifteenDay: state.coinByDay.fifteenDay,
   firstLoad: state.isLoading.firstLoad,
   exchangeVolume: state.topExchanges.data,
-  market: state.searchTerm.market,
-  from: state.searchTerm.convertFrom,
-  to: state.searchTerm.convertTo,
+  market: state.searchTerm.currentMarket,
+  from: state.searchTerm.currentFrom,
+  to: state.searchTerm.currentTo,
   liveResults: state.liveResults,
   inDollars: state.byDollar.coinConversion,
   news: state.news.news,
   notifyStatus: state.notification.option,
   byHour: state.coinByHour.coinByHour,
-  modal: state.modal.status
+  modal: state.modal.status,
+  image: state.coinUrl.convertFrom,
+
 });
 
 Main.propTypes = {

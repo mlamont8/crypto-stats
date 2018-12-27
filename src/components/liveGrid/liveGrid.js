@@ -4,6 +4,8 @@ import UIkit from "uikit";
 import Icons from "uikit/dist/js/uikit-icons";
 import { notificationAlert, filterArray } from "../../helpers/index";
 
+// Child of Main.js
+
 // loads the Icon plugin
 UIkit.use(Icons);
 
@@ -28,8 +30,26 @@ class LiveGrid extends React.Component {
     const setArrow = setStatus === "danger" ? "arrow-down" : "arrow-up";
     const price = currentResult.price;
     const dollars = (usd * price).toFixed(2);
-    const setMessage = `<div><span uk-icon='icon: ${setArrow}'></span></div>
-     <div><div>${price} ${to}</div><div>($${dollars})</div></div>`;
+    const setMessage = `
+    <div class="notiContainer">
+      <div class="notiLeft">
+        <div>
+          <img
+            class="imageIcon"
+            alt=${this.props.coinFrom}
+            src=${this.props.image}
+            width="50px"
+            height="50px"
+            uk-img="true"
+          />
+      </div>
+    <div>
+    ${this.props.from}
+    </div>
+    </div>
+    <div class="notiRight"><div><span uk-icon='icon: ${setArrow}'></span></div>
+     <div><div>${price} ${to}</div><div>($${dollars})</div></div></div>
+     </div>`;
     return notificationAlert(setMessage, setStatus);
   }
 

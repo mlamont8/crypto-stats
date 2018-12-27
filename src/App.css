@@ -9791,6 +9791,17 @@ form li {
   .gridTitle :nth-child(3) {
     flex-basis: 40%; }
 
+.notiContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.notiLeft, .notiRight {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
 .frontContainer {
   overflow: hidden;
   height: 100vh;
