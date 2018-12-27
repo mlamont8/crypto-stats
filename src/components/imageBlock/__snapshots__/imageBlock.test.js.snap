@@ -24,9 +24,9 @@ ShallowWrapper {
           alt={undefined}
           className="imageIcon"
           data-src={undefined}
-          height="40px"
+          height="50px"
           uk-img="true"
-          width="40px"
+          width="50px"
 />,
         <span
           className="nameBlk"
@@ -64,6 +64,9 @@ ShallowWrapper {
            
 </span>,
         <div
+          className="ibMarket"
+/>,
+        <div
           className="ibContainer-sr"
 >
           <span>
@@ -77,7 +80,7 @@ ShallowWrapper {
                     onClick={[Function]}
                     type="button"
           >
-                    New Search
+                    SEARCH AGAIN
           </button>
 </div>,
       ],
@@ -93,9 +96,9 @@ ShallowWrapper {
           "alt": undefined,
           "className": "imageIcon",
           "data-src": undefined,
-          "height": "40px",
+          "height": "50px",
           "uk-img": "true",
-          "width": "40px",
+          "width": "50px",
         },
         "ref": null,
         "rendered": null,
@@ -192,6 +195,18 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
+          "children": undefined,
+          "className": "ibMarket",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
           "children": <span>
             <h2 />
 </span>,
@@ -230,7 +245,7 @@ ShallowWrapper {
             onClick={[Function]}
             type="button"
 >
-            New Search
+            SEARCH AGAIN
 </button>,
           "className": "ibContainer-tr",
         },
@@ -240,12 +255,12 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "New Search",
+            "children": "SEARCH AGAIN",
             "onClick": [Function],
             "type": "button",
           },
           "ref": null,
-          "rendered": "New Search",
+          "rendered": "SEARCH AGAIN",
           "type": "button",
         },
         "type": "div",
@@ -264,9 +279,9 @@ ShallowWrapper {
             alt={undefined}
             className="imageIcon"
             data-src={undefined}
-            height="40px"
+            height="50px"
             uk-img="true"
-            width="40px"
+            width="50px"
 />,
           <span
             className="nameBlk"
@@ -304,6 +319,9 @@ ShallowWrapper {
              
 </span>,
           <div
+            className="ibMarket"
+/>,
+          <div
             className="ibContainer-sr"
 >
             <span>
@@ -317,7 +335,7 @@ ShallowWrapper {
                         onClick={[Function]}
                         type="button"
             >
-                        New Search
+                        SEARCH AGAIN
             </button>
 </div>,
         ],
@@ -333,9 +351,9 @@ ShallowWrapper {
             "alt": undefined,
             "className": "imageIcon",
             "data-src": undefined,
-            "height": "40px",
+            "height": "50px",
             "uk-img": "true",
-            "width": "40px",
+            "width": "50px",
           },
           "ref": null,
           "rendered": null,
@@ -432,6 +450,18 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
+            "children": undefined,
+            "className": "ibMarket",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
             "children": <span>
               <h2 />
 </span>,
@@ -470,7 +500,7 @@ ShallowWrapper {
               onClick={[Function]}
               type="button"
 >
-              New Search
+              SEARCH AGAIN
 </button>,
             "className": "ibContainer-tr",
           },
@@ -480,12 +510,12 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "New Search",
+              "children": "SEARCH AGAIN",
               "onClick": [Function],
               "type": "button",
             },
             "ref": null,
-            "rendered": "New Search",
+            "rendered": "SEARCH AGAIN",
             "type": "button",
           },
           "type": "div",

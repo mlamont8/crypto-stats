@@ -104,8 +104,8 @@ describe("helpers", () => {
       }
     ];
 
-    it("should return only 10 values", () => {
-      expect(filterArray(liveResults).length).toBe(10);
+    it("should return only 5 values", () => {
+      expect(filterArray(liveResults).length).toBe(5);
     });
     it("should only return results of current search", () => {
       expect(filterArray(liveResults)[0].searchesThisSession).toBe(2);
