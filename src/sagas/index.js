@@ -195,6 +195,9 @@ function* search() {
     yield put({ type: "SEARCH_FETCH_FAILURE", error });
     console.log('Search was not successful');
   }
+  // reset for a new search
+  yield put({ type: "ID_UPDATE", id: "market"});
+  // Close Modal
   yield call(closeModal);
 }
 

@@ -93,5 +93,20 @@
        color: $selectText;
      }
   }
+  
+// Animated ellipsis
+  .searching:after{
+    content: "\2026";
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+     animation:
+      blinking steps(4, end) 900ms infinite;
+    width: 0px;
+    }
 
+  @keyframes blinking {
+   
+    to {width: 1.25em}
+  }
   

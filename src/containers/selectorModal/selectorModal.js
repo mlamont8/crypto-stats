@@ -28,8 +28,8 @@ export class SelectorModal extends React.Component {
             this.props.idUpdate('convertTo')
         }
         else {
-            // reset id
-            this.props.idUpdate('market')
+            // let all know search is being performed
+            this.props.idUpdate('searching')
             // Search begins on recognition of new convertTo
         }
     }
@@ -45,6 +45,8 @@ export class SelectorModal extends React.Component {
 
         } else if (id === 'convertFrom') {
             return "Choose your coin"
+        } else if (id === 'searching') {
+            return "Searching"
         }
         else {
             return "Choose your conversion currency"
@@ -62,7 +64,7 @@ export class SelectorModal extends React.Component {
                 <div className="modalContent">
 
                     <div className={errorItem ? 'modalInstructions coinError' : "modalInstructions"}>
-                        <div>{instructions}</div>
+                        <div className={instructions === "Searching" ? 'searching' : null}>{instructions}</div>
                         <div className="modalHeaderButtons">
                             <button type="button" onClick={this.props.searchReset}>Reset</button>
                             <button className={errorItem ? 'hideItem' : null} type="button" onClick={this.props.closeModal}>Close</button>
