@@ -1,6 +1,6 @@
 # Crypto Stats
 
-Visual stats for the most popular crypto coins
+Provides current and live stats and data for crypto coins and markets.  Api provided by cryptocompare.com. 
 
 
 ### Installing
@@ -15,3 +15,7 @@ Visual stats for the most popular crypto coins
 ## Built With
 
 * [ReactJS](https://reactjs.org/)
+* [Redux](https://redux.js.org)
+* [Redux Saga](https://redux-saga.js.org)
+* [Recharts](https://recharts.org)
+* [CryptoCompare](https://cryptocompare.org)
