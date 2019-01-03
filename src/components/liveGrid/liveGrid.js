@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { CSSTransitionGroup } from 'react-transition-group';
 import UIkit from "uikit";
 import Icons from "uikit/dist/js/uikit-icons";
 import { notificationAlert, filterArray } from "../../helpers/index";
@@ -55,6 +56,26 @@ class LiveGrid extends React.Component {
 
   render() {
     const { liveResults, usd, to } = this.props;
+
+    // New Separate rows as a result of each update
+    const items = filterArray(liveResults).map(result => {
+      const arrow = result.flag === "2" ? "arrow-down" : "arrow-up";
+      return (
+        <div className={(result.time === liveResults[liveResults.length - 1].time) ? "currentResult gridColumns" : "gridColumns"}
+          key={result.time}>
+          <div>
+            {" "}
+            <span uk-icon={`icon: ${arrow}`} />
+          </div>
+          <div>{result.time}</div>
+          <div>
+            {result.price}{` `}{to}
+          </div>
+          <div>${(usd * result.price).toFixed(2)}</div>
+        </div>
+      );
+    })
+
     return (
       <div className="live-table mainBlock infoBlock">
         <div className="blockTitle liveTitle">
@@ -68,25 +89,12 @@ class LiveGrid extends React.Component {
           <div>USD</div>
         </div>
         <div className="gridRows">
-          {filterArray(liveResults).map(result => {
-            const arrow = result.flag === "2" ? "arrow-down" : "arrow-up";
-            return (
-              <div className={(result.time === liveResults[liveResults.length - 1].time) ? "currentResult gridColumns" : "gridColumns"}
-                key={result.time}>
-                <div>
-                  {" "}
-                  <span uk-icon={`icon: ${arrow}`} />
-                </div>
-                <div>{result.time}</div>
-                <div>
-                  {result.price}
-                  <span className="toPrice">{to}</span>
-                </div>
-                <div>${(usd * result.price).toFixed(2)}</div>
-
-              </div>
-            );
-          })}
+          <CSSTransitionGroup
+            transitionName="grid"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}>
+            {items}
+          </CSSTransitionGroup>
         </div>
       </div>
     )

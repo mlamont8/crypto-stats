@@ -60,7 +60,7 @@ export class SelectorModal extends React.Component {
         const instructions = this.instructs();
 
         return (
-            <div className="modalContainer">
+            <div className="modalContainer" key={this.props.id}>
                 <div className="modalContent">
 
                     <div className={errorItem ? 'modalInstructions coinError' : "modalInstructions"}>
