@@ -1,6 +1,8 @@
 # Crypto Stats
 
-Provides current and live stats and data for crypto coins and markets.  Api provided by cryptocompare.com. 
+Provides current and live information on crypto coin conversions for various markets.  Api provided by cryptocompare.com. 
+
+[LIVE DEMO](https://crypto-stats-70cf4.firebaseapp.com/)
 
 
 ### Installing
