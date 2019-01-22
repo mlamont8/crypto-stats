@@ -17,7 +17,7 @@ const DailyAreaChart = props => (
     <div className="blockTitle">
       <h1>LAST 15 DAYS</h1>
     </div>
-    <ResponsiveContainer width="80%" height={200}>
+    <ResponsiveContainer width="95%" height={200}>
       <AreaChart
         data={props.data}
         margin={{
