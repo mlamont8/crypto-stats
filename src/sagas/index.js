@@ -124,7 +124,7 @@ export function* formSelector(action) {
     yield put({ type: "COIN_LOOKUP", id, coin });
   } else {
     // Convert coin price into dollars if applicable
-    if (coin.Name === "BCH" || "BTC" || "LTC" || "ETH" || "BNB") {
+    if (coin && (coin.Name === "BCH" || "BTC" || "LTC" || "ETH" || "BNB")) {
       const dollars = yield call(api.dollarExchange, coin.Name);
       yield put({ type: "DOLLAR_CONVERSION", dollars });
     }
@@ -151,7 +151,7 @@ export function* checkForCoin(action) {
   const coin = coinObject[action.item];
   // if it finds the coin, calls the formSelector logic
   // else the coin was not found
-  if (coin || action.id === "market") {
+  if (coin || action.id === "market" || action.id === "convertTo") {
     yield call(formSelector, action);
   } else {
     console.log(action.id, ` was not found!`);
