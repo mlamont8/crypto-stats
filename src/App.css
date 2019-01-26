@@ -9932,6 +9932,8 @@ form li {
   align-items: center;
   justify-content: space-between;
   padding: 50px 10px; }
+  .modalInstructions div {
+    text-align: center; }
 
 button {
   color: #34495e;
