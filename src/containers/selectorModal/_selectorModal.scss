@@ -54,7 +54,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 8px;
+    padding: 50px 10px;
+  }
     
     button{
       color: $grayBlue;
@@ -68,7 +69,6 @@
       color: #dddddd;
     }
 
-  }
 
   .coinError {
     color: red;

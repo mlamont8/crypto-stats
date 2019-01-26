@@ -9931,16 +9931,18 @@ form li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 8px; }
-  .modalInstructions button {
-    color: #34495e;
-    font-size: .8em;
-    margin: 0 10px;
-    border-radius: 5px;
-    transition: all .2s ease; }
-  .modalInstructions button:hover {
-    background-color: #34495e;
-    color: #dddddd; }
+  padding: 50px 10px; }
+
+button {
+  color: #34495e;
+  font-size: .8em;
+  margin: 0 10px;
+  border-radius: 5px;
+  transition: all .2s ease; }
+
+button:hover {
+  background-color: #34495e;
+  color: #dddddd; }
 
 .coinError {
   color: red; }
