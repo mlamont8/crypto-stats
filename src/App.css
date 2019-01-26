@@ -9831,6 +9831,7 @@ form li {
   background-blend-mode: soft-light;
   width: 100%;
   height: 85%;
+  padding-left: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: center; }
