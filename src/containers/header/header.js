@@ -41,8 +41,8 @@ export class Header extends React.Component {
           <h1>{this.props.coinName} - ${usDollars} ({price})</h1>
         </div>
         <div className={`${isNaN(usDollars) ? 'navbar-hide' : 'navbar-right'}`}>
-          <div className="uk-flex uk-flex-column">
-            <div>
+          <div className="uk-flex uk-flex-column notification-block">
+            <div className="notification-title">
               <label>Notifications</label>
             </div>
             <div className="notificationLabel">

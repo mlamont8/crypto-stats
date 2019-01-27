@@ -19,16 +19,41 @@
   color: $textColor;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
 
+
+@media all and (max-width: 600px) {
+  .navbar-container {
+    flex-wrap: wrap;
+   
+    div {
+      flex: 1 1 100%;
+    }
+    .navbar-right{
+      margin: 20px;
+    }
+  }
+
+}
+
+.notification-title{
+  text-align: center;
+}
+
+.notification-block{
+  width: 100%;
 }
 
 .navbar-center{
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .navbar-right{
-  margin-right: 20px;
+  margin-right: 100px;
+  width: 100px;
 }
 
 .navbar-hide{
