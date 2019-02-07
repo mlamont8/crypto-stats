@@ -31,7 +31,6 @@ export class Header extends React.Component {
 
     //Convert the price to US Dollars
     const usDollars = (price * this.props.inDollars).toFixed(2);
-    console.log('usdollars header',usDollars)
     return (
       <nav className="navbar-container">
         <div className="navbar-left">

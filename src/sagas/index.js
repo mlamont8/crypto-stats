@@ -126,7 +126,6 @@ export function* formSelector(action) {
     // Convert coin price into dollars if applicable
     if (coin && (coin.Name === "BCH" || "BTC" || "LTC" || "ETH" || "BNB")) {
       const dollars = yield call(api.dollarExchange, coin.Name);
-      console.log({dollars})
       yield put({ type: "DOLLAR_CONVERSION", dollars });
     }
 
