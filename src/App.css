@@ -10121,7 +10121,7 @@ form li {
   display: flex;
   width: 100%;
   flex-direction: column-reverse;
-  justify-content: start;
+  justify-content: flex-start;
   color: white; }
 
 .grid-enter {
@@ -10161,7 +10161,8 @@ form li {
   justify-content: center;
   align-items: center; }
 
-.notiLeft, .notiRight {
+.notiLeft,
+.notiRight {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -10291,10 +10292,10 @@ form li {
 
 button {
   color: #34495e;
-  font-size: .8em;
+  font-size: 0.8em;
   margin: 0 10px;
   border-radius: 5px;
-  transition: all .2s ease; }
+  transition: all 0.2s ease; }
 
 button:hover {
   background-color: #34495e;
@@ -10307,16 +10308,19 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around; }
-  .selectorItems div {
+  justify-content: space-between; }
+  .selectorItems ul {
     color: black;
     list-style: none;
     flex: 0 1 180px;
     text-align: center;
     font-size: 20px;
-    margin-bottom: 8px; }
-  .selectorItems a {
-    color: #8092c4; }
+    margin-top: 8px; }
+  .selectorItems li {
+    color: #8092c4;
+    cursor: pointer; }
+  .selectorItems li:hover {
+    color: white; }
 
 .searching:after {
   content: "\2026";

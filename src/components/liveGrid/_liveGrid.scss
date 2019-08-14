@@ -1,25 +1,23 @@
-.liveTitle{
+.liveTitle {
   width: 100%;
   height: 50px;
 }
 
 .gridTitle {
   color: white;
-font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 .gridTable {
   color: white;
   width: 100%;
   display: flex;
-  font-size: 1.5em
-
+  font-size: 1.5em;
 }
 
 .currentResult {
   color: #82ca9d;
   font-weight: bold;
- 
 }
 
 .gridRows span,
@@ -27,7 +25,7 @@ font-size: 1.2em;
   display: flex;
   width: 100%;
   flex-direction: column-reverse;
-  justify-content: start;
+  justify-content: flex-start;
   // align-items: center;
   color: white;
 }
@@ -56,24 +54,25 @@ font-size: 1.2em;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-   :nth-child(1),
-  :nth-child(4){
+  :nth-child(1),
+  :nth-child(4) {
     flex-basis: 10%;
   }
   :nth-child(2),
-  :nth-child(3){
+  :nth-child(3) {
     flex-basis: 40%;
   }
 }
 
-.notiContainer{
+.notiContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.notiLeft, .notiRight{
+.notiLeft,
+.notiRight {
   display: flex;
   justify-content: center;
   align-items: center;

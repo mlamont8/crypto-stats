@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { connect } from "react-redux";
 import { SelectData, idUpdate } from "../../actions";
 
@@ -6,120 +6,134 @@ import { SelectData, idUpdate } from "../../actions";
 // Child of firstPage.js and Main.js
 
 export class SelectorModal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onOptionClick = this.onOptionClick.bind(this);
+  }
 
-    constructor(props) {
-        super(props);
-        this.onOptionClick = this.onOptionClick.bind(this);
+  // Updates to new id after click
+  onOptionClick(item) {
+    const { id } = this.props;
+    // send item with current id
+    this.props.optionClick(id, item);
+    if (id === "market") {
+      // set id to convertfrom
+      this.props.idUpdate("convertFrom");
+    } else if (id === "convertFrom") {
+      // set id to convertTo
+      this.props.idUpdate("convertTo");
+    } else {
+      // let all know search is being performed
+      this.props.idUpdate("searching");
+      // Search begins on recognition of new convertTo
     }
+  }
 
-    // Updates to new id after click
-    onOptionClick(item) {
-
-        const { id } = this.props;
-        // send item with current id
-        this.props.optionClick(id, item)
-        if (id === 'market') {
-
-            // set id to convertfrom
-            this.props.idUpdate('convertFrom')
-
-        } else if (id === 'convertFrom') {
-            // set id to convertTo
-            this.props.idUpdate('convertTo')
-        }
-        else {
-            // let all know search is being performed
-            this.props.idUpdate('searching')
-            // Search begins on recognition of new convertTo
-        }
+  // Offers user instructions in Modal Header
+  instructs() {
+    const { id, errorItem } = this.props;
+    if (errorItem) {
+      return `ERROR: ${errorItem} not found at this time`;
+    } else if (id === "market") {
+      return "Choose a market";
+    } else if (id === "convertFrom") {
+      return "Choose your coin";
+    } else if (id === "searching") {
+      return "Searching";
+    } else {
+      return "Choose your conversion currency";
     }
+  }
 
-    // Offers user instructions in Modal Header
-    instructs() {
-        const { id, errorItem } = this.props;
-        if (errorItem) {
-            return `ERROR: ${errorItem} not found at this time`
-        } else if (id === 'market') {
+  render() {
+    // get object from state store
+    const { currentArray, currentMarket, currentFrom, errorItem } = this.props;
+    const instructions = this.instructs();
 
-            return "Choose a market"
-
-        } else if (id === 'convertFrom') {
-            return "Choose your coin"
-        } else if (id === 'searching') {
-            return "Searching"
-        }
-        else {
-            return "Choose your conversion currency"
-        }
-
-    }
-
-    render() {
-        // get object from state store
-        const { currentArray, currentMarket, currentFrom, errorItem } = this.props;
-        const instructions = this.instructs();
-
-        return (
-            <div className="modalContainer" key={this.props.id}>
-                <div className="modalContent">
-
-                    <div className={errorItem ? 'modalInstructions coinError' : "modalInstructions"}>
-                        <div className={instructions === "Searching" ? 'searching' : null}>{instructions}</div>
-                        <div className="modalHeaderButtons">
-                            <button type="button" onClick={this.props.searchReset}>Reset</button>
-                            <button className={errorItem ? 'hideItem' : null} type="button" onClick={this.props.closeModal}>Close</button>
-                        </div>
-                    </div>
-
-                    <div className="modalHeader">
-                        <div>{currentMarket} </div>
-                        <div>{currentFrom}</div>
-                    </div>
-
-                    {currentArray &&
-                        <div className="selectorItems">
-                            {currentArray.sort().map(item =>
-                                <div key={item}>
-                                    <a onClick={this.onOptionClick.bind(this, { item }.item)}>{item}</a>
-                                </div>)}
-                        </div>
-                    }
-                    <div className={errorItem ? 'hideItem' : 'modalFooter'}>
-                        <button type="button" onClick={this.props.closeModal}>Close</button>
-                        <button type="button" onClick={this.props.searchReset}>Reset</button>
-                    </div>
-                </div>
+    return (
+      <div className="modalContainer" key={this.props.id}>
+        <div className="modalContent">
+          <div
+            className={
+              errorItem ? "modalInstructions coinError" : "modalInstructions"
+            }
+          >
+            <div className={instructions === "Searching" ? "searching" : null}>
+              {instructions}
             </div>
-        )
-    }
+            <div className="modalHeaderButtons">
+              <button type="button" onClick={this.props.searchReset}>
+                Reset
+              </button>
+              <button
+                className={errorItem ? "hideItem" : null}
+                type="button"
+                onClick={this.props.closeModal}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+
+          <div className="modalHeader">
+            <div>{currentMarket} </div>
+            <div>{currentFrom}</div>
+          </div>
+
+          {currentArray && (
+            <div className="selectorItems">
+              {currentArray.sort().map(item => (
+                <ul key={item}>
+                  <li onClick={this.onOptionClick.bind(this, { item }.item)}>
+                    {item}
+                  </li>
+                </ul>
+              ))}
+            </div>
+          )}
+          <div className={errorItem ? "hideItem" : "modalFooter"}>
+            <button type="button" onClick={this.props.closeModal}>
+              Close
+            </button>
+            <button type="button" onClick={this.props.searchReset}>
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => {
-    return {
-        currentArray: state.searchArrays.currentArray,
-        id: state.searchArrays.currentID,
-        currentMarket: state.searchTerm.market,
-        currentFrom: state.searchTerm.convertFrom,
-        errorType: state.errors.type,
-        errorItem: state.errors.item,
-    };
+  return {
+    currentArray: state.searchArrays.currentArray,
+    id: state.searchArrays.currentID,
+    currentMarket: state.searchTerm.market,
+    currentFrom: state.searchTerm.convertFrom,
+    errorType: state.errors.type,
+    errorItem: state.errors.item
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-        optionClick: (id, selection) => {
-            dispatch(SelectData(id, selection));
-        },
-        closeModal: () => {
-            dispatch({ type: "CLOSE_ACTION" });
-        },
-        searchReset: () => {
-            dispatch({ type: "NEW_RESET" });
-        },
-        idUpdate: (id) => {
-            dispatch(idUpdate(id));
-        }
-    };
+  return {
+    optionClick: (id, selection) => {
+      dispatch(SelectData(id, selection));
+    },
+    closeModal: () => {
+      dispatch({ type: "CLOSE_ACTION" });
+    },
+    searchReset: () => {
+      dispatch({ type: "NEW_RESET" });
+    },
+    idUpdate: id => {
+      dispatch(idUpdate(id));
+    }
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SelectorModal);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SelectorModal);
