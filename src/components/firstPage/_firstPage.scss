@@ -8,20 +8,18 @@
   }
 }
 
-.frontViewArea{
+.frontViewArea {
   position: relative;
-  background:
-  $grayBlue
-  url(images/cryptoImage.png) no-repeat;
+  background: $grayBlue url(images/cryptoImage.png) no-repeat;
   background-size: contain;
   background-blend-mode: soft-light;
   width: 100%;
-  height: 85%;
+  height: 100%;
   padding-left: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  .titleArea{
+  .titleArea {
     margin-right: 30px;
   }
 }
@@ -30,28 +28,25 @@
   font-size: 1.8em;
 }
 
-
-#curve{
+#curve {
   position: absolute;
   bottom: 0;
   width: 100%;
 }
 
-#curve path{
+#curve path {
   fill: #fff;
 }
 
-.titleArea{
+.titleArea {
   z-index: 1;
-  h1{
+  h1 {
     font-size: 2em;
     font-weight: 500;
   }
-  ul{
+  ul {
     font-size: 1.5em;
     font-weight: 200;
     color: #dddddd;
   }
-
 }
-
