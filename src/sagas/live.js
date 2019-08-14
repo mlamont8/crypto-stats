@@ -5,6 +5,8 @@ import { terms } from "./selectors";
 
 // Live results using Socket.io
 
+
+// Recalls Search terms from state and returns proper format
 function* searchResults() {
   const subResults = yield call(terms);
   return `2~${subResults.market}~${subResults.convertFrom}~${
@@ -28,7 +30,7 @@ function subscribe(socket) {
 }
 
 const streamFormat = stream => {
-  // Raw stream fields when Type === 2 and MaskInt !== ce8
+  // Collect stream when fields of Type === 2 and MaskInt !== ce8
   // 0 {Type}
   // 1 {ExchangeName}
   // 2 {FromCurrency}
@@ -65,7 +67,24 @@ export default function* liveWatch(searchesThisSession) {
   while (true) {
     const payload = yield take(socketChannel);
     const update = streamFormat(payload.split("~"));
-    if (update !== null) {
+// Lets catch any errors from the live feed in a try/catch block
+  // try {
+  //   if (update !== null) {
+  //     console.log('received')
+  //     yield put({
+  //       type: "INCOMING_LIVE_UPDATE",
+  //       searchesThisSession,
+  //       id: (payloadId += 1),
+  //       update
+  //     });
+  //   }
+  // }catch(err) {
+  //   console.error('live stream error', err)
+  // }
+
+  
+     if (update !== null) {
+      console.log('received')
       yield put({
         type: "INCOMING_LIVE_UPDATE",
         searchesThisSession,
@@ -73,5 +92,6 @@ export default function* liveWatch(searchesThisSession) {
         update
       });
     }
+
   }
 }
