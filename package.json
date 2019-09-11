@@ -18,12 +18,14 @@
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.0",
     "react-scripts": "^3.1.1",
+    "react-simple-chatbot": "^0.6.1",
     "react-test-renderer": "^16.9.0",
     "react-transition-group": "1.x",
     "recharts": "^1.7.1",
     "redux": "^4.0.4",
     "redux-saga": "^1.0.5",
     "socket.io-client": "^2.2.0",
+    "styled-components": "^4.3.2",
     "uikit": "^3.1.7"
   },
   "scripts": {

@@ -1,5 +1,6 @@
 import React from "react";
 import SelectorModal from "../../containers/selectorModal/selectorModal";
+import ChatForm from "../../containers/chatForm/ChatForm";
 import { connect } from "react-redux";
 
 export class FirstPage extends React.Component {
@@ -40,4 +41,7 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FirstPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FirstPage);
