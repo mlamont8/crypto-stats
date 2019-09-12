@@ -1,47 +1,52 @@
 import React from "react";
 import SelectorModal from "../../containers/selectorModal/selectorModal";
 import ChatForm from "../../containers/chatForm/ChatForm";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
+import FrontSelect from "../frontSelect/FrontSelect";
 
-export class FirstPage extends React.Component {
-  render() {
-    return (
-      <div className="frontContainer">
-        {this.props.modal && <SelectorModal />}
+const FirstPage = () => {
+  const dispatch = useDispatch();
 
-        <div className="frontViewArea">
-          <div className="titleArea">
-            <h2>Cryptocoin price and history data</h2>
-            <ul>
-              <li>Price analysis</li>
-              <li>Short and long term history</li>
-              <li>Real time data</li>
-            </ul>
+  const modal = useSelector(state => state.modal.status);
 
-            <button
-              type="button"
-              onClick={this.props.initialSearch.bind(this, true)}
-            >
-              Try it Now
-            </button>
-          </div>
+  return (
+    <div className="frontContainer">
+      {modal && <SelectorModal />}
+
+      <div className="frontViewArea">
+        <div className="titleArea">
+          <h2>Cryptocoin price and history data</h2>
+          <ul>
+            <li>Price analysis</li>
+            <li>Short and long term history</li>
+            <li>Real time data</li>
+          </ul>
+
+          <button
+            type="button"
+            onClick={() => dispatch({ type: "SEARCH_MODAL_REQUEST" })}
+          >
+            Try it Now
+          </button>
+          <FrontSelect />
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+export default FirstPage;
 
-const mapStateToProps = state => ({
-  modal: state.modal.status
-});
+// const mapStateToProps = state => ({
+//   modal: state.modal.status
+// });
 
-const mapDispatchToProps = dispatch => ({
-  initialSearch: () => {
-    dispatch({ type: "SEARCH_MODAL_REQUEST" });
-  }
-});
+// const mapDispatchToProps = dispatch => ({
+//   initialSearch: () => {
+//     dispatch({ type: "SEARCH_MODAL_REQUEST" });
+//   }
+// });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FirstPage);
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(FirstPage);
