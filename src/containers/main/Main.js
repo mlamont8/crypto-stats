@@ -1,15 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import Header from '../../containers/header/header';
-import Summary from '../summary/summary';
-import HistoricalChart from '../../components/lineChart/LineChart';
-import DailyAreaChart from '../../components/dailyAreaChart/DailyAreaChart';
-import ExchangeVolume from '../../components/exchangeVolume/exchangeVolume';
-import LiveGrid from '../../components/liveGrid/liveGrid';
-import FirstPage from '../../components/firstPage/firstPage';
-import News from '../../components/news/news';
-import SelectorModal from '../selectorModal/selectorModal'
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import Header from "../../containers/header/header";
+import Summary from "../summary/summary";
+import HistoricalChart from "../../components/lineChart/LineChart";
+import DailyAreaChart from "../../components/dailyAreaChart/DailyAreaChart";
+import ExchangeVolume from "../../components/exchangeVolume/exchangeVolume";
+import LiveGrid from "../../components/liveGrid/liveGrid";
+import FirstPage from "../../components/firstPage/firstPage";
+import News from "../../components/news/news";
+import SelectorModal from "../selectorModal/selectorModal";
+import ChatForm from "../chatForm/ChatForm";
 
 class Main extends React.Component {
   componentDidMount() {
@@ -25,7 +26,7 @@ class Main extends React.Component {
       liveResults,
       inDollars,
       to,
-      news,
+      news
     } = this.props;
     return firstLoad ? (
       <div className="mainContainer">
@@ -33,50 +34,46 @@ class Main extends React.Component {
         <FirstPage />
       </div>
     ) : (
-        <div className="mainContainer">
-          {this.props.modal &&
-            <SelectorModal />
-          }
-          <Header firstLoad={firstLoad} />
-          <div className="dash-container">
-            <Summary />
-            <div className="chartContainer">
-              <div className="info-block">
-                <LiveGrid
-                  liveResults={liveResults}
-                  usd={inDollars}
-                  to={to}
-                  notifyStatus={this.props.notifyStatus}
-                  from={this.props.from}
-                  image={this.props.image}
-                />
-              </div>
-              <div className="info-block fifteenDayChart">
-                <DailyAreaChart data={fifteenDay} />
-              </div>
+      <div className="mainContainer">
+        {this.props.modal && <ChatForm />}
+        <Header firstLoad={firstLoad} />
+        <div className="dash-container">
+          <Summary />
+          <div className="chartContainer">
+            <div className="info-block">
+              <LiveGrid
+                liveResults={liveResults}
+                usd={inDollars}
+                to={to}
+                notifyStatus={this.props.notifyStatus}
+                from={this.props.from}
+                image={this.props.image}
+              />
+            </div>
+            <div className="info-block fifteenDayChart">
+              <DailyAreaChart data={fifteenDay} />
+            </div>
 
-              <div className="info-block">
-                <HistoricalChart title="LAST 10 HOURS" data={byHour} />
-              </div>
-              <div className="info-block">
-                <ExchangeVolume data={exchangeVolume} />
-              </div>
-              <div className="info-block">
-                <News data={news} />
-              </div>
+            <div className="info-block">
+              <HistoricalChart title="LAST 10 HOURS" data={byHour} />
+            </div>
+            <div className="info-block">
+              <ExchangeVolume data={exchangeVolume} />
+            </div>
+            <div className="info-block">
+              <News data={news} />
             </div>
           </div>
         </div>
-
-
-      );
+      </div>
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   fetch: bool => {
-    dispatch({ type: 'INITIAL_MOUNT', status: bool });
-  },
+    dispatch({ type: "INITIAL_MOUNT", status: bool });
+  }
 });
 
 const mapStateToProps = state => ({
@@ -92,8 +89,7 @@ const mapStateToProps = state => ({
   notifyStatus: state.notification.option,
   byHour: state.coinByHour.coinByHour,
   modal: state.modal.status,
-  image: state.coinUrl.convertFrom,
-
+  image: state.coinUrl.convertFrom
 });
 
 Main.propTypes = {
@@ -107,23 +103,23 @@ Main.propTypes = {
       id: PropTypes.number.isRequired,
       flag: PropTypes.string,
       price: PropTypes.string,
-      time: PropTypes.string,
+      time: PropTypes.string
     }).isRequired
   ).isRequired,
   inDollars: PropTypes.number,
   to: PropTypes.string,
   news: PropTypes.arrayOf(PropTypes.object),
-  notifyStatus: PropTypes.string.isRequired,
+  notifyStatus: PropTypes.string.isRequired
 };
 
 Main.defaultProps = {
   fifteenDay: [],
   exchangeVolume: [],
   inDollars: 0,
-  to: '',
+  to: "",
   firstLoad: true,
   news: [],
-  byHour: [],
+  byHour: []
 };
 
 export default connect(

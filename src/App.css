@@ -10337,5 +10337,8 @@ button:hover {
 .select-container {
   width: 200px; }
 
+.modalContent {
+  width: 80%; }
+
 h1 {
   font-size: 20px; }
