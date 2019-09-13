@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ChatBot from "react-simple-chatbot";
 import GetSelections from "../../components/getSelections/getSelections";
 import { useSelector } from "react-redux";
-import FrontSelect from "../../components/frontSelect/FrontSelect";
+import ChatSelector from "../../components/chatSelector/chatSelector";
 
 function ChatForm() {
   return (
@@ -20,23 +20,39 @@ function ChatForm() {
         },
         {
           id: "market",
-          //   options: [
-          //     { value: 1, label: "Number 1", trigger: "coin-retrieve" },
-          //     { value: 2, label: "Number 2", trigger: "coin-retrieve" },
-          //     { value: 3, label: "Number 3", trigger: "coin-retrieve" }
-          //   ]
-          component: <FrontSelect />,
+          component: <ChatSelector id={"market"} />,
           waitAction: true,
           trigger: "coin-retrieve"
         },
         {
           id: "coin-retrieve",
-          component: <GetSelections />,
-          trigger: "market-confirm"
+          component: <GetSelections id={"convertFrom"} />,
+          trigger: "coin-question"
         },
         {
-          id: "market-confirm",
-          message: "{market-question.value}?  Great!"
+          id: "coin-question",
+          message: "Great! Which Coin would you like info on?",
+          trigger: "convertFrom"
+        },
+        {
+          id: "convertFrom",
+          component: <ChatSelector id={"convertFrom"} />,
+          waitAction: true,
+          trigger: "retrieve-conversion"
+        },
+        {
+          id: "retrieve-conversion",
+          component: <GetSelections id={"convertTo"} />,
+          trigger: "convert-question"
+        },
+        {
+          id: "convert-question",
+          message: "Cool! What would you like it converted into?",
+          trigger: "convertTo"
+        },
+        {
+          id: "convertTo",
+          component: <ChatSelector id={"convertTo"} />
         }
       ]}
     />

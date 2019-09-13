@@ -7,7 +7,6 @@ const FirstPage = () => {
   const dispatch = useDispatch();
 
   const modal = useSelector(state => state.modal.status);
-  const markets = useSelector(state => state.searchArrays.currentArray);
 
   return (
     <div className="frontContainer">
