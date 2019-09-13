@@ -1,32 +1,23 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Select from "react-select";
+import { useSelector } from "react-redux";
 
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" }
-];
+// const customStyles = {
+//   container: () => ({
+//     width: 200
+//   })
+// };
 
-const FrontSelect = () => {
+const FrontSelect = props => {
   const markets = useSelector(state => state.searchArrays.currentArray);
-  // const newMarkets = markets.map(market => {
-  //   return { value: market, label: market };
-  // });
+  console.log(markets);
+  const marketArray =
+    markets &&
+    markets.map(item => {
+      return { value: item, label: item };
+    });
 
-  console.log({ markets });
-
-  return (
-    // <Select
-    //   options={markets.map(market => {
-    //     return { value: market, label: market };
-    //   })}
-    // />
-    null
-  );
+  return <Select className="select-container" options={marketArray} />;
 };
 
 export default FrontSelect;

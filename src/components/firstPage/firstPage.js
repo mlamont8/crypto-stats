@@ -1,17 +1,17 @@
 import React from "react";
 import SelectorModal from "../../containers/selectorModal/selectorModal";
 import ChatForm from "../../containers/chatForm/ChatForm";
-import { connect, useDispatch, useSelector } from "react-redux";
-import FrontSelect from "../frontSelect/FrontSelect";
+import { useDispatch, useSelector } from "react-redux";
 
 const FirstPage = () => {
   const dispatch = useDispatch();
 
   const modal = useSelector(state => state.modal.status);
+  const markets = useSelector(state => state.searchArrays.currentArray);
 
   return (
     <div className="frontContainer">
-      {modal && <SelectorModal />}
+      {modal && <ChatForm />}
 
       <div className="frontViewArea">
         <div className="titleArea">
@@ -28,25 +28,9 @@ const FirstPage = () => {
           >
             Try it Now
           </button>
-          <FrontSelect />
         </div>
       </div>
     </div>
   );
 };
 export default FirstPage;
-
-// const mapStateToProps = state => ({
-//   modal: state.modal.status
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   initialSearch: () => {
-//     dispatch({ type: "SEARCH_MODAL_REQUEST" });
-//   }
-// });
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(FirstPage);

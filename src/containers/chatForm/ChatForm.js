@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import ChatBot from "react-simple-chatbot";
 import GetSelections from "../../components/getSelections/getSelections";
 import { useSelector } from "react-redux";
+import FrontSelect from "../../components/frontSelect/FrontSelect";
 
 function ChatForm() {
-  const markets = useSelector(state => state.searchArrays.markets);
-  console.log(markets);
   return (
     <ChatBot
       steps={[
@@ -26,7 +25,9 @@ function ChatForm() {
           //     { value: 2, label: "Number 2", trigger: "coin-retrieve" },
           //     { value: 3, label: "Number 3", trigger: "coin-retrieve" }
           //   ]
-          options: { markets }
+          component: <FrontSelect />,
+          waitAction: true,
+          trigger: "coin-retrieve"
         },
         {
           id: "coin-retrieve",

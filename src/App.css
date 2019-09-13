@@ -10334,5 +10334,8 @@ button:hover {
   to {
     width: 1.25em; } }
 
+.select-container {
+  width: 200px; }
+
 h1 {
   font-size: 20px; }
