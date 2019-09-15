@@ -10,7 +10,7 @@ const FirstPage = () => {
 
   return (
     <div className="frontContainer">
-      {modal && <ChatForm />}
+      {modal && <ChatForm initialLoad />}
 
       <div className="frontViewArea">
         <div className="titleArea">

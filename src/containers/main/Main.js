@@ -35,7 +35,7 @@ class Main extends React.Component {
       </div>
     ) : (
       <div className="mainContainer">
-        {this.props.modal && <ChatForm />}
+        {this.props.modal && <ChatForm initialLoad={false} />}
         <Header firstLoad={firstLoad} />
         <div className="dash-container">
           <Summary />

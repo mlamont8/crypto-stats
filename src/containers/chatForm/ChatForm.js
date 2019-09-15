@@ -3,22 +3,7 @@ import ChatBot from "react-simple-chatbot";
 import ChatSelector from "../../components/chatSelector/chatSelector";
 import GetCurrentMarket from "../../components/getCurrentMarket/GetCurrentMarket";
 
-// import { SelectData } from "../../actions/index";
-
-// const CurrentMarket = props => {
-//   console.log("currentmarket run");
-//   const dispatch = useDispatch();
-//   const getMarket = useSelector(state => {
-//     console.log("getmarket run");
-
-//     return state.searchTerm.currentMarket;
-//   });
-//   dispatch(SelectData("market", getMarket));
-//   props.triggerNextStep();
-//   return null;
-// };
-
-function ChatForm() {
+const ChatForm = props => {
   const initialSteps = [
     {
       id: "Intro",
@@ -117,13 +102,15 @@ function ChatForm() {
     }
   ];
 
+  const chatOption = props.initialLoad ? initialSteps : returningSteps;
+
   return (
     <div className="modalContainer">
       <div className="modalContent">
-        <ChatBot width="none" steps={returningSteps} />
+        <ChatBot width="none" steps={chatOption} />
       </div>
     </div>
   );
-}
+};
 
 export default ChatForm;
