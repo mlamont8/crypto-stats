@@ -34,11 +34,11 @@ const DashPage = () => {
           <div className="info-block">
             <LiveGrid />
           </div>
-          {/* <div className="info-block fifteenDayChart">
-            <DailyAreaChart data={fifteenDay} />
+          <div className="info-block fifteenDayChart">
+            <DailyAreaChart />
           </div>
 
-          <div className="info-block">
+          {/*    <div className="info-block">
             <HistoricalChart title="LAST 10 HOURS" data={byHour} />
           </div>
           <div className="info-block">
