@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // Child of main.js
 // Prop firstload from main.js
 
-const Header = props => {
+const Header = () => {
   const dispatch = useDispatch();
   const toggle = useSelector(state => state.notification.option);
   const firstLoad = useSelector(state => state.isLoading.firstLoad);

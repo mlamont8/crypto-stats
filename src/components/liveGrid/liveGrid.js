@@ -1,28 +1,37 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CSSTransitionGroup } from 'react-transition-group';
+import { CSSTransitionGroup } from "react-transition-group";
 import UIkit from "uikit";
 import Icons from "uikit/dist/js/uikit-icons";
 import { notificationAlert, filterArray } from "../../helpers/index";
+import { useSelector } from "react-redux";
 
 // Child of Main.js
 
 // loads the Icon plugin
 UIkit.use(Icons);
 
-class LiveGrid extends React.Component {
-  componentDidUpdate(prevProps) {
-    // Used to send notification when live results arrive
-    const { notifyStatus, liveResults } = this.props;
-    if (liveResults !== prevProps.liveResults && notifyStatus === "on") {
-      this.sendNotification();
-    }
-  }
+// class LiveGrid extends React.Component {
+//   componentDidUpdate(prevProps) {
+//     // Used to send notification when live results arrive
+//     const { notifyStatus, liveResults } = this.props;
+//     if (liveResults !== prevProps.liveResults && notifyStatus === "on") {
+//       this.sendNotification();
+//     }
+//   }
+
+const LiveGrid = () => {
+  const liveResults = useSelector(state => state.liveResults);
+  const usd = useSelector(state => state.byDollar.coinConversion);
+  const to = useSelector(state => state.searchTerm.currentTo);
+  const notifyStatus = useSelector(state => state.notification.option);
+  const from = useSelector(state => state.searchTerm.currentFrom);
+  const image = useSelector(state => state.coinUrl.convertFrom);
 
   // Notification events when price updates
   // ** Add Icon and Name**
-  sendNotification() {
-    const { liveResults, to, usd } = this.props;
+  const sendNotification = () => {
+    // const { liveResults, to, usd } = this.props;
     // get the current result
     const currentResult = liveResults[liveResults.length - 1];
     // set color style of notification
@@ -37,83 +46,73 @@ class LiveGrid extends React.Component {
         <div>
           <img
             class="imageIcon"
-            alt=${this.props.coinFrom}
-            src=${this.props.image}
+            alt=${from}
+            src=${image}
             width="50px"
             height="50px"
             uk-img="true"
           />
       </div>
     <div>
-    ${this.props.from}
+    ${from}
     </div>
     </div>
     <div class="notiRight"><div><span uk-icon='icon: ${setArrow}'></span></div>
      <div><div>${price} ${to}</div><div>($${dollars})</div></div></div>
      </div>`;
     return notificationAlert(setMessage, setStatus);
-  }
+  };
 
-  render() {
-    const { liveResults, usd, to } = this.props;
-
-    // New Separate rows as a result of each update
-    const items = filterArray(liveResults).map(result => {
-      const arrow = result.flag === "2" ? "arrow-down" : "arrow-up";
-      return (
-        <div className={(result.time === liveResults[liveResults.length - 1].time) ? "currentResult gridColumns" : "gridColumns"}
-          key={result.time}>
-          <div>
-            {" "}
-            <span uk-icon={`icon: ${arrow}`} />
-          </div>
-          <div>{result.time}</div>
-          <div>
-            {result.price}{` `}{to}
-          </div>
-          <div>${(usd * result.price).toFixed(2)}</div>
-        </div>
-      );
-    })
-
+  // New Separate rows as a result of each update
+  const items = filterArray(liveResults).map(result => {
+    const arrow = result.flag === "2" ? "arrow-down" : "arrow-up";
     return (
-      <div className="live-table mainBlock infoBlock">
-        <div className="blockTitle liveTitle">
-          <h1>LIVE UPDATES</h1>
+      <div
+        className={
+          result.time === liveResults[liveResults.length - 1].time
+            ? "currentResult gridColumns"
+            : "gridColumns"
+        }
+        key={result.time}
+      >
+        <div>
+          {" "}
+          <span uk-icon={`icon: ${arrow}`} />
         </div>
-
-        <div className="gridTitle">
-          <div></div>
-          <div>TIME</div>
-          <div>PRICE</div>
-          <div>USD</div>
+        <div>{result.time}</div>
+        <div>
+          {result.price}
+          {` `}
+          {to}
         </div>
-        <div className="gridRows">
-          <CSSTransitionGroup
-            transitionName="grid"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={300}>
-            {items}
-          </CSSTransitionGroup>
-        </div>
+        <div>${(usd * result.price).toFixed(2)}</div>
       </div>
-    )
-  }
+    );
+  });
 
-}
+  return (
+    <div className="live-table mainBlock infoBlock">
+      <div className="blockTitle liveTitle">
+        <h1>LIVE UPDATES</h1>
+      </div>
 
-LiveGrid.propTypes = {
-  liveResults: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      flag: PropTypes.string,
-      price: PropTypes.string,
-      time: PropTypes.string
-    }).isRequired
-  ).isRequired,
-  usd: PropTypes.number.isRequired,
-  to: PropTypes.string.isRequired,
-  notifyStatus: PropTypes.string.isRequired
+      <div className="gridTitle">
+        <div></div>
+        <div>TIME</div>
+        <div>PRICE</div>
+        <div>USD</div>
+      </div>
+      <div className="gridRows">
+        <CSSTransitionGroup
+          transitionName="grid"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+        >
+          {items}
+        </CSSTransitionGroup>
+      </div>
+    </div>
+  );
 };
 
 export default LiveGrid;
