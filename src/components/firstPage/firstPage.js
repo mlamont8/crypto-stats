@@ -1,33 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import Header from "../../containers/header/header";
 import SelectorModal from "../../containers/selectorModal/selectorModal";
 import ChatForm from "../../containers/chatForm/ChatForm";
 import { initialSearch } from "../../actions/index";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const FirstPage = () => {
-  const dispatch = useDispatch();
-
-  const modal = useSelector(state => state.modal.status);
+  const [modal, setModal] = useState(false);
+  const firstLoad = useSelector(state => state.isLoading.firstLoad);
 
   return (
-    <div className="frontContainer">
-      {modal && <ChatForm initialLoad />}
+    <div className="mainContainer">
+      <Header firstLoad={firstLoad} />
+      <div className="frontContainer">
+        {modal && <ChatForm initialLoad />}
 
-      <div className="frontViewArea">
-        <div className="titleArea">
-          <h2>Cryptocoin price and history data</h2>
-          <ul>
-            <li>Price analysis</li>
-            <li>Short and long term history</li>
-            <li>Real time data</li>
-          </ul>
+        <div className="frontViewArea">
+          <div className="titleArea">
+            <h2>Cryptocoin price and history data</h2>
+            <ul>
+              <li>Price analysis</li>
+              <li>Short and long term history</li>
+              <li>Real time data</li>
+            </ul>
 
-          <button
-            type="button"
-            onClick={() => dispatch({ type: "INITIAL_SEARCH" })}
-          >
-            Try it Now
-          </button>
+            <button type="button" onClick={() => setModal(true)}>
+              Try it Now
+            </button>
+          </div>
         </div>
       </div>
     </div>

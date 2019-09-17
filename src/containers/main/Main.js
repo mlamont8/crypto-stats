@@ -33,7 +33,7 @@ const Main = () => {
     dispatch({ type: "INITIAL_MOUNT", status: true });
   }, [dispatch]);
 
-  firstLoad ? <FirstPage /> : <DashPage />;
+  return firstLoad ? <FirstPage /> : <DashPage />;
 
   // if (modal) {
   //   return <ChatForm />;
