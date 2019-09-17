@@ -2,8 +2,15 @@ import React from "react";
 import ChatBot from "react-simple-chatbot";
 import ChatSelector from "../../components/chatSelector/chatSelector";
 import GetCurrentMarket from "../../components/getCurrentMarket/GetCurrentMarket";
+import { useDispatch } from "react-redux";
 
 const ChatForm = props => {
+  const CloseModal = () => {
+    const dispatch = useDispatch();
+    dispatch({ type: "CLOSE_MODAL" });
+    return null;
+  };
+
   const initialSteps = [
     {
       id: "Intro",
@@ -40,7 +47,19 @@ const ChatForm = props => {
     },
     {
       id: "convertTo",
-      component: <ChatSelector id={"convertTo"} />
+      component: <ChatSelector id={"convertTo"} />,
+      waitAction: true,
+      trigger: "conclusion"
+    },
+    {
+      id: "conclusion",
+      message: "Looks Good...See you soon!",
+      trigger: "closeModal"
+    },
+    {
+      id: "closeModal",
+      component: <CloseModal />,
+      end: true
     }
   ];
 
@@ -98,7 +117,19 @@ const ChatForm = props => {
     },
     {
       id: "convertTo",
-      component: <ChatSelector id={"convertTo"} />
+      component: <ChatSelector id={"convertTo"} />,
+      waitAction: true,
+      trigger: "conclusion"
+    },
+    {
+      id: "conclusion",
+      message: "Looks Good...See you soon!",
+      trigger: "closeModal"
+    },
+    {
+      id: "closeModal",
+      component: <CloseModal />,
+      end: true
     }
   ];
 

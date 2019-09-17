@@ -134,13 +134,13 @@ export function* formSelector(action) {
   }
 }
 
-// Resets Currentarray SearchTerms 
+// Resets Currentarray SearchTerms
 function* resetSearch() {
   const previousArray = yield select(searchArrays);
   yield put({
     type: "SEARCH_RESET",
-    currentArray: previousArray.marketArray,
-  })
+    currentArray: previousArray.marketArray
+  });
 }
 
 // Checks to see if data currently exists for coin
@@ -155,8 +155,8 @@ export function* checkForCoin(action) {
     yield call(formSelector, action);
   } else {
     console.log(action.id, ` was not found!`);
-    yield call(resetSearch)
-    yield call(coinError, action)
+    yield call(resetSearch);
+    yield call(coinError, action);
   }
 }
 
@@ -166,7 +166,7 @@ function* coinError(error) {
   yield put({
     type: "COIN_LISTING_ERROR",
     error
-  })
+  });
 }
 
 // New Search
@@ -187,43 +187,40 @@ function* search() {
       call(byDay, results.market, results.convertFrom, results.convertTo),
       call(byHour, results.convertFrom, results.convertTo),
       call(byExchange, results.convertFrom, results.convertTo),
-      put({ type: "NEW_SEARCH", status: false }),
+      put({ type: "NEW_SEARCH", status: false })
     ]);
     yield put({ type: "FETCH_SUCCESS" });
-
   } catch (error) {
     yield put({ type: "SEARCH_FETCH_FAILURE", error });
-    console.log('Search was not successful');
+    console.log("Search was not successful");
   }
   // reset for a new search
-  yield put({ type: "ID_UPDATE", id: "market"});
+  yield put({ type: "ID_UPDATE", id: "market" });
   // Close Modal
   yield call(closeModal);
 }
 
 function* searchRequest() {
-  // On a new search from frontpage 
+  // On a new search from frontpage
   const searchArray = yield select(searchArrays);
   yield put({
     type: "SEARCH_MODAL",
-    currentArray: searchArray.marketArray,
-  })
+    currentArray: searchArray.marketArray
+  });
 }
-
-
 
 // When user selects close modal button on modal
 // reset currentArray to marketArray
 function* closeModal() {
   const searchArray = yield select(searchArrays);
-  const errorStatus = yield select(errors)
+  const errorStatus = yield select(errors);
 
   // Only if there are no errors, close modal
   if (errorStatus.item == null) {
     yield put({
       type: "CLOSE_MODAL",
-      currentArray: searchArray.marketArray,
-    })
+      currentArray: searchArray.marketArray
+    });
   }
 }
 
@@ -232,8 +229,8 @@ function* mySaga() {
   yield takeLatest("SEARCH_REQUEST", search);
   yield takeLatest("SELECTION_ENTERED", checkForCoin);
   yield takeLatest("NEW_RESET", resetSearch);
-  yield takeLatest('CLOSE_ACTION', closeModal)
-  yield takeLatest('SEARCH_MODAL_REQUEST', searchRequest)
+  yield takeLatest("CLOSE_ACTION", closeModal);
+  yield takeLatest("SEARCH_MODAL_REQUEST", searchRequest);
 }
 
 export default mySaga;

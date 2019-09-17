@@ -1,6 +1,7 @@
 import React from "react";
 import SelectorModal from "../../containers/selectorModal/selectorModal";
 import ChatForm from "../../containers/chatForm/ChatForm";
+import { initialSearch } from "../../actions/index";
 import { useDispatch, useSelector } from "react-redux";
 
 const FirstPage = () => {
@@ -23,7 +24,7 @@ const FirstPage = () => {
 
           <button
             type="button"
-            onClick={() => dispatch({ type: "SEARCH_MODAL_REQUEST" })}
+            onClick={() => dispatch({ type: "INITIAL_SEARCH" })}
           >
             Try it Now
           </button>
