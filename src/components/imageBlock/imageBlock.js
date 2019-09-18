@@ -8,12 +8,13 @@ import { useSelector } from "react-redux";
 //    -summary
 //      -imageBlock
 
-const ImageBlock = () => {
+const ImageBlock = props => {
   const coinFrom = useSelector(state => state.searchTerm.currentFrom);
   const img = useSelector(state => state.coinUrl.convertFrom);
   const coinTo = useSelector(state => state.searchTerm.currentTo);
   const market = useSelector(state => state.searchTerm.currentMarket);
   const coinName = useSelector(state => state.coinName.convertFrom);
+  const openModal = () => props.setModal(true);
 
   return (
     <div className="infoBlock imageBlock">
@@ -36,20 +37,13 @@ const ImageBlock = () => {
         </span>
       </div>
 
-      {/* <div className="ibContainer-tr">
-        <button type="button" onClick={newSearch.bind(this, true)}>
+      <div className="ibContainer-tr">
+        <button type="button" onClick={openModal}>
           SEARCH AGAIN
         </button>
-      </div> */}
+      </div>
     </div>
   );
 };
 
-// const mapDispatchToProps = dispatch => ({
-//   newSearch: () => {
-//     dispatch({ type: 'SEARCH_MODAL_REQUEST' });
-//   }
-// })
-
-// export default connect(null, mapDispatchToProps)(ImageBlock);
 export default ImageBlock;

@@ -1,11 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { PieChart, Pie, ResponsiveContainer, Legend, Cell } from "recharts";
-import PropTypes from "prop-types";
 
 const COLORS = ["#3c4eba", "#fffefb", "#3cddf1", "#1b6ff3"];
 
-const exchangeVolume = props => {
-  const { data } = props;
+const ExchangeVolume = () => {
+  const data = useSelector(state => state.topExchanges.data);
+
   return !data ? null : (
     <div className="pieChart infoBlock">
       <div className="blockTitle">
@@ -39,8 +40,4 @@ const exchangeVolume = props => {
   );
 };
 
-exchangeVolume.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired
-};
-
-export default exchangeVolume;
+export default ExchangeVolume;

@@ -11,7 +11,6 @@ import {
   ResponsiveContainer,
   Label
 } from "recharts";
-import PropTypes from "prop-types";
 
 const DailyAreaChart = () => {
   const data = useSelector(state => state.coinByDay.fifteenDay);
@@ -71,9 +70,5 @@ const DailyAreaChart = () => {
     </div>
   );
 };
-
-// DailyAreaChart.propTypes = {
-//   data: PropTypes.arrayOf(PropTypes.object).isRequired,
-// };
 
 export default DailyAreaChart;

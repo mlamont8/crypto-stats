@@ -8,6 +8,7 @@ const ChatForm = props => {
   const CloseModal = () => {
     const dispatch = useDispatch();
     dispatch({ type: "CLOSE_MODAL" });
+    props.setModal(false);
     return null;
   };
 

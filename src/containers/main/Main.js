@@ -14,19 +14,8 @@ import DashPage from "../dashPage/DashPage";
 
 const Main = () => {
   const dispatch = useDispatch();
-  const fifteenDay = useSelector(state => state.coinByDay.fifteenDay);
   const firstLoad = useSelector(state => state.isLoading.firstLoad);
-  const exchangeVolume = useSelector(state => state.topExchanges.data);
-  // const market = useSelector(state => state.searchTerm.currentMarket);
-  const from = useSelector(state => state.searchTerm.currentFrom);
-  const to = useSelector(state => state.searchTerm.currentTo);
-  const liveResults = useSelector(state => state.liveResults);
-  const inDollars = useSelector(state => state.byDollar.coinConversion);
-  const news = useSelector(state => state.news.news);
-  const notifyStatus = useSelector(state => state.notification.option);
-  const byHour = useSelector(state => state.coinByHour.coinByHour);
-  const modal = useSelector(state => state.modal.status);
-  const image = useSelector(state => state.coinUrl.convertFrom);
+
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {

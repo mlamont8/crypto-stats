@@ -11,7 +11,7 @@ const GetCurrentMarket = props => {
   useEffect(() => {
     dispatch(SelectData("market", marketFetch));
     props.triggerNextStep();
-  }, []);
+  }, [dispatch, marketFetch, props]);
 
   return null;
 };

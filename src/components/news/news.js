@@ -1,24 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import { useSelector } from "react-redux";
 
-const News = props => (
-  <div className="infoBlock">
-    <div className="blockTitle">
-      <h1>RECENT NEWS</h1>
-    </div>
-    {props.data.map(result => (
-      <div key={result.id} className="newsRow">
-        <div>
-          <a href={result.url}>{result.title}</a>
-        </div>
+const News = () => {
+  const data = useSelector(state => state.news.news);
+  return (
+    <div className="infoBlock">
+      <div className="blockTitle">
+        <h1>RECENT NEWS</h1>
       </div>
-    ))}
-
-  </div>
-);
-
-News.propTypes = {
-  news: PropTypes.arrayOf(PropTypes.object),
+      {data.map(result => (
+        <div key={result.id} className="newsRow">
+          <div>
+            <a href={result.url}>{result.title}</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default News;
