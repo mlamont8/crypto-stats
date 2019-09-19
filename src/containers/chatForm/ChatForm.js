@@ -2,6 +2,19 @@ import React from "react";
 import ChatBot from "react-simple-chatbot";
 import ChatSelector from "../../components/chatSelector/chatSelector";
 import GetCurrentMarket from "../../components/getCurrentMarket/GetCurrentMarket";
+import ThemeProvider from "styled-components";
+
+const theme = {
+  background: "#f7f7f7",
+  fontFamily: "Helvetica Neue",
+  headerBgColor: "#2980b9",
+  headerFontColor: "#fff",
+  headerFontSize: "15px",
+  botBubbleColor: "#2980b9",
+  botFontColor: "#fff",
+  userBubbleColor: "#fff",
+  userFontColor: "#fe7f0e"
+};
 
 const ChatForm = props => {
   const CloseModal = () => {

@@ -9935,11 +9935,11 @@ html,
 body,
 #root {
   height: 100%;
-  color: #F7FDFF; }
+  color: #f7fdff; }
 
 h1,
 h2 {
-  color: #F7FDFF; }
+  color: #f7fdff; }
 
 .mainBlock {
   display: flex;
@@ -10001,15 +10001,15 @@ button:hover {
   justify-content: space-between; }
 
 .uk-navbar-container:not(.uk-navbar-transparent) {
-  background-color: #0058CC;
-  color: #F7FDFF; }
+  background-color: #0058cc;
+  color: #292a2b; }
 
 .uk-logo {
-  color: #F7FDFF; }
+  color: #292a2b; }
 
 .navbar-container {
-  background-color: #34495e;
-  color: #F7FDFF;
+  background-color: #f7fdff;
+  color: #292a2b;
   display: flex;
   align-items: center;
   justify-content: center; }
@@ -10041,10 +10041,10 @@ button:hover {
   display: none; }
 
 a {
-  color: #FE7F0E; }
+  color: #fe7f0e; }
 
 .dash-container {
-  fill: #F7FDFF;
+  fill: #f7fdff;
   padding-top: 40px;
   border: 1px solid transparent;
   background-color: #34495e; }
@@ -10082,9 +10082,9 @@ a {
 
 .uk-notification-message {
   border-radius: 30px;
-  border: 2px solid #F7FDFF;
+  border: 2px solid #f7fdff;
   background-color: #292a2b;
-  color: #F7FDFF; }
+  color: #f7fdff; }
 
 .blockTitle {
   width: 100%; }
@@ -10177,9 +10177,9 @@ form li {
 
 .frontViewArea {
   position: relative;
-  background: #34495e url(images/cryptoImage.png) no-repeat;
+  color: #f7fdff;
+  background: #2980b9 url(images/chart.svg) no-repeat;
   background-size: contain;
-  background-blend-mode: soft-light;
   width: 100%;
   height: 100%;
   padding-left: 30px;
@@ -10202,13 +10202,12 @@ form li {
 
 .titleArea {
   z-index: 1; }
-  .titleArea h1 {
+  .titleArea h2 {
     font-size: 2em;
     font-weight: 500; }
   .titleArea ul {
     font-size: 1.5em;
-    font-weight: 200;
-    color: #dddddd; }
+    font-weight: 200; }
 
 .nameBlk {
   margin: 5px;
@@ -10232,7 +10231,7 @@ form li {
     font-size: 1.1em; }
 
 .recharts-legend-item-text {
-  color: #F7FDFF; }
+  color: #f7fdff; }
 
 .newsRow {
   margin: 5px 0; }
@@ -10275,7 +10274,7 @@ form li {
 
 .modalFooter {
   background-color: #34495e;
-  color: #F7FDFF;
+  color: #f7fdff;
   height: 50px; }
 
 .modalInstructions {
@@ -10339,6 +10338,15 @@ button:hover {
 
 .modalContent {
   width: 80%; }
+
+.rsc-header,
+.rsc-ts-bubble,
+.rsc-os-option-element {
+  background-color: #2980b9;
+  color: #f7fdff; }
+
+.rsc-footer {
+  display: none; }
 
 h1 {
   font-size: 20px; }

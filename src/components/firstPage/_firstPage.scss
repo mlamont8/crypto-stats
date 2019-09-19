@@ -10,9 +10,9 @@
 
 .frontViewArea {
   position: relative;
-  background: $grayBlue url(images/cryptoImage.png) no-repeat;
+  color: $white;
+  background: $main url(images/chart.svg) no-repeat;
   background-size: contain;
-  background-blend-mode: soft-light;
   width: 100%;
   height: 100%;
   padding-left: 30px;
@@ -40,13 +40,13 @@
 
 .titleArea {
   z-index: 1;
-  h1 {
+  h2 {
     font-size: 2em;
     font-weight: 500;
   }
   ul {
     font-size: 1.5em;
     font-weight: 200;
-    color: #dddddd;
+    // color: #dddddd;
   }
 }

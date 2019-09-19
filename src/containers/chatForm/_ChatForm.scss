@@ -1,3 +1,14 @@
 .modalContent {
   width: 80%;
 }
+
+.rsc-header,
+.rsc-ts-bubble,
+.rsc-os-option-element {
+  background-color: $main;
+  color: $white;
+}
+
+.rsc-footer {
+  display: none;
+}
