@@ -2,12 +2,9 @@ import React from "react";
 import ChatBot from "react-simple-chatbot";
 import ChatSelector from "../../components/chatSelector/chatSelector";
 import GetCurrentMarket from "../../components/getCurrentMarket/GetCurrentMarket";
-import { useDispatch } from "react-redux";
 
 const ChatForm = props => {
   const CloseModal = () => {
-    const dispatch = useDispatch();
-    dispatch({ type: "CLOSE_MODAL" });
     props.setModal(false);
     return null;
   };

@@ -8,16 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 const Header = () => {
   const dispatch = useDispatch();
   const toggle = useSelector(state => state.notification.option);
-  const firstLoad = useSelector(state => state.isLoading.firstLoad);
   const coinName = useSelector(state => state.coinName.convertFrom);
   const inDollars = useSelector(state => state.byDollar.coinConversion);
   const liveResults = useSelector(state => state.liveResults);
+
   // Toggles notification status; Sends update to user
   const updateNotificationStatus = () => {
-    // const { toggle } = this.props;
     const status = toggle === "on" ? "OFF" : "ON";
     const msg = `Notifications are now ${status}`;
-    // this.props.changeNotification();
     dispatch(notificationOption);
     notificationAlert(msg, "alert");
   };
