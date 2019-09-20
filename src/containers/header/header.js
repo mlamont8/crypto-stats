@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // Child of main.js
 // Prop firstload from main.js
 
-const Header = () => {
+const Header = props => {
   const dispatch = useDispatch();
   const toggle = useSelector(state => state.notification.option);
   const coinName = useSelector(state => state.coinName.convertFrom);
@@ -26,9 +26,11 @@ const Header = () => {
 
   //Convert the price to US Dollars
   const usDollars = (price * inDollars).toFixed(2);
+
+  const { dash } = props;
   return (
-    <nav className="navbar-container">
-      <div className="navbar-left">
+    <nav className={dash ? "navbar-container dash" : "navbar-container"}>
+      <div>
         <span className="uk-navbar-item uk-logo">Crypto Stats</span>
       </div>
       <div className={`${isNaN(usDollars) ? "navbar-hide" : "navbar-center"}`}>

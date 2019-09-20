@@ -9,15 +9,24 @@
 }
 
 .uk-logo {
-  color: $black;
+  color: $main;
+  font-weight: bold;
 }
 
 .navbar-container {
   background-color: $white;
-  color: $black;
+  color: $main;
   display: flex;
   align-items: center;
-  justify-content: center;
+  height: 50px;
+}
+
+.navbar-container.dash {
+  background-color: $main;
+  display: flex;
+  align-items: center;
+  color: $white;
+  height: 50px;
 }
 
 @media all and (max-width: 600px) {

@@ -10005,14 +10005,22 @@ button:hover {
   color: #292a2b; }
 
 .uk-logo {
-  color: #292a2b; }
+  color: #2980b9;
+  font-weight: bold; }
 
 .navbar-container {
   background-color: #f7fdff;
-  color: #292a2b;
+  color: #2980b9;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  height: 50px; }
+
+.navbar-container.dash {
+  background-color: #2980b9;
+  display: flex;
+  align-items: center;
+  color: #f7fdff;
+  height: 50px; }
 
 @media all and (max-width: 600px) {
   .navbar-container {
