@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { CSSTransitionGroup } from "react-transition-group";
 import UIkit from "uikit";
@@ -27,6 +27,10 @@ const LiveGrid = () => {
   const notifyStatus = useSelector(state => state.notification.option);
   const from = useSelector(state => state.searchTerm.currentFrom);
   const image = useSelector(state => state.coinUrl.convertFrom);
+
+  useEffect(() => {
+    notifyStatus && sendNotification();
+  }, [liveResults]);
 
   // Notification events when price updates
   // ** Add Icon and Name**
