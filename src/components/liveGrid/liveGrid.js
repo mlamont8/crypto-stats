@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 import { CSSTransitionGroup } from "react-transition-group";
 import UIkit from "uikit";
 import Icons from "uikit/dist/js/uikit-icons";
@@ -10,15 +9,6 @@ import { useSelector } from "react-redux";
 
 // loads the Icon plugin
 UIkit.use(Icons);
-
-// class LiveGrid extends React.Component {
-//   componentDidUpdate(prevProps) {
-//     // Used to send notification when live results arrive
-//     const { notifyStatus, liveResults } = this.props;
-//     if (liveResults !== prevProps.liveResults && notifyStatus === "on") {
-//       this.sendNotification();
-//     }
-//   }
 
 const LiveGrid = () => {
   const liveResults = useSelector(state => state.liveResults);
@@ -35,7 +25,6 @@ const LiveGrid = () => {
   // Notification events when price updates
   // ** Add Icon and Name**
   const sendNotification = () => {
-    // const { liveResults, to, usd } = this.props;
     // get the current result
     const currentResult = liveResults[liveResults.length - 1];
     // set color style of notification
@@ -67,7 +56,6 @@ const LiveGrid = () => {
     return notificationAlert(setMessage, setStatus);
   };
 
-  // New Separate rows as a result of each update
   const items = filterArray(liveResults).map(result => {
     const arrow = result.flag === "2" ? "arrow-down" : "arrow-up";
     return (
