@@ -28,6 +28,8 @@ const LiveGrid = () => {
     // get the current result
     const currentResult = liveResults[liveResults.length - 1];
     // set color style of notification
+    console.log({ currentResult });
+    console.log({ liveResults });
     const setStatus = currentResult.flag === "2" ? "danger" : "success";
     // Up or down arrow depending on update
     const setArrow = setStatus === "danger" ? "arrow-down" : "arrow-up";
@@ -81,6 +83,8 @@ const LiveGrid = () => {
       </div>
     );
   });
+
+  console.log({ items });
 
   return (
     <div className="live-table mainBlock infoBlock">

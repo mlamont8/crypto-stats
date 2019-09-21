@@ -10132,7 +10132,7 @@ form li {
   width: 100%;
   flex-direction: column-reverse;
   justify-content: flex-start;
-  color: white; }
+  color: #292a2b; }
 
 .grid-enter {
   opacity: 0.01; }
@@ -10364,6 +10364,27 @@ button:hover {
 .recharts-text {
   color: #292a2b;
   fill: #292a2b; }
+
+.chartContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #ecf0f1; }
+  .chartContainer .info-block {
+    flex-grow: 1;
+    flex-basis: 30%;
+    background-color: #ecf0f1; }
+  .chartContainer .fifteenDayChart {
+    flex-grow: 0;
+    flex-basis: 66%; }
+
+@media all and (max-width: 1150px) {
+  .chartContainer .info-block {
+    flex-basis: 50%; } }
+
+@media all and (max-width: 900px) {
+  .chartContainer .info-block {
+    flex-basis: 100%; } }
 
 h1 {
   font-size: 20px; }
