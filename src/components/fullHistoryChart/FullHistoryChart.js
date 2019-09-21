@@ -1,4 +1,4 @@
-// Change to Area Chart
+// Top Full History chart
 
 import React from "react";
 import { useSelector } from "react-redux";
@@ -11,16 +11,14 @@ import {
   Tooltip,
   ResponsiveContainer
 } from "recharts";
-import PropTypes from "prop-types";
 
-const CoinLineChart = props => {
-  const data = useSelector(state => state.coinByHour.coinByHour);
-  console.log({ data });
+const FullHistoryChart = () => {
+  const data = useSelector(state => state.historical.fullHistory);
 
   return (
     <div className="infoBlock">
       <div className="blockTitle">
-        <h1>{props.title}</h1>
+        <h1>Full History</h1>
       </div>
 
       <ResponsiveContainer width="95%" height={200}>
@@ -56,8 +54,4 @@ const CoinLineChart = props => {
   );
 };
 
-CoinLineChart.propTypes = {
-  title: PropTypes.string.isRequired
-};
-
-export default CoinLineChart;
+export default FullHistoryChart;

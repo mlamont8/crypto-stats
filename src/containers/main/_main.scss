@@ -2,10 +2,10 @@ a {
   color: $orange;
 }
 .dash-container {
-  fill: $white;
+  // fill: $dashText;
   padding-top: 40px;
   border: 1px solid transparent;
-  background-color: $grayBlue;
+  // background-color: $grayBlue;
 }
 
 .first-row,
@@ -15,7 +15,7 @@ a {
 
 .mainContainer {
   height: 100%;
-  color: $greyText;
+  // color: $greyText;
 }
 
 .chartContainer {
@@ -33,20 +33,14 @@ a {
   }
 }
 
-
-
-
-
 @media all and (max-width: 1150px) {
- 
   .chartContainer .info-block {
     flex-basis: 50%;
   }
 }
 
 @media all and (max-width: 900px) {
-  .chartContainer .info-block
-  {
+  .chartContainer .info-block {
     flex-basis: 100%;
   }
 }
@@ -69,4 +63,3 @@ a {
     font-weight: bold;
   }
 }
-

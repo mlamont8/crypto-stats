@@ -1,13 +1,13 @@
 .summary-left h2 {
   font-size: 20px;
+  color: $main;
 }
 
 .summary-container {
   display: flex;
   justify-content: space-around;
   padding-bottom: 20px;
-  color: white;
-  background-color: $black;
+  background-color: $dashBackground;
   div {
     flex-grow: 0;
     flex-basis: 20%;

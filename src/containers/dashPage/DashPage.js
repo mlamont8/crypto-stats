@@ -12,7 +12,7 @@ const DashPage = () => {
   const [modal, setModal] = useState(false);
 
   return (
-    <div className="mainContainer">
+    <div className="mainContainer dash">
       <Header dash />
       <div className="dash-container">
         {modal && <ChatForm initialLoad={false} setModal={setModal} />}

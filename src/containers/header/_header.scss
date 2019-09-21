@@ -27,6 +27,9 @@
   align-items: center;
   color: $white;
   height: 50px;
+  .uk-logo {
+    color: $white;
+  }
 }
 
 @media all and (max-width: 600px) {

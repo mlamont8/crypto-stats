@@ -18,11 +18,11 @@ h2 {
   align-items: center;
 }
 
-button{
+button {
   color: $grayBlue;
   font-size: 1.5em;
   border-radius: 6px;
-  transition: all .4s ease;
+  transition: all 0.4s ease;
 }
 button:hover {
   background-color: $grayBlue;
@@ -31,11 +31,15 @@ button:hover {
 .infoBlock {
   display: flex;
   flex-direction: column;
-  background: $grayBlue;
+  background: $white;
+  color: $main;
   margin: 10px;
   padding: 10px;
   @include border-radius(10px);
   height: 300px;
+  h1 {
+    color: $dashText;
+  }
 }
 
 .hideItem {

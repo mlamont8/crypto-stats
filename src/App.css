@@ -9950,7 +9950,7 @@ button {
   color: #34495e;
   font-size: 1.5em;
   border-radius: 6px;
-  transition: all .4s ease; }
+  transition: all 0.4s ease; }
 
 button:hover {
   background-color: #34495e;
@@ -9959,7 +9959,8 @@ button:hover {
 .infoBlock {
   display: flex;
   flex-direction: column;
-  background: #34495e;
+  background: #f7fdff;
+  color: #2980b9;
   margin: 10px;
   padding: 10px;
   -webkit-border-radius: 10px;
@@ -9967,19 +9968,21 @@ button:hover {
   -ms-border-radius: 10px;
   border-radius: 10px;
   height: 300px; }
+  .infoBlock h1 {
+    color: #292a2b; }
 
 .hideItem {
   display: none; }
 
 .summary-left h2 {
-  font-size: 20px; }
+  font-size: 20px;
+  color: #2980b9; }
 
 .summary-container {
   display: flex;
   justify-content: space-around;
   padding-bottom: 20px;
-  color: white;
-  background-color: #292a2b; }
+  background-color: #ecf0f1; }
   .summary-container div {
     flex-grow: 0;
     flex-basis: 20%; }
@@ -10021,6 +10024,8 @@ button:hover {
   align-items: center;
   color: #f7fdff;
   height: 50px; }
+  .navbar-container.dash .uk-logo {
+    color: #f7fdff; }
 
 @media all and (max-width: 600px) {
   .navbar-container {
@@ -10052,18 +10057,15 @@ a {
   color: #fe7f0e; }
 
 .dash-container {
-  fill: #f7fdff;
   padding-top: 40px;
-  border: 1px solid transparent;
-  background-color: #34495e; }
+  border: 1px solid transparent; }
 
 .first-row,
 .second-row {
   margin-top: 30px; }
 
 .mainContainer {
-  height: 100%;
-  color: #545454; }
+  height: 100%; }
 
 .chartContainer {
   display: flex;
@@ -10355,6 +10357,13 @@ button:hover {
 
 .rsc-footer {
   display: none; }
+
+.dash-container {
+  background-color: #ecf0f1; }
+
+.recharts-text {
+  color: #292a2b;
+  fill: #292a2b; }
 
 h1 {
   font-size: 20px; }
