@@ -19,8 +19,10 @@ const LiveGrid = () => {
   const image = useSelector(state => state.coinUrl.convertFrom);
 
   useEffect(() => {
-    notifyStatus && sendNotification();
-  }, [liveResults]);
+    if (notifyStatus === "on") {
+      sendNotification();
+    }
+  }, [liveResults, notifyStatus]);
 
   // Notification events when price updates
   // ** Add Icon and Name**

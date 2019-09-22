@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import ImageBlock from "../../components/imageBlock/imageBlock";
 import FullHistoryChart from "../../components/fullHistoryChart/FullHistoryChart";
 

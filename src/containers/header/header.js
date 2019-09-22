@@ -1,5 +1,4 @@
 import React from "react";
-import { notificationOption } from "../../actions";
 import { notificationAlert } from "../../helpers/index";
 import { useDispatch, useSelector } from "react-redux";
 // Child of main.js
@@ -16,7 +15,7 @@ const Header = props => {
   const updateNotificationStatus = () => {
     const status = toggle === "on" ? "OFF" : "ON";
     const msg = `Notifications are now ${status}`;
-    dispatch(notificationOption);
+    dispatch({ type: "NOTIFICATION_TOGGLE", option: status });
     notificationAlert(msg, "alert");
   };
 
