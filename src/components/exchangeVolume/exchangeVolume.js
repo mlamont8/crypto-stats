@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { PieChart, Pie, ResponsiveContainer, Legend, Cell } from "recharts";
 
-const COLORS = ["#3c4eba", "#fffefb", "#3cddf1", "#1b6ff3"];
+const COLORS = ["#3c4eba", "#e9c92f", "#3cddf1", "#1b6ff3", "#9b59b6"];
 
 const ExchangeVolume = () => {
   const data = useSelector(state => state.topExchanges.data);
