@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import ChatBot from "react-simple-chatbot";
 import ChatSelector from "../../components/chatSelector/chatSelector";
 import GetCurrentMarket from "../../components/getCurrentMarket/GetCurrentMarket";
+import { useDispatch } from "react-redux";
 
 const ChatForm = props => {
+  const dispatch = useDispatch();
+
   const CloseModal = () => {
     props.setModal(false);
     return null;
@@ -133,9 +136,33 @@ const ChatForm = props => {
 
   const chatOption = props.initialLoad ? initialSteps : returningSteps;
 
+  const useOutsideAlerter = (ref, props) => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        dispatch({ type: "NEW_RESET" }); // reset current array items
+        CloseModal(); // Close Modal
+      }
+    }
+
+    useEffect(() => {
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    });
+  };
+
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+
   return (
     <div className="modalContainer">
-      <div className="modalContent">
+      <div ref={wrapperRef} className="modalContent">
         <ChatBot width="none" steps={chatOption} />
       </div>
     </div>

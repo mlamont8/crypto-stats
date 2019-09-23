@@ -13,7 +13,7 @@ const FirstPage = () => {
     <div className="mainContainer">
       <Header firstLoad={firstLoad} />
       <div className="frontContainer">
-        {modal && <ChatForm initialLoad />}
+        {modal && <ChatForm initialLoad setModal={setModal} />}
 
         <div className="frontViewArea">
           <div className="titleArea">
