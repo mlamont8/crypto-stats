@@ -5,13 +5,10 @@ import { terms } from "./selectors";
 
 // Live results using Socket.io
 
-
 // Recalls Search terms from state and returns proper format
 function* searchResults() {
   const subResults = yield call(terms);
-  return `2~${subResults.market}~${subResults.convertFrom}~${
-    subResults.convertTo
-  }`;
+  return `2~${subResults.market}~${subResults.convertFrom}~${subResults.convertTo}`;
 }
 
 function subscribe(socket) {
@@ -67,24 +64,8 @@ export default function* liveWatch(searchesThisSession) {
   while (true) {
     const payload = yield take(socketChannel);
     const update = streamFormat(payload.split("~"));
-// Lets catch any errors from the live feed in a try/catch block
-  // try {
-  //   if (update !== null) {
-  //     console.log('received')
-  //     yield put({
-  //       type: "INCOMING_LIVE_UPDATE",
-  //       searchesThisSession,
-  //       id: (payloadId += 1),
-  //       update
-  //     });
-  //   }
-  // }catch(err) {
-  //   console.error('live stream error', err)
-  // }
 
-  
-     if (update !== null) {
-      console.log('received')
+    if (update !== null) {
       yield put({
         type: "INCOMING_LIVE_UPDATE",
         searchesThisSession,
@@ -92,6 +73,5 @@ export default function* liveWatch(searchesThisSession) {
         update
       });
     }
-
   }
 }

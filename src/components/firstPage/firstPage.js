@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Header from "../../containers/header/header";
-import SelectorModal from "../../containers/selectorModal/selectorModal";
 import ChatForm from "../../containers/chatForm/ChatForm";
-import { initialSearch } from "../../actions/index";
 import { useSelector } from "react-redux";
 
 const FirstPage = () => {

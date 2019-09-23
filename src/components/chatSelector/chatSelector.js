@@ -14,11 +14,9 @@ const ChatSelector = props => {
     });
 
   const handleChange = selectedOption => {
-    console.log("handlechange");
     dispatch(SelectData(props.id, selectedOption.value));
     props.triggerNextStep({ value: selectedOption.value });
   };
-  console.log("chatselector");
   return (
     <Select
       className="select-container"

@@ -15,7 +15,6 @@ import PropTypes from "prop-types";
 
 const CoinLineChart = props => {
   const data = useSelector(state => state.coinByHour.coinByHour);
-  console.log({ data });
 
   return (
     <div className="infoBlock">

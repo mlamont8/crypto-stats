@@ -10009,7 +10009,8 @@ button:hover {
 
 .uk-logo {
   color: #2980b9;
-  font-weight: bold; }
+  font-weight: bold;
+  min-height: 0px; }
 
 .navbar-container {
   background-color: #f7fdff;
