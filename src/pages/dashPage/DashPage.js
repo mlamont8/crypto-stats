@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Header from "../header/header";
-import Summary from "../summary/summary";
+import Header from "../../components/header/header";
+import Summary from "../../components/summary/summary";
 import LiveGrid from "../../components/liveGrid/liveGrid";
 import DailyAreaChart from "../../components/dailyAreaChart/DailyAreaChart";
 import HistoricalChart from "../../components/lineChart/LineChart";
 import ExchangeVolume from "../../components/exchangeVolume/exchangeVolume";
 import News from "../../components/news/news";
-import ChatForm from "../chatForm/ChatForm";
+import ChatForm from "../../components/chatForm/ChatForm";
 
 const DashPage = () => {
   const [modal, setModal] = useState(false);

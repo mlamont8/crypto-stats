@@ -9974,6 +9974,54 @@ button:hover {
 .hideItem {
   display: none; }
 
+a {
+  color: #fe7f0e; }
+
+.dash-container {
+  padding-top: 40px;
+  border: 1px solid transparent; }
+
+.first-row,
+.second-row {
+  margin-top: 30px; }
+
+.mainContainer {
+  height: 100%; }
+
+.chartContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; }
+  .chartContainer .info-block {
+    flex-grow: 1;
+    flex-basis: 30%;
+    background-color: #292a2b; }
+  .chartContainer .fifteenDayChart {
+    flex-grow: 0;
+    flex-basis: 66%; }
+
+@media all and (max-width: 1150px) {
+  .chartContainer .info-block {
+    flex-basis: 50%; } }
+
+@media all and (max-width: 900px) {
+  .chartContainer .info-block {
+    flex-basis: 100%; } }
+
+.uk-notification {
+  width: 250px; }
+
+.uk-notification-message {
+  border-radius: 30px;
+  border: 3px solid #f7fdff;
+  background-color: #2980b9;
+  color: #f7fdff; }
+
+.blockTitle {
+  width: 100%; }
+  .blockTitle h1 {
+    font-weight: bold; }
+
 .summary-left h2 {
   font-size: 20px;
   color: #2980b9; }
@@ -10053,54 +10101,6 @@ button:hover {
 
 .navbar-hide {
   display: none; }
-
-a {
-  color: #fe7f0e; }
-
-.dash-container {
-  padding-top: 40px;
-  border: 1px solid transparent; }
-
-.first-row,
-.second-row {
-  margin-top: 30px; }
-
-.mainContainer {
-  height: 100%; }
-
-.chartContainer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap; }
-  .chartContainer .info-block {
-    flex-grow: 1;
-    flex-basis: 30%;
-    background-color: #292a2b; }
-  .chartContainer .fifteenDayChart {
-    flex-grow: 0;
-    flex-basis: 66%; }
-
-@media all and (max-width: 1150px) {
-  .chartContainer .info-block {
-    flex-basis: 50%; } }
-
-@media all and (max-width: 900px) {
-  .chartContainer .info-block {
-    flex-basis: 100%; } }
-
-.uk-notification {
-  width: 250px; }
-
-.uk-notification-message {
-  border-radius: 30px;
-  border: 3px solid #f7fdff;
-  background-color: #2980b9;
-  color: #f7fdff; }
-
-.blockTitle {
-  width: 100%; }
-  .blockTitle h1 {
-    font-weight: bold; }
 
 form li {
   list-style: none; }
@@ -10247,6 +10247,18 @@ form li {
 .newsRow {
   margin: 5px 0; }
 
+.select-container {
+  width: 200px; }
+
+.rsc-header,
+.rsc-ts-bubble,
+.rsc-os-option-element {
+  background-color: #2980b9;
+  color: #f7fdff; }
+
+.rsc-footer {
+  display: none; }
+
 .modalContainer {
   position: fixed;
   justify-content: center;
@@ -10261,7 +10273,7 @@ form li {
 .modalContent {
   position: fixed;
   background: #34495e;
-  width: 80%;
+  width: 60%;
   max-height: 80vh;
   border-radius: 10px;
   overflow-y: auto;
@@ -10269,95 +10281,6 @@ form li {
   left: 50%;
   transform: translate(-50%, -50%);
   color: black; }
-
-.modalHeader {
-  background-color: #34495e;
-  color: #dddddd;
-  height: 50px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: underline; }
-  .modalHeader div {
-    flex: 1;
-    font-size: 2em; }
-
-.modalFooter {
-  background-color: #34495e;
-  color: #f7fdff;
-  height: 50px; }
-
-.modalInstructions {
-  height: 50px;
-  font-size: 1.8em;
-  background-color: #34495e;
-  color: #dddddd;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 50px 10px; }
-  .modalInstructions div {
-    text-align: center; }
-
-button {
-  color: #34495e;
-  font-size: 0.8em;
-  margin: 0 10px;
-  border-radius: 5px;
-  transition: all 0.2s ease; }
-
-button:hover {
-  background-color: #34495e;
-  color: #dddddd; }
-
-.coinError {
-  color: red; }
-
-.selectorItems {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between; }
-  .selectorItems ul {
-    color: black;
-    list-style: none;
-    flex: 0 1 180px;
-    text-align: center;
-    font-size: 20px;
-    margin-top: 8px; }
-  .selectorItems li {
-    color: #8092c4;
-    cursor: pointer; }
-  .selectorItems li:hover {
-    color: white; }
-
-.searching:after {
-  content: "\2026";
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: bottom;
-  animation: blinking steps(4, end) 900ms infinite;
-  width: 0px; }
-
-@keyframes blinking {
-  to {
-    width: 1.25em; } }
-
-.select-container {
-  width: 200px; }
-
-.modalContent {
-  width: 80%; }
-
-.rsc-header,
-.rsc-ts-bubble,
-.rsc-os-option-element {
-  background-color: #2980b9;
-  color: #f7fdff; }
-
-.rsc-footer {
-  display: none; }
 
 .dash-container {
   background-color: #ecf0f1; }

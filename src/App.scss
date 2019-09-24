@@ -17,20 +17,20 @@
 // 5. Import partials
 
 @import "./base";
-@import "./containers/summary/summary";
-@import "./containers/header/header";
-@import "./containers/main/main";
+@import "./components/summary/summary";
+@import "./components/header/header";
+// @import "./components/main/main";
 @import "./components/selectControl/selectControl";
 @import "./components/lineChart/lineChart";
 @import "./components/liveGrid/liveGrid";
-@import "./components/firstPage/firstPage";
+@import "./pages/firstPage/firstPage";
 @import "./components/imageBlock/imageBlock";
 @import "./components/exchangeVolume/exchangeVolume";
 @import "./components/news/news";
-@import "./containers/selectorModal/selectorModal";
+// @import "./components/selectorModal/selectorModal";
 @import "./components/chatSelector/chatSelector";
-@import "./containers/chatForm/ChatForm";
-@import "./containers//dashPage/DashPage";
+@import "./components/chatForm/ChatForm";
+@import "./pages/dashPage/DashPage";
 
 h1 {
   font-size: 20px;

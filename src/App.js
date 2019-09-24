@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
-import Main from './containers/main/Main';
-import './App.css';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import FirstPage from "./pages/firstPage/firstPage";
+import DashPage from "./pages/dashPage/DashPage";
+import "./App.css";
 
-// fontawesome.library.add(solids);
+const App = () => {
+  const dispatch = useDispatch();
+  const firstLoad = useSelector(state => state.isLoading.firstLoad);
 
-class App extends Component {
-  render() {
-    return <Main />;
-  }
-}
+  useEffect(() => {
+    dispatch({ type: "INITIAL_MOUNT", status: true });
+  }, [dispatch]);
+
+  return firstLoad ? <FirstPage /> : <DashPage />;
+};
 
 export default App;

@@ -19,16 +19,15 @@ const LiveGrid = () => {
   const image = useSelector(state => state.coinUrl.convertFrom);
 
   useEffect(() => {
-    if (notifyStatus === "on") {
-      // get the current result
-      const currentResult = liveResults[liveResults.length - 1];
-      // set color style of notification
-      const setStatus = currentResult.flag === "2" ? "danger" : "success";
-      // Up or down arrow depending on update
-      const setArrow = setStatus === "danger" ? "arrow-down" : "arrow-up";
-      const price = currentResult.price;
-      const dollars = (usd * price).toFixed(2);
-      const setMessage = `
+    // get the current result
+    const currentResult = liveResults[liveResults.length - 1];
+    // set color style of notification
+    const setStatus = currentResult.flag === "2" ? "danger" : "success";
+    // Up or down arrow depending on update
+    const setArrow = setStatus === "danger" ? "arrow-down" : "arrow-up";
+    const price = currentResult.price;
+    const dollars = (usd * price).toFixed(2);
+    const setMessage = `
     <div class="notiContainer">
       <div class="notiLeft">
         <div>
@@ -48,6 +47,7 @@ const LiveGrid = () => {
     <div class="notiRight"><div><span uk-icon='icon: ${setArrow}'></span></div>
      <div><div>${price} ${to}</div><div>($${dollars})</div></div></div>
      </div>`;
+    if (notifyStatus === "on" && typeof price !== "undefined") {
       notificationAlert(setMessage, setStatus);
     }
   }, [liveResults, notifyStatus, from, image, to, usd]);

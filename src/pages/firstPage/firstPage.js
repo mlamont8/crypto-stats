@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Header from "../../containers/header/header";
-import ChatForm from "../../containers/chatForm/ChatForm";
+import Header from "../../components/header/header";
+import ChatForm from "../../components/chatForm/ChatForm";
 import { useSelector } from "react-redux";
 
 const FirstPage = () => {

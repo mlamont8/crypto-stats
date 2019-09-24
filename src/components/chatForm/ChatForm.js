@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import ChatBot from "react-simple-chatbot";
-import ChatSelector from "../../components/chatSelector/chatSelector";
-import GetCurrentMarket from "../../components/getCurrentMarket/GetCurrentMarket";
+import ChatSelector from "../chatSelector/chatSelector";
+import GetCurrentMarket from "../getCurrentMarket/GetCurrentMarket";
 import { useDispatch } from "react-redux";
 
 const ChatForm = props => {

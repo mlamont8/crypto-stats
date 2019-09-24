@@ -1,6 +1,6 @@
 import React from "react";
-import ImageBlock from "../../components/imageBlock/imageBlock";
-import FullHistoryChart from "../../components/fullHistoryChart/FullHistoryChart";
+import ImageBlock from "../imageBlock/imageBlock";
+import FullHistoryChart from "../fullHistoryChart/FullHistoryChart";
 
 // Top Summary information
 // Child of Main.js

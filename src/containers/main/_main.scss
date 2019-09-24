@@ -1,65 +1,64 @@
-a {
-  color: $orange;
-}
-.dash-container {
-  // fill: $dashText;
-  padding-top: 40px;
-  border: 1px solid transparent;
-  // background-color: $grayBlue;
-}
+// a {
+//   color: $orange;
+// }
+// .dash-container {
+//   padding-top: 40px;
+//   border: 1px solid transparent;
+// }
 
-.first-row,
-.second-row {
-  margin-top: 30px;
-}
+// .first-row,
+// .second-row {
+//   margin-top: 30px;
+// }
 
-.mainContainer {
-  height: 100%;
-  // color: $greyText;
-}
+// .mainContainer {
+//   height: 100%;
+// }
 
-.chartContainer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  .info-block {
-    flex-grow: 1;
-    flex-basis: 30%;
-    background-color: $black;
-  }
-  .fifteenDayChart {
-    flex-grow: 0;
-    flex-basis: 66%;
-  }
-}
+// .chartContainer {
+//   display: flex;
+//   justify-content: space-between;
+//   flex-wrap: wrap;
+//   .info-block {
+//     flex-grow: 1;
+//     flex-basis: 30%;
+//     background-color: $black;
+//   }
+//   .fifteenDayChart {
+//     flex-grow: 0;
+//     flex-basis: 66%;
+//   }
+// }
 
-@media all and (max-width: 1150px) {
-  .chartContainer .info-block {
-    flex-basis: 50%;
-  }
-}
+// @media all and (max-width: 1150px) {
+//   .chartContainer .info-block {
+//     flex-basis: 50%;
+//   }
+// }
 
-@media all and (max-width: 900px) {
-  .chartContainer .info-block {
-    flex-basis: 100%;
-  }
-}
+// @media all and (max-width: 900px) {
+//   .chartContainer .info-block {
+//     flex-basis: 100%;
+//   }
+// }
 
-.uk-notification {
-  width: 250px;
-}
+// .uk-notification {
+//   width: 250px;
+// }
 
-.uk-notification-message {
-  border-radius: 30px;
-  border: 3px solid $white;
-  background-color: $main;
-  color: $white;
-}
+// .uk-notification-message {
+//   border-radius: 30px;
+//   border: 3px solid $white;
+//   background-color: $main;
+//   color: $white;
+// }
 
-.blockTitle {
-  width: 100%;
+// .blockTitle {
+//   width: 100%;
 
-  h1 {
-    font-weight: bold;
-  }
-}
+//   h1 {
+//     font-weight: bold;
+//   }
+// }
+
+// DELETE
