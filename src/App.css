@@ -10253,8 +10253,8 @@ form li {
 .glfuN,
 .hQsUiY,
 .cRmLCo {
-  background-color: #2980b9;
-  color: #f7fdff; }
+  background-color: #2980b9 !important;
+  color: #f7fdff !important; }
 
 .rsc-footer {
   display: none; }
