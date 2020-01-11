@@ -15,11 +15,11 @@
 }
 
 .navbar-container {
-  background-color: $white;
+  background-color: $main;
   color: $main;
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 80px;
 }
 
 .navbar-container.dash {
@@ -27,7 +27,8 @@
   display: flex;
   align-items: center;
   color: $white;
-  height: 50px;
+  height: 80px;
+
   .uk-logo {
     color: $white;
   }
@@ -40,6 +41,7 @@
     div {
       flex: 1 1 100%;
     }
+
     .navbar-right {
       margin: 20px;
     }
@@ -67,4 +69,8 @@
 
 .navbar-hide {
   display: none;
+}
+
+.header-logo {
+  height: 40px;
 }

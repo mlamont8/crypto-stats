@@ -1,6 +1,7 @@
 import React from "react";
 import { notificationAlert } from "../../helpers/index";
 import { useDispatch, useSelector } from "react-redux";
+import logo from "./../../images/logo.png";
 // Child of main.js
 // Prop firstload from main.js
 
@@ -27,10 +28,13 @@ const Header = props => {
   const usDollars = (price * inDollars).toFixed(2);
 
   const { dash } = props;
+  console.log(logo);
   return (
     <nav className={dash ? "navbar-container dash" : "navbar-container"}>
       <div>
-        <span className="uk-navbar-item uk-logo">Crypto Stats</span>
+        <span className="uk-navbar-item uk-logo">
+          <img className="header-logo" src={logo} alt="" />
+        </span>
       </div>
       <div className={`${isNaN(usDollars) ? "navbar-hide" : "navbar-center"}`}>
         <h1>

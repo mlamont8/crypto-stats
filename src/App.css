@@ -10061,18 +10061,18 @@ a {
   min-height: 0px; }
 
 .navbar-container {
-  background-color: #f7fdff;
+  background-color: #2980b9;
   color: #2980b9;
   display: flex;
   align-items: center;
-  height: 50px; }
+  height: 80px; }
 
 .navbar-container.dash {
   background-color: #2980b9;
   display: flex;
   align-items: center;
   color: #f7fdff;
-  height: 50px; }
+  height: 80px; }
   .navbar-container.dash .uk-logo {
     color: #f7fdff; }
 
@@ -10101,6 +10101,9 @@ a {
 
 .navbar-hide {
   display: none; }
+
+.header-logo {
+  height: 40px; }
 
 form li {
   list-style: none; }
