@@ -9,8 +9,8 @@ Provides current and live information on crypto coin conversions for various mar
 
 + Clone this repo
 + `cd crypto-stats`
-+ run `npm install`
-+ run `npm run start`
++ run `yarn`
++ run `yarn start`
 
 
 
