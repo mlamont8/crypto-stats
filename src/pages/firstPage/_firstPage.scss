@@ -1,6 +1,6 @@
 .frontContainer {
   overflow: hidden;
-  height: 100vh;
+  height: calc(100% - 80px);
   padding: 0;
   display: flex;
   > div {
@@ -11,8 +11,10 @@
 .frontViewArea {
   position: relative;
   color: $white;
-  background: $main url(images/chart.svg) no-repeat;
-  background-size: contain;
+  // background: #000 url(images/chart.svg) no-repeat;
+  // background-size: contain;
+  // opacity: 0.75;
+  background-color: #000;
   width: 100%;
   height: 100%;
   padding-left: 30px;
@@ -22,6 +24,20 @@
   .titleArea {
     margin-right: 30px;
   }
+}
+
+.frontViewArea::before {    
+  content: "";
+  background-image: url(images/chart.svg);
+  
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.4;
 }
 
 .titleArea > button {
