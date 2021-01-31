@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "../../components/header/header";
+import Footer from "../../components/footer/footer"
 import ChatForm from "../../components/chatForm/ChatForm";
 import { useSelector } from "react-redux";
 
@@ -8,6 +9,7 @@ const FirstPage = () => {
   const firstLoad = useSelector(state => state.isLoading.firstLoad);
 
   return (
+    <>
     <div className="mainContainer">
       <Header firstLoad={firstLoad} />
       <div className="frontContainer">
@@ -29,6 +31,8 @@ const FirstPage = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 export default FirstPage;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "../../components/header/header";
+import Footer from "../../components/footer/footer"
 import Summary from "../../components/summary/summary";
 import LiveGrid from "../../components/liveGrid/liveGrid";
 import DailyAreaChart from "../../components/dailyAreaChart/DailyAreaChart";
@@ -36,6 +37,7 @@ const DashPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

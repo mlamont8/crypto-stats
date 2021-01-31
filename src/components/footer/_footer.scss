@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Merriweather&display=swap');
+
+
+footer {
+    font-family: ’Lato’, sans-serif;
+    background-color: #555;
+    color: #bbb;
+    line-height: 1.5;
+}
+
+footer a {
+    text-decoration: none;
+    color: #eee;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.ft-announcement h3{
+    font-family: ’Merriweather’, serif;
+    color: #eee;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.ft-links {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+        div {
+            padding: 1.25rem;
+            min-width: 250px;
+        }
+
+
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ft-title {
+    color: #fff;
+    font-family: ’Merriweather’, serif;
+    font-size: 25px;
+    font-weight: 500;
+    padding-bottom: 0.625rem;
+}
+
+
+@media only screen and (max-width: 900px ) {
+    .bottom-footer div {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.ft-social {
+    background-color: black;
+    color: white;
+}
+
+.ft-legal {
+    padding: 0.9375rem 1.875rem;
+    background-color: #333;
+}
+.ft-legal-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 2px;
+}
+.ft-legal-list li {
+    margin: 0.125rem 0.625rem;
+    white-space: nowrap;
+}
+/* one before the last child */
+.ft-legal-list li:nth-last-child(2) {
+    flex: 1;     
+}
+
+
+
+
+input[type="email"] {
+    border: 0;
+    padding: 0.625rem;
+    margin-top: 0.3125rem;
+}
+input[type="submit"] {
+    background-color: #00d188;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    padding: 0.625rem 0.9375rem;
+    margin-top: 0.3125rem;
+}
+
+.ft-email {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px #777 solid;
+}
