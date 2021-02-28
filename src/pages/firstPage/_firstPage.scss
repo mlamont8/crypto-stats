@@ -1,43 +1,36 @@
 .frontContainer {
+  background: #422168;
   overflow: hidden;
-  height: calc(100% - 80px);
+  position: relative;
   padding: 0;
-  display: flex;
   > div {
     flex: 1;
   }
+
 }
 
-.frontViewArea {
+.topFront {
   position: relative;
   color: $white;
-  // background: #000 url(images/chart.svg) no-repeat;
-  // background-size: contain;
-  // opacity: 0.75;
-  background-color: #000;
   width: 100%;
-  height: 100%;
+  height: 75vh;
   padding-left: 30px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   .titleArea {
     margin-right: 30px;
   }
-}
 
-.frontViewArea::before {    
-  content: "";
-  background-image: url(images/chart.svg);
-  
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  opacity: 0.4;
+  .frontImage {
+    max-width: 50%;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 30px;
+  }
+
+
 }
 
 .titleArea > button {
