@@ -38,16 +38,7 @@
   }
 }
 
-@media all and (max-width: 900px) {
-  .titleArea, .frontImage {
-    flex: 1 1 100%;
-    padding-top: 50px;
-  }
- .topFront {
-   flex-wrap: wrap;
-   height: auto;
- }
-}
+
 
 .featureTitle {
   color: $main;
@@ -111,4 +102,24 @@
   p {
     font-size: 20px;
   };
+}
+
+@media all and (max-width: 900px) {
+  .titleArea, .frontImage, .callToAction, .frontInfo div {
+    flex: 1 1 100%;
+    padding: 10px;
+  }
+ .topFront, .frontInfo {
+   flex-wrap: wrap;
+   height: auto;
+   padding: 30px;
+ }
+
+ .frontImage {
+   padding-top:80px;
+ }
+ .frontInfoText{
+   margin-top: 50px;
+ }
+ 
 }
