@@ -10146,7 +10146,7 @@ a {
   min-height: 0px; }
 
 .navbar-container {
-  background-color: #000;
+  background-color: #422168;
   color: #422168;
   display: flex;
   align-items: center;
@@ -10355,6 +10355,9 @@ form li {
   justify-content: center;
   align-items: center; }
 
+.frontContainer h1 {
+  font-size: 40px; }
+
 .frontTopContainer {
   background: #422168;
   overflow: hidden;
@@ -10388,6 +10391,10 @@ form li {
     flex-wrap: wrap;
     height: auto; } }
 
+.featureTitle {
+  color: #422168;
+  font-size: 25px; }
+
 .titleArea > button {
   font-size: 1.8em; }
 
@@ -10402,14 +10409,9 @@ form li {
 #curve path {
   fill: #fff; }
 
-.titleArea {
-  z-index: 1; }
-  .titleArea h2 {
-    font-size: 2em;
-    font-weight: 500; }
-  .titleArea ul {
-    font-size: 1.5em;
-    font-weight: 200; }
+.titleArea ul {
+  font-size: 1.5em;
+  font-weight: 200; }
 
 .frontInfo {
   display: flex;
@@ -10419,6 +10421,8 @@ form li {
     flex: 1 1 50%; }
   .frontInfo h1 {
     color: black; }
+  .frontInfo p {
+    font-size: 20px; }
 
 .frontInfoImage {
   text-align: center; }
@@ -10427,8 +10431,11 @@ form li {
   text-align: center;
   background-color: #422168;
   height: 500px; }
-  .callToAction h2 {
-    padding-top: 150px; }
+  .callToAction h1 {
+    padding-top: 150px;
+    font-size: 40px; }
+  .callToAction p {
+    font-size: 20px; }
 
 .nameBlk {
   margin: 5px;

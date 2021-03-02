@@ -19,9 +19,9 @@ const FirstPage = () => {
 
         <div className="topFront">
           <div className="titleArea">
-            <h2>Cryptocoin price and history data</h2>
+            <h1>Cryptocoin Price and History</h1>
             <ul>
-              <li>Price analysis</li>
+              <li>Cost analysis</li>
               <li>Short and long term history</li>
               <li>Real time data</li>
             </ul>
@@ -41,16 +41,20 @@ const FirstPage = () => {
       <div className="frontInfo">
         <div className="frontInfoImage"><img src={phones} alt="responsive for smartphones"></img></div>
         <div className='frontInfoText'>
-          <h1>Viewing long - term and short-term forecast</h1>
-          <p>From startups to Fortune 500 companies, Trello is the most visual way for teams to collaborate on any project. Uniquely evolve equity invested value vis-a-vis proactive testing proceduatively create worldwide</p>
+          <p className="featureTitle">Main Feature</p>
+          <h1>View long-term and short-term history</h1>
+            <p>A visual aide to see updates on coin pairs from various markets.  Results offer short and long term history, popular crypto markets and real-time rates.</p>
           </div> 
 
     </div>
 
 </div>
 <div className="callToAction">
-      <h2>TRY CRYPTOSTATS FOR FREE</h2>
-      <p>Available on your computer, tablet or mobile.  Runs directly in your browser for free</p>
+      <h1>TRY CRYPTOSTATS FOR FREE</h1>
+      <p>Available on your computer, tablet or mobile.  Runs directly in your browser.  For a limited time, try completely free.</p>
+      <button type="button" onClick={() => setModal(true)}>
+              Try Now
+            </button>
     </div>
 
     <Footer />
