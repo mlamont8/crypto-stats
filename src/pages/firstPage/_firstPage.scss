@@ -1,7 +1,7 @@
-.frontContainer {
+.frontTopContainer {
   background: #422168;
   overflow: hidden;
-  position: relative;
+  // position: relative;
   padding: 0;
   > div {
     flex: 1;
@@ -9,7 +9,7 @@
 }
 
 .topFront {
-  position: relative;
+  // position: relative;
   color: $white;
   height: 70vh;
   padding-left: 30px;
@@ -47,8 +47,15 @@
   font-size: 1.8em;
 }
 
+.curve {
+  
+  height: 200px;
+  overflow: hidden;
+  
+}
+
 #curve {
-  position: absolute;
+  // position: absolute;
   bottom: 0;
   width: 100%;
 }
@@ -73,11 +80,24 @@
 .frontInfo {
   display: flex;
   color: rgb(131, 110, 110);
-  padding-top: 80px;
+  padding: 80px;
   div {
     flex: 1 1 50%;
   }
   h1 {
     color: black;
+  }
+}
+
+.frontInfoImage {
+  text-align: center;
+}
+
+.callToAction {
+  text-align: center;
+  background-color: $main;
+  height: 500px;
+  h2 {
+    padding-top: 150px;
   }
 }

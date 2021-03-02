@@ -10355,16 +10355,14 @@ form li {
   justify-content: center;
   align-items: center; }
 
-.frontContainer {
+.frontTopContainer {
   background: #422168;
   overflow: hidden;
-  position: relative;
   padding: 0; }
-  .frontContainer > div {
+  .frontTopContainer > div {
     flex: 1; }
 
 .topFront {
-  position: relative;
   color: #f7fdff;
   height: 70vh;
   padding-left: 30px;
@@ -10393,8 +10391,11 @@ form li {
 .titleArea > button {
   font-size: 1.8em; }
 
+.curve {
+  height: 200px;
+  overflow: hidden; }
+
 #curve {
-  position: absolute;
   bottom: 0;
   width: 100%; }
 
@@ -10413,11 +10414,21 @@ form li {
 .frontInfo {
   display: flex;
   color: #836e6e;
-  padding-top: 80px; }
+  padding: 80px; }
   .frontInfo div {
     flex: 1 1 50%; }
   .frontInfo h1 {
     color: black; }
+
+.frontInfoImage {
+  text-align: center; }
+
+.callToAction {
+  text-align: center;
+  background-color: #422168;
+  height: 500px; }
+  .callToAction h2 {
+    padding-top: 150px; }
 
 .nameBlk {
   margin: 5px;
